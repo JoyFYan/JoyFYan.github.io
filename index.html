@@ -90,12 +90,15 @@
 
 
 
+<meta name="description" content="Default~">
 <meta property="og:type" content="website">
 <meta property="og:title" content="小一一的小站">
 <meta property="og:url" content="https://joyfyan.github.io/index.html">
 <meta property="og:site_name" content="小一一的小站">
+<meta property="og:description" content="Default~">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小一一的小站">
+<meta name="twitter:description" content="Default~">
 
 
 
@@ -214,16 +217,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            About
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -240,6 +233,16 @@
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
           </a>
         </li>
       
@@ -451,7 +454,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/10/09/caffe-e8-bf-90-e8-a1-8cmnist-example/">
+  <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/11/12/Caffe-faster-rcnn demo测试/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Yan Joy">
@@ -476,8 +479,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/09/caffe-e8-bf-90-e8-a1-8cmnist-example/" itemprop="url">
-                  Caffe运行MNIST | example
+                <a class="post-title-link" href="/2016/11/12/Caffe-faster-rcnn demo测试/" itemprop="url">
+                  Caffe-faster-rcnn demo测试
                 </a>
               
             
@@ -491,8 +494,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-10-09T19:42:17+08:00">
-                2016-10-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-12T15:06:00+08:00">
+                2016-11-12
               </time>
             
 
@@ -517,17 +520,6 @@
 
                 
                 
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ML/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
               
             </span>
           
@@ -536,8 +528,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/10/09/caffe-e8-bf-90-e8-a1-8cmnist-example/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/09/caffe-e8-bf-90-e8-a1-8cmnist-example/" itemprop="commentCount"></span>
+                <a href="/2016/11/12/Caffe-faster-rcnn demo测试/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/12/Caffe-faster-rcnn demo测试/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -547,7 +539,7 @@
 
           
           
-             <span id="/2016/10/09/caffe-e8-bf-90-e8-a1-8cmnist-example/" class="leancloud_visitors" data-flag-title="Caffe运行MNIST | example">
+             <span id="/2016/11/12/Caffe-faster-rcnn demo测试/" class="leancloud_visitors" data-flag-title="Caffe-faster-rcnn demo测试">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -574,24 +566,526 @@
       
         
           
-          参考教程测试一下caffe。
-1.获取数据包。
+          RCNN是目前detection中较新且准确度较高的方法，充分发挥了CNN分类的优势，但速度并不快，从而产生了fast rcnn和faster rcnn来解决这个问题。本文使用py-faster-rcnn对该方法做一初步测试。
+
+rbgirshick/py-faster-rcnn
+
+
+环境准备软件环境
+Caffe
+Python
+
+一般来说这些我们都已经有所接触，但仍有一些需要注意的地方：
+
+要使用rbgirshick/py-faster-rcnn中的caffe编译一次，其caffe在rbgirshick/py-faster-rcnn/caffe-fast-rcnn @ 0dcd397中。因为这里面有一些专门为f-rcnn写的层，具体区别可以在caffe.proto中查看，如增加了ROIPoolingParameter、SmoothL1LossParameter等参数。
+编译时一定要增加对Python层（Python layers）的支持。具体需要打开Makefile.config，找到：
+12# In your Makefile.config, make sure to have th
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/12/Caffe-faster-rcnn demo测试/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/11/09/caffe学习（11）python的数据可视化/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Yan Joy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="小一一的小站">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="小一一的小站" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/09/caffe学习（11）python的数据可视化/" itemprop="url">
+                  caffe学习（11）python的数据可视化
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-09T16:24:00+08:00">
+                2016-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/11/09/caffe学习（11）python的数据可视化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/09/caffe学习（11）python的数据可视化/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/11/09/caffe学习（11）python的数据可视化/" class="leancloud_visitors" data-flag-title="caffe学习（11）python的数据可视化">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">Visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          caffe本身没有可视化的工具，一般需要配合python或matlab实现数据的可视化，在实践本文之前要先把caffe python编译好。另外有的服务器只有shell，没有可视化的界面，只好先把每一层的数据先保存成图片格式，再进行显示。
+
+Caffe学习系列(14)：初识数据可视化Python and/or MATLAB Caffe (optional)
+
+
+载入数据12345678910import numpy as npimport caffefrom skimage import iocaffe_root='/home/XXX/caffe/'import os,sysos.chdir(caffe_root)sys.path.insert(0,caffe_root+'python')im = caffe.io.load_image('examples/images/cat.jpg')io.imsave('cat.jpg',im)print im.shape
+这里用到了skimage 这个库，caffe用于读取图像的函数caffe.io.load_image也是用的这个，具体可以在
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/09/caffe学习（11）python的数据可视化/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/11/08/caffe学习（10）数据转换img2db/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Yan Joy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="小一一的小站">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="小一一的小站" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/08/caffe学习（10）数据转换img2db/" itemprop="url">
+                  caffe学习（10）数据转换img2db
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-08T17:12:00+08:00">
+                2016-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/11/08/caffe学习（10）数据转换img2db/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/08/caffe学习（10）数据转换img2db/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/11/08/caffe学习（10）数据转换img2db/" class="leancloud_visitors" data-flag-title="caffe学习（10）数据转换img2db">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">Visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          在处理图像时，我们已拥有的图像往往是常用的jpg、png格式，但在caffe中，输入的数据类型常是lmdb或leveldb，因此我们需要对原始数据进行转换。
+
+Caffe学习系列(11)：图像数据转换成db（leveldb/lmdb)文件
+
+
+convert_imageset在caffe中，提供了一个用于格式转换的文件：convert_imageset.cpp，存放在根目录下的tools文件夹下。编译之后，生成对应的可执行文件放在 build/tools/ 下面，这个文件的作用就是用于将图片文件转换成caffe框架中能直接使用的db文件。而windows平台下，如果用vs编译会在build/x64/debug中生成convert_imageset.exe。
+
+使用方法该文件的使用格式：
+convert_imageset [FLAGS] ROOTFOLDER/ LISTFILE DB_NAME
+而数据集推荐的是imagenet。对于具体的参数包含有：
+
+FLAGS：图片转换参数。
+ROOTFOLDER/：图片的绝对路径，从系统根目录开始。
+LISTFILE：图片文件清单文件，为txt格式
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/08/caffe学习（10）数据转换img2db/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/11/08/caffe学习（9）LeNet在Caffe上的使用/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Yan Joy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="小一一的小站">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="小一一的小站" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/08/caffe学习（9）LeNet在Caffe上的使用/" itemprop="url">
+                  caffe学习（9）LeNet在Caffe上的使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-08T15:57:00+08:00">
+                2016-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/11/08/caffe学习（9）LeNet在Caffe上的使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/08/caffe学习（9）LeNet在Caffe上的使用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/11/08/caffe学习（9）LeNet在Caffe上的使用/" class="leancloud_visitors" data-flag-title="caffe学习（9）LeNet在Caffe上的使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">Visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          使用官网例程训练LeNet。
+
+Training LeNet on MNIST with Caffe
+
+
+准备数据Caffe程序的运行要注意需命令行要在Caffe的根目录下。
 cd $CAFFE_ROOT
 ./data/mnist/get_mnist.sh
 ./examples/mnist/create_mnist.sh
-官网上是这样的，caffe_root是根目录，看网上有人说必须在根目录下运行，否则会出错，具体没有验证。。但是windows平台下应该是没有wget的，需要自己下载一下。得到四个文件，测试与训练，样本与标签。
-第二句是个坑，直接执行的话会提示找不到convert_mnist_data.bin（好像是这个）。这个环境还是linux下的，windows下编译出来的是exe，和caffe在一起。用法是
- convert_mnist_data [FLAGS] input_image_file input_label_file output_db_file执行两次将mnist date转化为可用的lmdb格式的文件。并将新生成的2个文件mnist-train-lmdb 和 mnist-test-lmdb放于create_mnist.sh同目录下。
-2.测试
-参数文件用的是
-./build/tools/caffe train –solver=examples/mnist/lenet_solver.prototxt mnist_test_lmdb mnist_train_lmdb 两个文件夹需要放在\examples\mnist。如果像我没用GPU，还需要在.prototxt里面更改solver_mode为 CPU。
-感觉跑了一个半小时吧，终于跑完了。生成了四个文件……数据都训练好之后，接下来就是如何将模型应用到实际数据了（记录的博客）：
-./build/tools/caffe.bin test -model=examples/mnist/lenet_train_test.prototxt -weights=examples/mnist/lenet_iter_10000.caffemodel -gpu=0 如果没有GPU则使用
-./build/tools/caffe.bin test -model=examples/mnist/lenet_train_test.prototxt -weights=examples/mnist/lenet_iter_10000.caffemodel看起来准
+依次运行，会在caffe\examples\mnist下得到两个目录mnist_train_lmdb, 和 mnist_test_lmdb，作为训练和测试集。
+
+定义MNIST网络Caffe上的LeNet并不是传统的LeNet-5，在参数上还是有所不同的。以\caffe\examples\mnist\lenet_train_test.prototxt 为例（本地文件与官网上的教程也有所区别），介绍一下如何定义网络。首先是定义网络名称：1name: "LeNet"
+数据层利用我们已经生成的MNIST数据，把数据输入到网络：12345678910111213141516171819202122232425262728293031323334layer &#123;  na
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/09/caffe-e8-bf-90-e8-a1-8cmnist-example/#more" rel="contents">
+            <a class="btn" href="/2016/11/08/caffe学习（9）LeNet在Caffe上的使用/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -632,7 +1126,7 @@ cd $CAFFE_ROOT
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/10/05/caffe-installation-caffe-e5-ae-89-e8-a3-85/">
+  <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/11/08/caffe学习（8）Solver 配置详解/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Yan Joy">
@@ -657,8 +1151,8 @@ cd $CAFFE_ROOT
             
               
                 
-                <a class="post-title-link" href="/2016/10/05/caffe-installation-caffe-e5-ae-89-e8-a3-85/" itemprop="url">
-                  Caffe | Installation caffe 安装
+                <a class="post-title-link" href="/2016/11/08/caffe学习（8）Solver 配置详解/" itemprop="url">
+                  caffe学习（8）Solver 配置详解
                 </a>
               
             
@@ -672,8 +1166,8 @@ cd $CAFFE_ROOT
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-10-05T22:33:46+08:00">
-                2016-10-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-08T09:45:00+08:00">
+                2016-11-08
               </time>
             
 
@@ -698,11 +1192,165 @@ cd $CAFFE_ROOT
 
                 
                 
-                  , 
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/11/08/caffe学习（8）Solver 配置详解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/08/caffe学习（8）Solver 配置详解/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/11/08/caffe学习（8）Solver 配置详解/" class="leancloud_visitors" data-flag-title="caffe学习（8）Solver 配置详解">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">Visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Solver是求解学习模型的核心配置文件，网络确定后，solver就决定了学习的效果。本文结合caffe.proto和网上资料，对solver配置进行学习。
+
+SolverCaffe学习系列(7)：solver及其配置，denny402
+
+
+Solver在caffe中的定义通常的solver文件与net文件相互关联，同样的net我们往往使用不同的solver尝试得到最好的效果，其运行代码为：
+caffe train --solver=*_slover.prototxt
+关于solver的一切，都在caffe.proto文件中message SolverParameter 这一部分。
+网络文件源12345678910// Proto filename for the train net, possibly combined with one or more// test nets.optional string net = 24;// Inline train net param, possibly combined with one or more test nets.optional
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/08/caffe学习（8）Solver 配置详解/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/11/07/Google Protocol Buffer 学习/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Yan Joy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="小一一的小站">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="小一一的小站" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
+                <a class="post-title-link" href="/2016/11/07/Google Protocol Buffer 学习/" itemprop="url">
+                  Google Protocol Buffer 学习
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-07T20:27:00+08:00">
+                2016-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ML/学习/" itemprop="url" rel="index">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
                     <span itemprop="name">学习</span>
                   </a>
                 </span>
@@ -717,8 +1365,8 @@ cd $CAFFE_ROOT
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/10/05/caffe-installation-caffe-e5-ae-89-e8-a3-85/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/05/caffe-installation-caffe-e5-ae-89-e8-a3-85/" itemprop="commentCount"></span>
+                <a href="/2016/11/07/Google Protocol Buffer 学习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/07/Google Protocol Buffer 学习/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -728,7 +1376,7 @@ cd $CAFFE_ROOT
 
           
           
-             <span id="/2016/10/05/caffe-installation-caffe-e5-ae-89-e8-a3-85/" class="leancloud_visitors" data-flag-title="Caffe | Installation caffe 安装">
+             <span id="/2016/11/07/Google Protocol Buffer 学习/" class="leancloud_visitors" data-flag-title="Google Protocol Buffer 学习">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -755,24 +1403,26 @@ cd $CAFFE_ROOT
       
         
           
-          尝试下caffe在windows的安装。
-本本用的还是A卡，干脆禁掉CUDA和cuDNN吧，换新的重新安装再配置。
-&lt;CpuOnlyBuild&gt;true&lt;/CpuOnlyBuild&gt;&lt;UseCuDNN&gt;false&lt;/UseCuDNN&gt;&lt;PythonSupport&gt;true&lt;/PythonSupport&gt;之后是python，之前装过又删掉了，这次再装一遍吧。windows下推荐的是Miniconda环境，里面集成了python2.7。运行
-conda install --yes numpy scipy matplotlib scikit-image pip
-pip install protobuf
-是在Miniconda2文件夹中cmd里面运行的，会自动下载安装一些库，本机下载了250M左右，第一次下载到第二个就卡住了QAQ，然后关了之后再输说之前存在任务触发保护了需要解锁，输入以下命令解锁。
-conda clean –lock虚拟环境创建操作参考了conda简单使用，一开始一直在python里面输命令，好蠢= =miniconda只是一个方便配置python的虚拟环境，里面python可以根据需要再加自己要的库。这个步骤应该是在前面的库安装完了之后再进行，否则新安装的库好像不会在老的环境里出现。删除原有环境：
-conda remove –name 此处是环境名字 –all其他没有怎么设置了，直接用vs2013打开编译……
-但是感觉过了一年，卡在了这里：
+          Caffe上有很多使用了Google Protocol Buffer的东西，从网上来看，这“是一种轻便高效的结构化数据存储格式，可以用于结构化数据串行化，很适合做数据存储或 RPC 数据交换格式。它可用于通讯协议、数据存储等领域的语言无关、平台无关、可扩展的序列化结构数据格式”。作为caffe模型定义的数据格式，看懂caffe.proto对caffe的理解会有很大帮助。
 
-nuget好像也是一个管理库的插件，会自动下载各种东西，然而下载速度简直无语。。感觉过了几个小时下载好了，多了900MB东西。然后build……又是一堆错误。
-首先是libcaffe.lib无法生成，其中两个小问题，找不到layer_factory.h和pyconfig.h，分别在caffe目录中和python目录中。之后找不到python27.lib，也在python中libs里，但是还会有一堆warning，不管了。。
-最后终于都build完成，Debug版的出来1.8G，release版的提示nuget超时，不太清楚原因。python部分把生成出来的拷到python目录\lib\site-packages，import一下应该就可以了。
+Google ProtobufGoogle Protocol Buffer 的使用和原理，刘 明
+
+
+小例子我们首先要在.proto文件中定义协议缓冲区消息类型（protocol buffer message types），来指定要序列化的信息的结构。下面是官网的一个小例子，定义了一个人的信息：
+message Person {
+  required string name = 1;
+  required int32 id = 2;
+  optional string email = 3;
+
+  enum PhoneType {
+    MOBILE = 0;
+    HOME = 1;
+    WORK = 2;
 
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/05/caffe-installation-caffe-e5-ae-89-e8-a3-85/#more" rel="contents">
+            <a class="btn" href="/2016/11/07/Google Protocol Buffer 学习/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -813,7 +1463,7 @@ nuget好像也是一个管理库的插件，会自动下载各种东西，然而
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/09/21/e5-87-ba-e5-8f-91-e5-85-b3-e6-9c-8d/">
+  <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/11/07/caffe学习（7）损失层、通用层/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Yan Joy">
@@ -838,8 +1488,8 @@ nuget好像也是一个管理库的插件，会自动下载各种东西，然而
             
               
                 
-                <a class="post-title-link" href="/2016/09/21/e5-87-ba-e5-8f-91-e5-85-b3-e6-9c-8d/" itemprop="url">
-                  出发|关服
+                <a class="post-title-link" href="/2016/11/07/caffe学习（7）损失层、通用层/" itemprop="url">
+                  caffe学习（7）损失层、通用层
                 </a>
               
             
@@ -853,8 +1503,8 @@ nuget好像也是一个管理库的插件，会自动下载各种东西，然而
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-21T22:12:33+08:00">
-                2016-09-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-07T16:19:00+08:00">
+                2016-11-07
               </time>
             
 
@@ -872,8 +1522,8 @@ nuget好像也是一个管理库的插件，会自动下载各种东西，然而
               <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/网站维护/" itemprop="url" rel="index">
-                    <span itemprop="name">网站维护</span>
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
                   </a>
                 </span>
 
@@ -887,8 +1537,8 @@ nuget好像也是一个管理库的插件，会自动下载各种东西，然而
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/09/21/e5-87-ba-e5-8f-91-e5-85-b3-e6-9c-8d/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/21/e5-87-ba-e5-8f-91-e5-85-b3-e6-9c-8d/" itemprop="commentCount"></span>
+                <a href="/2016/11/07/caffe学习（7）损失层、通用层/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/07/caffe学习（7）损失层、通用层/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -898,7 +1548,7 @@ nuget好像也是一个管理库的插件，会自动下载各种东西，然而
 
           
           
-             <span id="/2016/09/21/e5-87-ba-e5-8f-91-e5-85-b3-e6-9c-8d/" class="leancloud_visitors" data-flag-title="出发|关服">
+             <span id="/2016/11/07/caffe学习（7）损失层、通用层/" class="leancloud_visitors" data-flag-title="caffe学习（7）损失层、通用层">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -925,958 +1575,30 @@ nuget好像也是一个管理库的插件，会自动下载各种东西，然而
       
         
           
-          明天出发，跑个三角形，树莓派可以休息啦。
-
           
+Caffe LayersCaffe学习系列(5)：其它常用层及参数，denny402
+
+损失层Loss Layers
+损失通过将输出与目标进行比较，并不断优化减小loss。
+Softmax（with loss）
+
+层类型：SoftmaxWithLoss
+示例：
+ 1234567	layer &#123;	  name: "loss"	  type: "SoftmaxWithLoss"	  bottom: "ip1"	  bottom: "label"	  top: "loss"&#125;
+
+
+在概念上等同于softmax layer+多项对数损失层（multinomial logistic loss layer），但提供了更稳定的梯度。softmax只是输出每一类的概率，并没有与label做比较。
+Sum-of-Squares / Euclidean
+
+层类型：EuclideanLoss这是比较传统的求偏差的方法，$\frac 1 {2N} \sum_{i=1}^N | x^1_i - x^2_i |_2^2$，直接计算欧氏距离。
+
+Hinge / Margin
+
+层类型：Hing
+          ...
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/21/e5-87-ba-e5-8f-91-e5-85-b3-e6-9c-8d/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/09/19/e6-9c-ba-e4-bc-9a-e8-bf-98-e6-98-af-e4-bc-9a-e7-95-99-e7-bb-99-e6-9c-89-e5-87-86-e5-a4-87-e7-9a-84-e4-ba-ba-e5-95-8a/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Yan Joy">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小一一的小站">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="小一一的小站" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/19/e6-9c-ba-e4-bc-9a-e8-bf-98-e6-98-af-e4-bc-9a-e7-95-99-e7-bb-99-e6-9c-89-e5-87-86-e5-a4-87-e7-9a-84-e4-ba-ba-e5-95-8a/" itemprop="url">
-                  机会还是会留给有准备的人啊~
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-19T21:44:38+08:00">
-                2016-09-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/网站维护/" itemprop="url" rel="index">
-                    <span itemprop="name">网站维护</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/网站维护/感/" itemprop="url" rel="index">
-                    <span itemprop="name">感</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/09/19/e6-9c-ba-e4-bc-9a-e8-bf-98-e6-98-af-e4-bc-9a-e7-95-99-e7-bb-99-e6-9c-89-e5-87-86-e5-a4-87-e7-9a-84-e4-ba-ba-e5-95-8a/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/19/e6-9c-ba-e4-bc-9a-e8-bf-98-e6-98-af-e4-bc-9a-e7-95-99-e7-bb-99-e6-9c-89-e5-87-86-e5-a4-87-e7-9a-84-e4-ba-ba-e5-95-8a/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/09/19/e6-9c-ba-e4-bc-9a-e8-bf-98-e6-98-af-e4-bc-9a-e7-95-99-e7-bb-99-e6-9c-89-e5-87-86-e5-a4-87-e7-9a-84-e4-ba-ba-e5-95-8a/" class="leancloud_visitors" data-flag-title="机会还是会留给有准备的人啊~">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">Visitors </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>这段时间这么盲目、慌张，也好久没有这样的感觉了，可能习惯了按部就班的生活……</p>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/19/e6-9c-ba-e4-bc-9a-e8-bf-98-e6-98-af-e4-bc-9a-e7-95-99-e7-bb-99-e6-9c-89-e5-87-86-e5-a4-87-e7-9a-84-e4-ba-ba-e5-95-8a/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/09/13/e4-bb-8eflash-e5-88-b0-e6-89-8b-e6-b8-b8/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Yan Joy">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小一一的小站">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="小一一的小站" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/13/e4-bb-8eflash-e5-88-b0-e6-89-8b-e6-b8-b8/" itemprop="url">
-                  从flash到手游
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-13T23:53:51+08:00">
-                2016-09-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/感/" itemprop="url" rel="index">
-                    <span itemprop="name">感</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/09/13/e4-bb-8eflash-e5-88-b0-e6-89-8b-e6-b8-b8/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/13/e4-bb-8eflash-e5-88-b0-e6-89-8b-e6-b8-b8/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/09/13/e4-bb-8eflash-e5-88-b0-e6-89-8b-e6-b8-b8/" class="leancloud_visitors" data-flag-title="从flash到手游">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">Visitors </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>近日室友又重新怀旧，玩起了金庸群侠传这个flash游戏。老实说我对这个游戏印象并不是很深，因为一没读过金庸，二来游戏确实很复杂，系统、任务众多，不是简单的休闲游戏。在我看来，这样一个出色的rpg游戏，可以算是flash游戏的巅峰了。如果是一个pc游戏，可能反而没有这么大的影响力。</p>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/13/e4-bb-8eflash-e5-88-b0-e6-89-8b-e6-b8-b8/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/09/08/e5-88-9d-e6-ac-a1-e8-af-84-e8-ae-ba-e6-97-a0-e9-9c-80-e5-ae-a1-e6-a0-b8/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Yan Joy">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小一一的小站">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="小一一的小站" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/08/e5-88-9d-e6-ac-a1-e8-af-84-e8-ae-ba-e6-97-a0-e9-9c-80-e5-ae-a1-e6-a0-b8/" itemprop="url">
-                  初次评论无需审核
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-08T22:20:30+08:00">
-                2016-09-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/网站维护/" itemprop="url" rel="index">
-                    <span itemprop="name">网站维护</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/09/08/e5-88-9d-e6-ac-a1-e8-af-84-e8-ae-ba-e6-97-a0-e9-9c-80-e5-ae-a1-e6-a0-b8/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/08/e5-88-9d-e6-ac-a1-e8-af-84-e8-ae-ba-e6-97-a0-e9-9c-80-e5-ae-a1-e6-a0-b8/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/09/08/e5-88-9d-e6-ac-a1-e8-af-84-e8-ae-ba-e6-97-a0-e9-9c-80-e5-ae-a1-e6-a0-b8/" class="leancloud_visitors" data-flag-title="初次评论无需审核">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">Visitors </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="http://yanjoy.win/wp-content/uploads/pinglun-300x55.jpg" alt="pinglun"></p>
-<p>应该是这个设置吧，以后大家评论也不用经过审核了，我审起来也麻烦。。</p>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/08/e5-88-9d-e6-ac-a1-e8-af-84-e8-ae-ba-e6-97-a0-e9-9c-80-e5-ae-a1-e6-a0-b8/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/09/07/e7-a5-9d-e4-bd-a0-e6-9c-89-e7-be-8e-e5-a5-bd-e7-9a-84-e4-b8-80-e5-a4-a9-e2-88-9a/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Yan Joy">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小一一的小站">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="小一一的小站" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/07/e7-a5-9d-e4-bd-a0-e6-9c-89-e7-be-8e-e5-a5-bd-e7-9a-84-e4-b8-80-e5-a4-a9-e2-88-9a/" itemprop="url">
-                  祝你有美好的一天'√'
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-07T00:05:09+08:00">
-                2016-09-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/感/" itemprop="url" rel="index">
-                    <span itemprop="name">感</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/09/07/e7-a5-9d-e4-bd-a0-e6-9c-89-e7-be-8e-e5-a5-bd-e7-9a-84-e4-b8-80-e5-a4-a9-e2-88-9a/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/07/e7-a5-9d-e4-bd-a0-e6-9c-89-e7-be-8e-e5-a5-bd-e7-9a-84-e4-b8-80-e5-a4-a9-e2-88-9a/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/09/07/e7-a5-9d-e4-bd-a0-e6-9c-89-e7-be-8e-e5-a5-bd-e7-9a-84-e4-b8-80-e5-a4-a9-e2-88-9a/" class="leancloud_visitors" data-flag-title="祝你有美好的一天'√'">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">Visitors </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>如果你有幸和我到ktv，那么一定不会错过一首歌：Have a nice day。</p>
-<p>虽然嗓音不行，但是瞎喊喊就很爽了，唱歌不就是为了表达<del>宣泄</del>感情吗？</p>
-<p>不过说到这首歌，不得不提这首歌的乐队：Bon Jovi。</p>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/07/e7-a5-9d-e4-bd-a0-e6-9c-89-e7-be-8e-e5-a5-bd-e7-9a-84-e4-b8-80-e5-a4-a9-e2-88-9a/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/09/03/e5-8f-91-e5-be-ae-e5-8d-9a-e5-95-a6-joy-e6-98-af-e5-b0-8f-e4-b8-80-e4-b8-80/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Yan Joy">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小一一的小站">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="小一一的小站" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/03/e5-8f-91-e5-be-ae-e5-8d-9a-e5-95-a6-joy-e6-98-af-e5-b0-8f-e4-b8-80-e4-b8-80/" itemprop="url">
-                  发微博啦~ Joy是小一一
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-03T15:08:16+08:00">
-                2016-09-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/微博/" itemprop="url" rel="index">
-                    <span itemprop="name">微博</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/09/03/e5-8f-91-e5-be-ae-e5-8d-9a-e5-95-a6-joy-e6-98-af-e5-b0-8f-e4-b8-80-e4-b8-80/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/03/e5-8f-91-e5-be-ae-e5-8d-9a-e5-95-a6-joy-e6-98-af-e5-b0-8f-e4-b8-80-e4-b8-80/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/09/03/e5-8f-91-e5-be-ae-e5-8d-9a-e5-95-a6-joy-e6-98-af-e5-b0-8f-e4-b8-80-e4-b8-80/" class="leancloud_visitors" data-flag-title="发微博啦~ Joy是小一一">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">Visitors </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          如果再加上if weibo then wordpress会不会无限循环啊。。[笑cry] (via Weibo http://ift.tt/2c0xa0b)
-          
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/03/e5-8f-91-e5-be-ae-e5-8d-9a-e5-95-a6-joy-e6-98-af-e5-b0-8f-e4-b8-80-e4-b8-80/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/09/03/e5-be-ae-e5-8d-9a-e7-9a-84-e6-9c-8b-e5-8f-8b-e4-bb-ac-e4-bd-a0-e4-bb-ac-e5-a5-bd-e5-90-97/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Yan Joy">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小一一的小站">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="小一一的小站" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/03/e5-be-ae-e5-8d-9a-e7-9a-84-e6-9c-8b-e5-8f-8b-e4-bb-ac-e4-bd-a0-e4-bb-ac-e5-a5-bd-e5-90-97/" itemprop="url">
-                  微博的朋友们你们好吗
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-03T15:00:11+08:00">
-                2016-09-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/网站维护/" itemprop="url" rel="index">
-                    <span itemprop="name">网站维护</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/09/03/e5-be-ae-e5-8d-9a-e7-9a-84-e6-9c-8b-e5-8f-8b-e4-bb-ac-e4-bd-a0-e4-bb-ac-e5-a5-bd-e5-90-97/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/03/e5-be-ae-e5-8d-9a-e7-9a-84-e6-9c-8b-e5-8f-8b-e4-bb-ac-e4-bd-a0-e4-bb-ac-e5-a5-bd-e5-90-97/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/09/03/e5-be-ae-e5-8d-9a-e7-9a-84-e6-9c-8b-e5-8f-8b-e4-bb-ac-e4-bd-a0-e4-bb-ac-e5-a5-bd-e5-90-97/" class="leancloud_visitors" data-flag-title="微博的朋友们你们好吗">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">Visitors </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>把wordpress和weibo连起来了，这么说我发一条文章就会自动发一条微博咯？</p>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/03/e5-be-ae-e5-8d-9a-e7-9a-84-e6-9c-8b-e5-8f-8b-e4-bb-ac-e4-bd-a0-e4-bb-ac-e5-a5-bd-e5-90-97/#more" rel="contents">
+            <a class="btn" href="/2016/11/07/caffe学习（7）损失层、通用层/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1912,7 +1634,7 @@ nuget好像也是一个管理库的插件，会自动下载各种东西，然而
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1948,12 +1670,12 @@ nuget好像也是一个管理库的插件，会自动下载各种东西，然而
                src="/images/avatar.jpg"
                alt="Yan Joy" />
           <p class="site-author-name" itemprop="name">Yan Joy</p>
-          <p class="site-description motion-element" itemprop="description"></p>
+          <p class="site-description motion-element" itemprop="description">Default~</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1970,7 +1692,7 @@ nuget好像也是一个管理库的插件，会自动下载各种东西，然而
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -1989,6 +1711,15 @@ nuget好像也是一个管理库的插件，会自动下载各种东西，然而
                     <i class="fa fa-fw fa-weibo"></i>
                   
                   Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/yan_joy" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
                 </a>
               </span>
             
@@ -2284,6 +2015,28 @@ nuget好像也是一个管理库的插件，会自动下载各种东西，然而
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

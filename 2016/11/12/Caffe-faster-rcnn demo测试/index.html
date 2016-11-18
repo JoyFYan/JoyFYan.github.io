@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="caffe,fast-rcnn," />
 
 
 
@@ -90,12 +90,49 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="小一一的小站">
-<meta property="og:url" content="https://joyfyan.github.io/categories/网站维护/感/index.html">
+<meta name="description" content="RCNN是目前detection中较新且准确度较高的方法，充分发挥了CNN分类的优势，但速度并不快，从而产生了fast rcnn和faster rcnn来解决这个问题。本文使用py-faster-rcnn对该方法做一初步测试。
+
+rbgirshick/py-faster-rcnn
+
+
+环境准备软件环境
+Caffe
+Python
+
+一般来说这些我们都已经有所接触，但仍有一些需要注意的地方：
+
+要使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Caffe-faster-rcnn demo测试">
+<meta property="og:url" content="https://joyfyan.github.io/2016/11/12/Caffe-faster-rcnn demo测试/index.html">
 <meta property="og:site_name" content="小一一的小站">
+<meta property="og:description" content="RCNN是目前detection中较新且准确度较高的方法，充分发挥了CNN分类的优势，但速度并不快，从而产生了fast rcnn和faster rcnn来解决这个问题。本文使用py-faster-rcnn对该方法做一初步测试。
+
+rbgirshick/py-faster-rcnn
+
+
+环境准备软件环境
+Caffe
+Python
+
+一般来说这些我们都已经有所接触，但仍有一些需要注意的地方：
+
+要使用">
+<meta property="og:updated_time" content="2016-11-18T07:38:23.515Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小一一的小站">
+<meta name="twitter:title" content="Caffe-faster-rcnn demo测试">
+<meta name="twitter:description" content="RCNN是目前detection中较新且准确度较高的方法，充分发挥了CNN分类的优势，但速度并不快，从而产生了fast rcnn和faster rcnn来解决这个问题。本文使用py-faster-rcnn对该方法做一初步测试。
+
+rbgirshick/py-faster-rcnn
+
+
+环境准备软件环境
+Caffe
+Python
+
+一般来说这些我们都已经有所接触，但仍有一些需要注意的地方：
+
+要使用">
 
 
 
@@ -123,13 +160,13 @@
 
 
 
-  <link rel="canonical" href="https://joyfyan.github.io/categories/网站维护/感/"/>
+  <link rel="canonical" href="https://joyfyan.github.io/2016/11/12/Caffe-faster-rcnn demo测试/"/>
 
 
 
 
 
-  <title> Category: 感 | 小一一的小站 </title>
+  <title> Caffe-faster-rcnn demo测试 | 小一一的小站 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -160,7 +197,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -212,16 +249,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            About
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -238,6 +265,16 @@
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
           </a>
         </li>
       
@@ -283,47 +320,248 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        感
-        <small>Category</small>
-      </h2>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/19/e6-9c-ba-e4-bc-9a-e8-bf-98-e6-98-af-e4-bc-9a-e7-95-99-e7-bb-99-e6-9c-89-e5-87-86-e5-a4-87-e7-9a-84-e4-ba-ba-e5-95-8a/" itemprop="url">
-              
-                <span itemprop="name">机会还是会留给有准备的人啊~</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-19T21:44:38+08:00"
-              content="2016-09-19" >
-          09-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </section>
 
   
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/11/12/Caffe-faster-rcnn demo测试/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Yan Joy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="小一一的小站">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="小一一的小站" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Caffe-faster-rcnn demo测试
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-12T15:06:00+08:00">
+                2016-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/11/12/Caffe-faster-rcnn demo测试/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/12/Caffe-faster-rcnn demo测试/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/11/12/Caffe-faster-rcnn demo测试/" class="leancloud_visitors" data-flag-title="Caffe-faster-rcnn demo测试">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">Visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>RCNN是目前detection中较新且准确度较高的方法，充分发挥了CNN分类的优势，但速度并不快，从而产生了fast rcnn和faster rcnn来解决这个问题。本文使用py-faster-rcnn对该方法做一初步测试。</p>
+<blockquote>
+<p><a href="https://github.com/rbgirshick/py-faster-rcnn" target="_blank" rel="external">rbgirshick/py-faster-rcnn</a></p>
+</blockquote>
+<hr>
+<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><h2 id="软件环境"><a href="#软件环境" class="headerlink" title="软件环境"></a>软件环境</h2><ul>
+<li>Caffe</li>
+<li>Python</li>
+</ul>
+<p>一般来说这些我们都已经有所接触，但仍有一些需要注意的地方：</p>
+<ol>
+<li><strong>要使用<a href="https://github.com/rbgirshick/py-faster-rcnn" target="_blank" rel="external">rbgirshick/py-faster-rcnn</a>中的caffe编译一次</strong>，其caffe在<a href="https://github.com/rbgirshick/caffe-fast-rcnn/tree/0dcd397b29507b8314e252e850518c5695efbb83" target="_blank" rel="external">rbgirshick/py-faster-rcnn/caffe-fast-rcnn @ 0dcd397</a>中。因为这里面有一些专门为f-rcnn写的层，具体区别可以在caffe.proto中查看，如增加了ROIPoolingParameter、SmoothL1LossParameter等参数。</li>
+<li><p><strong>编译时一定要增加对Python层（Python layers）的支持</strong>。<br>具体需要打开Makefile.config，找到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># In your Makefile.config, make sure to have this line uncommented</div><div class="line">WITH_PYTHON_LAYER := 1</div></pre></td></tr></table></figure>
+<p>将其改为1，否则运行时会出错，提示没有对应的layer。</p>
+</li>
+</ol>
+<h2 id="硬件要求"><a href="#硬件要求" class="headerlink" title="硬件要求"></a>硬件要求</h2><p>小的网络用Titan, K20, K40这些就可以，显存3G以上。<br>大的可能需要K40,11G以上显存，当然这些往往个人无法搭建起来。</p>
+<hr>
+<h1 id="安装（DEMO）"><a href="#安装（DEMO）" class="headerlink" title="安装（DEMO）"></a>安装（DEMO）</h1><ol>
+<li><p>编译Cython模块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">	cd $FRCN_ROOT/lib</div><div class="line">make</div></pre></td></tr></table></figure>
+<p>$FRCN_ROOT为你的FRCNN根目录，下同。</p>
+</li>
+<li><p>编译Caffe 和 pycaffe</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">cd $FRCN_ROOT/caffe-fast-rcnn</div><div class="line"> # Now follow the Caffe installation instructions here:</div><div class="line"> #   http://caffe.berkeleyvision.org/installation.html</div><div class="line"> # If you&apos;re experienced with Caffe and have all of the requirements installed</div><div class="line"> # and your Makefile.config in place, then simply do:</div><div class="line">make -j8 &amp;&amp; make pycaffe</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>-j8是指8核编译，更快一些。</p>
+<ol>
+<li>下载预计算的R-CNN检测器<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd $FRCN_ROOT</div><div class="line">./data/scripts/fetch_faster_rcnn_models.sh</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这个模型解压出来750M，下载的话大概695M，而且很慢。。<br><strong>为了方便大家，我把模型上传到了百度云，<a href="http://pan.baidu.com/s/1o8NdJrc" target="_blank" rel="external">faster_rcnn_models</a>， 密码：gbpo。</strong></p>
+<ol>
+<li>运行<br>这一步就很简单了，<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd $FRCN_ROOT</div><div class="line">./tools/demo.py</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>当然权限不足直接运行py也可以。这个运行是需要在图像界面下进行的，否则会报错。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/caffe/" rel="tag"># caffe</a>
+          
+            <a href="/tags/fast-rcnn/" rel="tag"># fast-rcnn</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/09/caffe学习（11）python的数据可视化/" rel="next" title="caffe学习（11）python的数据可视化">
+                <i class="fa fa-chevron-left"></i> caffe学习（11）python的数据可视化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/18/from-wordpress-to-hexo-搬迁成功/" rel="prev" title="from wordpress to hexo 搬迁成功">
+                from wordpress to hexo 搬迁成功 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -331,6 +569,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/12/Caffe-faster-rcnn demo测试/"
+           data-title="Caffe-faster-rcnn demo测试" data-url="https://joyfyan.github.io/2016/11/12/Caffe-faster-rcnn demo测试/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -350,19 +596,28 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
                alt="Yan Joy" />
           <p class="site-author-name" itemprop="name">Yan Joy</p>
-          <p class="site-description motion-element" itemprop="description"></p>
+          <p class="site-description motion-element" itemprop="description">Default~</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -379,7 +634,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -401,6 +656,15 @@
                 </a>
               </span>
             
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/yan_joy" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
           
         </div>
 
@@ -415,6 +679,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#环境准备"><span class="nav-number">1.</span> <span class="nav-text">环境准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#软件环境"><span class="nav-number">1.1.</span> <span class="nav-text">软件环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#硬件要求"><span class="nav-number">1.2.</span> <span class="nav-text">硬件要求</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装（DEMO）"><span class="nav-number">2.</span> <span class="nav-text">安装（DEMO）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
@@ -520,6 +800,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
@@ -693,6 +977,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

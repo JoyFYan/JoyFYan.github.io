@@ -1,0 +1,1142 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="caffe,LeNet," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/source/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="使用官网例程训练LeNet。
+
+Training LeNet on MNIST with Caffe
+
+
+准备数据Caffe程序的运行要注意需命令行要在Caffe的根目录下。
+cd $CAFFE_ROOT
+./data/mnist/get_mnist.sh
+./examples/mnist/create_mnist.sh
+依次运行，会在caffe\examples\mnist下得到两个目录mnis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="caffe学习（9）LeNet在Caffe上的使用">
+<meta property="og:url" content="https://joyfyan.github.io/2016/11/08/caffe学习（9）LeNet在Caffe上的使用/index.html">
+<meta property="og:site_name" content="小一一的小站">
+<meta property="og:description" content="使用官网例程训练LeNet。
+
+Training LeNet on MNIST with Caffe
+
+
+准备数据Caffe程序的运行要注意需命令行要在Caffe的根目录下。
+cd $CAFFE_ROOT
+./data/mnist/get_mnist.sh
+./examples/mnist/create_mnist.sh
+依次运行，会在caffe\examples\mnist下得到两个目录mnis">
+<meta property="og:updated_time" content="2016-11-18T07:30:11.591Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="caffe学习（9）LeNet在Caffe上的使用">
+<meta name="twitter:description" content="使用官网例程训练LeNet。
+
+Training LeNet on MNIST with Caffe
+
+
+准备数据Caffe程序的运行要注意需命令行要在Caffe的根目录下。
+cd $CAFFE_ROOT
+./data/mnist/get_mnist.sh
+./examples/mnist/create_mnist.sh
+依次运行，会在caffe\examples\mnist下得到两个目录mnis">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6354127246722090000',
+      author: '小一一'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://joyfyan.github.io/2016/11/08/caffe学习（9）LeNet在Caffe上的使用/"/>
+
+
+
+
+
+  <title> caffe学习（9）LeNet在Caffe上的使用 | 小一一的小站 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?59765bbe651ba5fb69dc22dd74eb6ba7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">小一一的小站</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Blog of Yan Joy</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/11/08/caffe学习（9）LeNet在Caffe上的使用/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Yan Joy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="小一一的小站">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="小一一的小站" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                caffe学习（9）LeNet在Caffe上的使用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-08T15:57:00+08:00">
+                2016-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/11/08/caffe学习（9）LeNet在Caffe上的使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/08/caffe学习（9）LeNet在Caffe上的使用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/11/08/caffe学习（9）LeNet在Caffe上的使用/" class="leancloud_visitors" data-flag-title="caffe学习（9）LeNet在Caffe上的使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">Visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>使用官网例程训练LeNet。</p>
+<blockquote>
+<p><a href="http://caffe.berkeleyvision.org/gathered/examples/mnist.html" target="_blank" rel="external">Training LeNet on MNIST with Caffe</a></p>
+</blockquote>
+<hr>
+<h2 id="准备数据"><a href="#准备数据" class="headerlink" title="准备数据"></a>准备数据</h2><p>Caffe程序的运行要注意需命令行要在Caffe的根目录下。</p>
+<pre><code>cd $CAFFE_ROOT
+./data/mnist/get_mnist.sh
+./examples/mnist/create_mnist.sh
+</code></pre><p>依次运行，会在caffe\examples\mnist下得到两个目录mnist_train_lmdb, 和 mnist_test_lmdb，作为训练和测试集。</p>
+<hr>
+<h2 id="定义MNIST网络"><a href="#定义MNIST网络" class="headerlink" title="定义MNIST网络"></a>定义MNIST网络</h2><p>Caffe上的LeNet并不是传统的<a href="http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf" target="_blank" rel="external">LeNet-5</a>，在参数上还是有所不同的。以\caffe\examples\mnist\lenet_train_test.prototxt 为例（本地文件与官网上的教程也有所区别），介绍一下如何定义网络。首先是定义网络名称：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">name: <span class="string">"LeNet"</span></div></pre></td></tr></table></figure></p>
+<h3 id="数据层"><a href="#数据层" class="headerlink" title="数据层"></a>数据层</h3><p>利用我们已经生成的MNIST数据，把数据输入到网络：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">layer &#123;</div><div class="line">  name: <span class="string">"mnist"</span></div><div class="line">  type: <span class="string">"Data"</span></div><div class="line">  top: <span class="string">"data"</span></div><div class="line">  top: <span class="string">"label"</span></div><div class="line">  include &#123;</div><div class="line">    phase: TRAIN</div><div class="line">  &#125;</div><div class="line">  transform_param &#123;</div><div class="line">    scale: <span class="number">0.00390625</span></div><div class="line">  &#125;</div><div class="line">  data_param &#123;</div><div class="line">    source: <span class="string">"examples/mnist/mnist_train_lmdb"</span></div><div class="line">    batch_size: <span class="number">64</span></div><div class="line">    backend: LMDB</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">layer &#123;</div><div class="line">  name: <span class="string">"mnist"</span></div><div class="line">  type: <span class="string">"Data"</span></div><div class="line">  top: <span class="string">"data"</span></div><div class="line">  top: <span class="string">"label"</span></div><div class="line">  include &#123;</div><div class="line">    phase: TEST</div><div class="line">  &#125;</div><div class="line">  transform_param &#123;</div><div class="line">    scale: <span class="number">0.00390625</span></div><div class="line">  &#125;</div><div class="line">  data_param &#123;</div><div class="line">    source: <span class="string">"examples/mnist/mnist_test_lmdb"</span></div><div class="line">    batch_size: <span class="number">100</span></div><div class="line">    backend: LMDB</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>具体来说，本层名为：”mnist”，类型为”data”，输出到两个blob：”data””label”。下面用到了之前所说的include，包含TRAIN与TEST，表示该层是在训练还是测试时调用，其区别在于输入的不同数据集（见data_param）。transform_param用于输入数据的缩放，使之在$[0,1]$内，其中$0.00390625=1/256$。</p>
+<h3 id="卷积层"><a href="#卷积层" class="headerlink" title="卷积层"></a>卷积层</h3><p>本网络中，有两个卷积层，第一层为：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">layer &#123;</div><div class="line">  name: <span class="string">"conv1"</span></div><div class="line">  type: <span class="string">"Convolution"</span></div><div class="line">  bottom: <span class="string">"data"</span></div><div class="line">  top: <span class="string">"conv1"</span></div><div class="line">  param &#123;</div><div class="line">    lr_mult: <span class="number">1</span></div><div class="line">  &#125;</div><div class="line">  param &#123;</div><div class="line">    lr_mult: <span class="number">2</span></div><div class="line">  &#125;</div><div class="line">  convolution_param &#123;</div><div class="line">    num_output: <span class="number">20</span></div><div class="line">    kernel_size: <span class="number">5</span></div><div class="line">    stride: <span class="number">1</span></div><div class="line">    weight_filler &#123;</div><div class="line">      type: <span class="string">"xavier"</span></div><div class="line">    &#125;</div><div class="line">    bias_filler &#123;</div><div class="line">      type: <span class="string">"constant"</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这一层使用数据层的数据作为输入，生成”conv1”层，具体产生20个通道的输出，卷积核大小为5，卷积步长为1。先后两个lr_mults是对本层可学习参数的速率调整，权重学习率与solver中的学习率相同，而偏置学习率为其两倍，这往往导致更好的手链率。权重初始化使用”xavier”方式，偏置初始化为0。<br>第二个卷积层在池化层1后，输出到池化层2，参数除了输出个数（num_output）改为50，其余的相同。</p>
+<h3 id="池化层"><a href="#池化层" class="headerlink" title="池化层"></a>池化层</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">layer &#123;</div><div class="line">  name: <span class="string">"pool1"</span></div><div class="line">  type: <span class="string">"Pooling"</span></div><div class="line">  bottom: <span class="string">"conv1"</span></div><div class="line">  top: <span class="string">"pool1"</span></div><div class="line">  pooling_param &#123;</div><div class="line">    pool: MAX</div><div class="line">    kernel_size: <span class="number">2</span></div><div class="line">    stride: <span class="number">2</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>第一个池化层表示采用最大池化的方法，进行大小为2，步长为2的非重叠池化。第二个池化层与第一个完全相同，其输入为卷积层2，输出到全连接层1.</p>
+<h3 id="全连接层"><a href="#全连接层" class="headerlink" title="全连接层"></a>全连接层</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">layer &#123;</div><div class="line">  name: <span class="string">"ip1"</span></div><div class="line">  type: <span class="string">"InnerProduct"</span></div><div class="line">  bottom: <span class="string">"pool2"</span></div><div class="line">  top: <span class="string">"ip1"</span></div><div class="line">  param &#123;</div><div class="line">    lr_mult: <span class="number">1</span></div><div class="line">  &#125;</div><div class="line">  param &#123;</div><div class="line">    lr_mult: <span class="number">2</span></div><div class="line">  &#125;</div><div class="line">  inner_product_param &#123;</div><div class="line">    num_output: <span class="number">500</span></div><div class="line">    weight_filler &#123;</div><div class="line">      type: <span class="string">"xavier"</span></div><div class="line">    &#125;</div><div class="line">    bias_filler &#123;</div><div class="line">      type: <span class="string">"constant"</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>全连接层与卷积层的写法非常相似，ip1层产生500个输出。<br>在激活层后，还有一个全连接层，用于最后的输出分类，因此有10个输出。</p>
+<h3 id="激活层"><a href="#激活层" class="headerlink" title="激活层"></a>激活层</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">layer &#123;</div><div class="line">  name: <span class="string">"relu1"</span></div><div class="line">  type: <span class="string">"ReLU"</span></div><div class="line">  bottom: <span class="string">"ip1"</span></div><div class="line">  top: <span class="string">"ip1"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>ReLU是一个元素操作，因此可以使用原地操作（in-place operations）用于节省空间。其实就是top与bottom的名字相同。当然其他的层不能使用重复的blob名称。</p>
+<h3 id="损失层"><a href="#损失层" class="headerlink" title="损失层"></a>损失层</h3><p>最后是损失层：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">layer &#123;</div><div class="line">  name: <span class="string">"loss"</span></div><div class="line">  type: <span class="string">"SoftmaxWithLoss"</span></div><div class="line">  bottom: <span class="string">"ip2"</span></div><div class="line">  bottom: <span class="string">"label"</span></div><div class="line">  top: <span class="string">"loss"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>softmax_loss层同时实现softmax和多项对数损失（这可以节省时间并提高数值稳定性）。输入为预测的输出和label，并且没有输出（向后的输出）。它计算损失函数，并且反向传播相对于ip2的梯度。</p>
+<h3 id="Accuracy准确率层"><a href="#Accuracy准确率层" class="headerlink" title="Accuracy准确率层"></a>Accuracy准确率层</h3><p>这一层是用于在测试中返回准确率使用的：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">layer &#123;</div><div class="line">  name: <span class="string">"accuracy"</span></div><div class="line">  type: <span class="string">"Accuracy"</span></div><div class="line">  bottom: <span class="string">"ip2"</span></div><div class="line">  bottom: <span class="string">"label"</span></div><div class="line">  top: <span class="string">"accuracy"</span></div><div class="line">  include &#123;</div><div class="line">    phase: TEST</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>与loss相似，但要注明<code>phase: TEST</code>。</p>
+<hr>
+<h2 id="定义MNIST-求解器"><a href="#定义MNIST-求解器" class="headerlink" title="定义MNIST 求解器"></a>定义MNIST 求解器</h2><p>求解器文件路径为：</p>
+<pre><code>$CAFFE_ROOT/examples/mnist/lenet_solver.prototxt:
+</code></pre><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"># The train/test net protocol buffer definition</div><div class="line">net: <span class="string">"examples/mnist/lenet_train_test.prototxt"</span></div><div class="line"># test_iter specifies how many forward passes the test should carry out.</div><div class="line"># In the <span class="keyword">case</span> of MNIST, we have test batch size <span class="number">100</span> and <span class="number">100</span> test iterations,</div><div class="line"><span class="meta"># covering the full 10,000 testing images.</span></div><div class="line">test_iter: <span class="number">100</span></div><div class="line"># Carry out testing every <span class="number">500</span> training iterations.</div><div class="line">test_interval: <span class="number">500</span></div><div class="line"># The base learning rate, momentum and the weight decay of the network.</div><div class="line">base_lr: <span class="number">0.01</span></div><div class="line">momentum: <span class="number">0.9</span></div><div class="line">weight_decay: <span class="number">0.0005</span></div><div class="line"># The learning rate policy</div><div class="line">lr_policy: <span class="string">"inv"</span></div><div class="line">gamma: <span class="number">0.0001</span></div><div class="line">power: <span class="number">0.75</span></div><div class="line"># Display every <span class="number">100</span> iterations</div><div class="line">display: <span class="number">100</span></div><div class="line"># The maximum number of iterations</div><div class="line">max_iter: <span class="number">10000</span></div><div class="line"><span class="meta"># snapshot intermediate results</span></div><div class="line">snapshot: <span class="number">5000</span></div><div class="line">snapshot_prefix: <span class="string">"examples/mnist/lenet"</span></div><div class="line"><span class="meta"># solver mode: CPU or GPU</span></div><div class="line">solver_mode: GPU</div></pre></td></tr></table></figure>
+<p>这些参数见上一篇：<a href="http://blog.csdn.net/yan_joy/article/details/53079185" target="_blank" rel="external">caffe学习（8）Solver 配置详解</a>。</p>
+<hr>
+<h2 id="训练并测试模型"><a href="#训练并测试模型" class="headerlink" title="训练并测试模型"></a>训练并测试模型</h2><p>简单的话可以直接运行：</p>
+<pre><code>cd $CAFFE_ROOT
+./examples/mnist/train_lenet.sh
+</code></pre><p>即运行：</p>
+<pre><code>./build/tools/caffe train --solver=examples/mnist/lenet_solver.prototxt
+</code></pre><p>也就是我们上面的求解器配置文件。<br>首先出现的是我们打开的solver文件，之后打开网络模型：lenet_train_test.prototxt，初始化网络参数。</p>
+<pre><code>I1108 16:08:29.103813 46285 layer_factory.hpp:77] Creating layer mnist
+I1108 16:08:29.104310 46285 net.cpp:100] Creating Layer mnist
+I1108 16:08:29.104336 46285 net.cpp:408] mnist -&gt; data
+I1108 16:08:29.104374 46285 net.cpp:408] mnist -&gt; label
+I1108 16:08:29.107558 46328 db_lmdb.cpp:35] Opened lmdb examples/mnist/mnist_train_lmdb
+</code></pre><p>不过仔细看的话会发现初始化了两遍网络，其实是因为我们同时在训练和测试，这两个网络的区别就是测试有”accuracy”层，训练没有。这些信息告诉了层之间的连接、输入、输出关系。结束后正式开始训练：</p>
+<pre><code>I1108 16:08:29.156116 46285 net.cpp:283] Network initialization done.
+I1108 16:08:29.156206 46285 solver.cpp:60] Solver scaffolding done.
+I1108 16:08:29.156466 46285 caffe.cpp:251] Starting Optimization
+I1108 16:08:29.156500 46285 solver.cpp:279] Solving LeNet
+I1108 16:08:29.156512 46285 solver.cpp:280] Learning Rate Policy: inv
+I1108 16:08:29.158172 46285 solver.cpp:337] Iteration 0, Testing net (#0)
+I1108 16:08:31.021287 46285 solver.cpp:404]     Test net output #0: accuracy = 0.0933
+I1108 16:08:31.021385 46285 solver.cpp:404]     Test net output #1: loss = 2.36349 (* 1 = 2.36349 loss)
+</code></pre><p>可以看到，初始化参数后测试模型，准确率有9.33%，比10%还低一些。基于参数设置，我们每迭代100次输出loss 信息，每迭代500次测试模型，输出accuracy 信息：</p>
+<pre><code>I1108 16:08:46.974346 46285 solver.cpp:337] Iteration 500, Testing net (#0)
+I1108 16:08:48.808943 46285 solver.cpp:404]     Test net output #0: accuracy = 0.9767
+I1108 16:08:48.809048 46285 solver.cpp:404]     Test net output #1: loss = 0.068445 (* 1 = 0.068445 loss)
+I1108 16:08:48.823623 46285 solver.cpp:228] Iteration 500, loss = 0.0609579
+I1108 16:08:48.823714 46285 solver.cpp:244]     Train net output #0: loss = 0.0609579 (* 1 = 0.0609579 loss)
+I1108 16:08:48.823740 46285 sgd_solver.cpp:106] Iteration 500, lr = 0.0192814
+</code></pre><p>可以发现输出500次后准确率已经达到了97.67%。<br>达到训练次数后（这里减少了训练次数），得到最终结果：</p>
+<pre><code>I1108 16:09:04.727638 46285 solver.cpp:454] Snapshotting to binary proto file examples/mnist/lenet_iter_1000.caffemodel
+I1108 16:09:04.754024 46285 sgd_solver.cpp:273] Snapshotting solver state to binary proto file examples/mnist/lenet_iter_1000.solverstate
+I1108 16:09:04.770093 46285 solver.cpp:317] Iteration 1000, loss = 0.0819535
+I1108 16:09:04.770177 46285 solver.cpp:337] Iteration 1000, Testing net (#0)
+I1108 16:09:06.607952 46285 solver.cpp:404]     Test net output #0: accuracy = 0.9844
+I1108 16:09:06.608042 46285 solver.cpp:404]     Test net output #1: loss = 0.0491373 (* 1 = 0.0491373 loss)
+I1108 16:09:06.608055 46285 solver.cpp:322] Optimization Done.
+I1108 16:09:06.608064 46285 caffe.cpp:254] Optimization Done.
+</code></pre><p>得到了两个文件：lenet_iter_1000.caffemodel和lenet_iter_1000.solverstate。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/caffe/" rel="tag"># caffe</a>
+          
+            <a href="/tags/LeNet/" rel="tag"># LeNet</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/08/caffe学习（8）Solver 配置详解/" rel="next" title="caffe学习（8）Solver 配置详解">
+                <i class="fa fa-chevron-left"></i> caffe学习（8）Solver 配置详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/08/caffe学习（10）数据转换img2db/" rel="prev" title="caffe学习（10）数据转换img2db">
+                caffe学习（10）数据转换img2db <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/08/caffe学习（9）LeNet在Caffe上的使用/"
+           data-title="caffe学习（9）LeNet在Caffe上的使用" data-url="https://joyfyan.github.io/2016/11/08/caffe学习（9）LeNet在Caffe上的使用/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Yan Joy" />
+          <p class="site-author-name" itemprop="name">Yan Joy</p>
+          <p class="site-description motion-element" itemprop="description">Default~</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/yanjoy" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/yan_joy" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备数据"><span class="nav-number">1.</span> <span class="nav-text">准备数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义MNIST网络"><span class="nav-number">2.</span> <span class="nav-text">定义MNIST网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据层"><span class="nav-number">2.1.</span> <span class="nav-text">数据层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#卷积层"><span class="nav-number">2.2.</span> <span class="nav-text">卷积层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#池化层"><span class="nav-number">2.3.</span> <span class="nav-text">池化层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全连接层"><span class="nav-number">2.4.</span> <span class="nav-text">全连接层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#激活层"><span class="nav-number">2.5.</span> <span class="nav-text">激活层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#损失层"><span class="nav-number">2.6.</span> <span class="nav-text">损失层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Accuracy准确率层"><span class="nav-number">2.7.</span> <span class="nav-text">Accuracy准确率层</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义MNIST-求解器"><span class="nav-number">3.</span> <span class="nav-text">定义MNIST 求解器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#训练并测试模型"><span class="nav-number">4.</span> <span class="nav-text">训练并测试模型</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yan Joy</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yanjoy"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz", "owWjRRJ2oBD7Dekc8l1RRctK");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

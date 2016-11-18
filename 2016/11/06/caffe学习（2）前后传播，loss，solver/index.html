@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="caffe," />
 
 
 
@@ -90,12 +90,35 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="小一一的小站">
-<meta property="og:url" content="https://joyfyan.github.io/categories/ML/学习/index.html">
+<meta name="description" content="向前和向后传播
+Forward and Backward
+
+前后传播是Net的重要组成，如下图所示：
+向前Forward通过给定的参数计算每层的值，就像函数一样top=f(bottom)。上图表示数据通过内积层输出，再由softmax给出损失。
+向后Backward向后是计算loss的梯度，每层梯度通过自动微分来计算整个模型梯度，即反向传播。从这个图上可以看出，由loss开始，通过链式法则，不断求">
+<meta property="og:type" content="article">
+<meta property="og:title" content="caffe学习（2）前后传播，loss，solver">
+<meta property="og:url" content="https://joyfyan.github.io/2016/11/06/caffe学习（2）前后传播，loss，solver/index.html">
 <meta property="og:site_name" content="小一一的小站">
+<meta property="og:description" content="向前和向后传播
+Forward and Backward
+
+前后传播是Net的重要组成，如下图所示：
+向前Forward通过给定的参数计算每层的值，就像函数一样top=f(bottom)。上图表示数据通过内积层输出，再由softmax给出损失。
+向后Backward向后是计算loss的梯度，每层梯度通过自动微分来计算整个模型梯度，即反向传播。从这个图上可以看出，由loss开始，通过链式法则，不断求">
+<meta property="og:image" content="http://caffe.berkeleyvision.org/tutorial/fig/forward_backward.png">
+<meta property="og:image" content="http://caffe.berkeleyvision.org/tutorial/fig/forward.jpg">
+<meta property="og:image" content="http://caffe.berkeleyvision.org/tutorial/fig/backward.jpg">
+<meta property="og:updated_time" content="2016-11-18T07:32:46.212Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小一一的小站">
+<meta name="twitter:title" content="caffe学习（2）前后传播，loss，solver">
+<meta name="twitter:description" content="向前和向后传播
+Forward and Backward
+
+前后传播是Net的重要组成，如下图所示：
+向前Forward通过给定的参数计算每层的值，就像函数一样top=f(bottom)。上图表示数据通过内积层输出，再由softmax给出损失。
+向后Backward向后是计算loss的梯度，每层梯度通过自动微分来计算整个模型梯度，即反向传播。从这个图上可以看出，由loss开始，通过链式法则，不断求">
+<meta name="twitter:image" content="http://caffe.berkeleyvision.org/tutorial/fig/forward_backward.png">
 
 
 
@@ -123,13 +146,13 @@
 
 
 
-  <link rel="canonical" href="https://joyfyan.github.io/categories/ML/学习/"/>
+  <link rel="canonical" href="https://joyfyan.github.io/2016/11/06/caffe学习（2）前后传播，loss，solver/"/>
 
 
 
 
 
-  <title> Category: 学习 | 小一一的小站 </title>
+  <title> caffe学习（2）前后传播，loss，solver | 小一一的小站 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -160,7 +183,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -212,16 +235,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            About
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -238,6 +251,16 @@
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
           </a>
         </li>
       
@@ -283,75 +306,232 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        学习
-        <small>Category</small>
-      </h2>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/10/09/caffe-e8-bf-90-e8-a1-8cmnist-example/" itemprop="url">
-              
-                <span itemprop="name">Caffe运行MNIST | example</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-09T19:42:17+08:00"
-              content="2016-10-09" >
-          10-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/10/05/caffe-installation-caffe-e5-ae-89-e8-a3-85/" itemprop="url">
-              
-                <span itemprop="name">Caffe | Installation caffe 安装</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-05T22:33:46+08:00"
-              content="2016-10-05" >
-          10-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </section>
 
   
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/11/06/caffe学习（2）前后传播，loss，solver/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Yan Joy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="小一一的小站">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="小一一的小站" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                caffe学习（2）前后传播，loss，solver
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-06T09:38:00+08:00">
+                2016-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/11/06/caffe学习（2）前后传播，loss，solver/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/06/caffe学习（2）前后传播，loss，solver/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/11/06/caffe学习（2）前后传播，loss，solver/" class="leancloud_visitors" data-flag-title="caffe学习（2）前后传播，loss，solver">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">Visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="向前和向后传播"><a href="#向前和向后传播" class="headerlink" title="向前和向后传播"></a>向前和向后传播</h1><blockquote>
+<p><a href="http://caffe.berkeleyvision.org/tutorial/forward_backward.html" target="_blank" rel="external">Forward and Backward</a></p>
+</blockquote>
+<p>前后传播是Net的重要组成，如下图所示：<br><img src="http://caffe.berkeleyvision.org/tutorial/fig/forward_backward.png" alt="前后传播示意图"></p>
+<h2 id="向前Forward"><a href="#向前Forward" class="headerlink" title="向前Forward"></a>向前Forward</h2><p>通过给定的参数计算每层的值，就像函数一样top=f(bottom)。<br><img src="http://caffe.berkeleyvision.org/tutorial/fig/forward.jpg" alt="Forward"><br>上图表示数据通过内积层输出，再由softmax给出损失。</p>
+<h2 id="向后Backward"><a href="#向后Backward" class="headerlink" title="向后Backward"></a>向后Backward</h2><p>向后是计算loss的梯度，每层梯度通过自动微分来计算整个模型梯度，即反向传播。<br><img src="http://caffe.berkeleyvision.org/tutorial/fig/backward.jpg" alt="反向backward"><br>从这个图上可以看出，由loss开始，通过链式法则，不断求出结果对各层的导数。<br><code>Net::Forward()</code>和<code>Net::Backward()</code>是针对网络，<code>Layer::Forward()</code>和<code>Layer::Backward()</code>是针对每一层。同时也可以设置CPU、GPU模式。<br>过程大概是：solver调用forward计算输出和loss，再生成梯度，并尝试更新权重减小loss。</p>
+<h1 id="损失Loss"><a href="#损失Loss" class="headerlink" title="损失Loss"></a>损失Loss</h1><blockquote>
+<p><a href="http://caffe.berkeleyvision.org/tutorial/loss.html" target="_blank" rel="external">Loss</a></p>
+<h2 id="Loss"><a href="#Loss" class="headerlink" title="Loss"></a>Loss</h2><p>使loss变小，是学习中的一个目标。如上所说，loss是由forward计算而出。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">layer &#123;</div><div class="line">  name: <span class="string">"loss"</span></div><div class="line">  type: <span class="string">"SoftmaxWithLoss"</span></div><div class="line">  bottom: <span class="string">"pred"</span></div><div class="line">  bottom: <span class="string">"label"</span></div><div class="line">  top: <span class="string">"loss"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>这一段就是上面流程图最后一层loss的表达。</p>
+<h2 id="Loss-weights"><a href="#Loss-weights" class="headerlink" title="Loss weights"></a>Loss weights</h2><p>一般的loss只是最后一层才有，其他层只是中间计算，不过每层都可以通过增加<code>loss_weight: &lt;float&gt;</code>到该层生成的每个顶（top）层中。对于后缀有loss的层都隐含着<code>loss_weight: 1</code>（对第一个top，其他的<code>loss_weight: 0</code>）。因此上面代码也等价于在最后加上<code>loss_weight: 1</code>。<br>然而任何能反向传播的层都可以赋予非零loss_weight，最终的loss由网络上各层loss权重求得<br><figure class="highlight coq"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">loss := <span class="number">0</span></div><div class="line"><span class="keyword">for</span> layer <span class="built_in">in</span> layers:</div><div class="line">  <span class="keyword">for</span> <span class="built_in">top</span>, loss_weight <span class="built_in">in</span> layer.tops, layer.loss_weights:</div><div class="line">    loss += loss_weight * <span class="built_in">sum</span>(<span class="built_in">top</span>)</div></pre></td></tr></table></figure></p>
+<h1 id="Solver"><a href="#Solver" class="headerlink" title="Solver"></a>Solver</h1><blockquote>
+<p><a href="http://caffe.berkeleyvision.org/tutorial/solver.html" target="_blank" rel="external">Solver</a></p>
+</blockquote>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>Solver通过forward和backward形成参数更新，从而改善loss。包括：</p>
+<ul>
+<li>Stochastic Gradient Descent (type: “SGD”),</li>
+<li>AdaDelta (type: “AdaDelta”),</li>
+<li>Adaptive Gradient (type: “AdaGrad”),</li>
+<li>Adam (type: “Adam”),</li>
+<li>Nesterov’s Accelerated Gradient (type: “Nesterov”) and</li>
+<li>RMSprop (type: “RMSProp”)</li>
+</ul>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>对于数据集$D$，优化目标是使整个$|D|$的平均loss最小，即：<br>$$L(W) = \frac{1}{|D|} \sum_i^{|D|} f_W\left(X^{(i)}\right) + \lambda r(W)$$<br>其中$f_W\left(X^{(i)}\right)$是对于数据$X^{(i)}$输入的损失，$r(W)$是加权$\lambda$的权重$W$正则项。通常用于学习的数据量$|D|$很大，在学习时常常将其分为很多大小为$N$的batch，其中$N&lt;&lt;|D|$，可以将原式中的$|D|$换为$N$。<br>$$L(W) \approx \frac{1}{N} \sum_i^N f_W\left(X^{(i)}\right) + \lambda r(W)$$<br>模型向前计算$f_W$，向后返回梯度$\nabla f_W$。参数的更新$\Delta W$由solver从$\nabla f_W$得到，正则化梯度每种方法得到的不同。<br>具体每种solver，<a href="http://caffe.berkeleyvision.org/tutorial/solver.html" target="_blank" rel="external">网上</a>讲的很多，这里就不讲了。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/caffe/" rel="tag"># caffe</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/05/caffe学习（1）caffe模型三种结构/" rel="next" title="caffe学习（1）caffe模型三种结构">
+                <i class="fa fa-chevron-left"></i> caffe学习（1）caffe模型三种结构
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/06/caffe学习（3）接口/" rel="prev" title="caffe学习（3）接口">
+                caffe学习（3）接口 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -359,6 +539,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/06/caffe学习（2）前后传播，loss，solver/"
+           data-title="caffe学习（2）前后传播，loss，solver" data-url="https://joyfyan.github.io/2016/11/06/caffe学习（2）前后传播，loss，solver/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -378,19 +566,28 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
                alt="Yan Joy" />
           <p class="site-author-name" itemprop="name">Yan Joy</p>
-          <p class="site-description motion-element" itemprop="description"></p>
+          <p class="site-description motion-element" itemprop="description">Default~</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -407,7 +604,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -429,6 +626,15 @@
                 </a>
               </span>
             
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/yan_joy" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
           
         </div>
 
@@ -443,6 +649,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#向前和向后传播"><span class="nav-number">1.</span> <span class="nav-text">向前和向后传播</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#向前Forward"><span class="nav-number">1.1.</span> <span class="nav-text">向前Forward</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#向后Backward"><span class="nav-number">1.2.</span> <span class="nav-text">向后Backward</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#损失Loss"><span class="nav-number">2.</span> <span class="nav-text">损失Loss</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Loss"><span class="nav-number">2.1.</span> <span class="nav-text">Loss</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Loss-weights"><span class="nav-number">2.2.</span> <span class="nav-text">Loss weights</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solver"><span class="nav-number">3.</span> <span class="nav-text">Solver</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分类"><span class="nav-number">3.1.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法"><span class="nav-number">3.2.</span> <span class="nav-text">方法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
@@ -548,6 +770,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
@@ -721,6 +947,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
