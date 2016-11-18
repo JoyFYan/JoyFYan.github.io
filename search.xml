@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+    
+    <entry>
+      <title><![CDATA[Caffe运行MNIST | example]]></title>
+      <url>%2F2016%2F10%2F09%2Fcaffe-e8-bf-90-e8-a1-8cmnist-example%2F</url>
+      <content type="text"><![CDATA[参考教程测试一下caffe。 1.获取数据包。 cd $CAFFE_ROOT ./data/mnist/get_mnist.sh ./examples/mnist/create_mnist.sh 官网上是这样的，caffe_root是根目录，看网上有人说必须在根目录下运行，否则会出错，具体没有验证。。但是windows平台下应该是没有wget的，需要自己下载一下。得到四个文件，测试与训练，样本与标签。 第二句是个坑，直接执行的话会提示找不到convert_mnist_data.bin（好像是这个）。这个环境还是linux下的，windows下编译出来的是exe，和caffe在一起。用法是 convert_mnist_data [FLAGS] input_image_file input_label_file output_db_file执行两次将mnist date转化为可用的lmdb格式的文件。并将新生成的2个文件mnist-train-lmdb 和 mnist-test-lmdb放于create_mnist.sh同目录下。 2.测试 参数文件用的是 ./build/tools/caffe train –solver=examples/mnist/lenet_solver.prototxt mnist_test_lmdb mnist_train_lmdb 两个文件夹需要放在\examples\mnist。如果像我没用GPU，还需要在.prototxt里面更改solver_mode为 CPU。 感觉跑了一个半小时吧，终于跑完了。生成了四个文件……数据都训练好之后，接下来就是如何将模型应用到实际数据了（记录的博客）： ./build/tools/caffe.bin test -model=examples/mnist/lenet_train_test.prototxt -weights=examples/mnist/lenet_iter_10000.caffemodel -gpu=0 如果没有GPU则使用 ./build/tools/caffe.bin test -model=examples/mnist/lenet_train_test.prototxt -weights=examples/mnist/lenet_iter_10000.caffemodel看起来准确率很高。 Training LeNet on MNIST with Caffe]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Caffe | Installation caffe 安装]]></title>
+      <url>%2F2016%2F10%2F05%2Fcaffe-installation-caffe-e5-ae-89-e8-a3-85%2F</url>
+      <content type="text"><![CDATA[尝试下caffe在windows的安装。 本本用的还是A卡，干脆禁掉CUDA和cuDNN吧，换新的重新安装再配置。 &lt;CpuOnlyBuild&gt;true&lt;/CpuOnlyBuild&gt;&lt;UseCuDNN&gt;false&lt;/UseCuDNN&gt;&lt;PythonSupport&gt;true&lt;/PythonSupport&gt;之后是python，之前装过又删掉了，这次再装一遍吧。windows下推荐的是Miniconda环境，里面集成了python2.7。运行 conda install --yes numpy scipy matplotlib scikit-image pip pip install protobuf 是在Miniconda2文件夹中cmd里面运行的，会自动下载安装一些库，本机下载了250M左右，第一次下载到第二个就卡住了QAQ，然后关了之后再输说之前存在任务触发保护了需要解锁，输入以下命令解锁。 conda clean –lock虚拟环境创建操作参考了conda简单使用，一开始一直在python里面输命令，好蠢= =miniconda只是一个方便配置python的虚拟环境，里面python可以根据需要再加自己要的库。这个步骤应该是在前面的库安装完了之后再进行，否则新安装的库好像不会在老的环境里出现。删除原有环境： conda remove –name 此处是环境名字 –all其他没有怎么设置了，直接用vs2013打开编译…… 但是感觉过了一年，卡在了这里： nuget好像也是一个管理库的插件，会自动下载各种东西，然而下载速度简直无语。。感觉过了几个小时下载好了，多了900MB东西。然后build……又是一堆错误。 首先是libcaffe.lib无法生成，其中两个小问题，找不到layer_factory.h和pyconfig.h，分别在caffe目录中和python目录中。之后找不到python27.lib，也在python中libs里，但是还会有一堆warning，不管了。。 最后终于都build完成，Debug版的出来1.8G，release版的提示nuget超时，不太清楚原因。python部分把生成出来的拷到python目录\lib\site-packages，import一下应该就可以了。 测试的话用的生成出来的test_all.exe，一开始跑得还快，后面的单项都能到40多秒，果然学习不是轻松的事情= =出现一些错误，好像是找不到测试图片，所以程序上应该没有错了。 哎，编译不易，还须多珍惜。 来源： Caffe | Installation]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[出发|关服]]></title>
+      <url>%2F2016%2F09%2F21%2Fe5-87-ba-e5-8f-91-e5-85-b3-e6-9c-8d%2F</url>
+      <content type="text"><![CDATA[明天出发，跑个三角形，树莓派可以休息啦。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[机会还是会留给有准备的人啊~]]></title>
+      <url>%2F2016%2F09%2F19%2Fe6-9c-ba-e4-bc-9a-e8-bf-98-e6-98-af-e4-bc-9a-e7-95-99-e7-bb-99-e6-9c-89-e5-87-86-e5-a4-87-e7-9a-84-e4-ba-ba-e5-95-8a%2F</url>
+      <content type="text"><![CDATA[这段时间这么盲目、慌张，也好久没有这样的感觉了，可能习惯了按部就班的生活…… 简单说学到了几点： 1.计划可能真的赶不上变化，事情没有发生就不能确定，也要留后手。 2.多准备，不能把鸡蛋装一个篮子里。 3.要有一定的紧张感，居安思危。 &nbsp; PS：树莓派工作了好几天没休息，不知道有没有事。。 过几天如果出远门就关了]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[从flash到手游]]></title>
+      <url>%2F2016%2F09%2F13%2Fe4-bb-8eflash-e5-88-b0-e6-89-8b-e6-b8-b8%2F</url>
+      <content type="text"><![CDATA[近日室友又重新怀旧，玩起了金庸群侠传这个flash游戏。老实说我对这个游戏印象并不是很深，因为一没读过金庸，二来游戏确实很复杂，系统、任务众多，不是简单的休闲游戏。在我看来，这样一个出色的rpg游戏，可以算是flash游戏的巅峰了。如果是一个pc游戏，可能反而没有这么大的影响力。 03、04年，大概是小学三四年级的时候，电脑已经比较普遍了，特别是在我们小学已经开始上微机课了。更重要的一点是宽带取代了拨号上网，再也没有了奇奇怪怪叽叽喳喳的拨号声音，速度也能到几百k。有了网络物质基础，就需要寻求网络娱乐内容。在家里，梦幻西游、大话西游成了大家的首选（至少是男生吧），回家总是会打开玩一会儿。神奇的是我没有在这两个游戏上充过点卡，要不是自己就玩个免费的阶段（10级前吧），要不就玩同学的号。网吧更多的可能是cs、流星蝴蝶剑的天下，但是我也一次没有去过。而在学校，flash游戏成了班上所有同学的选择，优点显而易见：无需安装打开就玩；体积小，最多加载个一分钟；类型多，打开4399这类网站，光游戏分类就琳琅满目，每个人都能找到自己所需要的。于是微机课上完自由活动的时间，也就成了班上flash游戏的时间。flash游戏分类里面有一个双人小游戏，这是我和小伙伴最喜欢的。常常和小伙伴两个人挤在一张电脑桌前，还好当时手小，键盘放四只手也没问题，愉快的游戏时间就开始了。这可能就是小时候的“开黑”吧~ 那时我们突然意识到，除了打球、踢球这种运动，原来还有游戏这个虚拟的空间能够让我们站在一起，或是并肩作战，或是相互厮杀。因此本质上，游戏应该和其他的运动项目没有什么区别。胜利有时也不是必须的，不是常说友谊第一比赛第二吗？人与人之间的关系才是重要的。 不过这么多年过去了，无论是游戏，还是玩游戏的人，似乎都变了很多。 flash游戏受限于平台，难以做得更好，移动端随着智能手机逐渐发力，手游如雨后春笋不断出现。金庸群侠传原作者半瓶神仙醋，也亲自投身于手游开发。然而手游看似更为休闲，但实际上往里面投钱的并不少。这又是为什么呢？ 或许是曾经的关系搞反了。现在网络更方便，人们可以从网上认识到更多的人，甚至早于在现实中相识。因此想要得到对方的认同的话，游戏中的一堆数字是最好的证明。而最简单的方法就是充值……这么看来，游戏更是一种炫耀、渴望被认同的一种手段。当初和现实朋友一起奋战的感觉变得更少了。 但是另一方面，游戏业也在这种氛围中钱越赚越多。半瓶神仙醋的微博，还停留在去年，其中靠前的一条是给自己的手游《冒险王2》宣传，而金庸群侠传4好像已经无限跳票，做免费游戏当然不能是他的义务，玩家自然不能强迫。毕竟如今35岁，可能再也追不回之前的梦了。我想我可能也是如此吧，十年后又能记得起如今的梦吗？还是定一个小目标：十年后还能记得起十年前身边的人，和与这些人一起的故事吧。 &nbsp; 自慰诗 半瓶神仙醋， 生于冀中， 学于湘潭， 混迹于京师。 苟活二十有五， 孑然一身， 惨淡经营， 做此游戏， 聊已慰藉。 不求闻达于诸侯， 不甘堕落于俗事。 虽勤勉学习， 艰苦奋斗， 仍然一事无成， 可叹造化弄人也. （此为2006年金庸群侠传2中所作）]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[初次评论无需审核]]></title>
+      <url>%2F2016%2F09%2F08%2Fe5-88-9d-e6-ac-a1-e8-af-84-e8-ae-ba-e6-97-a0-e9-9c-80-e5-ae-a1-e6-a0-b8%2F</url>
+      <content type="text"><![CDATA[应该是这个设置吧，以后大家评论也不用经过审核了，我审起来也麻烦。。 PS：检查卫生说我桌子乱不是一次两次了，这次为了收拾桌子就把树莓派收起来了，今天服务器就没开= =]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[祝你有美好的一天'√']]></title>
+      <url>%2F2016%2F09%2F07%2Fe7-a5-9d-e4-bd-a0-e6-9c-89-e7-be-8e-e5-a5-bd-e7-9a-84-e4-b8-80-e5-a4-a9-e2-88-9a%2F</url>
+      <content type="text"><![CDATA[如果你有幸和我到ktv，那么一定不会错过一首歌：Have a nice day。 虽然嗓音不行，但是瞎喊喊就很爽了，唱歌不就是为了表达宣泄感情吗？ 不过说到这首歌，不得不提这首歌的乐队：Bon Jovi。 最初接触他们是小学在某电视节目上，放的CS的视频，BGM就是It’s my life，这也是我认为是最被国人所知的一首歌。视频里精彩的击杀镜头被这首歌衬托得十分酷炫，不过当时可能更多的激起了玩游戏的欲望…… 这首歌始终被埋在记忆深处，直到初中开始学习英语，英语老师让我们学唱一首英文歌。一开始选的是You are my sunshine，反光镜乐队版，很短很简单= =会唱之后很没有成就感，就想再试试其他歌，不知怎么，It’s my life就悄悄在脑中响起……最后在课上老师让我演唱一曲，我也不知道最后唱的哪一个，但是五音不全是肯定的。 唱歌受挫，听歌总不会如此。我便更多地去了解这个乐队，Have a nice day、Bounce、Always等一首首加入了我的mp3。至少在初中、高中这段紧张的学习生涯中给了我很多动力。 Oh, if there’s one thing I hang onto that gets me through the night I ain’t gonna do what I don’t want to; I’m gonna live my life Shining like a diamond, rolling with the dice Standing on the ledge, I show the wind how to fly When the world gets in my face, I say Have a nice day！ 《Have a nice day》 初高中听这种歌是为了提神，因为每天辛苦的学习可能都不是我们所希望做的，或者说”live my life”。但我们可以把这个过程当作”live my life”的准备，“考上大学就能live my life”了。事实如此吗？大学里好像也只是按着课程，为了成绩、排名而努力，量化到了一个数字，这就是“life”吗？是自己的“life”还是别人规划好的“life”呢？可能我只是把别人交给的任务努力做的优秀罢了。 [caption id=”attachment_39” align=”aligncenter” width=”300”] ‘√’[/caption] 不过我也希望有一天能够找到自己的“life”，因此从初二开始，这个专辑封面一直作为了我的头像，希望Have a nice day，也希望live my life。PS：今年Bon Jovi又发了新专，This House Is Not for Sale，毕竟62年出生的人了。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[发微博啦~ Joy是小一一]]></title>
+      <url>%2F2016%2F09%2F03%2Fe5-8f-91-e5-be-ae-e5-8d-9a-e5-95-a6-joy-e6-98-af-e5-b0-8f-e4-b8-80-e4-b8-80%2F</url>
+      <content type="text"><![CDATA[如果再加上if weibo then wordpress会不会无限循环啊。。[笑cry] (via Weibo http://ift.tt/2c0xa0b)]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[微博的朋友们你们好吗]]></title>
+      <url>%2F2016%2F09%2F03%2Fe5-be-ae-e5-8d-9a-e7-9a-84-e6-9c-8b-e5-8f-8b-e4-bb-ac-e4-bd-a0-e4-bb-ac-e5-a5-bd-e5-90-97%2F</url>
+      <content type="text"><![CDATA[把wordpress和weibo连起来了，这么说我发一条文章就会自动发一条微博咯？ 测试一下]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Real or Not]]></title>
+      <url>%2F2016%2F09%2F03%2Freal-or-not%2F</url>
+      <content type="text"><![CDATA[美剧有个特点，就是有点长，还拖成好几季，比如之前看的南方公园，目前估计都要二十季了吧。入坑还是要谨慎。 然而我还是经不住诱惑开始看Rick and Morty了……不得不说脑洞太大，动画的形式充分展现了无边的想象力。 比如虚拟（Rick and Morty (e4)）和梦境（Rick and Morty (e2) ）的两集，分别讲述二人在人工制造的虚拟城市和多层梦境（有点像盗梦空间）的冒险。这种经历往往会让人对虚拟和现实产生一定的疑问。 当然很多人都开始了这种思考，特别是人们逐渐了解人体、生命之间的秘密和联系之后，发现很多都是可以解释和人工产生的。最疯狂的可能是“缸中之脑”这个概念。这是希拉里·普特南（Hilary Putnam）1981年在他的《理性，真理与历史》（Reason, Truth, and History）一书中，阐述的假想。艺术作品也对这种设定情有独钟，频频出现于各种科幻剧里，个人感觉《黑客帝国》是最著名的。 那么问题来了，如果有一天发现世界并不是真实的，应该怎么办？似乎这比今天吃什么还要难以抉择。 即使是虚拟的世界，但通过努力完成了一定的工作量，在这个世界中有所贡献，似乎也是不能轻言放弃的，就像minecraft中一个个宏伟的工程。同样与他人之间的关系也很重要，不过如果得知其他所有的人都是虚拟出来，只是AI的话一定很难以接受。哪个选择才是正确的，或许并不重要，而在虚拟中和真实中度过一生又有什么不同呢？ 如果这种事情发生在我身上，具体应该如何选择，的确是需要好好考虑一番。但是让我用一句话总结的话，还是选择一个更需要我的世界吧。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[去健身吧~]]></title>
+      <url>%2F2016%2F09%2F01%2Fe5-8e-bb-e5-81-a5-e8-ba-ab-e5-90-a7%2F</url>
+      <content type="text"><![CDATA[去健身吧~ （其实去年我也是这么说的） 最初的原因其实是看了一部JoJo的动漫，人物的画风大概是这样的： &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 以及这样 感觉好强啊= =，对于习惯正常日漫萌系画风的我还是有一定的冲击（特别是这些羞耻？的造型。。）。不过就剧情来讲，差不多每一场战斗都是靠的脑子取胜的，看起来还是很有意思。 于是我也开始了跟风办了健身卡，大二下学期尽量保证每周至少去了一次……发现没什么用。。。 现在有了时间（才不是看了新的动漫），尽量养成健身的习惯吧。而且这办卡还是去了三次才办成，来之不易，更应该好好珍惜。 那么一起加油吧~ 最后！！！！！《99》完整版出了！！！！不来听一下吗？ [audio mp3=”http://yanjoy.win/wp-content/uploads/MOB-CHOIR-99.mp3&quot;][/audio]]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[上传文件限制解除]]></title>
+      <url>%2F2016%2F08%2F31%2Fe4-b8-8a-e4-bc-a0-e6-96-87-e4-bb-b6-e9-99-90-e5-88-b6-e8-a7-a3-e9-99-a4%2F</url>
+      <content type="text"><![CDATA[想添加首歌，然而打开添加媒体…… “最大上传文件大小：2MB。” ？？？什么年代了这种限制简直不够看啊！ 还好大家都是这么想的 先是参考wpyou.com，三种方法都尝试了结果都不行，特别是第二个找不到php.ini，自己在根目录创建了一个。但是眉头一皱感觉事情没有那么简单 查找资料发现限制大小的其实是php，那么php.ini应该在php目录中。参考冰莫言php安装路径，果然找到了，然而不止一个： 这里面3、4个目录都有php.ini。。所以都改了吧= =，把upload_max_filesize 由2M改到64M。心满意足~~~~ 干完之后发现果然增加了！！！！增到8M了！！ ？？？？跟说好的不一样啊！！！莫非是大意了？ 再看一下文章，果然我只改了upload，还有post_max_size 没改。一看post_max_size=8M，对这个数字很熟悉啊，看来上传媒体文件不能大于post大小限制。 而且jb51.net上有更详细的说明，顺便改了wp-config.php的内容。 一切完工，成功了~ PS：早知道改这么麻烦就把限制再放开些了 [playlist ids=”74”]]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[树莓派搭建wordpress|心路历程（雾]]></title>
+      <url>%2F2016%2F08%2F30%2Fe6-a0-91-e8-8e-93-e6-b4-be-e6-90-ad-e5-bb-bawordpress-e5-bf-83-e8-b7-af-e5-8e-86-e7-a8-8b-ef-bc-88-e9-9b-be%2F</url>
+      <content type="text"><![CDATA[项目这几个月都没有动，两个树莓派就放那里不断吃灰= = 为了废物利用（？）还是随便建个小站玩玩吧。 虽然说wp是个很傻嗨的东西，但现在还没有完全搞定。。 首先参考的是果壳及其引文，采用的是nginx。照着做到最后一步，wp-admin/install.php 打不开QAQ是一片空白。。 之后删了nginx换apache，然而……还是这样 联想到第四步和实际情况的不符 在/var/www目录下新建一个index.php文件： $ sudo nano /var/www/index.php 在这个文件里只需写入一行： 保存并退出编辑。删除该目录下的index.html文件，再次用浏览器打开Apache服务器的默认起始页面，应该能够看到PHP的配置信息。 感觉可能是index没放对地方。/www 里面还有个 /html，放进这里才能显示。。 这么说我把wordpress放在/www 里面没有卵用，放到/www/html 里面才行。 结果肯定是成功了（要不就没有这些东西了） 可是更新功能全跪（无法创建目录），另外无法从wp上传文件（显示上传成功在服务器上找不到） 网上所有的方法其实都一样——给权限。但是疯狂给权限之后还是不行啊~~~ 上传服务器有人说改一下uploadspath，改成/wp-content/uploads 就可以了，实践后貌似没用，就干脆改成全路径/usr/share/wordprees 也加上竟然可以了（玄学 所以忙了大概一天，解决了这些东西 感觉自己什么都不会 用树莓派建LAMP+WordPress服务器树莓派Raspberry Pi讨论区技术论坛云汉电子社区来源： 用树莓派建LAMP+WordPress服务器树莓派Raspberry Pi讨论区技术论坛_云汉电子社区_ &nbsp; PS：拿这个当第一篇博文貌似并不文艺，写博客的初衷是啥呢？重拾文艺撩妹]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[小站开工]]></title>
+      <url>%2F2016%2F08%2F29%2Fe5-b0-8f-e7-ab-99-e5-bc-80-e5-b7-a5%2F</url>
+      <content type="text"><![CDATA[差不多干了一天，只剩下插件和主题两片乌云]]></content>
+    </entry>
+
+    
+  
+  
+</search>
