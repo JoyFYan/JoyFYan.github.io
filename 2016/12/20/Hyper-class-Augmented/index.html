@@ -1,0 +1,1110 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="论文,fine-grained," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/source/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="介绍
+难点：
+
+精细粒度的标记数据的获取要昂贵得多（通常需要专业领域）; 
+存在大的类内（intra-class）和小类间（inter-class）方差。
+
+目前训练策略：在已有模型上预训练CNN并在小规模数据集上fine-tune。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文阅读：Hyper-class Augmented and Regularized Deep Learning for Fine-grained Image Classification">
+<meta property="og:url" content="https://joyfyan.github.io/2016/12/20/Hyper-class-Augmented/index.html">
+<meta property="og:site_name" content="小一一的小站">
+<meta property="og:description" content="介绍
+难点：
+
+精细粒度的标记数据的获取要昂贵得多（通常需要专业领域）; 
+存在大的类内（intra-class）和小类间（inter-class）方差。
+
+目前训练策略：在已有模型上预训练CNN并在小规模数据集上fine-tune。">
+<meta property="og:image" content="https://joyfyan.github.io/images/hyperclass.png">
+<meta property="og:image" content="http://img.blog.csdn.net/20160229164548588">
+<meta property="og:image" content="http://img.blog.csdn.net/20160229164849568">
+<meta property="og:image" content="http://img.blog.csdn.net/20160229165128767">
+<meta property="og:image" content="http://img.blog.csdn.net/20160229165349382">
+<meta property="og:image" content="https://joyfyan.github.io/images/hyperclass1.png">
+<meta property="og:image" content="https://joyfyan.github.io/images/hyperclass2.png">
+<meta property="og:image" content="https://joyfyan.github.io/images/hyperclass3.png">
+<meta property="og:image" content="https://joyfyan.github.io/images/hyperclass4.png">
+<meta property="og:image" content="https://joyfyan.github.io/images/hyperclass5.png">
+<meta property="og:image" content="https://joyfyan.github.io/images/hyperclass6.png">
+<meta property="og:image" content="http://img.blog.csdn.net/20160229164313565">
+<meta property="og:image" content="https://joyfyan.github.io/images/hyperclass7.png">
+<meta property="og:updated_time" content="2016-12-20T08:44:03.621Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="论文阅读：Hyper-class Augmented and Regularized Deep Learning for Fine-grained Image Classification">
+<meta name="twitter:description" content="介绍
+难点：
+
+精细粒度的标记数据的获取要昂贵得多（通常需要专业领域）; 
+存在大的类内（intra-class）和小类间（inter-class）方差。
+
+目前训练策略：在已有模型上预训练CNN并在小规模数据集上fine-tune。">
+<meta name="twitter:image" content="https://joyfyan.github.io/images/hyperclass.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6354127246722090000',
+      author: '小一一'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://joyfyan.github.io/2016/12/20/Hyper-class-Augmented/"/>
+
+
+
+
+
+  <title> 论文阅读：Hyper-class Augmented and Regularized Deep Learning for Fine-grained Image Classification | 小一一的小站 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?59765bbe651ba5fb69dc22dd74eb6ba7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">小一一的小站</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Blog of Yan Joy</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/12/20/Hyper-class-Augmented/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Yan Joy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="小一一的小站">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="小一一的小站" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                论文阅读：Hyper-class Augmented and Regularized Deep Learning for Fine-grained Image Classification
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-20T16:21:56+08:00">
+                2016-12-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/20/Hyper-class-Augmented/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/20/Hyper-class-Augmented/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/20/Hyper-class-Augmented/" class="leancloud_visitors" data-flag-title="论文阅读：Hyper-class Augmented and Regularized Deep Learning for Fine-grained Image Classification">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">Visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><hr>
+<p>难点：</p>
+<ol>
+<li>精细粒度的标记数据的获取要昂贵得多（通常需要专业领域）; </li>
+<li>存在大的类内（intra-class）和小类间（inter-class）方差。</li>
+</ol>
+<p>目前训练策略：<br>在已有模型上预训练CNN并在小规模数据集上fine-tune。</p>
+<a id="more"></a>
+<p>本文工作：</p>
+<ul>
+<li>使用hyper-class来增强数据，从网络上搜索hyper-class-labeled的数据，形成多类学习任务。</li>
+<li>公式化精细识别模型和hyper-class识别模型，通过挖掘二者的关系提升识别率。</li>
+</ul>
+<p>增强数据：</p>
+<ul>
+<li>super-class，包括一系列的精细类别。</li>
+<li>factor-type hyper-classes 因子类型。<br><img src="/images/hyperclass.png" alt="hyper-classes"><br>提出<strong>超类增强和正则化深度学习（hyper-class augmented and regularized deep learning）</strong>。学习框架与神经网络与多任务学习密切相关。这个想法是通过允许他们共享神经网络的相同特征层来联合训练多个相关任务。</li>
+</ul>
+<h1 id="超类增强和正则化深度学习"><a href="#超类增强和正则化深度学习" class="headerlink" title="超类增强和正则化深度学习"></a>超类增强和正则化深度学习</h1><hr>
+<p>解决第一个难点，用由一些超类标记的大量辅助图像来增强细粒度数据。<br>第二个难点，提出新的CNN模型。</p>
+<h2 id="超类数据增强"><a href="#超类数据增强" class="headerlink" title="超类数据增强"></a>超类数据增强</h2><hr>
+<ul>
+<li>super-class，包括一系列的精细类别。</li>
+<li>factor-type hyper-classes 因子类型。</li>
+</ul>
+<p>对于给定的细粒度（fine-grained class）类，图像可能有不同的视角视图，即因子类型超类（factor-type hyper-classes）。这和super-type hyper-class 与 fine-grained classes完全不同。一个fine-grained class只能归属于一个单一的super-type class。比如fine-grained class “吉娃娃”属于super-type class“dog”，并不属于“cat”。然而对于汽车数据，其 fine-grained class可以有不同的视角，因此不必归为同一个单独的hyper-class。从生成的角度来看，可以通过首先生成其视图（hyper-class）然后生成给定的视图来生成汽车图像的fine-grained class。这也是我们下一小节描述的模型的概率基础。由于这种类型的超类可以被认为是图像的隐藏因素，这种类型称为factor-type hyper-class。<br><strong>super-type和factor-type 两种hyper-class之间的关键区别是：super-type是由fine-grained类隐含的，而factor-type对于给定的fine-grained类是未知的。</strong>factor-type另一个示例为人脸的不同表情（愉快，愤怒，微笑等），每个人都有不同表情的多张图像。</p>
+<h2 id="正则化学习模型"><a href="#正则化学习模型" class="headerlink" title="正则化学习模型"></a>正则化学习模型</h2><hr>
+<p> 给定细粒度训练图像（fine-grained<br>training images）和辅助超类标记图像（auxiliary hyper-class labeled images），一个直接的策略是通过共享共同的特征和学习分类器来训练多任务CNN。在多任务学习中，hyper-class类和fine-grained类的标签集是不相交的，我们不用hyper-class标签来标记fine-grained的数据。</p>
+<h3 id="Factor-type-Hyper-class-Regularized-Learning"><a href="#Factor-type-Hyper-class-Regularized-Learning" class="headerlink" title="Factor-type Hyper-class Regularized Learning"></a>Factor-type Hyper-class Regularized Learning</h3><hr>
+<p>给定图像x，识别结果为y的概率为：<br><img src="http://img.blog.csdn.net/20160229164548588" alt="pic1"><br>Pr(v|x)是任何 factor-type hyper-class v的概率，并且Pr(y|v,x)指定给定factor-type hyper-class和输入图像x的任何fine-grained class的概率。<br>使用softmax函数对factor-type hyper-class概率进行建模，h(x)表示x的高层特征，即：<br><img src="http://img.blog.csdn.net/20160229164849568" alt="pic2"><br>其中u<em>v表示hyper-class分类模型的权值，Pr(y=c|v,x)如下计算：<br><img src="http://img.blog.csdn.net/20160229165128767" alt="pic3"><br>其中w</em>{v,c}表示factor-specific精细分类模型的权值，此时预测公式为：<br><img src="http://img.blog.csdn.net/20160229165349382" alt="pic4"><br>虽然我们的模型在混合模型中有其根，但是值得注意的是，不像大多数以前的混合模型，处理Pr(v|x)作为自由参数，我们将其制定为一个鉴别模型。它是 hyper-class增强图像，允许我们准确地学习{uv}。 然后我们可以记录Dt中的细粒度识别数据的负对数似然性和Da中的数据的hyper-class识别：<br><img src="/images/hyperclass1.png" alt="pic5"><br>为了激励非平凡正则化，我们注意到factor-specific权重w_{v,c}应该捕获与对应的factor-type hyper-class分类器u<em>v类似的高水平factor-related特征。为此在w</em>{v,c}和u<em>v间引入正则化：<br><img src="/images/hyperclass2.png" alt="pic6"><br>为了理解正则化，在我们的汽车识别示例中，原始的fine-grained 数据不能够学习每视角类别分类器w</em>{v,c}，因为没有办法推断视角hyper-class。但现在我们可以在hyper-class增强数据上训练视点分类器u<em>v，因此正则化负责将知识传递到每个视角类别分类器，从而帮助模糊fine-grained任务中的类内方差。<br>引入w’</em>{v,c}=w_{v,c}-u_v，则上式化简为：<br><img src="/images/hyperclass3.png" alt="pic7"><br>$Pr(y=c|x)$由下式给出：<br><img src="/images/hyperclass4.png" alt="pic8"><br>可以看出，fine-grained 分类器与factor-type hyper-class分类器共享相同的分量$u_v$。 因此，它将所提出的模型连接到传统的浅层多任务学习中使用的权重共享。</p>
+<h3 id="Super-type-hyper-class-regularized-learning"><a href="#Super-type-hyper-class-regularized-learning" class="headerlink" title="Super-type hyper-class regularized learning"></a>Super-type hyper-class regularized learning</h3><p>super-type hyper-class正则化深度学习的唯一区别在于$Pr(y|v,x)$，它可以简单地建模<br><img src="/images/hyperclass5.png" alt="pic9"><br>因为super-type hyper-class $v_c$由fine-grained标签c隐含地表示。正则化为：<br><img src="/images/hyperclass6.png" alt="pic10"></p>
+<h1 id="统一的深度CNN"><a href="#统一的深度CNN" class="headerlink" title="统一的深度CNN"></a>统一的深度CNN</h1><hr>
+<p>使用hyper-class增强数据和多任务正则化学习技术，我们达到统一的深CNN框架，如图所示：<br><img src="http://img.blog.csdn.net/20160229164313565" alt="pic11"><br>其示了优化问题：<br><img src="/images/hyperclass7.png" alt="pic12"></p>
+<blockquote>
+<p>Xie S, Yang T, Wang X, et al. Hyper-class augmented and regularized deep learning for fine-grained image classification[C]// IEEE Conference on Computer Vision and Pattern Recognition. 2015.<br><a href="http://blog.csdn.net/cv_family_z/article/details/50766708" target="_blank" rel="external">车型识别“Hyper-class Augmented and Regularized Deep Learning for Fine-grained Image Classification”</a></p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/论文/" rel="tag"># 论文</a>
+          
+            <a href="/tags/fine-grained/" rel="tag"># fine-grained</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/19/caffe自定义层/" rel="next" title="caffe自定义层">
+                <i class="fa fa-chevron-left"></i> caffe自定义层
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/20/Hyper-class-Augmented/"
+           data-title="论文阅读：Hyper-class Augmented and Regularized Deep Learning for Fine-grained Image Classification" data-url="https://joyfyan.github.io/2016/12/20/Hyper-class-Augmented/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Yan Joy" />
+          <p class="site-author-name" itemprop="name">Yan Joy</p>
+          <p class="site-description motion-element" itemprop="description">Default~</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/yanjoy" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/yan_joy" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#超类增强和正则化深度学习"><span class="nav-number">2.</span> <span class="nav-text">超类增强和正则化深度学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#超类数据增强"><span class="nav-number">2.1.</span> <span class="nav-text">超类数据增强</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则化学习模型"><span class="nav-number">2.2.</span> <span class="nav-text">正则化学习模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Factor-type-Hyper-class-Regularized-Learning"><span class="nav-number">2.2.1.</span> <span class="nav-text">Factor-type Hyper-class Regularized Learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Super-type-hyper-class-regularized-learning"><span class="nav-number">2.2.2.</span> <span class="nav-text">Super-type hyper-class regularized learning</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#统一的深度CNN"><span class="nav-number">3.</span> <span class="nav-text">统一的深度CNN</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yan Joy</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yanjoy"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz", "owWjRRJ2oBD7Dekc8l1RRctK");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
