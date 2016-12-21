@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="cs231n," />
 
 
 
@@ -90,15 +90,22 @@
 
 
 
-<meta name="description" content="Default~">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小一一的小站">
-<meta property="og:url" content="https://joyfyan.github.io/tags/caffe/index.html">
+<meta name="description" content="斯坦福深度学习与机器视觉课程cs231n，感觉挺不错的，顺便记下来一些零碎的点，不过具体内容还是要参考笔记、视频。不过网易云课堂的视频还是有些问题的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cs231n笔记1">
+<meta property="og:url" content="https://joyfyan.github.io/2016/12/21/cs231n笔记1/index.html">
 <meta property="og:site_name" content="小一一的小站">
-<meta property="og:description" content="Default~">
+<meta property="og:description" content="斯坦福深度学习与机器视觉课程cs231n，感觉挺不错的，顺便记下来一些零碎的点，不过具体内容还是要参考笔记、视频。不过网易云课堂的视频还是有些问题的。">
+<meta property="og:image" content="https://zhihu.com/equation?tex=%5Cdisplaystyle%20L_i=%5Csum_%7Bj%5Cnot=y_i%7Dmax%280,s_j-s_%7By_i%7D%2b%5CDelta%29">
+<meta property="og:image" content="https://zhihu.com/equation?tex=L=%5Cdisplaystyle%20%5Cunderbrace%7B%20%5Cfrac%7B1%7D%7BN%7D%5Csum_i%20L_i%7D_%7Bdata%20%5C%20%20loss%7D%2b%5Cunderbrace%7B%5Clambda%20R%28W%29%7D_%7Bregularization%20%5C%20loss%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=L%3D%5Cfrac%7B1%7D%7BN%7D%5Csum_i%5Csum_%7Bj%5Cnot%3Dy_i%7D%5Bmax%280%2Cf%28x_i%3BW%29_j-f%28x_i%3BW%29_%7By_i%7D%2B%5CDelta%29%5D%2B%5Clambda+%5Csum_k+%5Csum_l+W%5E2_%7Bk%2Cl%7D">
+<meta property="og:image" content="https://zhihu.com/equation?tex=f_j%28z%29=%5Cfrac%7Be%5E%7Bz_j%7D%7D%7B%5Csum_ke%5E%7Bz_k%7D%7D">
+<meta property="og:image" content="https://zhihu.com/equation?tex=%5Cdisplaystyle%20Li=-log%28%5Cfrac%7Be%5E%7Bf_%7By_i%7D%7D%7D%7B%5Csum_je%5E%7Bf_j%7D%7D%29">
+<meta property="og:updated_time" content="2016-12-21T09:18:25.902Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小一一的小站">
-<meta name="twitter:description" content="Default~">
+<meta name="twitter:title" content="cs231n笔记1">
+<meta name="twitter:description" content="斯坦福深度学习与机器视觉课程cs231n，感觉挺不错的，顺便记下来一些零碎的点，不过具体内容还是要参考笔记、视频。不过网易云课堂的视频还是有些问题的。">
+<meta name="twitter:image" content="https://zhihu.com/equation?tex=%5Cdisplaystyle%20L_i=%5Csum_%7Bj%5Cnot=y_i%7Dmax%280,s_j-s_%7By_i%7D%2b%5CDelta%29">
 
 
 
@@ -126,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="https://joyfyan.github.io/tags/caffe/"/>
+  <link rel="canonical" href="https://joyfyan.github.io/2016/12/21/cs231n笔记1/"/>
 
 
 
 
 
-  <title> Tag: caffe | 小一一的小站 </title>
+  <title> cs231n笔记1 | 小一一的小站 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -163,7 +170,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -286,246 +293,312 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        caffe
-        <small>Tag</small>
-      </h2>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/12/19/caffe自定义层/" itemprop="url">
-              
-                <span itemprop="name">caffe自定义层</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-19T18:26:46+08:00"
-              content="2016-12-19" >
-          12-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/12/Caffe-faster-rcnn demo测试/" itemprop="url">
-              
-                <span itemprop="name">Caffe-faster-rcnn demo测试</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-12T15:06:00+08:00"
-              content="2016-11-12" >
-          11-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/09/caffe学习（11）python的数据可视化/" itemprop="url">
-              
-                <span itemprop="name">caffe学习（11）python的数据可视化</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-09T16:24:00+08:00"
-              content="2016-11-09" >
-          11-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/08/caffe学习（10）数据转换img2db/" itemprop="url">
-              
-                <span itemprop="name">caffe学习（10）数据转换img2db</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-08T17:12:00+08:00"
-              content="2016-11-08" >
-          11-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/08/caffe学习（9）LeNet在Caffe上的使用/" itemprop="url">
-              
-                <span itemprop="name">caffe学习（9）LeNet在Caffe上的使用</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-08T15:57:00+08:00"
-              content="2016-11-08" >
-          11-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/08/caffe学习（8）Solver 配置详解/" itemprop="url">
-              
-                <span itemprop="name">caffe学习（8）Solver 配置详解</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-08T09:45:00+08:00"
-              content="2016-11-08" >
-          11-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/07/Google Protocol Buffer 学习/" itemprop="url">
-              
-                <span itemprop="name">Google Protocol Buffer 学习</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-07T20:27:00+08:00"
-              content="2016-11-07" >
-          11-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/07/caffe学习（7）损失层、通用层/" itemprop="url">
-              
-                <span itemprop="name">caffe学习（7）损失层、通用层</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-07T16:19:00+08:00"
-              content="2016-11-07" >
-          11-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </div>
 
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/tags/caffe/page/2/">2</a><a class="extend next" rel="next" href="/tags/caffe/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/12/21/cs231n笔记1/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Yan Joy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="小一一的小站">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="小一一的小站" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                cs231n笔记1
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-21T17:10:37+08:00">
+                2016-12-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/21/cs231n笔记1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/21/cs231n笔记1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/21/cs231n笔记1/" class="leancloud_visitors" data-flag-title="cs231n笔记1">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">Visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>斯坦福深度学习与机器视觉课程cs231n，感觉挺不错的，顺便记下来一些零碎的点，不过具体内容还是要参考笔记、视频。不过网易云课堂的视频还是有些问题的。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h1 id="研究历史"><a href="#研究历史" class="headerlink" title="研究历史"></a>研究历史</h1><hr>
+<p>一开始是对猫的视觉进行研究，发现有如下神奇的特点：</p>
+<ul>
+<li>对于整个图像，猫的视觉基础神经元没有被激活。</li>
+<li>在切换图像时，神经元被激活。</li>
+</ul>
+<p>因此研究人员认为神经元对简单形状、边缘有反应。</p>
+<p>David Marr提出视觉是分层的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">st=&gt;start: 输入图像</div><div class="line">e=&gt;end: 结束</div><div class="line">op1=&gt;operation: 边缘信息</div><div class="line">op2=&gt;operation: 2.5D图像</div><div class="line">op3=&gt;operation: 3D图像</div><div class="line"></div><div class="line">st-&gt;op1-&gt;op2-&gt;op3</div></pre></td></tr></table></figure>
+<p>90年代感知分组，将图像分为不同区域。<br>1999，SIFT特征，图像识别、匹配。<br>2001，Face Detection，没有进行3D建模。</p>
+<p>数据集：</p>
+<ul>
+<li>PASCAL 20类</li>
+<li>IMAGENET 22K类，14M图</li>
+</ul>
+<p>2011年及之前图像分类识别基本靠SIFT+SVM。<br>其竞赛2012年出现CNN，AlexNet，7层layer夺得冠军。<br>之后2014：GoogleNet，VGG；2015：MSRA深度残差，均基于CNN。</p>
+<h1 id="kNN分类器"><a href="#kNN分类器" class="headerlink" title="kNN分类器"></a>kNN分类器</h1><p>两图像距离的定义。</p>
+<ul>
+<li>L1距离：像素间绝对值再求和</li>
+<li>L2距离：像素间差的平方求和再开方</li>
+</ul>
+<p>超参数：无法在训练中优化，如距离定义、k值。<br>采用单一验证、交叉验证方法。</p>
+<p>kNN流程：</p>
+<ol>
+<li>计算已知类别数据中图像（train set）与需要预测点图像（test set）距离；</li>
+<li>按照距离依次排序；</li>
+<li>选取与需要预测图像距离最小的前k个；</li>
+<li>确定前k个中每种类别出现的次数；</li>
+<li>将出现次数最多的类别作为预测类别。</li>
+</ol>
+<h1 id="损失"><a href="#损失" class="headerlink" title="损失"></a>损失</h1><hr>
+<h2 id="SVM损失"><a href="#SVM损失" class="headerlink" title="SVM损失"></a>SVM损失</h2><p>公式：<br><img src="https://zhihu.com/equation?tex=%5Cdisplaystyle%20L_i=%5Csum_%7Bj%5Cnot=y_i%7Dmax%280,s_j-s_%7By_i%7D%2b%5CDelta%29" alt="SVM"><br>$j\neq y_i$是指对于第$i$类，只对其他类进行求和运算；<br>s<em>j是第j类得分结果；<br>s</em>{y_i}是本类的得分结果；<br>$\Delta$是常数，一般取1。<br>这是某一类的损失，总损失可以求平均。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">image</th>
+<th style="text-align:center">cat score</th>
+<th style="text-align:center">car score</th>
+<th style="text-align:center">frog score</th>
+<th style="text-align:center">losses</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">CAT</td>
+<td style="text-align:center"><strong>3.2</strong></td>
+<td style="text-align:center">5.1</td>
+<td style="text-align:center">-1.7</td>
+<td style="text-align:center">2.9</td>
+</tr>
+<tr>
+<td style="text-align:center">CAR</td>
+<td style="text-align:center">1.3</td>
+<td style="text-align:center"><strong>4.9</strong></td>
+<td style="text-align:center">2.0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">FROG</td>
+<td style="text-align:center">2.2</td>
+<td style="text-align:center">2.5</td>
+<td style="text-align:center"><strong>-3.1</strong></td>
+<td style="text-align:center">10.9</td>
+</tr>
+</tbody>
+</table>
+<h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><hr>
+<p><img src="https://zhihu.com/equation?tex=L=%5Cdisplaystyle%20%5Cunderbrace%7B%20%5Cfrac%7B1%7D%7BN%7D%5Csum_i%20L_i%7D_%7Bdata%20%5C%20%20loss%7D%2b%5Cunderbrace%7B%5Clambda%20R%28W%29%7D_%7Bregularization%20%5C%20loss%7D" alt="regularization"><br>正则化项避免过拟合，考虑更多输入。</p>
+<ul>
+<li>L1正则：w权重绝对值之和</li>
+<li>L2正则：w权重平方和</li>
+</ul>
+<p><img src="https://www.zhihu.com/equation?tex=L%3D%5Cfrac%7B1%7D%7BN%7D%5Csum_i%5Csum_%7Bj%5Cnot%3Dy_i%7D%5Bmax%280%2Cf%28x_i%3BW%29_j-f%28x_i%3BW%29_%7By_i%7D%2B%5CDelta%29%5D%2B%5Clambda+%5Csum_k+%5Csum_l+W%5E2_%7Bk%2Cl%7D" alt="loss"></p>
+<h2 id="Softmax损失"><a href="#Softmax损失" class="headerlink" title="Softmax损失"></a>Softmax损失</h2><p>公式：<br><img src="https://zhihu.com/equation?tex=f_j%28z%29=%5Cfrac%7Be%5E%7Bz_j%7D%7D%7B%5Csum_ke%5E%7Bz_k%7D%7D" alt="softmax"><br><img src="https://zhihu.com/equation?tex=%5Cdisplaystyle%20Li=-log%28%5Cfrac%7Be%5E%7Bf_%7By_i%7D%7D%7D%7B%5Csum_je%5E%7Bf_j%7D%7D%29" alt="softmaxwithloss"><br>计算过程：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">item</th>
+<th style="text-align:center">cat</th>
+<th style="text-align:center">car</th>
+<th style="text-align:center">frog</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">score</td>
+<td style="text-align:center"><strong>3.2</strong></td>
+<td style="text-align:center">5.1</td>
+<td style="text-align:center">-1.7</td>
+</tr>
+<tr>
+<td style="text-align:center">exp</td>
+<td style="text-align:center"><strong>24.5</strong></td>
+<td style="text-align:center">164.0</td>
+<td style="text-align:center">0.18</td>
+</tr>
+<tr>
+<td style="text-align:center">normalize</td>
+<td style="text-align:center"><strong>0.13</strong></td>
+<td style="text-align:center">0.87</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+<p>$L_{cat}=-log(0.13)=0.89$<br>当初始时（w很小），L=-log(1/N)=log(N)。</p>
+<blockquote>
+<p><a href="http://cs231n.github.io/" target="_blank" rel="external">CS231n Convolutional Neural Networks for Visual Recognition</a><br><a href="https://zhuanlan.zhihu.com/p/21930884" target="_blank" rel="external">CS231n官方笔记授权翻译总集篇发布</a><br><a href="http://study.163.com/course/courseMain.htm?courseId=1003223001" target="_blank" rel="external">斯坦福CS231n—深度学习与计算机视觉</a></p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/cs231n/" rel="tag"># cs231n</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/20/Hyper-class-Augmented/" rel="next" title="论文阅读：Hyper-class Augmented and Regularized Deep Learning for Fine-grained Image Classification">
+                <i class="fa fa-chevron-left"></i> 论文阅读：Hyper-class Augmented and Regularized Deep Learning for Fine-grained Image Classification
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -533,6 +606,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/21/cs231n笔记1/"
+           data-title="cs231n笔记1" data-url="https://joyfyan.github.io/2016/12/21/cs231n笔记1/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -552,8 +633,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -626,6 +716,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#研究历史"><span class="nav-number"></span> <span class="nav-text">研究历史</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kNN分类器"><span class="nav-number"></span> <span class="nav-text">kNN分类器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#损失"><span class="nav-number"></span> <span class="nav-text">损失</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SVM损失"><span class="nav-number">1.</span> <span class="nav-text">SVM损失</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则化"><span class="nav-number">2.</span> <span class="nav-text">正则化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Softmax损失"><span class="nav-number">3.</span> <span class="nav-text">Softmax损失</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
@@ -731,6 +837,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
