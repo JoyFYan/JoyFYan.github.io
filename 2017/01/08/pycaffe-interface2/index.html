@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="caffe," />
+  <meta name="keywords" content="caffe,python," />
 
 
 
@@ -90,40 +90,16 @@
 
 
 
-<meta name="description" content="Caffe LayersCaffe学习系列(5)：其它常用层及参数，denny402
-
-损失层Loss Layers
-损失通过将输出与目标进行比较，并不断优化减小loss。
-Softmax（with loss）
-
-层类型：SoftmaxWithLoss
-示例：
- 1234567	layer &amp;#123;	  name: &quot;loss&quot;	  type: &quot;SoftmaxWithLoss&quot;	  bot">
+<meta name="description" content="继续python接口的学习。剩下还有solver、deploy文件的生成和模型的测试。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="caffe学习（7）损失层、通用层">
-<meta property="og:url" content="https://joyfyan.github.io/2016/11/07/caffe学习（7）损失层、通用层/index.html">
+<meta property="og:title" content="Caffe-python interface 学习-网络训练、部署、测试.md">
+<meta property="og:url" content="https://joyfyan.github.io/2017/01/08/pycaffe-interface2/index.html">
 <meta property="og:site_name" content="小一一的小站">
-<meta property="og:description" content="Caffe LayersCaffe学习系列(5)：其它常用层及参数，denny402
-
-损失层Loss Layers
-损失通过将输出与目标进行比较，并不断优化减小loss。
-Softmax（with loss）
-
-层类型：SoftmaxWithLoss
-示例：
- 1234567	layer &amp;#123;	  name: &quot;loss&quot;	  type: &quot;SoftmaxWithLoss&quot;	  bot">
-<meta property="og:updated_time" content="2016-11-18T07:28:36.142Z">
+<meta property="og:description" content="继续python接口的学习。剩下还有solver、deploy文件的生成和模型的测试。">
+<meta property="og:updated_time" content="2017-01-08T05:55:34.282Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="caffe学习（7）损失层、通用层">
-<meta name="twitter:description" content="Caffe LayersCaffe学习系列(5)：其它常用层及参数，denny402
-
-损失层Loss Layers
-损失通过将输出与目标进行比较，并不断优化减小loss。
-Softmax（with loss）
-
-层类型：SoftmaxWithLoss
-示例：
- 1234567	layer &amp;#123;	  name: &quot;loss&quot;	  type: &quot;SoftmaxWithLoss&quot;	  bot">
+<meta name="twitter:title" content="Caffe-python interface 学习-网络训练、部署、测试.md">
+<meta name="twitter:description" content="继续python接口的学习。剩下还有solver、deploy文件的生成和模型的测试。">
 
 
 
@@ -151,13 +127,13 @@ Softmax（with loss）
 
 
 
-  <link rel="canonical" href="https://joyfyan.github.io/2016/11/07/caffe学习（7）损失层、通用层/"/>
+  <link rel="canonical" href="https://joyfyan.github.io/2017/01/08/pycaffe-interface2/"/>
 
 
 
 
 
-  <title> caffe学习（7）损失层、通用层 | 小一一的小站 </title>
+  <title> Caffe-python interface 学习-网络训练、部署、测试.md | 小一一的小站 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -321,7 +297,7 @@ Softmax（with loss）
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/11/07/caffe学习（7）损失层、通用层/">
+  <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2017/01/08/pycaffe-interface2/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Yan Joy">
@@ -345,7 +321,7 @@ Softmax（with loss）
             
             
               
-                caffe学习（7）损失层、通用层
+                Caffe-python interface 学习-网络训练、部署、测试.md
               
             
           </h1>
@@ -358,8 +334,8 @@ Softmax（with loss）
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-07T16:19:00+08:00">
-                2016-11-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-08T13:52:08+08:00">
+                2017-01-08
               </time>
             
 
@@ -392,8 +368,8 @@ Softmax（with loss）
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/11/07/caffe学习（7）损失层、通用层/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/07/caffe学习（7）损失层、通用层/" itemprop="commentCount"></span>
+                <a href="/2017/01/08/pycaffe-interface2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/08/pycaffe-interface2/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -403,7 +379,7 @@ Softmax（with loss）
 
           
           
-             <span id="/2016/11/07/caffe学习（7）损失层、通用层/" class="leancloud_visitors" data-flag-title="caffe学习（7）损失层、通用层">
+             <span id="/2017/01/08/pycaffe-interface2/" class="leancloud_visitors" data-flag-title="Caffe-python interface 学习-网络训练、部署、测试.md">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -428,123 +404,33 @@ Softmax（with loss）
       
 
       
-        <blockquote>
-<p><a href="http://caffe.berkeleyvision.org/tutorial/layers.html" target="_blank" rel="external">Caffe Layers</a><br><a href="http://www.cnblogs.com/denny402/p/5072746.html" target="_blank" rel="external">Caffe学习系列(5)：其它常用层及参数，denny402</a></p>
+        <p>继续python接口的学习。剩下还有solver、deploy文件的生成和模型的测试。<br><a id="more"></a></p>
+<h1 id="网络训练"><a href="#网络训练" class="headerlink" title="网络训练"></a>网络训练</h1><h2 id="solver文件生成"><a href="#solver文件生成" class="headerlink" title="solver文件生成"></a>solver文件生成</h2><p>其实我觉得用python生成solver并不如直接写个配置文件，它不像net配置一样有很多重复的东西。<br>对于一下的solver配置文件：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">base_lr: <span class="number">0.001</span></div><div class="line">display: <span class="number">782</span></div><div class="line">gamma: <span class="number">0.1</span></div><div class="line">lr_policy: “step”</div><div class="line">max_iter: <span class="number">78200</span> <span class="comment">#训练样本迭代次数=max_iter/782(训练完一次全部样本的迭代数)</span></div><div class="line">momentum: <span class="number">0.9</span></div><div class="line">snapshot: <span class="number">7820</span></div><div class="line">snapshot_prefix: <span class="string">"snapshot"</span></div><div class="line">solver_mode: GPU</div><div class="line">solver_type: SGD</div><div class="line">stepsize: <span class="number">26067</span> </div><div class="line">test_interval: <span class="number">782</span> <span class="comment">#test_interval=训练样本数(50000)/batch_size(train:64)</span></div><div class="line">test_iter: <span class="number">313</span>     <span class="comment">#test_iter=测试样本数(10000)/batch_size(test:32)</span></div><div class="line">test_net: <span class="string">"/home/xxx/data/val.prototxt"</span></div><div class="line">train_net: <span class="string">"/home/xxx/data/proto/train.prototxt"</span></div><div class="line">weight_decay: <span class="number">0.0005</span></div></pre></td></tr></table></figure></p>
+<p>可以用以下方式实现生成：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> caffe.proto <span class="keyword">import</span> caffe_pb2</div><div class="line">s = caffe_pb2.SolverParameter()</div><div class="line"></div><div class="line">path=<span class="string">'/home/xxx/data/'</span></div><div class="line">solver_file=path+<span class="string">'solver1.prototxt'</span></div><div class="line"></div><div class="line">s.train_net = path+<span class="string">'train.prototxt'</span></div><div class="line">s.test_net.append(path+<span class="string">'val.prototxt'</span>)</div><div class="line">s.test_interval = <span class="number">782</span>  </div><div class="line">s.test_iter.append(<span class="number">313</span>) <span class="comment">#这里用的是append，码风不太一样</span></div><div class="line">s.max_iter = <span class="number">78200</span> </div><div class="line"></div><div class="line">s.base_lr = <span class="number">0.001</span> </div><div class="line">s.momentum = <span class="number">0.9</span></div><div class="line">s.weight_decay = <span class="number">5e-4</span></div><div class="line">s.lr_policy = <span class="string">'step'</span></div><div class="line">s.stepsize=<span class="number">26067</span></div><div class="line">s.gamma = <span class="number">0.1</span></div><div class="line">s.display = <span class="number">782</span></div><div class="line">s.snapshot = <span class="number">7820</span></div><div class="line">s.snapshot_prefix = <span class="string">'shapshot'</span></div><div class="line">s.type = “SGD”</div><div class="line">s.solver_mode = caffe_pb2.SolverParameter.GPU</div><div class="line"></div><div class="line"><span class="keyword">with</span> open(solver_file, <span class="string">'w'</span>) <span class="keyword">as</span> f:</div><div class="line">    f.write(str(s))</div></pre></td></tr></table></figure></p>
+<p>并没有简单多少。<br>需要注意的是有些参数需要计算得到：</p>
+<ul>
+<li>test_interval：<br>假设我们有50000个训练样本，batch_size为64，即每批次处理64个样本，那么需要迭代50000/64=782次才处理完一次全部的样本。我们把处理完一次所有的样本，称之为一代，即epoch。所以，这里的test_interval设置为782，即处理完一次所有的训练数据后，才去进行测试。如果我们想训练100代，则需要设置max_iter为78200.</li>
+<li>test_iter：<br>同理，如果有10000个测试样本，batch_size设为32，那么需要迭代10000/32=313次才完整地测试完一次，所以设置test_iter为313.</li>
+<li>lr_rate：<br>学习率变化规律我们设置为随着迭代次数的增加，慢慢变低。总共迭代78200次，我们将变化lr_rate三次，所以stepsize设置为78200/3=26067，即每迭代26067次，我们就降低一次学习率。 </li>
+</ul>
+<h2 id="模型训练"><a href="#模型训练" class="headerlink" title="模型训练"></a>模型训练</h2><p>完整按照定义的网络和solver去训练，就像命令行一样：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">solver = caffe.SGDSolver(<span class="string">'/home/xxx/solver.prototxt'</span>)</div><div class="line">solver.solve()</div></pre></td></tr></table></figure></p>
+<p>不过也可以分得更细一些，比如先加载模型：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">solver = caffe.get_solver(<span class="string">'models/bvlc_reference_caffenet/solver.prototxt'</span>)</div></pre></td></tr></table></figure></p>
+<p>这里用的是<code>.get_solver</code>，默认按照SGD方法求解。<br>向前传播一次网络，即从输入层到loss层，计算<code>net.blobs[k].data</code>。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">solver.net.forward()  <span class="comment"># train net</span></div></pre></td></tr></table></figure></p>
+<p>反向传播一次网络，即从loss层到输入层，计算<code>net.blobs[k].diff and net.params[k][j].diff</code>。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">solver.net.backward()</div></pre></td></tr></table></figure></p>
+<p>如果需要一次完整的计算，正向、反向、更新权重（<code>net.params[k][j].data</code>），可以使用<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">solver.step(<span class="number">1</span>)</div></pre></td></tr></table></figure></p>
+<p>改变数字进行多次计算。</p>
+<h1 id="网络部署"><a href="#网络部署" class="headerlink" title="网络部署"></a>网络部署</h1><p>部署即生成一个deploy文件，用于下面的模型测试。这里既可以用python，也可以直接修改net文件。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> caffe <span class="keyword">import</span> layers <span class="keyword">as</span> L,params <span class="keyword">as</span> P,to_proto</div><div class="line">root=<span class="string">'/home/xxx/'</span></div><div class="line">deploy=root+<span class="string">'mnist/deploy.prototxt'</span>    <span class="comment">#文件保存路径</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_deploy</span><span class="params">()</span>:</span></div><div class="line">    <span class="comment">#少了第一层，data层</span></div><div class="line">    conv1=L.Convolution(bottom=<span class="string">'data'</span>, kernel_size=<span class="number">5</span>, stride=<span class="number">1</span>,num_output=<span class="number">20</span>, pad=<span class="number">0</span>,weight_filler=dict(type=<span class="string">'xavier'</span>))</div><div class="line">    pool1=L.Pooling(conv1, pool=P.Pooling.MAX, kernel_size=<span class="number">2</span>, stride=<span class="number">2</span>)</div><div class="line">    conv2=L.Convolution(pool1, kernel_size=<span class="number">5</span>, stride=<span class="number">1</span>,num_output=<span class="number">50</span>, pad=<span class="number">0</span>,weight_filler=dict(type=<span class="string">'xavier'</span>))</div><div class="line">    pool2=L.Pooling(conv2, pool=P.Pooling.MAX, kernel_size=<span class="number">2</span>, stride=<span class="number">2</span>)</div><div class="line">    fc3=L.InnerProduct(pool2, num_output=<span class="number">500</span>,weight_filler=dict(type=<span class="string">'xavier'</span>))</div><div class="line">    relu3=L.ReLU(fc3, in_place=<span class="keyword">True</span>)</div><div class="line">    fc4 = L.InnerProduct(relu3, num_output=<span class="number">10</span>,weight_filler=dict(type=<span class="string">'xavier'</span>))</div><div class="line">    <span class="comment">#最后没有accuracy层，但有一个Softmax层</span></div><div class="line">    prob=L.Softmax(fc4)</div><div class="line">    <span class="keyword">return</span> to_proto(prob)</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">write_deploy</span><span class="params">()</span>:</span> </div><div class="line">    <span class="keyword">with</span> open(deploy, <span class="string">'w'</span>) <span class="keyword">as</span> f:</div><div class="line">        f.write(<span class="string">'name:"Lenet"\n'</span>)</div><div class="line">        f.write(<span class="string">'input:"data"\n'</span>)</div><div class="line">        f.write(<span class="string">'input_dim:1\n'</span>)</div><div class="line">        f.write(<span class="string">'input_dim:3\n'</span>)</div><div class="line">        f.write(<span class="string">'input_dim:28\n'</span>)</div><div class="line">        f.write(<span class="string">'input_dim:28\n'</span>)</div><div class="line">        f.write(str(create_deploy()))</div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    write_deploy()</div></pre></td></tr></table></figure></p>
+<p>如果自己修改net，需要修改数据输入：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">layer</span> &#123;</div><div class="line">  <span class="attribute">name</span>: <span class="string">"data"</span></div><div class="line">  <span class="attribute">type</span>: <span class="string">"Input"</span></div><div class="line">  <span class="attribute">top</span>: <span class="string">"data"</span></div><div class="line">  input_param &#123; <span class="attribute">shape</span>: &#123; <span class="attribute">dim</span>: <span class="number">1</span> <span class="attribute">dim</span>: <span class="number">3</span> <span class="attribute">dim</span>: <span class="number">100</span> <span class="attribute">dim</span>: <span class="number">100</span> &#125; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>并且增加一个softmax，对于原来的softmaxwithloss直接换掉就行。</p>
+<h1 id="网络测试"><a href="#网络测试" class="headerlink" title="网络测试"></a>网络测试</h1><p>训练好之后得到模型，实际使用是需要用模型进行预测。这时需要用到deploy文件和caffemodel。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> caffe</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">root=<span class="string">'/home/xxx/'</span>   <span class="comment">#根目录</span></div><div class="line">deploy=root + <span class="string">'mnist/deploy.prototxt'</span>    <span class="comment">#deploy文件</span></div><div class="line">caffe_model=root + <span class="string">'mnist/lenet_iter_9380.caffemodel'</span>   <span class="comment">#训练好的 caffemodel</span></div><div class="line">img=root+<span class="string">'mnist/test/5/00008.png'</span>    <span class="comment">#随机找的一张待测图片</span></div><div class="line">labels_filename = root + <span class="string">'mnist/test/labels.txt'</span>  <span class="comment">#类别名称文件，将数字标签转换回类别名称</span></div><div class="line"></div><div class="line">net = caffe.Net(deploy,caffe_model,caffe.TEST)   <span class="comment">#加载model和network</span></div><div class="line"></div><div class="line"><span class="comment">#图片预处理设置</span></div><div class="line">transformer = caffe.io.Transformer(&#123;<span class="string">'data'</span>: net.blobs[<span class="string">'data'</span>].data.shape&#125;)  <span class="comment">#设定图片的shape格式(1,3,28,28)</span></div><div class="line">transformer.set_transpose(<span class="string">'data'</span>, (<span class="number">2</span>,<span class="number">0</span>,<span class="number">1</span>))    <span class="comment">#改变维度的顺序，由原始图片(28,28,3)变为(3,28,28)</span></div><div class="line"><span class="comment">#transformer.set_mean('data', np.load(mean_file).mean(1).mean(1))    #减去均值，前面训练模型时没有减均值，这儿就不用</span></div><div class="line">transformer.set_raw_scale(<span class="string">'data'</span>, <span class="number">255</span>)    <span class="comment"># 缩放到【0，255】之间</span></div><div class="line">transformer.set_channel_swap(<span class="string">'data'</span>, (<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>))   <span class="comment">#交换通道，将图片由RGB变为BGR</span></div><div class="line"></div><div class="line">im=caffe.io.load_image(img)                   <span class="comment">#加载图片</span></div><div class="line">net.blobs[<span class="string">'data'</span>].data[...] = transformer.preprocess(<span class="string">'data'</span>,im)      <span class="comment">#执行上面设置的图片预处理操作，并将图片载入到blob中</span></div><div class="line"></div><div class="line"><span class="comment">#执行测试</span></div><div class="line">out = net.forward()</div><div class="line"></div><div class="line">labels = np.loadtxt(labels_filename, str, delimiter=<span class="string">'\t'</span>)   <span class="comment">#读取类别名称文件</span></div><div class="line">prob= net.blobs[<span class="string">'Softmax1'</span>].data[<span class="number">0</span>].flatten() <span class="comment">#取出最后一层（Softmax）属于某个类别的概率值，并打印</span></div><div class="line"><span class="keyword">print</span> prob</div><div class="line">order=prob.argsort()[<span class="number">-1</span>]  <span class="comment">#将概率值排序，取出最大值所在的序号 </span></div><div class="line"><span class="keyword">print</span> <span class="string">'the class is:'</span>,labels[order]   <span class="comment">#将该序号转换成对应的类别名称，并打印</span></div></pre></td></tr></table></figure></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>利用python接口，对网络的具体参数能够有更全面的认识和理解。不过也有几点需要注意：</p>
+<ol>
+<li>数据格式的转换<br>caffe的数据blob shape是N<em>C</em>H<em>W，通道数在前。而python图像处理时shape是H</em>W*C，通道数在后。因此需要转换一下。</li>
+<li>图片显示与保存<br>由于没有图形界面，很方便的jupyter notebook不能使用，只好保存图片查看。</li>
+</ol>
+<blockquote>
+<p><a href="http://www.cnblogs.com/denny402/p/5679154.html" target="_blank" rel="external">caffe的python接口学习（2）：生成solver文件</a><br><a href="http://www.cnblogs.com/denny402/p/5685818.html" target="_blank" rel="external">caffe的python接口学习（5）：生成deploy文件</a><br><a href="http://www.cnblogs.com/denny402/p/5685909.html" target="_blank" rel="external">caffe的python接口学习（6）：用训练好的模型（caffemodel）来分类新的图片</a><br><a href="http://christopher5106.github.io/deep/learning/2015/09/04/Deep-learning-tutorial-on-Caffe-Technology.html" target="_blank" rel="external">Deep learning tutorial on Caffe technology : basic commands, Python and C++ code.</a><br><a href="http://nbviewer.jupyter.org/github/BVLC/caffe/blob/master/examples/pascal-multilabel-with-datalayer.ipynb" target="_blank" rel="external">Multilabel classification on PASCAL using python data-layers</a></p>
 </blockquote>
-<h2 id="损失层Loss-Layers"><a href="#损失层Loss-Layers" class="headerlink" title="损失层Loss Layers"></a>损失层Loss Layers</h2><hr>
-<p>损失通过将输出与目标进行比较，并不断优化减小loss。</p>
-<p><strong>Softmax（with loss）</strong></p>
-<ul>
-<li>层类型：SoftmaxWithLoss</li>
-<li><p>示例：</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">	layer &#123;</div><div class="line">	  name: <span class="string">"loss"</span></div><div class="line">	  type: <span class="string">"SoftmaxWithLoss"</span></div><div class="line">	  bottom: <span class="string">"ip1"</span></div><div class="line">	  bottom: <span class="string">"label"</span></div><div class="line">	  top: <span class="string">"loss"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>在概念上等同于softmax layer+多项对数损失层（multinomial logistic loss layer），但提供了更稳定的梯度。softmax只是输出每一类的概率，并没有与label做比较。</p>
-<p><strong>Sum-of-Squares / Euclidean</strong></p>
-<ul>
-<li>层类型：EuclideanLoss<br>这是比较传统的求偏差的方法，$\frac 1 {2N} \sum_{i=1}^N | x^1_i - x^2_i |_2^2$，直接计算欧氏距离。</li>
-</ul>
-<p><strong>Hinge / Margin</strong></p>
-<ul>
-<li>层类型：HingeLoss</li>
-<li><p>参数(HingeLossParameter hinge_loss_param)：</p>
-<ul>
-<li>可选<ul>
-<li>norm [default L1]:应该是正则化方法，目前只有L1、L2。</li>
-</ul>
-</li>
-<li>输入： <ul>
-<li>n <em> c </em> h * w Predictions预测值</li>
-<li>n <em> 1 </em> 1 * 1 Labels标签</li>
-</ul>
-</li>
-<li>输出：1 <em> 1 </em> 1 * 1 Computed Loss</li>
-</ul>
-</li>
-<li><p>示例</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># L1 Norm L1正则</span></div><div class="line">layer &#123;</div><div class="line">  name: <span class="string">"loss"</span></div><div class="line">  type: <span class="string">"HingeLoss"</span></div><div class="line">  bottom: <span class="string">"pred"</span></div><div class="line">  bottom: <span class="string">"label"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># L2 Norm L2正则</span></div><div class="line">layer &#123;</div><div class="line">  name: <span class="string">"loss"</span></div><div class="line">  type: <span class="string">"HingeLoss"</span></div><div class="line">  bottom: <span class="string">"pred"</span></div><div class="line">  bottom: <span class="string">"label"</span></div><div class="line">  top: <span class="string">"loss"</span></div><div class="line">  hinge_loss_param &#123;</div><div class="line">    norm: L2</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><a href="https://en.wikipedia.org/wiki/Hinge_loss" target="_blank" rel="external">Hinge loss</a>主要用于SVM。</p>
-<p><strong>Accuracy</strong></p>
-<ul>
-<li>层类型：Accuracy</li>
-<li><p>示例</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">layer &#123;</div><div class="line">	  name: <span class="string">"accuracy"</span></div><div class="line">	  type: <span class="string">"Accuracy"</span></div><div class="line">	  bottom: <span class="string">"ip2"</span></div><div class="line">	  bottom: <span class="string">"label"</span></div><div class="line">	  top: <span class="string">"accuracy"</span></div><div class="line">	  include &#123;</div><div class="line">		    phase: TEST</div><div class="line">		  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>只有test阶段才有，因此需要加入include参数。它实际上不是损失并且没有后退步骤。</p>
-<h2 id="通用层Common-Layers"><a href="#通用层Common-Layers" class="headerlink" title="通用层Common Layers"></a>通用层Common Layers</h2><hr>
-<p><strong>Inner Product</strong></p>
-<ul>
-<li>层类型：InnerProduct</li>
-<li>参数 (InnerProductParameter inner_product_param)：<ul>
-<li>必须参数<ul>
-<li>num_output (c_o):滤波器数量。</li>
-</ul>
-</li>
-<li>推荐参数<ul>
-<li>weight_filler [default type: ‘constant’ value: 0]：全职初始化方式、值。还可以选择”xavier”算法来进行初始化，也可以设置为”gaussian”。</li>
-</ul>
-</li>
-<li>可选参数<ul>
-<li>bias_filler [default type: ‘constant’ value: 0]：偏置初始化。</li>
-<li>bias_term [default true]: 是否启用偏置项。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>输入：n <em> c_i </em> h_i * w_i</li>
-<li>输出：n <em> c_o </em> 1 * 1</li>
-<li><p>示例：</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">layer &#123;</div><div class="line">	  name: <span class="string">"fc8"</span></div><div class="line">	  type: <span class="string">"InnerProduct"</span></div><div class="line">	  <span class="comment"># learning rate and decay multipliers for the weights</span></div><div class="line">	  param &#123; lr_mult: <span class="number">1</span> decay_mult: <span class="number">1</span> &#125;</div><div class="line">  <span class="comment"># learning rate and decay multipliers for the biases</span></div><div class="line">	  param &#123; lr_mult: <span class="number">2</span> decay_mult: <span class="number">0</span> &#125;</div><div class="line">	  inner_product_param &#123;</div><div class="line">		    num_output: <span class="number">1000</span></div><div class="line">		    weight_filler &#123;</div><div class="line">			      type: <span class="string">"gaussian"</span></div><div class="line">			      std: <span class="number">0.01</span></div><div class="line">			    &#125;</div><div class="line">		    bias_filler &#123;</div><div class="line">			      type: <span class="string">"constant"</span></div><div class="line">			      value: <span class="number">0</span></div><div class="line">			    &#125;</div><div class="line">		  &#125;</div><div class="line">	  bottom: <span class="string">"fc7"</span></div><div class="line">	  top: <span class="string">"fc8"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong>Reshape</strong></p>
-<ul>
-<li>层类型：Reshape</li>
-<li><p>参数 (ReshapeParameter reshape_param)：</p>
-<ul>
-<li>可选参数：<ul>
-<li>shape</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>输入：单独的blob</p>
-</li>
-<li>输出：变形后的blob</li>
-<li><p>示例：</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">layer &#123;</div><div class="line">	    name: <span class="string">"reshape"</span></div><div class="line">	    type: <span class="string">"Reshape"</span></div><div class="line">	    bottom: <span class="string">"input"</span></div><div class="line">	    top: <span class="string">"output"</span></div><div class="line">	    reshape_param &#123;</div><div class="line">		      shape &#123;</div><div class="line">		        dim: <span class="number">0</span>  <span class="comment"># copy the dimension from below</span></div><div class="line">		        dim: <span class="number">2</span></div><div class="line">		        dim: <span class="number">3</span></div><div class="line">		        dim: <span class="number">-1</span> <span class="comment"># infer it from the other dimensions</span></div><div class="line">		      &#125;</div><div class="line">	    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>这一操作不改变数据，只改变维度，也没有在过程中拷贝数据。输出的尺寸有shape参数的值规定，正数是对应的维度，除此外还有两个特殊值：</p>
-<ul>
-<li><strong>0</strong>表示复制底层对应的维度。bottom第一维度值为2，top第一维度也是2。</li>
-<li><strong>-1</strong>表示从其他维度推断。为了保证数据总数不变，可以根据其他维数值计算。</li>
-</ul>
-<p>特别的，当时用参数：<code>reshape_param { shape { dim: 0 dim: -1 } }</code>时，reshape层相当于flatten层，将n <em> c </em> h <em> w的数据变为n </em> (c<em>h</em>w)。</p>
-<p><strong>Concatenation</strong></p>
-<ul>
-<li>层类型： Concat</li>
-<li>参数 (ConcatParameter concat_param)：<ul>
-<li>可选参数<ul>
-<li>axis [default 1]: 0表示沿着数量（n），1表示沿着通道（C）。</li>
-</ul>
-</li>
-<li>输入：n_i <em> c_i </em> h * w 对于每个blob输入，i= 1 到 K。</li>
-<li>输出：<ul>
-<li>当 axis = 0: (n_1 + n_2 + … + n_K) <em> c_1 </em> h * w, 所有的c_i应该相同。</li>
-<li>当 axis = 1: n_1 <em> (c_1 + c_2 + … + c_K) </em> h * w, 所有的n_i 应该相同。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>这个层把多个blob连接为一个blob。</p>
-<hr>
-<p>层的学习暂时到这里。。</p>
 
       
     </div>
@@ -570,6 +456,8 @@ Softmax（with loss）
           
             <a href="/tags/caffe/" rel="tag"># caffe</a>
           
+            <a href="/tags/python/" rel="tag"># python</a>
+          
         </div>
       
 
@@ -577,8 +465,8 @@ Softmax（with loss）
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/07/caffe学习（6）激活层/" rel="next" title="caffe学习（6）激活层">
-                <i class="fa fa-chevron-left"></i> caffe学习（6）激活层
+              <a href="/2017/01/06/pycaffe-interface1/" rel="next" title="Caffe-python interface 学习-网络定义详解">
+                <i class="fa fa-chevron-left"></i> Caffe-python interface 学习-网络定义详解
               </a>
             
           </div>
@@ -586,10 +474,6 @@ Softmax（with loss）
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/07/Google Protocol Buffer 学习/" rel="prev" title="Google Protocol Buffer 学习">
-                Google Protocol Buffer 学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -638,8 +522,8 @@ Softmax（with loss）
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/07/caffe学习（7）损失层、通用层/"
-           data-title="caffe学习（7）损失层、通用层" data-url="https://joyfyan.github.io/2016/11/07/caffe学习（7）损失层、通用层/">
+      <div class="ds-thread" data-thread-key="2017/01/08/pycaffe-interface2/"
+           data-title="Caffe-python interface 学习-网络训练、部署、测试.md" data-url="https://joyfyan.github.io/2017/01/08/pycaffe-interface2/">
       </div>
     
   </div>
@@ -756,7 +640,7 @@ Softmax（with loss）
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#损失层Loss-Layers"><span class="nav-number">1.</span> <span class="nav-text">损失层Loss Layers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通用层Common-Layers"><span class="nav-number">2.</span> <span class="nav-text">通用层Common Layers</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络训练"><span class="nav-number">1.</span> <span class="nav-text">网络训练</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#solver文件生成"><span class="nav-number">1.1.</span> <span class="nav-text">solver文件生成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型训练"><span class="nav-number">1.2.</span> <span class="nav-text">模型训练</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络部署"><span class="nav-number">2.</span> <span class="nav-text">网络部署</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络测试"><span class="nav-number">3.</span> <span class="nav-text">网络测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
