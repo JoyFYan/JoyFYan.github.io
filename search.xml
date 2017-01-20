@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[python小爬虫-糗百]]></title>
+      <url>%2F2017%2F01%2F20%2Fspider-QSBK%2F</url>
+      <content type="text"><![CDATA[序在家没事本来想弄一下pyqt，做一些python下的界面，但是eric装了半天没成功……于是改做爬虫(:3[__]还好网上教程多，参考了一下，大致的框架都比较简单，难的在于针对不同的网页如何写正则表达式。不过这东西写多了应该就掌握方法了。从网上找了一段代码是爬糗百的，由于改版原来的表达式失效了，正好有了一个锻炼的机会。以下是代码： 代码123456789101112131415161718192021222324252627282930313233343536# -*- coding:utf-8 -*-import urllibimport urllib2import repage = 1url = 'http://www.qiushibaike.com/hot/page/' + str(page)user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64)'# 需要加上headers才能访问headers=&#123;'User-Agent' : user_agent&#125;try: request = urllib2.Request(url,headers=headers) response = urllib2.urlopen(request)except urllib2.URLError, e: if hasattr(e,"code"): print e.code if hasattr(e,"reason"): print e.reasoncontent = response.read().decode('utf-8')# 正则表达式target = 'div.*?="author clearfix".*?title="(.*?)".*?div.*?="content".*?&lt;span&gt;(.*?)&lt;/span&gt;.*?&lt;/a&gt;.*?&lt;img src="(.*?)".*?&lt;/div&gt;'pattern = re.compile(target,re.S)items = re.findall(pattern,content)print "done"num=1;lenth=len(items);for item in items: # 判断是否存在图片 haveImg = re.search("pic.qiushibaike.com/system/pictures",item[2]) print str(num),'of',str(lenth) print item[0] # 用户名 print item[1] # 内容 if haveImg: print item[2] # 输出图片链接 num+=1; 效果原始网页：代码与结果： 总结这算是比较简单的抓取，不用登陆就可以了，之后再学学困难的。 Python爬虫实战一之爬取糗事百科段子]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[白色·恐怖·游戏 - 返校]]></title>
       <url>%2F2017%2F01%2F18%2Fdetention%2F</url>
       <content type="text"><![CDATA[恐怖类游戏向来不在我的关注范围之内，但近期的《返校》突然成为了大家关注的热点，steam上好评率达到98%，再加上这是台湾的一款国产游戏，让我产生了一定的好奇。不过我这种没有怎么玩过恐怖类游戏的人，可能很难成功通关，因此选择了看录像流程的方式了解了一下，的确没有让人失望。 离校虽然说名字是《返校》，但整个流程大部分都是为了逃离这个学校，一个怪异、恐怖、充满血与鬼的地方有什么可留恋的呢？可是我们有时的确无法控制自己，在这样氛围笼罩的大环境下，一个人的力量往往是微弱的。学校本应是一个追求真理，渴望自由的思想乌托邦，在当时也无法逃脱管制的命运，游戏中频频出现的眼睛似乎无时无刻都在监视着一切的发生，残肢断臂警告着他人触犯条律的下场。离校，只逃避了一时，更何况对于学生，也无处可去。 白色白，像白鹿项链一样纯洁；白，像白纸飞机一样自由。方苪欣是白色的，苍白的脸，洁白的心。无奈社会更白，容不下一丝色彩。如同在荒芜的雪原，孤独地前行，迷失了自我。 恐怖从游戏上来讲，并没有想象中的那么恐怖，或许是在游戏之外过于恐怖了。当魏仲廷交给方苪欣一份禁书书单后，书单的样子变成了一只手枪，我才感到一丝寒意。也正是这只手枪，给老师判了死刑，让同学被捕入狱。之前对台湾的历史了解的不是很多，搜索之后才发现那时社会的恐怖所在。政党的恐惧导致了社会的恐怖，这似乎也是向来的规律，何时何地都逃不过。还有一句话是“知识越多越反动”，有时想想也确实很有道理。 返校十多年过去了，一切似乎又重归平静，魏仲廷出狱，终于能够再一次返校，却无法继续完成曾经的学业，遇到以前的老师同学。在那里的，只有同样等待着的方苪欣，等待着救赎…… 评故事不长，流程大概三个小时可以完成，除去剧情，在追寻碎片化的记忆过程中，也有很多巧妙的设计，特别是通过录音机调频来进行时间的穿越。另外就是游戏风格，的确很有中国特色，从界面人物的剪纸风，到民间传统鬼怪的融入，让玩家都很亲切。游戏体验中的恐怖感适中，总的来说是一款出色的游戏。 赤烛 返校Steam 返校]]></content>
