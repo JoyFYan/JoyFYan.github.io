@@ -98,7 +98,7 @@
 <meta property="og:description" content="序在家没事本来想弄一下pyqt，做一些python下的界面，但是eric装了半天没成功……于是改做爬虫(:3[__]还好网上教程多，参考了一下，大致的框架都比较简单，难的在于针对不同的网页如何写正则表达式。不过这东西写多了应该就掌握方法了。从网上找了一段代码是爬糗百的，由于改版原来的表达式失效了，正好有了一个锻炼的机会。以下是代码：">
 <meta property="og:image" content="http://img.blog.csdn.net/20170120205745342?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20170120205813827?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2017-01-20T13:05:56.042Z">
+<meta property="og:updated_time" content="2017-01-23T04:10:39.707Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python小爬虫-糗百">
 <meta name="twitter:description" content="序在家没事本来想弄一下pyqt，做一些python下的界面，但是eric装了半天没成功……于是改做爬虫(:3[__]还好网上教程多，参考了一下，大致的框架都比较简单，难的在于针对不同的网页如何写正则表达式。不过这东西写多了应该就掌握方法了。从网上找了一段代码是爬糗百的，由于改版原来的表达式失效了，正好有了一个锻炼的机会。以下是代码：">
@@ -407,7 +407,8 @@
       
 
       
-        <h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><p>在家没事本来想弄一下pyqt，做一些python下的界面，但是eric装了半天没成功……于是改做爬虫(:3[<em>__</em>]<br>还好网上教程多，参考了一下，大致的框架都比较简单，难的在于针对不同的网页如何写正则表达式。不过这东西写多了应该就掌握方法了。从网上找了一段代码是爬糗百的，由于改版原来的表达式失效了，正好有了一个锻炼的机会。以下是代码：<br><a id="more"></a></p>
+        <h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><p>在家没事本来想弄一下pyqt，做一些python下的界面，但是eric装了半天没成功……于是改做爬虫(:3[<em>__</em>]<br>还好网上教程多，参考了一下，大致的框架都比较简单，难的在于针对不同的网页如何写正则表达式。不过这东西写多了应该就掌握方法了。从网上找了一段代码是爬糗百的，由于改版原来的表达式失效了，正好有了一个锻炼的机会。以下是代码：</p>
+<a id="more"></a>
 <hr>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding:utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> urllib</div><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"><span class="keyword">import</span> re</div><div class="line"></div><div class="line">page = <span class="number">1</span></div><div class="line">url = <span class="string">'http://www.qiushibaike.com/hot/page/'</span> + str(page)</div><div class="line">user_agent=<span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'</span></div><div class="line"><span class="comment"># 需要加上headers才能访问</span></div><div class="line">headers=&#123;<span class="string">'User-Agent'</span> : user_agent&#125;</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    request = urllib2.Request(url,headers=headers)</div><div class="line">    response = urllib2.urlopen(request)</div><div class="line"><span class="keyword">except</span> urllib2.URLError, e:</div><div class="line">    <span class="keyword">if</span> hasattr(e,<span class="string">"code"</span>):</div><div class="line">        <span class="keyword">print</span> e.code</div><div class="line">    <span class="keyword">if</span> hasattr(e,<span class="string">"reason"</span>):</div><div class="line">        <span class="keyword">print</span> e.reason</div><div class="line"></div><div class="line">content = response.read().decode(<span class="string">'utf-8'</span>)</div><div class="line"><span class="comment"># 正则表达式</span></div><div class="line">target = <span class="string">'div.*?="author clearfix".*?title="(.*?)".*?div.*?="content".*?&lt;span&gt;(.*?)&lt;/span&gt;.*?&lt;/a&gt;.*?&lt;img src="(.*?)".*?&lt;/div&gt;'</span></div><div class="line">pattern = re.compile(target,re.S)</div><div class="line">items = re.findall(pattern,content)</div><div class="line"><span class="keyword">print</span> <span class="string">"done"</span></div><div class="line">num=<span class="number">1</span>;</div><div class="line">lenth=len(items);</div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> items: </div><div class="line">    <span class="comment"># 判断是否存在图片</span></div><div class="line">    haveImg = re.search(<span class="string">"pic.qiushibaike.com/system/pictures"</span>,item[<span class="number">2</span>])</div><div class="line">    <span class="keyword">print</span> str(num),<span class="string">'of'</span>,str(lenth)</div><div class="line">    <span class="keyword">print</span> item[<span class="number">0</span>] <span class="comment"># 用户名</span></div><div class="line">    <span class="keyword">print</span> item[<span class="number">1</span>] <span class="comment"># 内容</span></div><div class="line">    <span class="keyword">if</span> haveImg:</div><div class="line">        <span class="keyword">print</span> item[<span class="number">2</span>] <span class="comment"># 输出图片链接</span></div><div class="line">    num+=<span class="number">1</span>;</div></pre></td></tr></table></figure>
 <hr>
@@ -460,6 +461,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/23/scrapy/" rel="prev" title="scrapy中遇到的问题与解决">
+                scrapy中遇到的问题与解决 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -554,7 +559,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
