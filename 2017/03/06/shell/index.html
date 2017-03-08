@@ -1,0 +1,1126 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="shell," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/source/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Linux 命令行基础Shell 入门这上面讲的有点太简单了，总结一下备忘。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Udacity Linux 命令行基础 Shell 入门">
+<meta property="og:url" content="https://joyfyan.github.io/2017/03/06/shell/index.html">
+<meta property="og:site_name" content="小一一的小站">
+<meta property="og:description" content="Linux 命令行基础Shell 入门这上面讲的有点太简单了，总结一下备忘。">
+<meta property="og:updated_time" content="2017-03-08T00:57:54.609Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Udacity Linux 命令行基础 Shell 入门">
+<meta name="twitter:description" content="Linux 命令行基础Shell 入门这上面讲的有点太简单了，总结一下备忘。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6354127246722090000',
+      author: '小一一'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://joyfyan.github.io/2017/03/06/shell/"/>
+
+
+
+
+
+  <title> Udacity Linux 命令行基础 Shell 入门 | 小一一的小站 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?59765bbe651ba5fb69dc22dd74eb6ba7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">小一一的小站</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Blog of Yan Joy</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2017/03/06/shell/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Yan Joy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="小一一的小站">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="小一一的小站" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Udacity Linux 命令行基础 Shell 入门
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-06T20:56:25+08:00">
+                2017-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Code/" itemprop="url" rel="index">
+                    <span itemprop="name">Code</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/03/06/shell/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/06/shell/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/06/shell/" class="leancloud_visitors" data-flag-title="Udacity Linux 命令行基础 Shell 入门">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">Visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://cn.udacity.com/course/linux-command-line-basics--ud595" target="_blank" rel="external">Linux 命令行基础<br>Shell 入门</a><br>这上面讲的有点太简单了，总结一下备忘。</p>
+<a id="more"></a>
+<hr>
+<h1 id="Get-into-the-shell"><a href="#Get-into-the-shell" class="headerlink" title="Get into the shell"></a>Get into the shell</h1><h2 id="错误信息"><a href="#错误信息" class="headerlink" title="错误信息"></a>错误信息</h2><p>输入包括单引号’、圆括号(、大括号{<br>输出有<strong>&gt;</strong>（右尖括号），需要补全。<br><code>ctrl+c</code>退出</p>
+<h2 id="简单指令"><a href="#简单指令" class="headerlink" title="简单指令"></a>简单指令</h2><h3 id="目录文件"><a href="#目录文件" class="headerlink" title="目录文件"></a>目录文件</h3><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">ls</span></div></pre></td></tr></table></figure>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl http://udacity.github.io/ud595-shell/stuff.zip -o things.zip</div></pre></td></tr></table></figure>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Ubuntu and Debian users: sudo apt-get install cowsay</div><div class="line">Redhat and CentOS users: sudo yum install cowsay</div><div class="line">OS X users: brew install cowsay</div><div class="line">(This requires the homebrew, a third party package manager for OS X, http://brew.sh/)</div><div class="line">Arch Linux users: sudo pacman -S cowsay</div></pre></td></tr></table></figure>
+<h2 id="更多指令："><a href="#更多指令：" class="headerlink" title="更多指令："></a>更多指令：</h2><ul>
+<li>日期：<code>date</code></li>
+<li>计算器：<code>expr 2 + 2</code></li>
+<li>显示：<code>echo things</code>（显示<code>&#39;</code>需要在前面加上<code>\</code>，即<code>\&#39;</code>）</li>
+<li>操作系统名称：<code>uname</code>、<code>uname -a</code></li>
+<li>服务器名称：<code>hostname</code></li>
+<li>远程服务器ip等信息：<code>host baidu.com</code></li>
+<li>bash 版本：<code>bash --version</code></li>
+<li>历史记录：<code>history</code></li>
+<li>删除：<code>rm xxx</code> python:<code>os.remove(&quot;xxx&quot;)</code></li>
+<li>状态：<code>uptime</code><pre><code>18:41:45 up 2 days,  1:58,  5 users,  load average: 2.01, 1.98, 2.00
+</code></pre>时间、运行时间、用户数量、平均负载</li>
+</ul>
+<h1 id="Shell-commands"><a href="#Shell-commands" class="headerlink" title="Shell commands"></a>Shell commands</h1><h2 id="历史记录"><a href="#历史记录" class="headerlink" title="历史记录"></a>历史记录</h2><ul>
+<li><code>↑</code>：浏览上一条命令，可以多次使用</li>
+<li><code>history</code>：列出所有记录</li>
+<li><code>ctrl+R</code>：搜索历史记录</li>
+</ul>
+<h2 id="解压zip"><a href="#解压zip" class="headerlink" title="解压zip"></a>解压zip</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">unzip</span> <span class="selector-tag">XXX</span><span class="selector-class">.zip</span></div></pre></td></tr></table></figure>
+<h2 id="输出文本到终端"><a href="#输出文本到终端" class="headerlink" title="输出文本到终端"></a>输出文本到终端</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">cat</span> <span class="selector-tag">AAA</span><span class="selector-class">.txt</span> <span class="selector-tag">BBB</span><span class="selector-class">.txt</span></div></pre></td></tr></table></figure>
+<p><code>cat</code> 代表concatenate。<br>可用于读取其他文件作为输入。</p>
+<h2 id="命令补全"><a href="#命令补全" class="headerlink" title="命令补全"></a>命令补全</h2><p><code>Tab</code>键自动补全命令、参数等。</p>
+<h2 id="文本文件信息统计"><a href="#文本文件信息统计" class="headerlink" title="文本文件信息统计"></a>文本文件信息统计</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">wc</span> <span class="selector-tag">XXX</span><span class="selector-class">.txt</span></div></pre></td></tr></table></figure>
+<p>输出行数、字数、字节数</p>
+<h2 id="比较不同"><a href="#比较不同" class="headerlink" title="比较不同"></a>比较不同</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">diff</span> <span class="selector-tag">AAA</span><span class="selector-class">.txt</span> <span class="selector-tag">BBB</span><span class="selector-class">.txt</span></div></pre></td></tr></table></figure>
+<p>对比两个文件的不同点</p>
+<h2 id="指令手册"><a href="#指令手册" class="headerlink" title="指令手册"></a>指令手册</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">man cowsay</span></div></pre></td></tr></table></figure>
+<p>查询某个指令的用法</p>
+<h2 id="显示隐藏文件"><a href="#显示隐藏文件" class="headerlink" title="显示隐藏文件"></a>显示隐藏文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls <span class="_">-a</span></div></pre></td></tr></table></figure>
+<p>默认不显示以<code>.</code>开头的文件</p>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">rm</span> -rf /</div></pre></td></tr></table></figure>
+<p>删除所有文件。。</p>
+<h2 id="程序接管shell"><a href="#程序接管shell" class="headerlink" title="程序接管shell"></a>程序接管shell</h2><p>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping 8.8.8.8</div></pre></td></tr></table></figure></p>
+<p>会使shell被ping接管。按<code>ctrl+C</code>退出。<br>另一种交互程序需要手工输入终止符，<br>如：<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sort</span></div><div class="line">b</div><div class="line">c</div><div class="line"><span class="keyword">a</span></div></pre></td></tr></table></figure></p>
+<p>最后输入<code>ctrl+D</code>（EOF）才会运行排序。</p>
+<h2 id="全屏文件显示、编辑工具"><a href="#全屏文件显示、编辑工具" class="headerlink" title="全屏文件显示、编辑工具"></a>全屏文件显示、编辑工具</h2><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">less</span> XXX.txt</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">nano</span> <span class="selector-tag">XXX</span><span class="selector-class">.txt</span></div><div class="line"><span class="selector-tag">vim</span> <span class="selector-tag">XXX</span><span class="selector-class">.txt</span></div></pre></td></tr></table></figure>
+<h1 id="The-Linux-Filesystem"><a href="#The-Linux-Filesystem" class="headerlink" title="The Linux Filesystem"></a>The Linux Filesystem</h1><h2 id="文件名"><a href="#文件名" class="headerlink" title="文件名"></a>文件名</h2><p>文件和目录都有其名称（”filenames”）<br>Filenames 可以包括任何除了<code>/</code>的字符。<br>当需要写一个包括特殊字符（#!$%&amp;[]等）<br>需要采取引用或转义的形式：</p>
+<ul>
+<li>真实名：<code>Great Name!</code></li>
+<li>引用：`<code>Great Name!</code>`</li>
+<li>转义：<code>Great\ Name\!</code><h2 id="文件系统树"><a href="#文件系统树" class="headerlink" title="文件系统树"></a>文件系统树</h2>不像windows，分区为不同盘符，而是统一在<code>(root)</code>下。<br>文件夹与文件夹之间用<code>/</code>连接（windows用<code>\</code>）。</li>
+</ul>
+<h2 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h2><ul>
+<li>当前路径：<code>pwd</code></li>
+<li>进入目录：<code>cd</code></li>
+</ul>
+<h2 id="绝对路径与相对路径"><a href="#绝对路径与相对路径" class="headerlink" title="绝对路径与相对路径"></a>绝对路径与相对路径</h2><ul>
+<li>绝对路径：从根目录开始</li>
+<li>相对路径：从当前工作目录开始<ul>
+<li><code>.</code>指向当前路径</li>
+<li><code>..</code>指向上一级路径</li>
+</ul>
+</li>
+</ul>
+<h2 id="复制与移动"><a href="#复制与移动" class="headerlink" title="复制与移动"></a>复制与移动</h2><ul>
+<li>移动文件<br><code>mv A B</code><br>可以重命名</li>
+<li>复制文件<br><code>cp A B</code></li>
+</ul>
+<h2 id="新建目录与删除"><a href="#新建目录与删除" class="headerlink" title="新建目录与删除"></a>新建目录与删除</h2><h3 id="新建"><a href="#新建" class="headerlink" title="新建"></a>新建</h3><ul>
+<li>当前路径：<code>mkdir A</code></li>
+<li>绝对路径：<code>mkdir /home/user/A</code><br>###删除</li>
+<li>删除目录：<code>rmdir A</code><br>不能对包含文件的目录删除</li>
+<li>删除目录及文件：<code>rf -r A</code></li>
+</ul>
+<h2 id="Globbing"><a href="#Globbing" class="headerlink" title="Globbing"></a>Globbing</h2><p>通配模式</p>
+<ul>
+<li>包括html的文件：<code>ls *html</code></li>
+<li>大括号中选择：<code>ls app.{css,html}</code></li>
+<li>一个<code>?</code>匹配一个字符：<code>ls bea?.png</code></li>
+<li>匹配<code>[]</code>中其中一个：<code>ls be[aeio]r.png</code></li>
+</ul>
+<p>区别大小写，包括扩展名</p>
+<hr>
+<p>codecademy上面好像也有shell的入门，比这个要好一点。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/shell/" rel="tag"># shell</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/03/tensorflowonwin/" rel="next" title="Tensorflow 在windows下安装">
+                <i class="fa fa-chevron-left"></i> Tensorflow 在windows下安装
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/07/tensorflow/" rel="prev" title="TensorFlow 新手入门">
+                TensorFlow 新手入门 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/06/shell/"
+           data-title="Udacity Linux 命令行基础 Shell 入门" data-url="https://joyfyan.github.io/2017/03/06/shell/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Yan Joy" />
+          <p class="site-author-name" itemprop="name">Yan Joy</p>
+          <p class="site-description motion-element" itemprop="description">Default~</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">52</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/yanjoy" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/yan_joy" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Get-into-the-shell"><span class="nav-number">1.</span> <span class="nav-text">Get into the shell</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#错误信息"><span class="nav-number">1.1.</span> <span class="nav-text">错误信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单指令"><span class="nav-number">1.2.</span> <span class="nav-text">简单指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#目录文件"><span class="nav-number">1.2.1.</span> <span class="nav-text">目录文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载"><span class="nav-number">1.2.2.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.2.3.</span> <span class="nav-text">安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多指令："><span class="nav-number">1.3.</span> <span class="nav-text">更多指令：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-commands"><span class="nav-number">2.</span> <span class="nav-text">Shell commands</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#历史记录"><span class="nav-number">2.1.</span> <span class="nav-text">历史记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解压zip"><span class="nav-number">2.2.</span> <span class="nav-text">解压zip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出文本到终端"><span class="nav-number">2.3.</span> <span class="nav-text">输出文本到终端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令补全"><span class="nav-number">2.4.</span> <span class="nav-text">命令补全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本文件信息统计"><span class="nav-number">2.5.</span> <span class="nav-text">文本文件信息统计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#比较不同"><span class="nav-number">2.6.</span> <span class="nav-text">比较不同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指令手册"><span class="nav-number">2.7.</span> <span class="nav-text">指令手册</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示隐藏文件"><span class="nav-number">2.8.</span> <span class="nav-text">显示隐藏文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除"><span class="nav-number">2.9.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序接管shell"><span class="nav-number">2.10.</span> <span class="nav-text">程序接管shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全屏文件显示、编辑工具"><span class="nav-number">2.11.</span> <span class="nav-text">全屏文件显示、编辑工具</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-Linux-Filesystem"><span class="nav-number">3.</span> <span class="nav-text">The Linux Filesystem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件名"><span class="nav-number">3.1.</span> <span class="nav-text">文件名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件系统树"><span class="nav-number">3.2.</span> <span class="nav-text">文件系统树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目录操作"><span class="nav-number">3.3.</span> <span class="nav-text">目录操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绝对路径与相对路径"><span class="nav-number">3.4.</span> <span class="nav-text">绝对路径与相对路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复制与移动"><span class="nav-number">3.5.</span> <span class="nav-text">复制与移动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建目录与删除"><span class="nav-number">3.6.</span> <span class="nav-text">新建目录与删除</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建"><span class="nav-number">3.6.1.</span> <span class="nav-text">新建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Globbing"><span class="nav-number">3.7.</span> <span class="nav-text">Globbing</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yan Joy</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yanjoy"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz", "owWjRRJ2oBD7Dekc8l1RRctK");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
