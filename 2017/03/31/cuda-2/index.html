@@ -1,0 +1,994 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="cuda," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/source/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="通信方式通信方式主要以课程截图为主……
+Map这是一种一一对应的方式。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cuda 学习 | GPU硬件与并行通信模式">
+<meta property="og:url" content="https://joyfyan.github.io/2017/03/31/cuda-2/index.html">
+<meta property="og:site_name" content="小一一的小站">
+<meta property="og:description" content="通信方式通信方式主要以课程截图为主……
+Map这是一种一一对应的方式。">
+<meta property="og:image" content="http://img.blog.csdn.net/20170331145432089?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170331145523647?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170331145605716?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170331145757163?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170331145942165?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170331150134494?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170331154358420?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170331155215167?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-03-31T08:59:08.337Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cuda 学习 | GPU硬件与并行通信模式">
+<meta name="twitter:description" content="通信方式通信方式主要以课程截图为主……
+Map这是一种一一对应的方式。">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170331145432089?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6354127246722090000',
+      author: '小一一'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://joyfyan.github.io/2017/03/31/cuda-2/"/>
+
+
+
+
+
+  <title> cuda 学习 | GPU硬件与并行通信模式 | 小一一的小站 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?59765bbe651ba5fb69dc22dd74eb6ba7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小一一的小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Blog of Yan Joy</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2017/03/31/cuda-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yan Joy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小一一的小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                cuda 学习 | GPU硬件与并行通信模式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-31T16:32:06+08:00">
+                2017-03-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Code/" itemprop="url" rel="index">
+                    <span itemprop="name">Code</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/31/cuda-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/31/cuda-2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/03/31/cuda-2/" class="leancloud_visitors" data-flag-title="cuda 学习 | GPU硬件与并行通信模式">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<h1 id="通信方式"><a href="#通信方式" class="headerlink" title="通信方式"></a>通信方式</h1><p>通信方式主要以课程截图为主……</p>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p><img src="http://img.blog.csdn.net/20170331145432089?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="map"><br>这是一种一一对应的方式。</p>
+<a id="more"></a>
+<h2 id="Gather"><a href="#Gather" class="headerlink" title="Gather"></a>Gather</h2><p><img src="http://img.blog.csdn.net/20170331145523647?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="gather"><br>多对一的方式。</p>
+<h2 id="Scatter"><a href="#Scatter" class="headerlink" title="Scatter"></a>Scatter</h2><p><img src="http://img.blog.csdn.net/20170331145605716?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="scatter"><br>一对多的方式。</p>
+<h2 id="Stencil"><a href="#Stencil" class="headerlink" title="Stencil"></a>Stencil</h2><p><img src="http://img.blog.csdn.net/20170331145757163?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="stencil"><br>模板，多对多的方式。<br>图中左中为输入，左下为输出，不同颜色为不同线程的读取、输出位置。</p>
+<h2 id="Transpose"><a href="#Transpose" class="headerlink" title="Transpose"></a>Transpose</h2><p><img src="http://img.blog.csdn.net/20170331145942165?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="transpose"><br>转置操作，改变形状、顺序等。<br><img src="http://img.blog.csdn.net/20170331150134494?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="transpose2"><br>进行合理的顺序改变在数据读取速度上会提升速度。</p>
+<hr>
+<h1 id="GPU结构"><a href="#GPU结构" class="headerlink" title="GPU结构"></a>GPU结构</h1><p>从大到小来说，结构为：<br>Kernel -》 Block -》 Thread<br>硬件上GPU有很多流处理器（streaming multiprocessors），GPU给这些sm分配block，同一个sm可能运行多个block。<br>GPU的优势在于多个线程同时工作，但缺点是无法知道这些线程执行的先后顺序。<br>可以确定的有：</p>
+<ol>
+<li>线程同时在同一个SM运行</li>
+<li>所有kernel中的blocks在下个kernel启动前结束</li>
+</ol>
+<h2 id="内存关系"><a href="#内存关系" class="headerlink" title="内存关系"></a>内存关系</h2><p>每个Thread都有自己的local mem。<br>每个Block有sheared mem，其中的Thread均可以访问。声明时需要加上<code>__shared__</code>前缀。<br>global mem可以被不同Block的访问。</p>
+<hr>
+<h1 id="Barrier同步"><a href="#Barrier同步" class="headerlink" title="Barrier同步"></a>Barrier同步</h1><p>为了避免因Thread执行不同步带来的数据存储问题，有时候需要等待所有的Thread都执行结束再继续执行。<br>这时需要在kernel中加入<code>__syncthreads();</code>进行同步。<br>比如在分线程读取同一数组其他位置并修改当前位置时，需要在读取后同步并存入临时变量。在写操作后也要同步。<br>对于两个kernel间可以不加同步，默认存在隐式同步。</p>
+<hr>
+<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>GPU的优化目标是吞吐量，及最大化计算强度（Maximize arithmetic intensity）：<br>$$\frac{\text{math we do}}{\text{memory we access}}$$<br>从分子上，要最大化每个线程上的操作；从分母上，要减小对内存访问的时间。<br>这就要求需要把频繁读取的数据放在更快的memory上。<br>从速度上来说，mem的排序为：<br>local &gt; shared &gt;&gt; global &gt;&gt; host mem<br>这是因为local存在寄存器或L1缓存中。</p>
+<h2 id="Coalesce"><a href="#Coalesce" class="headerlink" title="Coalesce"></a>Coalesce</h2><p><img src="http://img.blog.csdn.net/20170331154358420?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="Coalesce"><br>在读取数据时，GPU对于连续的数据有高效的访问效率。</p>
+<hr>
+<h1 id="atomic-操作"><a href="#atomic-操作" class="headerlink" title="atomic 操作"></a>atomic 操作</h1><p>为了避免内存访问读取冲突，也可以使用cuda中的atomic操作。<br>比如对于相加的操作，可使用：<br><code>atomicAdd(&amp;g[i],1)</code>代替<code>g[i]=g[i]+1</code>。<br>不过这种操作存在局限，只支持部分运算类型和部分数据类型，并且会降低运算速度。</p>
+<hr>
+<h1 id="divergence发散"><a href="#divergence发散" class="headerlink" title="divergence发散"></a>divergence发散</h1><p>发散出现在内核中非顺序的操作，如判断、循环。这会导致不同线程运行的时间明显不同。加入同步会让所有线程完全结束后继续执行，耗费时间较多。</p>
+<hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="http://img.blog.csdn.net/20170331155215167?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="sum"></p>
+<hr>
+<h1 id="homework"><a href="#homework" class="headerlink" title="homework"></a>homework</h1><p>这次作业比上次麻烦点，不过也有很多收获。</p>
+<ol>
+<li>图像处理中统一的行列定义<br>作业里<code>recombineChannels</code>函数是已经给定的，需要从这里得到有关的行列信息。<br>而我一开始定义的<code>gridSize</code>把行列的顺序定义反了。</li>
+<li><p>grid、block、thread的区别<br>官网上有相关的介绍：<a href="http://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#kernels" target="_blank" rel="external">Kernel</a>。<br>另外<a href="http://stackoverflow.com/questions/22776069/value-of-threadidx-x-y-z-blockidx-x-etc-in-cuda" target="_blank" rel="external">Value of threadidx.x (.y, .z), blockidx.x etc. in CUDA</a>也给出了blockDim、gridDim、threadIdx、blockIdx之间的关系。<br>Dim是定值，Idx是变量，一般来说0 &lt;= Idx &lt; Dim = Dim_define(是通过dim3 定义的定值)。<br>为了取得某一维度的线程号，可以使用</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> i = blockIdx .x * blockDim .x + threadIdx .x;</div></pre></td></tr></table></figure>
+</li>
+<li><p>最大化thread以提高速度<br>同样的总线程数运行的速度一样吗？<br>之前我是认为一样的，是因为我觉得不同块（block）间的线程（thread）也是同步执行的，只要<code>&lt;&lt;&lt; numBlocks，threadsPerBlock &gt;&gt;&gt;</code>中两者之积相同即可。但经过实验，发现其实差距很大。<br>在<code>dim3 numBlocks(numCols, numRows)</code>，<code>dim3 threadsPerBlock(1)</code>的情况下，速度大约为58ms；<br>在<code>dim3 numBlocks(numCols, numRows)</code>，<code>dim3 threadsPerBlock(2)</code>的情况下，速度大约为31ms；<br>在<code>dim3 numBlocks(numCols, numRows)</code>，<code>dim3 threadsPerBlock(4)</code>的情况下，速度大约为17ms；<br>在<code>dim3 numBlocks(numCols, numRows)</code>，<code>dim3 threadsPerBlock(4，4)</code>的情况下，速度大约为8ms；<br>在<code>dim3 numBlocks(numCols/4+1, numRows/4+1)</code>，<code>dim3 threadsPerBlock(4，4)</code>的情况下，速度大约为5ms；<br>在<code>dim3 numBlocks(numCols/32+1, numRows/32+1)</code>，<code>dim3 threadsPerBlock(32，32)</code>的情况下，速度大约为1.4ms。<br>由此可见，不同block之间并不是一种完全的并行关系，<strong>加快速度一定要加大thread的数目！</strong><br>在官方的示例中：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span></div><div class="line">&#123; </div><div class="line">	... </div><div class="line">	<span class="comment">// Kernel invocation </span></div><div class="line">	<span class="function">dim3 <span class="title">threadsPerBlock</span><span class="params">(<span class="number">16</span>, <span class="number">16</span>)</span></span>;</div><div class="line">	<span class="function">dim3 <span class="title">numBlocks</span><span class="params">(N / threadsPerBlock.x + <span class="number">1</span>, N / threadsPerBlock.y + <span class="number">1</span>)</span></span>;<span class="comment">//官方没有+1操作</span></div><div class="line">	MatAdd&lt;&lt;&lt;numBlocks, threadsPerBlock&gt;&gt;&gt;(A, B, C);</div><div class="line">	...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>线程数是固定的256（16*16），而块数是可变的，根据数据大小不同而进行变化。既然加大线程可以加快速度，把所有的都用上不就可以了吗？实际上试验中最下面的<code>dim3 threadsPerBlock(32，32)</code>已经达到了目前线程上限1024，速度的确较一开始的58ms快了40倍。<br>当然在图像处理中线程也要注意访问越界的问题，得到线程负责的像素位置之后，先进行判断，越界退出即可：<br><figure class="highlight coq"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (thread_2D_pos.x &gt;= numCols |<span class="type">| thread_2D_pos</span>.y &gt;= numRows)</div><div class="line">    <span class="keyword">return</span>;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/cuda/" rel="tag"># cuda</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/30/cuda-1/" rel="next" title="cuda 并行计算 | GPU 编程模型">
+                <i class="fa fa-chevron-left"></i> cuda 并行计算 | GPU 编程模型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/31/cuda-2/"
+           data-title="cuda 学习 | GPU硬件与并行通信模式" data-url="https://joyfyan.github.io/2017/03/31/cuda-2/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Yan Joy" />
+          <p class="site-author-name" itemprop="name">Yan Joy</p>
+           
+              <p class="site-description motion-element" itemprop="description">Default~</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/yanjoy" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/yan_joy" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#通信方式"><span class="nav-number">1.</span> <span class="nav-text">通信方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">1.1.</span> <span class="nav-text">Map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gather"><span class="nav-number">1.2.</span> <span class="nav-text">Gather</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scatter"><span class="nav-number">1.3.</span> <span class="nav-text">Scatter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stencil"><span class="nav-number">1.4.</span> <span class="nav-text">Stencil</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transpose"><span class="nav-number">1.5.</span> <span class="nav-text">Transpose</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GPU结构"><span class="nav-number">2.</span> <span class="nav-text">GPU结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内存关系"><span class="nav-number">2.1.</span> <span class="nav-text">内存关系</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Barrier同步"><span class="nav-number">3.</span> <span class="nav-text">Barrier同步</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优化"><span class="nav-number">4.</span> <span class="nav-text">优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Coalesce"><span class="nav-number">4.1.</span> <span class="nav-text">Coalesce</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#atomic-操作"><span class="nav-number">5.</span> <span class="nav-text">atomic 操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#divergence发散"><span class="nav-number">6.</span> <span class="nav-text">divergence发散</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#homework"><span class="nav-number">8.</span> <span class="nav-text">homework</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yan Joy</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yanjoy"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz", "owWjRRJ2oBD7Dekc8l1RRctK");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+</body>
+</html>
