@@ -114,8 +114,8 @@
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: '6354127246722090000',
-      author: '小一一'
+      userId: 'undefined',
+      author: 'Author'
     },
     algolia: {
       applicationID: '',
@@ -286,6 +286,536 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/11/08/caffe学习（9）LeNet在Caffe上的使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yan Joy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小一一的小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/08/caffe学习（9）LeNet在Caffe上的使用/" itemprop="url">
+                  caffe学习（9）LeNet在Caffe上的使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-08T15:57:00+08:00">
+                2016-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/11/08/caffe学习（9）LeNet在Caffe上的使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/08/caffe学习（9）LeNet在Caffe上的使用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/11/08/caffe学习（9）LeNet在Caffe上的使用/" class="leancloud_visitors" data-flag-title="caffe学习（9）LeNet在Caffe上的使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          使用官网例程训练LeNet。
+
+Training LeNet on MNIST with Caffe
+
+
+准备数据Caffe程序的运行要注意需命令行要在Caffe的根目录下。
+cd $CAFFE_ROOT
+./data/mnist/get_mnist.sh
+./examples/mnist/create_mnist.sh
+依次运行，会在caffe\examples\mnist下得到两个目录mnist_train_lmdb, 和 mnist_test_lmdb，作为训练和测试集。
+
+定义MNIST网络Caffe上的LeNet并不是传统的LeNet-5，在参数上还是有所不同的。以\caffe\examples\mnist\lenet_train_test.prototxt 为例（本地文件与官网上的教程也有所区别），介绍一下如何定义网络。首先是定义网络名称：1name: "LeNet"
+数据层利用我们已经生成的MNIST数据，把数据输入到网络：12345678910111213141516171819202122232425262728293031323334layer &#123;  na
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/11/08/caffe学习（9）LeNet在Caffe上的使用/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/11/08/caffe学习（8）Solver 配置详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yan Joy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小一一的小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/08/caffe学习（8）Solver 配置详解/" itemprop="url">
+                  caffe学习（8）Solver 配置详解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-08T09:45:00+08:00">
+                2016-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/11/08/caffe学习（8）Solver 配置详解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/08/caffe学习（8）Solver 配置详解/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/11/08/caffe学习（8）Solver 配置详解/" class="leancloud_visitors" data-flag-title="caffe学习（8）Solver 配置详解">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Solver是求解学习模型的核心配置文件，网络确定后，solver就决定了学习的效果。本文结合caffe.proto和网上资料，对solver配置进行学习。
+
+SolverCaffe学习系列(7)：solver及其配置，denny402
+
+
+Solver在caffe中的定义通常的solver文件与net文件相互关联，同样的net我们往往使用不同的solver尝试得到最好的效果，其运行代码为：
+caffe train --solver=*_slover.prototxt
+关于solver的一切，都在caffe.proto文件中message SolverParameter 这一部分。
+网络文件源12345678910// Proto filename for the train net, possibly combined with one or more// test nets.optional string net = 24;// Inline train net param, possibly combined with one or more test nets.optional
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/11/08/caffe学习（8）Solver 配置详解/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/11/07/Google Protocol Buffer 学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yan Joy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小一一的小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/07/Google Protocol Buffer 学习/" itemprop="url">
+                  Google Protocol Buffer 学习
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-07T20:27:00+08:00">
+                2016-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/11/07/Google Protocol Buffer 学习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/07/Google Protocol Buffer 学习/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/11/07/Google Protocol Buffer 学习/" class="leancloud_visitors" data-flag-title="Google Protocol Buffer 学习">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Caffe上有很多使用了Google Protocol Buffer的东西，从网上来看，这“是一种轻便高效的结构化数据存储格式，可以用于结构化数据串行化，很适合做数据存储或 RPC 数据交换格式。它可用于通讯协议、数据存储等领域的语言无关、平台无关、可扩展的序列化结构数据格式”。作为caffe模型定义的数据格式，看懂caffe.proto对caffe的理解会有很大帮助。
+
+Google ProtobufGoogle Protocol Buffer 的使用和原理，刘 明
+
+
+小例子我们首先要在.proto文件中定义协议缓冲区消息类型（protocol buffer message types），来指定要序列化的信息的结构。下面是官网的一个小例子，定义了一个人的信息：
+message Person {
+  required string name = 1;
+  required int32 id = 2;
+  optional string email = 3;
+
+  enum PhoneType {
+    MOBILE = 0;
+    HOME = 1;
+    WORK = 2;
+
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/11/07/Google Protocol Buffer 学习/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/11/07/caffe学习（7）损失层、通用层/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -363,7 +893,8 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/11/07/caffe学习（7）损失层、通用层/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/07/caffe学习（7）损失层、通用层/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/07/caffe学习（7）损失层、通用层/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -546,7 +1077,8 @@ Hinge / Margin
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/11/07/caffe学习（6）激活层/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/07/caffe学习（6）激活层/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/07/caffe学习（6）激活层/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -725,7 +1257,8 @@ negative_slope [default 0]: 用来指定负斜率部分的因子$\nu$。完整�
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/11/06/caffe学习（5）视觉层/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/06/caffe学习（5）视觉层/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/06/caffe学习（5）视觉层/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -903,7 +1436,8 @@ num_outpu
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/11/06/caffe学习（4）数据层/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/06/caffe学习（4）数据层/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/06/caffe学习（4）数据层/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1072,7 +1606,8 @@ Data：Ins and OutsCaffe学习系列(2)：数据层及参数，denny402
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/11/06/caffe学习（3）接口/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/06/caffe学习（3）接口/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/06/caffe学习（3）接口/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1176,516 +1711,6 @@ time：显示程序执行时间
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/11/06/caffe学习（2）前后传播，loss，solver/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yan Joy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小一一的小站">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/06/caffe学习（2）前后传播，loss，solver/" itemprop="url">
-                  caffe学习（2）前后传播，loss，solver
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-06T09:38:00+08:00">
-                2016-11-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ML/" itemprop="url" rel="index">
-                    <span itemprop="name">ML</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/11/06/caffe学习（2）前后传播，loss，solver/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/06/caffe学习（2）前后传播，loss，solver/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/11/06/caffe学习（2）前后传播，loss，solver/" class="leancloud_visitors" data-flag-title="caffe学习（2）前后传播，loss，solver">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          向前和向后传播
-Forward and Backward
-
-前后传播是Net的重要组成，如下图所示：
-向前Forward通过给定的参数计算每层的值，就像函数一样top=f(bottom)。上图表示数据通过内积层输出，再由softmax给出损失。
-向后Backward向后是计算loss的梯度，每层梯度通过自动微分来计算整个模型梯度，即反向传播。从这个图上可以看出，由loss开始，通过链式法则，不断求出结果对各层的导数。Net::Forward()和Net::Backward()是针对网络，Layer::Forward()和Layer::Backward()是针对每一层。同时也可以设置CPU、GPU模式。过程大概是：solver调用forward计算输出和loss，再生成梯度，并尝试更新权重减小loss。
-损失Loss
-Loss
-Loss使loss变小，是学习中的一个目标。如上所说，loss是由forward计算而出。1234567layer &#123;  name: "loss"  type: "SoftmaxWithLoss"  bottom: "pred"  bottom: "la
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/11/06/caffe学习（2）前后传播，loss，solver/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/11/05/caffe学习（1）caffe模型三种结构/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yan Joy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小一一的小站">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/05/caffe学习（1）caffe模型三种结构/" itemprop="url">
-                  caffe学习（1）caffe模型三种结构
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-05T21:49:00+08:00">
-                2016-11-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ML/" itemprop="url" rel="index">
-                    <span itemprop="name">ML</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/11/05/caffe学习（1）caffe模型三种结构/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/05/caffe学习（1）caffe模型三种结构/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/11/05/caffe学习（1）caffe模型三种结构/" class="leancloud_visitors" data-flag-title="caffe学习（1）caffe模型三种结构">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-                  caffe模型三种结构  自己写的然而CSDN出bug了，绑定三方账户原来的博客无法编辑，只好转发过来    Blobs, Layers, and Nets: anatomy of a Caffe modelBlob：存储和传递（communication）blob是数据存储和传输的包装，并且还在底层提供CPU和GPU之间的同步能力。Blob提供了保存数据的统一存储器接口； 例如图像批次，模型参数和用于优化的导数。 在数学上，blob是以C连续方式（C-contiguous fashion）存储的N维数组。 关于C连续方式，stackoverflow有一个解释。该方式主要与Fortran和Matlab相反，是一种以行为主顺序（Row-major order）的存储方式，简单的说就是把一行存完，再存下一行，把第一个通道（channel）的所有行写完后写完再写下一个通道。例如对一批（batches）图像，用4维blob存储，表示为number N（数据批量大小） x channel K（通道、维度特征） x height H （高）x width W（宽），对于索引 (n,
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/11/05/caffe学习（1）caffe模型三种结构/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/10/09/caffe-e8-bf-90-e8-a1-8cmnist-example/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yan Joy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小一一的小站">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/09/caffe-e8-bf-90-e8-a1-8cmnist-example/" itemprop="url">
-                  Caffe运行MNIST | example
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-10-09T19:42:17+08:00">
-                2016-10-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ML/" itemprop="url" rel="index">
-                    <span itemprop="name">ML</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/10/09/caffe-e8-bf-90-e8-a1-8cmnist-example/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/09/caffe-e8-bf-90-e8-a1-8cmnist-example/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/10/09/caffe-e8-bf-90-e8-a1-8cmnist-example/" class="leancloud_visitors" data-flag-title="Caffe运行MNIST | example">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          参考教程测试一下caffe。
-1.获取数据包。
-cd $CAFFE_ROOT
-./data/mnist/get_mnist.sh
-./examples/mnist/create_mnist.sh
-官网上是这样的，caffe_root是根目录，看网上有人说必须在根目录下运行，否则会出错，具体没有验证。。但是windows平台下应该是没有wget的，需要自己下载一下。得到四个文件，测试与训练，样本与标签。
-第二句是个坑，直接执行的话会提示找不到convert_mnist_data.bin（好像是这个）。这个环境还是linux下的，windows下编译出来的是exe，和caffe在一起。用法是
- convert_mnist_data [FLAGS] input_image_file input_label_file output_db_file执行两次将mnist date转化为可用的lmdb格式的文件。并将新生成的2个文件mnist-train-lmdb 和 mnist-test-lmdb放于create_mnist.sh同目录下。
-2.测试
-参数文件用的是
-./build/tools/c
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/10/09/caffe-e8-bf-90-e8-a1-8cmnist-example/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1735,7 +1760,7 @@ cd $CAFFE_ROOT
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">61</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1757,7 +1782,7 @@ cd $CAFFE_ROOT
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -1926,36 +1951,16 @@ cd $CAFFE_ROOT
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"yanjoy"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
 
   
+
     
-      
-      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
+      <script id="dsq-count-scr" src="https://yanjoyblog.disqus.com/count.js" async></script>
     
+
     
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+
   
-
-
-
 
 
 

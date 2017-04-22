@@ -113,7 +113,7 @@ Caffe学习系列(14)：初识数据可视化Python and/or MATLAB Caffe (optiona
 <meta property="og:image" content="http://img.blog.csdn.net/20161109165215548">
 <meta property="og:image" content="http://img.blog.csdn.net/20161109170612319">
 <meta property="og:image" content="http://img.blog.csdn.net/20161109170554412">
-<meta property="og:updated_time" content="2016-11-18T07:31:20.174Z">
+<meta property="og:updated_time" content="2016-11-18T07:31:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="caffe学习（11）python的数据可视化">
 <meta name="twitter:description" content="caffe本身没有可视化的工具，一般需要配合python或matlab实现数据的可视化，在实践本文之前要先把caffe python编译好。另外有的服务器只有shell，没有可视化的界面，只好先把每一层的数据先保存成图片格式，再进行显示。
@@ -135,8 +135,8 @@ Caffe学习系列(14)：初识数据可视化Python and/or MATLAB Caffe (optiona
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: '6354127246722090000',
-      author: '小一一'
+      userId: 'undefined',
+      author: 'Author'
     },
     algolia: {
       applicationID: '',
@@ -379,7 +379,8 @@ Caffe学习系列(14)：初识数据可视化Python and/or MATLAB Caffe (optiona
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/11/09/caffe学习（11）python的数据可视化/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/09/caffe学习（11）python的数据可视化/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/09/caffe学习（11）python的数据可视化/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -544,8 +545,11 @@ weight-blobs: (16, 3, 5, 5)
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/09/caffe学习（11）python的数据可视化/"
-           data-title="caffe学习（11）python的数据可视化" data-url="https://joyfyan.github.io/2016/11/09/caffe学习（11）python的数据可视化/">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
       </div>
     
   </div>
@@ -594,7 +598,7 @@ weight-blobs: (16, 3, 5, 5)
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">61</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -616,7 +620,7 @@ weight-blobs: (16, 3, 5, 5)
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -805,36 +809,28 @@ weight-blobs: (16, 3, 5, 5)
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"yanjoy"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
 
   
+
     
-      
-      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
+      <script id="dsq-count-scr" src="https://yanjoyblog.disqus.com/count.js" async></script>
     
+
     
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://joyfyan.github.io/2016/11/09/caffe学习（11）python的数据可视化/';
+          this.page.identifier = '2016/11/09/caffe学习（11）python的数据可视化/';
+          this.page.title = 'caffe学习（11）python的数据可视化';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://yanjoyblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
   
-
-
-
 
 
 

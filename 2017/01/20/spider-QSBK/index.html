@@ -101,7 +101,7 @@
 <meta property="og:description" content="序在家没事本来想弄一下pyqt，做一些python下的界面，但是eric装了半天没成功……于是改做爬虫(:3[__]还好网上教程多，参考了一下，大致的框架都比较简单，难的在于针对不同的网页如何写正则表达式。不过这东西写多了应该就掌握方法了。从网上找了一段代码是爬糗百的，由于改版原来的表达式失效了，正好有了一个锻炼的机会。以下是代码：">
 <meta property="og:image" content="http://img.blog.csdn.net/20170120205745342?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20170120205813827?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2017-01-23T04:10:39.707Z">
+<meta property="og:updated_time" content="2017-01-23T04:10:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python小爬虫-糗百">
 <meta name="twitter:description" content="序在家没事本来想弄一下pyqt，做一些python下的界面，但是eric装了半天没成功……于是改做爬虫(:3[__]还好网上教程多，参考了一下，大致的框架都比较简单，难的在于针对不同的网页如何写正则表达式。不过这东西写多了应该就掌握方法了。从网上找了一段代码是爬糗百的，由于改版原来的表达式失效了，正好有了一个锻炼的机会。以下是代码：">
@@ -118,8 +118,8 @@
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: '6354127246722090000',
-      author: '小一一'
+      userId: 'undefined',
+      author: 'Author'
     },
     algolia: {
       applicationID: '',
@@ -362,7 +362,8 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/01/20/spider-QSBK/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/20/spider-QSBK/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/01/20/spider-QSBK/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -513,8 +514,11 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/01/20/spider-QSBK/"
-           data-title="python小爬虫-糗百" data-url="https://joyfyan.github.io/2017/01/20/spider-QSBK/">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
       </div>
     
   </div>
@@ -563,7 +567,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">61</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -585,7 +589,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -774,36 +778,28 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"yanjoy"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
 
   
+
     
-      
-      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
+      <script id="dsq-count-scr" src="https://yanjoyblog.disqus.com/count.js" async></script>
     
+
     
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://joyfyan.github.io/2017/01/20/spider-QSBK/';
+          this.page.identifier = '2017/01/20/spider-QSBK/';
+          this.page.title = 'python小爬虫-糗百';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://yanjoyblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
   
-
-
-
 
 
 

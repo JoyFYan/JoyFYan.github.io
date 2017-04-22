@@ -104,7 +104,7 @@
 <meta property="og:image" content="https://www.zhihu.com/equation?tex=L%3D%5Cfrac%7B1%7D%7BN%7D%5Csum_i%5Csum_%7Bj%5Cnot%3Dy_i%7D%5Bmax%280%2Cf%28x_i%3BW%29_j-f%28x_i%3BW%29_%7By_i%7D%2B%5CDelta%29%5D%2B%5Clambda+%5Csum_k+%5Csum_l+W%5E2_%7Bk%2Cl%7D">
 <meta property="og:image" content="https://zhihu.com/equation?tex=f_j%28z%29=%5Cfrac%7Be%5E%7Bz_j%7D%7D%7B%5Csum_ke%5E%7Bz_k%7D%7D">
 <meta property="og:image" content="https://zhihu.com/equation?tex=%5Cdisplaystyle%20Li=-log%28%5Cfrac%7Be%5E%7Bf_%7By_i%7D%7D%7D%7B%5Csum_je%5E%7Bf_j%7D%7D%29">
-<meta property="og:updated_time" content="2016-12-21T09:26:25.405Z">
+<meta property="og:updated_time" content="2016-12-21T09:26:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cs231n笔记1">
 <meta name="twitter:description" content="斯坦福深度学习与机器视觉课程cs231n，感觉挺不错的，顺便记下来一些零碎的点，不过具体内容还是要参考笔记、视频。不过网易云课堂的视频还是有些问题的。">
@@ -121,8 +121,8 @@
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: '6354127246722090000',
-      author: '小一一'
+      userId: 'undefined',
+      author: 'Author'
     },
     algolia: {
       applicationID: '',
@@ -365,7 +365,8 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/12/21/cs231n笔记1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/21/cs231n笔记1/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/12/21/cs231n笔记1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -613,8 +614,11 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/21/cs231n笔记1/"
-           data-title="cs231n笔记1" data-url="https://joyfyan.github.io/2016/12/21/cs231n笔记1/">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
       </div>
     
   </div>
@@ -663,7 +667,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">61</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -685,7 +689,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -874,36 +878,28 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"yanjoy"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
 
   
+
     
-      
-      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
+      <script id="dsq-count-scr" src="https://yanjoyblog.disqus.com/count.js" async></script>
     
+
     
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://joyfyan.github.io/2016/12/21/cs231n笔记1/';
+          this.page.identifier = '2016/12/21/cs231n笔记1/';
+          this.page.title = 'cs231n笔记1';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://yanjoyblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
   
-
-
-
 
 
 

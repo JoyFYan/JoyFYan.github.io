@@ -104,7 +104,7 @@
 为了废物利用（？）还是随便建个小站玩玩吧。
 虽然说wp是个很傻嗨的东西，但现在还没有完全搞定。。">
 <meta property="og:image" content="http://p.ishowx.com/uploads/allimg/160728/47-160HPZG6.jpg">
-<meta property="og:updated_time" content="2016-11-18T07:58:20.330Z">
+<meta property="og:updated_time" content="2016-11-18T07:58:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树莓派搭建wordpress|心路历程（雾">
 <meta name="twitter:description" content="项目这几个月都没有动，两个树莓派就放那里不断吃灰= =
@@ -123,8 +123,8 @@
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: '6354127246722090000',
-      author: '小一一'
+      userId: 'undefined',
+      author: 'Author'
     },
     algolia: {
       applicationID: '',
@@ -367,7 +367,8 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/08/30/e6-a0-91-e8-8e-93-e6-b4-be-e6-90-ad-e5-bb-bawordpress-e5-bf-83-e8-b7-af-e5-8e-86-e7-a8-8b-ef-bc-88-e9-9b-be/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/30/e6-a0-91-e8-8e-93-e6-b4-be-e6-90-ad-e5-bb-bawordpress-e5-bf-83-e8-b7-af-e5-8e-86-e7-a8-8b-ef-bc-88-e9-9b-be/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/08/30/e6-a0-91-e8-8e-93-e6-b4-be-e6-90-ad-e5-bb-bawordpress-e5-bf-83-e8-b7-af-e5-8e-86-e7-a8-8b-ef-bc-88-e9-9b-be/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -536,8 +537,11 @@ $ sudo nano /var/www/index.php
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/08/30/e6-a0-91-e8-8e-93-e6-b4-be-e6-90-ad-e5-bb-bawordpress-e5-bf-83-e8-b7-af-e5-8e-86-e7-a8-8b-ef-bc-88-e9-9b-be/"
-           data-title="树莓派搭建wordpress|心路历程（雾" data-url="https://joyfyan.github.io/2016/08/30/e6-a0-91-e8-8e-93-e6-b4-be-e6-90-ad-e5-bb-bawordpress-e5-bf-83-e8-b7-af-e5-8e-86-e7-a8-8b-ef-bc-88-e9-9b-be/">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
       </div>
     
   </div>
@@ -577,7 +581,7 @@ $ sudo nano /var/www/index.php
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">61</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -599,7 +603,7 @@ $ sudo nano /var/www/index.php
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -772,36 +776,28 @@ $ sudo nano /var/www/index.php
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"yanjoy"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
 
   
+
     
-      
-      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
+      <script id="dsq-count-scr" src="https://yanjoyblog.disqus.com/count.js" async></script>
     
+
     
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://joyfyan.github.io/2016/08/30/e6-a0-91-e8-8e-93-e6-b4-be-e6-90-ad-e5-bb-bawordpress-e5-bf-83-e8-b7-af-e5-8e-86-e7-a8-8b-ef-bc-88-e9-9b-be/';
+          this.page.identifier = '2016/08/30/e6-a0-91-e8-8e-93-e6-b4-be-e6-90-ad-e5-bb-bawordpress-e5-bf-83-e8-b7-af-e5-8e-86-e7-a8-8b-ef-bc-88-e9-9b-be/';
+          this.page.title = '树莓派搭建wordpress|心路历程（雾';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://yanjoyblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
   
-
-
-
 
 
 

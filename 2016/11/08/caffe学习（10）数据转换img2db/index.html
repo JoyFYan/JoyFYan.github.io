@@ -109,7 +109,7 @@ Caffe学习系列(11)：图像数据转换成db（leveldb/lmdb)文件
 
 
 convert_imageset在caffe中，提供了一个用于格式转换的文件：convert_imageset.cpp，存放在根目录下的tools文件夹下。">
-<meta property="og:updated_time" content="2016-11-18T07:30:48.656Z">
+<meta property="og:updated_time" content="2016-11-18T07:30:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="caffe学习（10）数据转换img2db">
 <meta name="twitter:description" content="在处理图像时，我们已拥有的图像往往是常用的jpg、png格式，但在caffe中，输入的数据类型常是lmdb或leveldb，因此我们需要对原始数据进行转换。
@@ -130,8 +130,8 @@ convert_imageset在caffe中，提供了一个用于格式转换的文件：conve
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: '6354127246722090000',
-      author: '小一一'
+      userId: 'undefined',
+      author: 'Author'
     },
     algolia: {
       applicationID: '',
@@ -374,7 +374,8 @@ convert_imageset在caffe中，提供了一个用于格式转换的文件：conve
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2016/11/08/caffe学习（10）数据转换img2db/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/08/caffe学习（10）数据转换img2db/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/11/08/caffe学习（10）数据转换img2db/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -567,8 +568,11 @@ fish-bike.jpg 2
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/08/caffe学习（10）数据转换img2db/"
-           data-title="caffe学习（10）数据转换img2db" data-url="https://joyfyan.github.io/2016/11/08/caffe学习（10）数据转换img2db/">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
       </div>
     
   </div>
@@ -617,7 +621,7 @@ fish-bike.jpg 2
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">61</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -639,7 +643,7 @@ fish-bike.jpg 2
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -828,36 +832,28 @@ fish-bike.jpg 2
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"yanjoy"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
 
   
+
     
-      
-      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
+      <script id="dsq-count-scr" src="https://yanjoyblog.disqus.com/count.js" async></script>
     
+
     
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://joyfyan.github.io/2016/11/08/caffe学习（10）数据转换img2db/';
+          this.page.identifier = '2016/11/08/caffe学习（10）数据转换img2db/';
+          this.page.title = 'caffe学习（10）数据转换img2db';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://yanjoyblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
   
-
-
-
 
 
 
