@@ -1,0 +1,1024 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="论文,GAN," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/source/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="如果说新手如何快速了解GAN，那么这篇论文tutorial应该会被大家推荐。首先作者牛，Ian Goodfellow就是GAN之父；其次文章详细，不仅有技术，也有背景、思想、技巧。我也同样是一名GAN新手，读了之后理解的并不一定很准确，也希望和大家多交流。
+
+NIPS 2016 Tutorial: Generative Adversarial Networks">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NIPS 2016 Tutorial- Generative Adversarial Networks GAN简介">
+<meta property="og:url" content="https://joyfyan.github.io/2017/04/21/nips2016gan/index.html">
+<meta property="og:site_name" content="小一一的小站">
+<meta property="og:description" content="如果说新手如何快速了解GAN，那么这篇论文tutorial应该会被大家推荐。首先作者牛，Ian Goodfellow就是GAN之父；其次文章详细，不仅有技术，也有背景、思想、技巧。我也同样是一名GAN新手，读了之后理解的并不一定很准确，也希望和大家多交流。
+
+NIPS 2016 Tutorial: Generative Adversarial Networks">
+<meta property="og:image" content="http://img.blog.csdn.net/20170420225708229?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170420231042563?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170421142737130">
+<meta property="og:image" content="http://img.blog.csdn.net/20170421143049915">
+<meta property="og:image" content="http://img.blog.csdn.net/20170421143201150">
+<meta property="og:image" content="http://img.blog.csdn.net/20170421145425124?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170421151256411?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170421151707166?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170421155044294?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-04-22T06:06:14.078Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NIPS 2016 Tutorial- Generative Adversarial Networks GAN简介">
+<meta name="twitter:description" content="如果说新手如何快速了解GAN，那么这篇论文tutorial应该会被大家推荐。首先作者牛，Ian Goodfellow就是GAN之父；其次文章详细，不仅有技术，也有背景、思想、技巧。我也同样是一名GAN新手，读了之后理解的并不一定很准确，也希望和大家多交流。
+
+NIPS 2016 Tutorial: Generative Adversarial Networks">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170420225708229?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://joyfyan.github.io/2017/04/21/nips2016gan/"/>
+
+
+
+
+
+  <title> NIPS 2016 Tutorial- Generative Adversarial Networks GAN简介 | 小一一的小站 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?59765bbe651ba5fb69dc22dd74eb6ba7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小一一的小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Blog of Yan Joy</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2017/04/21/nips2016gan/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yan Joy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小一一的小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                NIPS 2016 Tutorial- Generative Adversarial Networks GAN简介
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-21T15:59:47+08:00">
+                2017-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/21/nips2016gan/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/04/21/nips2016gan/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/04/21/nips2016gan/" class="leancloud_visitors" data-flag-title="NIPS 2016 Tutorial- Generative Adversarial Networks GAN简介">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>如果说新手如何快速了解GAN，那么这篇论文tutorial应该会被大家推荐。首先作者牛，Ian Goodfellow就是GAN之父；其次文章详细，不仅有技术，也有背景、思想、技巧。我也同样是一名GAN新手，读了之后理解的并不一定很准确，也希望和大家多交流。</p>
+<blockquote>
+<p><a href="https://arxiv.org/abs/1701.00160" target="_blank" rel="external">NIPS 2016 Tutorial: Generative Adversarial Networks</a></p>
+</blockquote>
+<a id="more"></a>
+<h1 id="为什么要学习GAN"><a href="#为什么要学习GAN" class="headerlink" title="为什么要学习GAN"></a>为什么要学习GAN</h1><hr>
+<p>第一部分首先解答了why，总结来说，有以下几点：</p>
+<ul>
+<li>生成模型是对我们表达高维概率分布的考验</li>
+<li>生成模型可以通过几种方式与强化学习相结合（包括model-based、model-free）</li>
+<li>时序生成模型可以预测未来</li>
+<li>能够在虚拟环境中学习，并应用到真实环境</li>
+<li>可以使用缺失数据进行训练，并对缺失数据进行预测</li>
+<li>处理多模态输出（单一输入对应不同正确输出）</li>
+<li>许多任务本质上需要从一些分布中现实地生成样本</li>
+</ul>
+<p>可以说，这是能让计算机进行自我创作的一种途径。在过去的几年中，我们一直去教给计算机很多知识，比如这是一只狗，那是一只猫，计算机也很听话的记住了这些知识。如今我们向计算机提出这个问题：狗是什么样的，计算机能够解答吗？其实之前也有人尝试过，用反卷积的方法，恢复出狗的样子，但是效果并不好，一股抽象派画风，毕竟没有经过专门的训练。</p>
+<p>GAN在擅长的领域：</p>
+<ul>
+<li>超分辨率</li>
+<li>艺术创作</li>
+<li>Image-to-image translation</li>
+</ul>
+<p>超分辨率重建是图像复原的全新手段。这让我想起了16年光电设计，据说就有队采用这种方法，搬台电脑跑很长时间。从光学上恢复，就要考虑镜头啊、点扩散函数啊之类的，而深度学习的超分辨率，是需要靠计算机自己脑补的。<br><img src="http://img.blog.csdn.net/20170420225708229?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="srgan"><br>艺术创作好说，风格迁移技术目前也比较成熟了。<br>最后一个大家可能还是比较陌生的，这是一个类似于神笔马良的工具，通过简单的简笔画，就能生成较为复杂的实物图片。之前网上也流行过一阵，现在一时找不到链接了。。</p>
+<h1 id="GAN如何工作？"><a href="#GAN如何工作？" class="headerlink" title="GAN如何工作？"></a>GAN如何工作？</h1><hr>
+<p>如果详细地讲，那会很复杂，特别是概率、损失来看。不过我不会着重讲这些，一个是因为难于理解，另一个是因为我也怕讲错了= =</p>
+<p>还是拿Goodfellow的比喻吧：G是一个生产假币的队伍，想尽办法让假币无法被识别出来；D是警察，想尽办法查出假币。双方不断在竞争，不断学习，从而达到生成器可以以假乱真的效果。这些也在我之前写的博客中有介绍： <a href="http://blog.csdn.net/yan_joy/article/details/56299831" target="_blank" rel="external">Generative Adversarial Nets</a>。GAN可以被看作是一个强化学习，但又有所区别。生成器并没有直接接触到训练数据，所有有关训练数据的信息只是通过判别器学到的。</p>
+<p>稍微复杂一点说，我们所做的生成器$p<em>{model}$，是需要学习模型的概率分布$p</em>{data}$，如果我们做得很完美很精确，那么我们完全可以恢复出$p<em>{data}$。但我们无法访问$p</em>{data}$本身，只有$p_{data}$采样出来的$m$个样本。如何用部分去尽可能得恢复全部，是我们所需要思考的。我们不可能把世界上的所有猫都看个遍，但我们仍有分辨猫、创作猫的能力，这就是因为我们学到了猫的特征和共性的特点。按说计算机也有相同的能力，至少在分辨上，为什么生成就更难一些呢？<br><img src="http://img.blog.csdn.net/20170420231042563?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="video sequence."><br>这就跟我们之前给的评判标准（或者是损失）有关了。比如上图是视频序列预测，真实值是左边，中间是优化均方差（mean squared error ）得到的。看起来很模糊，这就是因为预测就带有不确定性，稍微上下左右偏一些，MSE就会很大。因此在使MSE最小这个过程中，就自动平均了各种可能出现的情况，导致图像模糊。因此这也不能够怪计算机算得不准，而是评价标准不好。有时多种人能接受的预测，我们只需要选择其中一种即可，而不是多种的平均。</p>
+<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>GAN分为判别器和生成器两个损失，判别器损失$J^{(D)}$较为固定：<br><img src="http://img.blog.csdn.net/20170421142737130" alt="dloss"></p>
+<p>而生成器损失$J^{(G)}$分为多种，比如：</p>
+<ul>
+<li>Minimax</li>
+<li>Heuristic, non-saturating game</li>
+<li>Maximum likelihood game</li>
+</ul>
+<h3 id="Minimax"><a href="#Minimax" class="headerlink" title="Minimax"></a>Minimax</h3><p>Minimax game也就是零和游戏，直接将判别器的损失取反：<br>$$J^{(G)}=-J^{(D)}$$<br>判别器使交叉熵变小，而生成器又最大化相同的交叉熵，当然其优化的参数是不一样的。<br>从直观上很好理解，既然两个的任务相反（造假和验假），那么干脆损失相反就好了。但这样会导致当判别器以高置信拒绝生成的样本时，生成器梯度消失，从而难以训练。</p>
+<h3 id="non-saturating-game"><a href="#non-saturating-game" class="headerlink" title="non-saturating game"></a>non-saturating game</h3><p>这个就是为了让每方出现错误时都能产生很强的梯度：<br><img src="http://img.blog.csdn.net/20170421143049915" alt="glosss"><br>也采用交叉熵最小，且是非零和的。</p>
+<h3 id="Maximum-likelihood-game"><a href="#Maximum-likelihood-game" class="headerlink" title="Maximum likelihood game"></a>Maximum likelihood game</h3><p><img src="http://img.blog.csdn.net/20170421143201150" alt="glossl"><br>极大似然的方式，减小数据与模型的KL散度，其中$\sigma$是logistic sigmoid function。</p>
+<h2 id="GAN结构"><a href="#GAN结构" class="headerlink" title="GAN结构"></a>GAN结构</h2><p>具体的GAN结构大多数都是在Goodfellow的框架下，很多也只是在修改loss function，github上有一个项目：<a href="https://github.com/wiseodd/generative-models" target="_blank" rel="external">generative-models</a>收集了很多GAN模型，我们拿来看一下，例子是LSGAN。<br>主要的<a href="https://github.com/wiseodd/generative-models/blob/master/GAN/least_squares_gan/lsgan_tensorflow.py" target="_blank" rel="external">代码</a>和注释：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">X = tf.placeholder(tf.float32, shape=[<span class="keyword">None</span>, X_dim]) <span class="comment"># X为图像输入，mnist 784</span></div><div class="line">z = tf.placeholder(tf.float32, shape=[<span class="keyword">None</span>, z_dim]) <span class="comment"># z为噪声输入，64</span></div><div class="line"></div><div class="line">...</div><div class="line">...</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sample_z</span><span class="params">(m, n)</span>:</span></div><div class="line">    <span class="keyword">return</span> np.random.uniform(<span class="number">-1.</span>, <span class="number">1.</span>, size=[m, n]) <span class="comment"># 生成随机噪声</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">generator</span><span class="params">(z)</span>:</span> <span class="comment"># 生成器模型</span></div><div class="line">    G_h1 = tf.nn.relu(tf.matmul(z, G_W1) + G_b1) <span class="comment"># 把噪声作为输入，经过两层全链接</span></div><div class="line">    G_log_prob = tf.matmul(G_h1, G_W2) + G_b2</div><div class="line">    G_prob = tf.nn.sigmoid(G_log_prob)</div><div class="line">    <span class="keyword">return</span> G_prob <span class="comment"># 输出图像</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">discriminator</span><span class="params">(x)</span>:</span> <span class="comment"># 鉴别器模型</span></div><div class="line">    D_h1 = tf.nn.relu(tf.matmul(x, D_W1) + D_b1) <span class="comment"># 把图像作为输入，经过一层全链接输出</span></div><div class="line">    out = tf.matmul(D_h1, D_W2) + D_b2</div><div class="line">    <span class="keyword">return</span> out <span class="comment"># 输出判别结果</span></div><div class="line">    </div><div class="line">G_sample = generator(z) <span class="comment"># 生成结果</span></div><div class="line"></div><div class="line">D_real = discriminator(X) <span class="comment"># 对于真数据，判别器给出的结果</span></div><div class="line">D_fake = discriminator(G_sample) <span class="comment"># 对于假数据，判别器给出的结果</span></div><div class="line"></div><div class="line"><span class="comment"># LS损失函数</span></div><div class="line">D_loss = <span class="number">0.5</span> * (tf.reduce_mean((D_real - <span class="number">1</span>)**<span class="number">2</span>) + tf.reduce_mean(D_fake**<span class="number">2</span>)) <span class="comment"># 鉴别器损失</span></div><div class="line">G_loss = <span class="number">0.5</span> * tf.reduce_mean((D_fake - <span class="number">1</span>)**<span class="number">2</span>) <span class="comment"># 生成器损失</span></div><div class="line"></div><div class="line">D_solver = (tf.train.AdamOptimizer(learning_rate=lr)</div><div class="line">            .minimize(D_loss, var_list=theta_D)) <span class="comment"># 优化鉴别器</span></div><div class="line">G_solver = (tf.train.AdamOptimizer(learning_rate=lr)</div><div class="line">            .minimize(G_loss, var_list=theta_G)) <span class="comment"># 优化生成器</span></div></pre></td></tr></table></figure></p>
+<h2 id="DCGAN"><a href="#DCGAN" class="headerlink" title="DCGAN"></a>DCGAN</h2><p>上面项目的代码都是以mnist为数据集，且层数很少，只是拿来理解用的。真正实用的还是deep convolution 结构。这种结构也是借鉴了CNN，把卷积层反向换成了反卷积：<br><img src="http://img.blog.csdn.net/20170421145425124?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="DCGAN"><br>文中提到了几点需要注意的地方：</p>
+<ol>
+<li>使用batch normalization（除了G最后一层和D第一层）</li>
+<li>主要结构为全卷积网络，无pooling、unpooling层（没有这两种层是趋势）</li>
+<li>使用Adam优化器而不是SGD</li>
+</ol>
+<p><img src="http://img.blog.csdn.net/20170421151256411?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="room"></p>
+<p>GAN还有一点有趣的是可以在潜在空间中用简单运算进行有意义的语义解释，比如我们用这样一个公式：眼镜男-男+女=眼镜女，就可以在没有眼镜女数据的情况下生成眼镜女图像：</p>
+<p><img src="http://img.blog.csdn.net/20170421151707166?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="glass"></p>
+<h1 id="GAN-tips-and-tricks"><a href="#GAN-tips-and-tricks" class="headerlink" title="GAN tips and tricks"></a>GAN tips and tricks</h1><hr>
+<h2 id="训练技巧"><a href="#训练技巧" class="headerlink" title="训练技巧"></a>训练技巧</h2><ol>
+<li>train with labels<br>也就是class-conditional GAN。传统的GAN在生成时输入的是随机的噪声，因此很难控制输出的结果。如果在训练时加入类别条件信息，生成时也加入其中，就可以实现定向、定类生成。</li>
+<li>One-side label soothing<br>方法是对于真实图片，鉴别器的标签不设置为1，而是0.9这种接近于1的数字。目的是避免D过于自信。</li>
+<li>virtual batch normalization<br>如果使用不同的minibatch进行归一化处理，会导致参数的波动，特别是batch小的时候，minibatch间应该相互独立。</li>
+</ol>
+<h2 id="G与D的平衡"><a href="#G与D的平衡" class="headerlink" title="G与D的平衡"></a>G与D的平衡</h2><p>G与D两个的地位有区别吗？哪个更重要一些呢？<br>Goodfellow这样说：GAN通过估算数据密度和模型密度的比例来工作，只有D最佳时，才能正确估计，因此D应该占主导地位。从另一个角度说，D的层可以更深一些。<br>但有时D太准确又导致G的梯度消失，这也就是之前minimax game中所提到的问题。<br>有时D过于自信，拒绝G的生成，又会导致G梯度爆炸，这种情况可以用one-sided label smoothing解决。</p>
+<p>还有一个问题是G与D的训练方法，既然D比较重要，那么G训练一次，D训练多次，会有改进吗？这个问题不同论文给出的结果不尽相同，没有统一的答案，有空的话都试试好了。</p>
+<h1 id="GAN的问题"><a href="#GAN的问题" class="headerlink" title="GAN的问题"></a>GAN的问题</h1><hr>
+<p>最重要的问题就是难以收敛（Non-convergence），两个players 在训练中相互干扰，自然很难。目前在function space更新，可以证明是收敛的；但实际上训练是在parameter space更新，是否收敛没有明确的证明。</p>
+<p>另一个问题是mode collapse：<br><img src="http://img.blog.csdn.net/20170421155044294?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="mc"></p>
+<p>在学习中只学习到了一部分的分布，没有学习到所有模式。而鉴别器在鉴别时会拒绝单一模式，因此会导致生成器在单一模式中循环生成，无法收敛，如上图所示。</p>
+<p>针对这一问题，目前有minibatch feature、unrolled GAN等方法，具体不再讲解。</p>
+<hr>
+<p>写到现在感觉还是疏漏了很多东西，其中一部分也是自己还没有能明白的，不敢班门弄斧。具体还是要去看57页原文才能全面了解。国内也有一些资料，比如今年的《生成对抗网络GAN的研究与展望》，也是比较新，可以当作参考和了解。</p>
+<blockquote>
+<p>王坤峰 ，苟超 ，段艳杰 ，林懿伦 ，郑心湖，王飞跃 . 生成对抗网络GAN的研究与展望. 自动化学报, 2017，43(3): 321-332</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/论文/" rel="tag"># 论文</a>
+          
+            <a href="/tags/GAN/" rel="tag"># GAN</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/19/caffe2/" rel="next" title="caffe2 安装与介绍">
+                <i class="fa fa-chevron-left"></i> caffe2 安装与介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Yan Joy" />
+          <p class="site-author-name" itemprop="name">Yan Joy</p>
+           
+              <p class="site-description motion-element" itemprop="description">Default~</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/yanjoy" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/yan_joy" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么要学习GAN"><span class="nav-number">1.</span> <span class="nav-text">为什么要学习GAN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GAN如何工作？"><span class="nav-number">2.</span> <span class="nav-text">GAN如何工作？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#损失函数"><span class="nav-number">2.1.</span> <span class="nav-text">损失函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Minimax"><span class="nav-number">2.1.1.</span> <span class="nav-text">Minimax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#non-saturating-game"><span class="nav-number">2.1.2.</span> <span class="nav-text">non-saturating game</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Maximum-likelihood-game"><span class="nav-number">2.1.3.</span> <span class="nav-text">Maximum likelihood game</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GAN结构"><span class="nav-number">2.2.</span> <span class="nav-text">GAN结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DCGAN"><span class="nav-number">2.3.</span> <span class="nav-text">DCGAN</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GAN-tips-and-tricks"><span class="nav-number">3.</span> <span class="nav-text">GAN tips and tricks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#训练技巧"><span class="nav-number">3.1.</span> <span class="nav-text">训练技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#G与D的平衡"><span class="nav-number">3.2.</span> <span class="nav-text">G与D的平衡</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GAN的问题"><span class="nav-number">4.</span> <span class="nav-text">GAN的问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yan Joy</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://yanjoyblog.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://joyfyan.github.io/2017/04/21/nips2016gan/';
+          this.page.identifier = '2017/04/21/nips2016gan/';
+          this.page.title = 'NIPS 2016 Tutorial- Generative Adversarial Networks GAN简介';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://yanjoyblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz", "owWjRRJ2oBD7Dekc8l1RRctK");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+</body>
+</html>
