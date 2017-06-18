@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="caffe," />
+  <meta name="keywords" content="建站," />
 
 
 
@@ -93,33 +93,48 @@
 
 
 
-<meta name="description" content="上一篇是数据层，这一篇是视觉层（Vision Layers）。参考官网和网友博客。
+<meta name="description" content="0
+在上一篇文章中，我把建免费个人博客的的步骤简单总结为了三点：
 
-Vision LayersCaffe学习系列(3)：视觉层（Vision Layers)及参数，denny402Caffe源码解析5：Conv_Layer，楼燚航的blog
+申请空间
+博客框架搭建
+上传与更新
 
-
-视觉层通常将图像作为输入，产生其他图像作为输出。图像输入可以是灰度图（通道C=1），RGB图（通道C=3）。同样图像也具有二维的空间结构">
+有同学尝试后最大的问题是Github桌面版版本与教程不符。目前最新的版本是Desktop Beta，界面有了较大的变化，操作也可能有所不同。为了简单还是下载稳定版比较好。
+本篇文章主要针对于域名、解析、主题等进行更深的介绍，帮助大家搭建更个性化的博客。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="caffe学习（5）视觉层">
-<meta property="og:url" content="https://joyfyan.github.io/2016/11/06/caffe学习（5）视觉层/index.html">
+<meta property="og:title" content="建立个人博客-进阶">
+<meta property="og:url" content="https://joyfyan.github.io/2017/06/18/blog-1/index.html">
 <meta property="og:site_name" content="小一一的小站">
-<meta property="og:description" content="上一篇是数据层，这一篇是视觉层（Vision Layers）。参考官网和网友博客。
+<meta property="og:description" content="0
+在上一篇文章中，我把建免费个人博客的的步骤简单总结为了三点：
 
-Vision LayersCaffe学习系列(3)：视觉层（Vision Layers)及参数，denny402Caffe源码解析5：Conv_Layer，楼燚航的blog
+申请空间
+博客框架搭建
+上传与更新
 
-
-视觉层通常将图像作为输入，产生其他图像作为输出。图像输入可以是灰度图（通道C=1），RGB图（通道C=3）。同样图像也具有二维的空间结构">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/140867/201512/140867-20151224103937640-1245969956.jpg">
-<meta property="og:updated_time" content="2016-11-18T07:34:56.000Z">
+有同学尝试后最大的问题是Github桌面版版本与教程不符。目前最新的版本是Desktop Beta，界面有了较大的变化，操作也可能有所不同。为了简单还是下载稳定版比较好。
+本篇文章主要针对于域名、解析、主题等进行更深的介绍，帮助大家搭建更个性化的博客。">
+<meta property="og:image" content="http://img.blog.csdn.net/20170618105330023?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170618112038303?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170618123114122?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170618123344435?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170618123426775?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170618125958747?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170618164448334?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-06-18T11:37:40.219Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="caffe学习（5）视觉层">
-<meta name="twitter:description" content="上一篇是数据层，这一篇是视觉层（Vision Layers）。参考官网和网友博客。
+<meta name="twitter:title" content="建立个人博客-进阶">
+<meta name="twitter:description" content="0
+在上一篇文章中，我把建免费个人博客的的步骤简单总结为了三点：
 
-Vision LayersCaffe学习系列(3)：视觉层（Vision Layers)及参数，denny402Caffe源码解析5：Conv_Layer，楼燚航的blog
+申请空间
+博客框架搭建
+上传与更新
 
-
-视觉层通常将图像作为输入，产生其他图像作为输出。图像输入可以是灰度图（通道C=1），RGB图（通道C=3）。同样图像也具有二维的空间结构">
-<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/140867/201512/140867-20151224103937640-1245969956.jpg">
+有同学尝试后最大的问题是Github桌面版版本与教程不符。目前最新的版本是Desktop Beta，界面有了较大的变化，操作也可能有所不同。为了简单还是下载稳定版比较好。
+本篇文章主要针对于域名、解析、主题等进行更深的介绍，帮助大家搭建更个性化的博客。">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170618105330023?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 
 
 
@@ -147,13 +162,13 @@ Vision LayersCaffe学习系列(3)：视觉层（Vision Layers)及参数，denny4
 
 
 
-  <link rel="canonical" href="https://joyfyan.github.io/2016/11/06/caffe学习（5）视觉层/"/>
+  <link rel="canonical" href="https://joyfyan.github.io/2017/06/18/blog-1/"/>
 
 
 
 
 
-  <title> caffe学习（5）视觉层 | 小一一的小站 </title>
+  <title> 建立个人博客-进阶 | 小一一的小站 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -302,7 +317,7 @@ Vision LayersCaffe学习系列(3)：视觉层（Vision Layers)及参数，denny4
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/11/06/caffe学习（5）视觉层/">
+    <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2017/06/18/blog-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yan Joy">
@@ -323,7 +338,7 @@ Vision LayersCaffe学习系列(3)：视觉层（Vision Layers)及参数，denny4
             
             
               
-                caffe学习（5）视觉层
+                建立个人博客-进阶
               
             
           </h1>
@@ -336,8 +351,8 @@ Vision LayersCaffe学习系列(3)：视觉层（Vision Layers)及参数，denny4
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-06T22:52:00+08:00">
-                2016-11-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-18T19:36:41+08:00">
+                2017-06-18
               </time>
             
 
@@ -357,8 +372,8 @@ Vision LayersCaffe学习系列(3)：视觉层（Vision Layers)及参数，denny4
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ML/" itemprop="url" rel="index">
-                    <span itemprop="name">ML</span>
+                  <a href="/categories/网站维护/" itemprop="url" rel="index">
+                    <span itemprop="name">网站维护</span>
                   </a>
                 </span>
 
@@ -376,8 +391,8 @@ Vision LayersCaffe学习系列(3)：视觉层（Vision Layers)及参数，denny4
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/11/06/caffe学习（5）视觉层/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count hc-comment-count" data-xid="2016/11/06/caffe学习（5）视觉层/" itemprop="commentsCount"></span>
+                <a href="/2017/06/18/blog-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2017/06/18/blog-1/" itemprop="commentsCount"></span>
                 </a>
               </span>
               <!--/noindex-->
@@ -386,7 +401,7 @@ Vision LayersCaffe学习系列(3)：视觉层（Vision Layers)及参数，denny4
 
           
           
-             <span id="/2016/11/06/caffe学习（5）视觉层/" class="leancloud_visitors" data-flag-title="caffe学习（5）视觉层">
+             <span id="/2017/06/18/blog-1/" class="leancloud_visitors" data-flag-title="建立个人博客-进阶">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -413,99 +428,40 @@ Vision LayersCaffe学习系列(3)：视觉层（Vision Layers)及参数，denny4
       
 
       
-        <p>上一篇是数据层，这一篇是视觉层（Vision Layers）。参考官网和网友博客。</p>
-<blockquote>
-<p><a href="http://caffe.berkeleyvision.org/tutorial/layers.html" target="_blank" rel="external">Vision Layers</a><br><a href="http://www.cnblogs.com/denny402/p/5071126.html" target="_blank" rel="external">Caffe学习系列(3)：视觉层（Vision Layers)及参数，denny402</a><br><a href="http://www.cnblogs.com/louyihang-loves-baiyan/p/5154337.html" target="_blank" rel="external">Caffe源码解析5：Conv_Layer，楼燚航的blog</a></p>
-</blockquote>
-<hr>
-<p>视觉层通常将图像作为输入，产生其他图像作为输出。图像输入可以是灰度图（通道C=1），RGB图（通道C=3）。同样图像也具有二维的空间结构，其高度$h&gt;1$宽度$w&gt;1$。大多数视觉层通过对输入区域应用特定操作产生输出的相应区域，这里就有点像传统的数字图像处理的工作了。相比之下其他层常常忽略输入的空间结构，视其为具有$chw$维度的大向量。</p>
-<h2 id="卷积层Convolution"><a href="#卷积层Convolution" class="headerlink" title="卷积层Convolution"></a>卷积层Convolution</h2><hr>
+        <h1 id="0"><a href="#0" class="headerlink" title="0"></a>0</h1><hr>
+<p>在上一篇<a href="http://yanjoy.win/2017/06/12/blog-0/" target="_blank" rel="external">文章</a>中，我把建免费个人博客的的步骤简单总结为了三点：</p>
+<ol>
+<li>申请空间</li>
+<li>博客框架搭建</li>
+<li>上传与更新</li>
+</ol>
+<p>有同学尝试后最大的问题是Github桌面版版本与教程不符。目前最新的版本是Desktop Beta，界面有了较大的变化，操作也可能有所不同。为了简单还是下载<a href="https://github-windows.s3.amazonaws.com/GitHubSetup.exe" target="_blank" rel="external">稳定版</a>比较好。</p>
+<p>本篇文章主要针对于域名、解析、主题等进行更深的介绍，帮助大家搭建更个性化的博客。</p>
+<a id="more"></a>
+<h1 id="1-属于自己的域名"><a href="#1-属于自己的域名" class="headerlink" title="1 属于自己的域名"></a>1 属于自己的域名</h1><hr>
+<p>每个人都有名字，这是我们区分他人最主要的方式之一。网页也如此，并且更严格：没有重名的网站。有一个属于自己的域名才能说有了自己的个人博客。</p>
+<p>为了方便支付和管理，还是选择阿里爸爸旗下的<a href="https://wanwang.aliyun.com/" target="_blank" rel="external">万网</a>作为服务商。<br><img src="http://img.blog.csdn.net/20170618105330023?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="wan"></p>
+<p>输入你想要的域名进行查询，如果结果是未注册便可使用，记得要查看全部后缀哦。<br><img src="http://img.blog.csdn.net/20170618112038303?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="注册"></p>
+<p>不同的后缀会有不同的价格，我的<code>.win</code>是最便宜的一类，10年才50元（去年价）。</p>
+<p>加入清单，再输入一些个人信息，便可以拿到自己的域名了（当然还要记得付款= =）~</p>
+<h1 id="2-域名解析配置"><a href="#2-域名解析配置" class="headerlink" title="2 域名解析配置"></a>2 域名解析配置</h1><hr>
+<p>有了域名，相当于有了一个门牌号；有了网站，相当于有了房子；解析的功能简单来说就是通过门牌号找房子。</p>
+<p>返回万网首页，右上角有控制台按钮，点击进入。<br><img src="http://img.blog.csdn.net/20170618123114122?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="解析"><br>在左侧栏中选择<code>域名-云解析DNS</code>。<br><img src="http://img.blog.csdn.net/20170618123344435?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="DNS"><br>出现购买的域名列表，点击需要解析更改的域名。<br><img src="http://img.blog.csdn.net/20170618123426775?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="setting"><br>在出现的设置中，首先点左上角的添加解析，会在下面出现一行需要添加的解析设置信息。</p>
 <ul>
-<li>层类型：Convolution</li>
-<li>CPU实现：./src/caffe/layers/convolution_layer.cpp</li>
-<li>CUDA GPU实现： ./src/caffe/layers/convolution_layer.cu</li>
-<li><p>参数 (ConvolutionParameter convolution_param)：</p>
-<ul>
-<li>必须参数<ul>
-<li>num_output (c_o):卷积核（filter）的个数。</li>
-<li>kernel_size (or kernel_h and kernel_w): 卷积核大小，非方阵用_h _w。</li>
+<li>记录类型：选择<code>CNAME</code></li>
+<li>主机记录：<code>www</code>和<code>@</code>，分别建立两个记录</li>
+<li>解析路线：可以对国内外的访客解析到不同的地址，比如使用国内代码托管网站<a href="https://coding.net/" target="_blank" rel="external">coding</a>代替Github</li>
+<li>记录值：你的Github博客地址</li>
 </ul>
-</li>
-<li>推荐参数<ul>
-<li>weight_filler [default type: ‘constant’ value: 0]：卷积核的初始化，默认为全0，可以用”xavier”算法来进行初始化，也可以设置为”gaussian”。</li>
-</ul>
-</li>
-<li><p>可选参数</p>
-<ul>
-<li>bias_term [default true]:是否开启偏置项，默认为true, 开启。</li>
-<li>pad (or pad_h and pad_w) [default 0]: 填零操作，默认为0，不填零。是对原图进行填零，使卷积核在图像边缘能够进行卷积操作，运算后和原图的尺寸相同。扩充的时候是左右、上下对称的，比如卷积核的大小为5*5，那么pad设置为2，则四个边缘都扩充2个像素，即宽度和高度都扩充了4个像素。</li>
-<li>stride (or stride_h and stride_w) [default 1]: 卷积核的移动步长，默认为1。</li>
-<li><p>group (g) [default 1]: 分组，默认为1组。如果大于1，我们限制卷积的连接操作在一个子集内。如果我们根据图像的通道来分组，那么第i个输出分组只能与第i个输入分组进行连接。groups是代表filter 组的个数。引入gruop主要是为了选择性的连接卷基层的输入端和输出端的channels，否则参数会太多。</p>
-<blockquote>
-<p>It was there to implement the grouped convolution in Alex Krizhevsky’s paper: when group=2, the first half of the filters are only connected to the first half of the input channels, and the second half only connected to the second half.</p>
-</blockquote>
-<p> 当group=2时，前半部分filter与输入的前半部分通道连接，后半部分filter与后半部分输入通道连接。</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>输入：n <em> c_i </em> h_i * w_i</p>
-</li>
-<li>输出：n <em> c_o </em> h_o <em> w_o, where h_o = (h_i + 2 </em> pad_h - kernel_h) / stride_h + 1 and w_o likewise。</li>
-<li><p>示例 (./models/bvlc_reference_caffenet/train_val.prototxt)</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">layer &#123;</div><div class="line">	  name: <span class="string">"conv1"</span></div><div class="line">	  type: <span class="string">"Convolution"</span></div><div class="line">	  bottom: <span class="string">"data"</span></div><div class="line">	  top: <span class="string">"conv1"</span></div><div class="line">	  <span class="comment"># learning rate and decay multipliers for the </span></div><div class="line">	  <span class="comment"># filters</span></div><div class="line">	  param &#123; lr_mult: <span class="number">1</span> decay_mult: <span class="number">1</span> &#125;</div><div class="line">	  <span class="comment"># learning rate and decay multipliers for the biases</span></div><div class="line">	  param &#123; lr_mult: <span class="number">2</span> decay_mult: <span class="number">0</span> &#125;</div><div class="line">	  convolution_param &#123;</div><div class="line">		    num_output: <span class="number">96</span>     </div><div class="line">		    <span class="comment"># learn 96 filters</span></div><div class="line">		    kernel_size: <span class="number">11</span>    </div><div class="line">		    <span class="comment"># each filter is 11x11</span></div><div class="line">			stride: <span class="number">4</span>      </div><div class="line">			<span class="comment"># step 4 pixels between each filter </span></div><div class="line">			<span class="comment"># application</span></div><div class="line">		    weight_filler &#123;</div><div class="line">			    type: <span class="string">"gaussian"</span> </div><div class="line">			    <span class="comment"># initialize the filters from a Gaussian</span></div><div class="line">			    std: <span class="number">0.01</span>        </div><div class="line">			    <span class="comment"># distribution with stdev 0.01 (default </span></div><div class="line">			    <span class="comment"># mean: 0)</span></div><div class="line">		    &#125;</div><div class="line">		    bias_filler &#123;</div><div class="line">			    type: <span class="string">"constant"</span> </div><div class="line">			    <span class="comment"># initialize the biases to zero (0)</span></div><div class="line">			    value: <span class="number">0</span></div><div class="line">			&#125;</div><div class="line">		 &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>卷积层将输入图像与一组可学习的滤波器进行卷积，每个在输出图像中产生一个特征图。</p>
-</li>
-</ul>
-<h2 id="池化层Pooling"><a href="#池化层Pooling" class="headerlink" title="池化层Pooling"></a>池化层Pooling</h2><hr>
-<p>Pooling 层一般在网络中是跟在Conv卷积层之后，做采样操作，其实是为了进一步缩小feature map，同时也能增大神经元的视野。</p>
-<ul>
-<li>层类型：Pooling</li>
-<li>CPU实现：./src/caffe/layers/pooling_layer.cpp</li>
-<li>CUDA GPU实现：./src/caffe/layers/pooling_layer.cu</li>
-<li>参数(PoolingParameter pooling_param)：<ul>
-<li>必须<ul>
-<li>kernel_size (or kernel_h and kernel_w)：池化核大小。</li>
-</ul>
-</li>
-<li>可选参数<ul>
-<li>pool [default MAX]: 池化方法，默认为MAX，还有 AVE, or STOCHASTIC。</li>
-<li>pad (or pad_h and pad_w) [default 0]:填零。</li>
-<li>stride (or stride_h and stride_w) [default 1]:步长。</li>
-</ul>
-</li>
-<li>输入：n <em> c </em> h_i * w_i</li>
-<li>输出：n <em> c </em> h_o * w_o，h_o and w_o 与卷积层计算方法相同。</li>
-</ul>
-</li>
-<li><p>示例 ( ./models/bvlc_reference_caffenet/train_val.prototxt)</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">layer &#123;</div><div class="line">	  name: <span class="string">"pool1"</span></div><div class="line">	  type: <span class="string">"Pooling"</span></div><div class="line">	  bottom: <span class="string">"conv1"</span></div><div class="line">	  top: <span class="string">"pool1"</span></div><div class="line">	  pooling_param &#123;</div><div class="line">		    pool: MAX</div><div class="line">		    kernel_size: <span class="number">3</span> <span class="comment"># pool over a 3x3 region</span></div><div class="line">		    stride: <span class="number">2</span>      <span class="comment"># step two pixels (in the </span></div><div class="line">						   <span class="comment"># bottom blob) between pooling </span></div><div class="line">						   <span class="comment"># regions</span></div><div class="line">		  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="局部响应归一化层RNL"><a href="#局部响应归一化层RNL" class="headerlink" title="局部响应归一化层RNL"></a>局部响应归一化层RNL</h2><hr>
-<p>局部响应归一化层通过对局部输入区域进行归一化来执行一种“横向抑制”。具体作用感觉和特征缩放有点像，使梯度下降在所有方向上具有相同的曲率。而RNL这种方法的计算相比对每个神经元输入归一化要简单。</p>
-<ul>
-<li>层类型：LRN</li>
-<li>CPU实现： ./src/caffe/layers/lrn_layer.cpp</li>
-<li>CUDA GPU实现：./src/caffe/layers/lrn_layer.cu</li>
-<li>参数 (LRNParameter lrn_param)：<ul>
-<li>可选参数<ul>
-<li>local_size [default 5]:需要求和的通道数数目（对于跨通道LRN），或者是方形区域求和的变长（对于通道内LRN）。</li>
-<li>alpha [default 1]: 比例参数。</li>
-<li>beta [default 5]: 指数参数。</li>
-<li>norm_region [default ACROSS_CHANNELS]:ACROSS_CHANNELS表示在相邻的通道间求和归一化，但没有空间延伸，即大小为local_size x 1 x 1；WITHIN_CHANNEL表示在一个通道内部特定的区域内进行求和归一化，其大小为：1 x local_size x local_size。每个输入值被除以$(1 + (\alpha/n) \sum_i x_i^2)^\beta$，$n$是每个局部区域的大小。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>示例：</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">layers &#123;</div><div class="line">	  name: <span class="string">"norm1"</span></div><div class="line">	  type: LRN</div><div class="line">	  bottom: <span class="string">"pool1"</span></div><div class="line">	  top: <span class="string">"norm1"</span></div><div class="line">	  lrn_param &#123;</div><div class="line">		    local_size: <span class="number">5</span></div><div class="line">		    alpha: <span class="number">0.0001</span></div><div class="line">		    beta: <span class="number">0.75</span></div><div class="line">		  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="Im2col"><a href="#Im2col" class="headerlink" title="Im2col"></a>Im2col</h2><hr>
-<p>Caffe中卷积操作需要先对数据进行im2col，再进行内积运算，如下图所示：<br><img src="http://images2015.cnblogs.com/blog/140867/201512/140867-20151224103937640-1245969956.jpg" alt="卷积计算"></p>
+<p>好啦保存。<br>还差一小步，就是在你本地博客<code>public</code>目录下建立一个<code>CNAME</code>的文件（注意没有格式），用笔记本编辑，内容就是你的域名，并更新到Github。<br><img src="http://img.blog.csdn.net/20170618125958747?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="cname"><br>稍等访问你的域名，就会看到已经出现网页了~</p>
+<h1 id="3-主题配置"><a href="#3-主题配置" class="headerlink" title="3 主题配置"></a>3 主题配置</h1><hr>
+<p>hexo默认会有一套主题，位于<code>themes\landscape</code>。<br>而我是用的是<a href="http://theme-next.iissnan.com/" target="_blank" rel="external"><code>NexT</code></a>主题（<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external"><code>Github</code></a>）。<br>这个主题相对简洁，扩展也够用。</p>
+<p>对不同主题的配置，往往需要仔细阅读其配置手册。<br><img src="http://img.blog.csdn.net/20170618164448334?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="next"></p>
+<p>这里需要注意<strong>站点配置文件</strong>和<strong>主题配置文件</strong>的区别，我当时就搞混了，配了很长时间没有成功。</p>
+<p>比如在上文中，我们初始化的博客目录为<code>E:\github\pages</code>，那么在此路径下会有一个<code>_config.yml</code>为站点配置文件；而主题目录下<code>E:\github\pages\themes\landscape</code>也有一个<code>_config.yml</code>，为主题配置文件，记得不要搞错了。</p>
+<p>除了NexT主题，还有其他的一些流行主题，比如可以参考知乎回答<a href="https://www.zhihu.com/question/24422335" target="_blank" rel="external">有哪些好看的 Hexo 主题？</a>。</p>
+<h1 id="4-额外的话"><a href="#4-额外的话" class="headerlink" title="4 额外的话"></a>4 额外的话</h1><hr>
+<p>好了，到此为止建立个人博客的基本、进阶教程基本结束了，如果遇到了什么问题，欢迎评论私信~<br>花一些时间去写一点东西，无论是否有人看，对我来说都是一种释放，感觉很不错。</p>
 
       
     </div>
@@ -535,7 +491,7 @@ Vision LayersCaffe学习系列(3)：视觉层（Vision Layers)及参数，denny4
       
         <div class="post-tags">
           
-            <a href="/tags/caffe/" rel="tag"># caffe</a>
+            <a href="/tags/建站/" rel="tag"># 建站</a>
           
         </div>
       
@@ -548,8 +504,8 @@ Vision LayersCaffe学习系列(3)：视觉层（Vision Layers)及参数，denny4
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/06/caffe学习（4）数据层/" rel="next" title="caffe学习（4）数据层">
-                <i class="fa fa-chevron-left"></i> caffe学习（4）数据层
+              <a href="/2017/06/12/blog-0/" rel="next" title="0元3步建博客">
+                <i class="fa fa-chevron-left"></i> 0元3步建博客
               </a>
             
           </div>
@@ -557,10 +513,6 @@ Vision LayersCaffe学习系列(3)：视觉层（Vision Layers)及参数，denny4
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/07/caffe学习（6）激活层/" rel="prev" title="caffe学习（6）激活层">
-                caffe学习（6）激活层 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -734,7 +686,7 @@ Vision LayersCaffe学习系列(3)：视觉层（Vision Layers)及参数，denny4
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积层Convolution"><span class="nav-number">1.</span> <span class="nav-text">卷积层Convolution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#池化层Pooling"><span class="nav-number">2.</span> <span class="nav-text">池化层Pooling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#局部响应归一化层RNL"><span class="nav-number">3.</span> <span class="nav-text">局部响应归一化层RNL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Im2col"><span class="nav-number">4.</span> <span class="nav-text">Im2col</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0"><span class="nav-number">1.</span> <span class="nav-text">0</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-属于自己的域名"><span class="nav-number">2.</span> <span class="nav-text">1 属于自己的域名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-域名解析配置"><span class="nav-number">3.</span> <span class="nav-text">2 域名解析配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-主题配置"><span class="nav-number">4.</span> <span class="nav-text">3 主题配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-额外的话"><span class="nav-number">5.</span> <span class="nav-text">4 额外的话</span></a></li></ol></div>
             
 
           </div>
@@ -882,7 +834,7 @@ Vision LayersCaffe学习系列(3)：视觉层（Vision Layers)及参数，denny4
 		_hcwp.push({widget:"Bloggerstream", widget_id: 89966, selector:".hc-comment-count", label: "{\%COUNT%\}" });
 
 		
-		_hcwp.push({widget:"Stream", widget_id: 89966, xid: "2016/11/06/caffe学习（5）视觉层/"});
+		_hcwp.push({widget:"Stream", widget_id: 89966, xid: "2017/06/18/blog-1/"});
 		
 
 		(function() {
