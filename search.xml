@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Tensorflow 解决 No module named '_pywrap_tensorflow_internal']]></title>
+    <url>%2F2017%2F07%2F25%2Fwin-tf-im-err%2F</url>
+    <content type="text"><![CDATA[这个问题是我在windows上尝试安装GPU版本时出现的，系统 win10，CUDA 8.0，VS2015 com，cudnn-8.0-windows10-x64-v6.0。 官网上安装指南中Common installation problems也有提到，给出的是STACK OVERFLOW 的解答：On Windows, running “import tensorflow” generates No module named “_pywrap_tensorflow” error，主要原因是没有安装cuDDN库。 但是装了之后仍然不能解决这个问题，注意其实两个问题有所区别：“_pywrap_tensorflow”和’_pywrap_tensorflow_internal’，是不是CUDA安装出现问题了呢？在anaconda上的命令行输入nvcc是找不到相应程序的，而在系统中的命令行可以找到。首先为了排除错误，单独在anaconda安装了python 3.5，但还是同样的问题。那么CPU版本可以吗？答案是肯定的，还是GPU哪里没配置好。终于还是在STACK OVERFLOW上找到了答案：Cannot import Tensorflow for GPU on Windows 10。在cuda安装目录下，如：C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\bin把cudnn的文件名改一下就可以了，将cudnn64_6.dll改为cudnn64_5.dll即可。试了一下，果然问题解决了。]]></content>
+      <categories>
+        <category>ML</category>
+      </categories>
+      <tags>
+        <tag>cuda</tag>
+        <tag>tensorflow</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[小问题： caffe2 安装到自己目录下.md]]></title>
     <url>%2F2017%2F07%2F23%2Fcaffe2-user%2F</url>
     <content type="text"><![CDATA[caffe2 默认是安装到系统文件中的，如果没有权限会遇到很多问题。本人环境是基于conda的虚拟环境，方便python包的管理，提前要装好caffe2的依赖环境。首先是需要更改安装路径：123git clone --recursive https://github.com/caffe2/caffe2.git &amp;&amp; cd caffe2make &amp;&amp; cd build export DESTDIR="$HOME" &amp;&amp; make -j4 install 这样把程序安装到/home/user/usr/local下。 之后添加到系统的路径，比如我用的是zsh，1vi .zshrc 最后加上：1234export PATH="/home/yzy/usr/local/caffe2:$PATH"export PYTHONPATH=/home/yzy/usr/local:$PYTHONPATHexport PYTHONPATH=$PYTHONPATH:/home/yzy/caffe2/buildexport LD_LIBRARY_PATH=/home/yzy/usr/local/lib:$LD_LIBRARY_PATH 如果运行程序还不会成功，提示：1No module named google.protobuf.internal 这个东西来回pip都不行，最后发现使用conda安装就可以了：1conda install protobuf 哎，折腾了大半天。。]]></content>
