@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[深度网络模型压缩DEEP COMPRESSION]]></title>
+    <url>%2F2017%2F07%2F26%2FDEEP-COMPRESSION%2F</url>
+    <content type="text"><![CDATA[DEEP COMPRESSION 主要流程： pruning（剪枝） trained quantization（量化训练） Huffman coding（霍夫曼编码） 首先通过学习重要的连接来修剪网络；接下来，量化权重以实施权重共享；最后，应用霍夫曼编码。实际效果可以将AlexNet 无准确率损失压缩35倍，240MB到6.9MB，VGG-16压缩49倍，552MB到11.3MB。 Network Pruning 首先通过正常的网络训练学习连接。接下来，修剪小重量连接：从网络中删除重量低于阈值的所有连接。 最后，我们重新训练网络来学习剩余稀疏连接的最终权重。 使用压缩稀疏列（CSR）或压缩稀疏列（CSC）格式存储从剪枝产生的稀疏结构，这需要（2a + n + 1）个数字，其中a是非零元素的数量，n是 行或列。关于这种压缩方式，wiki上有很好的解释，这是对稀疏矩阵的一种编码方式。为了进一步压缩，剪枝时候，只保留权值大于指定阈值的数，用存储索引差（diff）而不是原始的绝对位置（inx）来表示，对于索引差大于设定的span值，还会进行补零处理。例如设置span=8，idx=4和idx=1之间的位置差为3，无需补0。例如15和4之间距离为11大于span=8，所以在4+8=12的位置插入0，idx=15相对idx=12为3。span值在卷积层设置为8，全连接层为5。 Trained Quantization And Weight Sharing 权重分享是一个比较重要的操作。如图所示，首先通过使多个连接共享相同权重来限制需要存储的有效权重的数量（上面），然后微调这些共享权重（下面）。 原来的权重值可以用索引值和量化值替代，从而大大减小网络的规模。压缩率计算方法如下公式所示： n代表连接数，b代表每一个连接需要b bits表示，k表示量化k个类，k类只需要用log2(k)个bit表示，n个连接需要nlog2(k)索引，还需要用kb表示量化中心的数值。 最初有4×4 = 16个权重，但只有4个共享权重：类似的权重被分组在一起以共享相同的值。 原来我们需要存储16个权重，每个都有32位，现在我们只需要存储4个有效权重（蓝色，绿色，红色和橙色），每个都有32位，连同16个2位索引，压缩率为16 32 /（4 32 + 2 * 16）= 3.2。 Weight Shearing 作者采用了K-means聚类方法，把权值量化为k个类。原始的n个权重$W={w_1,w_2,……,w_n}$使用聚类算法变为k个聚类中心$C={c_1,c_2,……,c_k}$。聚类算法最小化类内误差，目标函数如下所示： Initialization of Shared Weights 聚类中心C的初始化影响着量化方式，作者也采用了不同的初始化方法：随机初始化，基于密度初始化，线性初始化。绝对值较大的权重比较小的重量更重要，但是这些权重的数目较少。 因此，对于随机初始化和基于密度的初始化，很少的质心具有很大的绝对值。 线性初始化不会受到此问题的困扰。 实验部分比较了聚类和微调后不同初始化方法的准确性，表明线性初始化效果最好。 Feed-forward and Back-propagation 一维k均值聚类的质心是共享的权重。 在前馈阶段和反向传播阶段中查找重量表有一个间接级别。 为每个连接存储共享权重表中的索引。 在反向传播期间，计算每个共享权重的梯度并用于更新共享权重。 Huffman Coding 霍夫曼编码是常见的无损编码方式，最后使用这种方式进一步压缩模型。 总结 整个流程较为清晰：稀疏编码，量化共享，概率编码，达到的效果也不错： 更值得注意的是速度和功耗上： 但是我也好奇这个东西解码出来有多大= =在Github Demo上解码出来是232.57MB，跟原始的大小没什么区别，那么使用的时候还是需要再解码吧，所以感觉还是和理想的差一点。]]></content>
+      <categories>
+        <category>ML</category>
+      </categories>
+      <tags>
+        <tag>论文</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Tensorflow 解决 No module named '_pywrap_tensorflow_internal']]></title>
     <url>%2F2017%2F07%2F25%2Fwin-tf-im-err%2F</url>
     <content type="text"><![CDATA[这个问题是我在windows上尝试安装GPU版本时出现的，系统 win10，CUDA 8.0，VS2015 com，cudnn-8.0-windows10-x64-v6.0。 官网上安装指南中Common installation problems也有提到，给出的是STACK OVERFLOW 的解答：On Windows, running “import tensorflow” generates No module named “_pywrap_tensorflow” error，主要原因是没有安装cuDDN库。 但是装了之后仍然不能解决这个问题，注意其实两个问题有所区别：“_pywrap_tensorflow”和’_pywrap_tensorflow_internal’，是不是CUDA安装出现问题了呢？在anaconda上的命令行输入nvcc是找不到相应程序的，而在系统中的命令行可以找到。首先为了排除错误，单独在anaconda安装了python 3.5，但还是同样的问题。那么CPU版本可以吗？答案是肯定的，还是GPU哪里没配置好。终于还是在STACK OVERFLOW上找到了答案：Cannot import Tensorflow for GPU on Windows 10。在cuda安装目录下，如：C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\bin把cudnn的文件名改一下就可以了，将cudnn64_6.dll改为cudnn64_5.dll即可。试了一下，果然问题解决了。]]></content>
@@ -13,7 +24,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[小问题： caffe2 安装到自己目录下.md]]></title>
+    <title><![CDATA[小问题： caffe2 安装到自己目录下]]></title>
     <url>%2F2017%2F07%2F23%2Fcaffe2-user%2F</url>
     <content type="text"><![CDATA[caffe2 默认是安装到系统文件中的，如果没有权限会遇到很多问题。本人环境是基于conda的虚拟环境，方便python包的管理，提前要装好caffe2的依赖环境。首先是需要更改安装路径：123git clone --recursive https://github.com/caffe2/caffe2.git &amp;&amp; cd caffe2make &amp;&amp; cd build export DESTDIR="$HOME" &amp;&amp; make -j4 install 这样把程序安装到/home/user/usr/local下。 之后添加到系统的路径，比如我用的是zsh，1vi .zshrc 最后加上：1234export PATH="/home/yzy/usr/local/caffe2:$PATH"export PYTHONPATH=/home/yzy/usr/local:$PYTHONPATHexport PYTHONPATH=$PYTHONPATH:/home/yzy/caffe2/buildexport LD_LIBRARY_PATH=/home/yzy/usr/local/lib:$LD_LIBRARY_PATH 如果运行程序还不会成功，提示：1No module named google.protobuf.internal 这个东西来回pip都不行，最后发现使用conda安装就可以了：1conda install protobuf 哎，折腾了大半天。。]]></content>
       <categories>
