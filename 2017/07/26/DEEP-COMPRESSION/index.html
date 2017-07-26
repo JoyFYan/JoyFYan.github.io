@@ -119,7 +119,7 @@ Huffman coding（霍夫曼编码）">
 <meta property="og:image" content="http://img.blog.csdn.net/20170726190534025?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20170726191038231?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20170726191721277?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2017-07-26T11:33:13.998Z">
+<meta property="og:updated_time" content="2017-07-26T11:36:51.053Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度网络模型压缩DEEP COMPRESSION">
 <meta name="twitter:description" content="DEEP COMPRESSION
@@ -472,7 +472,7 @@ Huffman coding（霍夫曼编码）">
 <p>权重分享是一个比较重要的操作。如图所示，首先通过使多个连接共享相同权重来限制需要存储的有效权重的数量（上面），然后微调这些共享权重（下面）。</p>
 <p><img src="http://img.blog.csdn.net/20170726183204241?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="fig3"></p>
 <p>原来的权重值可以用索引值和量化值替代，从而大大减小网络的规模。<br>压缩率计算方法如下公式所示： </p>
-<p><img src="http://img.blog.csdn.net/20170726183913751" alt="rate"><br>n代表连接数，b代表每一个连接需要b bits表示，k表示量化k个类，k类只需要用log2(k)个bit表示，n个连接需要nlog2(k)索引，还需要用kb表示量化中心的数值。 最初有4×4 = 16个权重，但只有4个共享权重：类似的权重被分组在一起以共享相同的值。 原来我们需要存储16个权重，每个都有32位，现在我们只需要存储4个有效权重（蓝色，绿色，红色和橙色），每个都有32位，连同16个2位索引，压缩率为16 <em> 32 /（4 </em> 32 + 2 * 16）= 3.2。</p>
+<p><img src="http://img.blog.csdn.net/20170726183913751" alt="rate"><br>n代表连接数，b代表每一个连接需要b bits表示，k表示量化k个类，k类只需要用log2(k)个bit表示，n个连接需要nlog2(k)索引，还需要用kb表示量化中心的数值。 最初有4×4 = 16个权重，但只有4个共享权重：类似的权重被分组在一起以共享相同的值。 原来我们需要存储16个权重，每个都有32位，现在我们只需要存储4个有效权重（蓝色，绿色，红色和橙色），每个都有32位，连同16个2位索引，压缩率为16 × 32 /（4 × 32 + 2 × 16）= 3.2。</p>
 <h3 id="Weight-Shearing"><a href="#Weight-Shearing" class="headerlink" title="Weight Shearing"></a>Weight Shearing</h3><hr>
 <p>作者采用了K-means聚类方法，把权值量化为k个类。原始的n个权重$W={w_1,w_2,……,w_n}$使用聚类算法变为k个聚类中心$C={c_1,c_2,……,c_k}$。聚类算法最小化类内误差，目标函数如下所示： </p>
 <p><img src="http://img.blog.csdn.net/20170726184342954" alt="loss"></p>
@@ -696,6 +696,20 @@ Huffman coding（霍夫曼编码）">
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              FRIENDS
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.xieqiang.site/" title="Johnny's Blog" target="_blank">Johnny's Blog</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         
