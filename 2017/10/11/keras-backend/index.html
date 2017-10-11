@@ -1,0 +1,1332 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="tensorflow,keras," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Keras是一个模型级的库，提供了很多高层函数。但它本身无法进行低级操作，如张量相乘、卷积等。因此它需要利用其他的库进行计算，作为后端引擎。除了常用的Tensorflow，还支持Theano（现在停止更新了），CNTK。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Keras backens函数">
+<meta property="og:url" content="https://joyfyan.github.io/2017/10/11/keras-backend/index.html">
+<meta property="og:site_name" content="小一一的小站">
+<meta property="og:description" content="Keras是一个模型级的库，提供了很多高层函数。但它本身无法进行低级操作，如张量相乘、卷积等。因此它需要利用其他的库进行计算，作为后端引擎。除了常用的Tensorflow，还支持Theano（现在停止更新了），CNTK。">
+<meta property="og:image" content="https://www.tensorflow.org/images/Gather.png">
+<meta property="og:updated_time" content="2017-10-11T08:18:20.359Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Keras backens函数">
+<meta name="twitter:description" content="Keras是一个模型级的库，提供了很多高层函数。但它本身无法进行低级操作，如张量相乘、卷积等。因此它需要利用其他的库进行计算，作为后端引擎。除了常用的Tensorflow，还支持Theano（现在停止更新了），CNTK。">
+<meta name="twitter:image" content="https://www.tensorflow.org/images/Gather.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://joyfyan.github.io/2017/10/11/keras-backend/"/>
+
+
+
+
+
+  <title> Keras backens函数 | 小一一的小站 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?59765bbe651ba5fb69dc22dd74eb6ba7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小一一的小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Blog of Yan Joy</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2017/10/11/keras-backend/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yan Joy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小一一的小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Keras backens函数
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-11T16:14:31+08:00">
+                2017-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            <!--noindex-->
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/11/keras-backend/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2017/10/11/keras-backend/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+              <!--/noindex-->
+            
+          
+
+          
+          
+             <span id="/2017/10/11/keras-backend/" class="leancloud_visitors" data-flag-title="Keras backens函数">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Keras是一个模型级的库，提供了很多高层函数。但它本身无法进行低级操作，如张量相乘、卷积等。因此它需要利用其他的库进行计算，作为后端引擎。除了常用的<strong>Tensorflow</strong>，还支持<strong>Theano</strong>（现在停止更新了），<strong>CNTK</strong>。</p>
+<a id="more"></a>
+<hr>
+<h2 id="Backend-functions"><a href="#Backend-functions" class="headerlink" title="Backend functions"></a>Backend functions</h2><h3 id="set-image-data-format"><a href="#set-image-data-format" class="headerlink" title="set_image_data_format"></a>set_image_data_format</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">set_image_data_format</span><span class="params">(data_format)</span></span></div></pre></td></tr></table></figure>
+<p>参数：</p>
+<ul>
+<li><strong>data_format</strong>: string. <code>channels_first</code>or <code>channels_last</code>.</li>
+</ul>
+<p>这参数设置了图像的数据格式，通道在最前面还是最后面。对于卷积来说，这个设置很重要，因此一定要搞清楚数据的格式。</p>
+<h3 id="update"><a href="#update" class="headerlink" title="update"></a>update</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">update</span><span class="params">(x, new_x)</span></span></div></pre></td></tr></table></figure>
+<p>参数：</p>
+<ul>
+<li><strong>x</strong>: A <code>Variable</code>.</li>
+<li><strong>new_x</strong>: A tensor of same shape as <code>x</code>.<br>将x的值进行更新，这里没有直接使用<code>=</code>的赋值语句。</li>
+</ul>
+<p>类似还有<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">update_add</span><span class="params">(x, increment)</span></span></div><div class="line"><span class="function"><span class="title">update_sub</span><span class="params">(x, decrement)</span></span></div></pre></td></tr></table></figure></p>
+<p>其中<code>increment</code>和<code>decrement</code>都与<code>x</code>同样形状。</p>
+<h3 id="gather"><a href="#gather" class="headerlink" title="gather"></a>gather</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">gather</span><span class="params">(reference, indices)</span></span></div></pre></td></tr></table></figure>
+<p><img src="https://www.tensorflow.org/images/Gather.png" alt="gather"></p>
+<p>检索张量中的索引元素。用上图表示一下这个过程。</p>
+<p>参数：</p>
+<ul>
+<li><strong>reference</strong>: A tensor.</li>
+<li><strong>indices</strong>: An integer tensor of indices.</li>
+</ul>
+<h3 id="any（位逻辑）"><a href="#any（位逻辑）" class="headerlink" title="any（位逻辑）"></a>any（位逻辑）</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">any</span><span class="params">(x, axis=None, keepdims=False)</span></span></div></pre></td></tr></table></figure>
+<p>逻辑运算或，先将<code>x</code>变为布尔值，再<code>tf.reduce_any(x)</code>。</p>
+<p>参数：</p>
+<ul>
+<li><strong>x</strong>: Tensor or variable.</li>
+<li><strong>axis</strong>: axis along which to perform the reduction.</li>
+<li><strong>keepdims</strong>: whether the drop or broadcast the reduction axes.</li>
+</ul>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">x = tf.constant([[<span class="literal">True</span>,  <span class="literal">True</span>], [<span class="literal">False</span>, <span class="literal">False</span>]])</div><div class="line">tf.reduce_any(x)  # <span class="literal">True</span></div><div class="line">tf.reduce_any(x, <span class="number">0</span>)  # [<span class="literal">True</span>, <span class="literal">True</span>]</div><div class="line">tf.reduce_any(x, <span class="number">1</span>)  # [<span class="literal">True</span>, <span class="literal">False</span>]</div></pre></td></tr></table></figure>
+<p>类似的还有<br><figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="literal">all</span>(x, axis=<span class="literal">None</span>, keepdims=<span class="literal">False</span>)</div></pre></td></tr></table></figure></p>
+<p>逻辑与。</p>
+<h3 id="function"><a href="#function" class="headerlink" title="function"></a>function</h3><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span><span class="params">(inputs, outputs, updates=None)</span></span></div></pre></td></tr></table></figure>
+<p>实例化一个keras函数。</p>
+<p>参数：</p>
+<ul>
+<li><strong>inputs</strong>:  <code>placeholder</code> 输入张量列表.</li>
+<li><strong>outputs</strong>: <code>placeholder</code> 输出张量列表.</li>
+<li><strong>updates</strong>: 更新操作列表.</li>
+<li><strong>**kwargs</strong>: <code>tf.Session.run</code>的参数.</li>
+</ul>
+<p>这个是和<a href="https://github.com/fchollet/keras/blob/master/keras/backend/tensorflow_backend.py#L2284" target="_blank" rel="external">Function类</a>相关联的：</p>
+<h3 id="gradients"><a href="#gradients" class="headerlink" title="gradients"></a>gradients</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">gradients</span><span class="params">(loss, variables)</span></span></div></pre></td></tr></table></figure>
+<p>根据<code>loss</code>计算<code>variables</code>的梯度。</p>
+<h3 id="stop-gradient"><a href="#stop-gradient" class="headerlink" title="stop_gradient"></a>stop_gradient</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">stop_gradient</span><span class="params">(variables)</span></span></div></pre></td></tr></table></figure>
+<p>停止<code>variables</code>梯度计算。</p>
+<h3 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h3><figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span>(condition, <span class="keyword">then</span><span class="number">_</span>expression, <span class="keyword">else</span><span class="number">_</span>expression)</div></pre></td></tr></table></figure>
+<p>根据标量条件选择表达式。</p>
+<p>参数：</p>
+<ul>
+<li><strong>condition</strong>: tensor (int or bool).</li>
+<li><strong>then_expression</strong>: either a tensor, or a callable that returns a tensor.</li>
+<li><strong>else_expression</strong>: either a tensor, or a callable that returns a tensor.</li>
+</ul>
+<p>这里根据输入条件是否为多维，会选择使用<code>tf.cond</code>还是<code>tf.where</code>。</p>
+<h3 id="map-fn"><a href="#map-fn" class="headerlink" title="map_fn"></a>map_fn</h3><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">map_fn(fn, elems, <span class="keyword">name</span>=<span class="keyword">None</span>, dtype=<span class="keyword">None</span>)</div></pre></td></tr></table></figure>
+<p>类似python的map操作，还能指定输出格式。</p>
+<h3 id="foldl"><a href="#foldl" class="headerlink" title="foldl"></a>foldl</h3><p>用fn归约元素（左到右）。右到左是：<code>foldr(fn, elems, initializer=None, name=None)</code>。</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">foldl(fn, elems, initializer=<span class="keyword">None</span>, <span class="keyword">name</span>=<span class="keyword">None</span>)</div></pre></td></tr></table></figure>
+<p>参数：</p>
+<ul>
+<li><strong>fn</strong>: Callable that will be called upon each element in elems and an accumulator, for instance  <code>lambda acc, x: acc + x</code></li>
+<li><strong>elems</strong>: tensor</li>
+<li><strong>initializer</strong>: The first value used (elems[0] in case of None)</li>
+<li><strong>name</strong>: A string name for the foldl node in the graph</li>
+</ul>
+<p>返回与<code>initializer</code>同样大小形状、类型的数据。</p>
+<h3 id="local-conv"><a href="#local-conv" class="headerlink" title="local_conv"></a>local_conv</h3><p>不共享权重的卷积。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">local_conv1d</span><span class="params">(inputs, kernel, kernel_size, strides, data_format=None)</span></span></div><div class="line"><span class="function"><span class="title">local_conv2d</span><span class="params">(inputs, kernel, kernel_size, strides, output_shape, data_format=None)</span></span></div></pre></td></tr></table></figure>
+<hr>
+<h2 id="其他函数"><a href="#其他函数" class="headerlink" title="其他函数"></a>其他函数</h2><ul>
+<li>epsilon()：最小值</li>
+<li>set_epsilon(e)：设置最小值</li>
+<li>floatx()：返回默认浮点类型(e.g. ‘float16’, ‘float32’, ‘float64’)</li>
+<li>set_floatx(floatx)：设置默认浮点类型</li>
+<li>cast_to_floatx(x)：创建float的numpy array</li>
+<li>set_image_dim_ordering(dim_ordering)：string. <code>tf</code> or <code>th</code>.</li>
+<li>image_dim_ordering()</li>
+<li>get_uid(prefix=’’):Get the uid for the default graph.</li>
+<li>reset_uids():Reset graph identifiers.</li>
+<li>clear_session():清除当前TF图并创建新图，避免新旧模型的杂乱</li>
+<li>manual_variable_initialization(value)：相当于<code>tf.initialize_all_variables()</code></li>
+<li>learning_phase()：返回当前阶段 (0 = test, 1 = train)</li>
+<li>set_learning_phase(value)</li>
+<li>is_sparse(tensor)：张量是否稀疏</li>
+<li>to_dense(tensor)：由稀疏转为dense</li>
+<li>variable(value, dtype=None, name=None, constraint=None)：创建变量</li>
+<li>constant(value, dtype=None, shape=None, name=None)：创建常量</li>
+<li>is_keras_tensor(x)：对于由tf创建的为假</li>
+<li>placeholder(shape=None, ndim=None, dtype=None, sparse=False, name=None)</li>
+<li>is_placeholder(x)</li>
+<li>shape(x)</li>
+<li>int_shape(x)：返回一个整数tuple</li>
+<li>ndim(x)：返回整数维度</li>
+<li>dtype(x)</li>
+<li>eval(x)</li>
+<li>zeros(shape, dtype=None, name=None)</li>
+<li>ones(shape, dtype=None, name=None)</li>
+<li>eye(size, dtype=None, name=None)：单位阵</li>
+<li>zeros_like(x, dtype=None, name=None)</li>
+<li>ones_like(x, dtype=None, name=None)</li>
+<li>identity(x)：返回与相同的张量</li>
+<li>random_uniform_variable(shape, low, high, dtype=None, name=None, seed=None)</li>
+<li>random_normal_variable(shape, mean, scale, dtype=None, name=None, seed=None)</li>
+<li>count_params(x)：计数标量数目</li>
+<li>cast(x, dtype)：转换数据类型</li>
+<li>moving_average_update(x, value, momentum)：移动平均更新</li>
+<li>dot(x, y)</li>
+<li>batch_dot(x, y, axes=None)</li>
+<li>transpose(x)：转置</li>
+<li>max(x, axis=None, keepdims=False)：最大值用的是tf.reduce_max</li>
+<li>min(x, axis=None, keepdims=False)：最小值</li>
+<li>sum(x, axis=None, keepdims=False)：求和</li>
+<li>prod(x, axis=None, keepdims=False):Computes the product of elements across dimensions of a tensor. 张量元素积</li>
+<li>cumsum(x, axis=0)：累加<code>tf.cumsum([a, b, c])  # =&gt; [a, a + b, a + b + c]</code></li>
+<li>cumprod(x, axis=0)：累积</li>
+<li>var(x, axis=None, keepdims=False)：方差</li>
+<li>std(x, axis=None, keepdims=False)：标准差</li>
+<li>mean(x, axis=None, keepdims=False)：均值</li>
+<li>argmax(x, axis=-1)：最大值索引</li>
+<li>argmin(x, axis=-1)：最小值索引</li>
+<li>square(x)：元素平方</li>
+<li>abs(x)：元素绝对值</li>
+<li>sqrt(x)：元素开方</li>
+<li>exp(x)：元素指数</li>
+<li>log(x)：元素对数（以<code>e</code>为底，如何改为以2为底？（再加一步换底））</li>
+<li>logsumexp(x, axis=None, keepdims=False)：相当于log(sum(exp(x)))，避免了溢出。</li>
+<li>round(x)：四舍五入</li>
+<li>sign(x)：符号</li>
+<li>pow(x, a)：幂指数</li>
+<li>clip(x, min_value, max_value)：截断</li>
+<li>equal(x, y)：两张量元素相等判断，返回布尔张量</li>
+<li>not_equal(x, y)：不等判断</li>
+<li>greater(x, y)：大于判断</li>
+<li>greater_equal(x, y)：大于等于判断</li>
+<li>less(x, y)：小于</li>
+<li>less_equal(x, y)：小于等于</li>
+<li>maximum(x, y)：元素较大值，返回向量</li>
+<li>minimum(x, y)：较小值</li>
+<li>sin(x)：元素sin</li>
+<li>cos(x)：元素cos</li>
+<li>normalize_batch_in_training(x, gamma, beta, reduction_axes, epsilon=0.001)：归一化</li>
+<li>batch_normalization(x, mean, var, beta, gamma, epsilon=0.001)</li>
+<li>concatenate(tensors, axis=-1)：连接</li>
+<li>reshape(x, shape)：变形</li>
+<li>permute_dimensions(x, pattern)：transpose转置</li>
+<li>resize_images(x, height_factor, width_factor, data_format)：图像变形</li>
+<li>resize_volumes(x, depth_factor, height_factor, width_factor, data_format)：调整5D张量的大小。</li>
+<li>repeat_elements(x, rep, axis)：重复元素</li>
+<li>repeat(x, n)：重复二维张量</li>
+<li>arange(start, stop=None, step=1, dtype=’int32’)：创建一维连续整数张量</li>
+<li>tile(x, n)：平铺张量</li>
+<li>flatten(x)：扁平</li>
+<li>batch_flatten(x)：批扁平，将nD张量转为2D张量。</li>
+<li>expand_dims(x, axis=-1)：增加一维</li>
+<li>squeeze(x, axis)：删除一维</li>
+<li>temporal_padding(x, padding=(1, 1))：对三维张量中间维进行padding</li>
+<li>spatial_2d_padding(x, padding=((1, 1), (1, 1)), data_format=None)：对4D图像进行padding</li>
+<li>spatial_3d_padding(x, padding=((1, 1), (1, 1), (1, 1)), data_format=None)：对5D进行padding</li>
+<li>stack(x, axis=0)：将<code>R</code>秩堆放为<code>R+1</code>秩的张量</li>
+<li>one_hot(indices, num_classes)：one-hot编码</li>
+<li>reverse(x, axes)：反向排列元素</li>
+<li>get_value(x)：返回numpy array</li>
+<li>batch_get_value(ops)：get_session().run(ops)</li>
+<li>set_value(x, value)：从Numpy赋值</li>
+<li>batch_set_value(tuples)：tuples为<code>(tensor, value)</code></li>
+<li>get_variable_shape(x)：得到变量形状</li>
+<li>print_tensor(x, message=’’)：评估时打印张量信息</li>
+<li>rnn(step_function, inputs, initial_states, go_backwards=False, mask=None, constants=None, unroll=False, input_length=None)：构建rnn单元</li>
+<li>in_train_phase(x, alt, training=None)：在训练阶段选择<code>x</code>否则为<code>alt</code></li>
+<li>in_test_phase(x, alt, training=None)：在测试阶段</li>
+<li>relu(x, alpha=0.0, max_value=None)：relu函数</li>
+<li>elu(x, alpha=1.0)：elu函数</li>
+<li>softmax(x)：softmax函数</li>
+<li>softplus(x)：log(exp(x) + 1)</li>
+<li>softsign(x)：x / (abs(x) + 1)</li>
+<li>categorical_crossentropy(target, output, from_logits=False):交叉熵</li>
+<li>sparse_categorical_crossentropy：稀疏交叉熵</li>
+<li>binary_crossentropy：二值交叉熵</li>
+<li>sigmoid(x)</li>
+<li>hard_sigmoid(x)：比Sigmoid更快，<code>Returns 0. if x &lt; -2.5, 1. if x &gt; 2.5. In -2.5 &lt;= x &lt;= 2.5, returns  0.2 * x + 0.5.</code></li>
+<li>tanh(x)</li>
+<li>dropout(x, level, noise_shape=None, seed=None)</li>
+<li>l2_normalize(x, axis=None)</li>
+<li>in_top_k(predictions, targets, k)：目标是否在预测的topk中</li>
+<li>conv1d(x, kernel, strides=1, padding=’valid’, data_format=None, dilation_rate=1)：一维卷积</li>
+<li>conv2d(x, kernel, strides=(1, 1), padding=’valid’, data_format=None, dilation_rate=(1, 1))：二维卷积</li>
+<li>conv2d_transpose(x, kernel, output_shape, strides=(1, 1), padding=’valid’, data_format=None)：二维卷积转置</li>
+<li>separable_conv2d(x, depthwise_kernel, pointwise_kernel, strides=(1, 1), padding=’valid’, data_format=None, dilation_rate=(1, 1))：二维稀疏卷积</li>
+<li>depthwise_conv2d(x, depthwise_kernel, strides=(1, 1), padding=’valid’, data_format=None, dilation_rate=(1, 1))</li>
+<li>conv3d(x, kernel, strides=(1, 1, 1), padding=’valid’, data_format=None, dilation_rate=(1, 1, 1))：三维卷积</li>
+<li>conv3d_transpose(x, kernel, output_shape, strides=(1, 1, 1), padding=’valid’, data_format=None)：三维卷积转置</li>
+<li>pool2d(x, pool_size, strides=(1, 1), padding=’valid’, data_format=None, pool_mode=’max’)</li>
+<li>pool3d(x, pool_size, strides=(1, 1, 1), padding=’valid’, data_format=None, pool_mode=’max’)</li>
+<li>bias_add(x, bias, data_format=None)：加偏置</li>
+<li>random_normal(shape, mean=0.0, stddev=1.0, dtype=None, seed=None)</li>
+<li>random_uniform(shape, minval=0.0, maxval=1.0, dtype=None, seed=None)</li>
+<li>random_binomial(shape, p=0.0, dtype=None, seed=None)</li>
+<li>truncated_normal(shape, mean=0.0, stddev=1.0, dtype=None, seed=None)</li>
+<li>ctc_label_dense_to_sparse(labels, label_lengths)：将CTC标签转为稀疏。Converts CTC labels from dense to sparse.</li>
+<li>ctc_batch_cost(y_true, y_pred, input_length, label_length)：计算CTC损失。</li>
+<li>ctc_decode(y_pred, input_length, greedy=True, beam_width=100, top_paths=1)：解码softmax输出</li>
+<li>backend()：当前使用的后端</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tensorflow/" rel="tag"># tensorflow</a>
+          
+            <a href="/tags/keras/" rel="tag"># keras</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/10/10min-pandas/" rel="next" title="10分钟pandas教程">
+                <i class="fa fa-chevron-left"></i> 10分钟pandas教程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="hypercomments_widget"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Yan Joy" />
+          <p class="site-author-name" itemprop="name">Yan Joy</p>
+           
+              <p class="site-description motion-element" itemprop="description">Default~</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">78</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/yanjoy" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/yan_joy" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              FRIENDS
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.xieqiang.site/" title="Johnny" target="_blank">Johnny</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://pages.coding.me/" title="Hosted by Coding Pages" target="_blank">Hosted by Coding Pages</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Backend-functions"><span class="nav-number">1.</span> <span class="nav-text">Backend functions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#set-image-data-format"><span class="nav-number">1.1.</span> <span class="nav-text">set_image_data_format</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#update"><span class="nav-number">1.2.</span> <span class="nav-text">update</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gather"><span class="nav-number">1.3.</span> <span class="nav-text">gather</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#any（位逻辑）"><span class="nav-number">1.4.</span> <span class="nav-text">any（位逻辑）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#function"><span class="nav-number">1.5.</span> <span class="nav-text">function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gradients"><span class="nav-number">1.6.</span> <span class="nav-text">gradients</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stop-gradient"><span class="nav-number">1.7.</span> <span class="nav-text">stop_gradient</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#switch"><span class="nav-number">1.8.</span> <span class="nav-text">switch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#map-fn"><span class="nav-number">1.9.</span> <span class="nav-text">map_fn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#foldl"><span class="nav-number">1.10.</span> <span class="nav-text">foldl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#local-conv"><span class="nav-number">1.11.</span> <span class="nav-text">local_conv</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他函数"><span class="nav-number">2.</span> <span class="nav-text">其他函数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yan Joy</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 89966, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+		_hcwp.push({widget:"Stream", widget_id: 89966, xid: "2017/10/11/keras-backend/"});
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/89966/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz", "owWjRRJ2oBD7Dekc8l1RRctK");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+</body>
+</html>
