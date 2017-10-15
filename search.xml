@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Tensorflow trick 与 细节]]></title>
+    <url>%2F2017%2F10%2F15%2Ftensorflow-trick%2F</url>
+    <content type="text"><![CDATA[前后传播采用不同方式 How Can I Define Only the Gradient for a Tensorflow Subgraph? Suppose you want group of ops that behave as f(x) in forward mode, but as g(x) in the backward mode. You implement it as12t = g(x)y = t + tf.stop_gradient(f(x) - t) 在一个bnn的实现中有如下一段： 12345def round_through(x): # g(x) = x back # f(x) = round(x) forward rounded = K.round(x) return x + K.stop_gradient(rounded - x) 这里正向传播用的是四舍五入后的x值，而反向传播则保留了小数精度。 停止部分变量的梯度计算 在压缩的retrain步骤中，存在freeze部分变量，retrain另一部分的操作。而在Tensorflow中的tf.stop_gradient函数只能把整个Tensor全部停止计算。How to stop gradient for some entry of a tensor in tensorflow提供了一个较好的方法：1res_matrix = tf.stop_gradient(mask_h*E) + mask*E 其中mask与E对应，决定了梯度是否需要被保留。123def entry_stop_gradients(target, mask): mask_h = tf.abs(mask-1) return tf.stop_gradient(mask_h * target) + mask * target Tensor 与 Variable 先看一段程序： 123456789101112a = tf.Variable([1])with tf.device("/cpu:0"): with tf.Session() as sess: sess.run(tf.global_variables_initializer()) print 'a:',a.eval() print 'type of a:',a a = a + 1 print 'a:',a.eval() print 'type of a:',a b = a + 1 print 'b:',b.eval() print 'type of b:',b 这是很简单的加法，结果肯定都知道，分别是1,2,3。但同时又加上了他们的类型，这就不太一样了。 123456a: [1]type of a: &lt;tf.Variable &apos;Variable:0&apos; shape=(1,) dtype=int32_ref&gt;a: [2]type of a: Tensor(&quot;add:0&quot;, shape=(1,), dtype=int32, device=/device:CPU:0)b: [3]type of b: Tensor(&quot;add_1:0&quot;, shape=(1,), dtype=int32, device=/device:CPU:0) 一开始明明定义的是一个tf.Variable，结果一加却变成了Tensor，之后的b也是这样。说明这些操作只是一些计算过程罢了，就像一些菜谱，没有原材料是无法做饭的。这样说的话，经过了计算，原来的变量a的值其实是没有改变的，因为这些操作都不是针对的Variable。像tf.scatter_update这种操作，输入是Variable，才能进行变量的更新。但当你加入这句话，还是不会有作用，因为这个函数返回的是一个Tensor，也是一个“菜谱”，只有当执行时才会生效。 因此Tensorflow的Variable和Tensor还需要更深的理解啊。]]></content>
+      <categories>
+        <category>ML</category>
+      </categories>
+      <tags>
+        <tag>tensorflow</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Keras backens函数]]></title>
     <url>%2F2017%2F10%2F11%2Fkeras-backend%2F</url>
     <content type="text"><![CDATA[Keras是一个模型级的库，提供了很多高层函数。但它本身无法进行低级操作，如张量相乘、卷积等。因此它需要利用其他的库进行计算，作为后端引擎。除了常用的Tensorflow，还支持Theano（现在停止更新了），CNTK。 Backend functionsset_image_data_format1set_image_data_format(data_format) 参数： data_format: string. channels_firstor channels_last. 这参数设置了图像的数据格式，通道在最前面还是最后面。对于卷积来说，这个设置很重要，因此一定要搞清楚数据的格式。 update1update(x, new_x) 参数： x: A Variable. new_x: A tensor of same shape as x.将x的值进行更新，这里没有直接使用=的赋值语句。 类似还有12update_add(x, increment)update_sub(x, decrement) 其中increment和decrement都与x同样形状。 gather1gather(reference, indices) 检索张量中的索引元素。用上图表示一下这个过程。 参数： reference: A tensor. indices: An integer tensor of indices. any（位逻辑）1any(x, axis=None, keepdims=False) 逻辑运算或，先将x变为布尔值，再tf.reduce_any(x)。 参数： x: Tensor or variable. axis: axis along which to perform the reduction. keepdims: whether the drop or broadcast the reduction axes. 1234x = tf.constant([[True, True], [False, False]])tf.reduce_any(x) # Truetf.reduce_any(x, 0) # [True, True]tf.reduce_any(x, 1) # [True, False] 类似的还有1all(x, axis=None, keepdims=False) 逻辑与。 function1function(inputs, outputs, updates=None) 实例化一个keras函数。 参数： inputs: placeholder 输入张量列表. outputs: placeholder 输出张量列表. updates: 更新操作列表. **kwargs: tf.Session.run的参数. 这个是和Function类相关联的： gradients1gradients(loss, variables) 根据loss计算variables的梯度。 stop_gradient1stop_gradient(variables) 停止variables梯度计算。 switch1switch(condition, then_expression, else_expression) 根据标量条件选择表达式。 参数： condition: tensor (int or bool). then_expression: either a tensor, or a callable that returns a tensor. else_expression: either a tensor, or a callable that returns a tensor. 这里根据输入条件是否为多维，会选择使用tf.cond还是tf.where。 map_fn1map_fn(fn, elems, name=None, dtype=None) 类似python的map操作，还能指定输出格式。 foldl用fn归约元素（左到右）。右到左是：foldr(fn, elems, initializer=None, name=None)。 1foldl(fn, elems, initializer=None, name=None) 参数： fn: Callable that will be called upon each element in elems and an accumulator, for instance lambda acc, x: acc + x elems: tensor initializer: The first value used (elems[0] in case of None) name: A string name for the foldl node in the graph 返回与initializer同样大小形状、类型的数据。 local_conv不共享权重的卷积。 12local_conv1d(inputs, kernel, kernel_size, strides, data_format=None)local_conv2d(inputs, kernel, kernel_size, strides, output_shape, data_format=None) 其他函数 epsilon()：最小值 set_epsilon(e)：设置最小值 floatx()：返回默认浮点类型(e.g. ‘float16’, ‘float32’, ‘float64’) set_floatx(floatx)：设置默认浮点类型 cast_to_floatx(x)：创建float的numpy array set_image_dim_ordering(dim_ordering)：string. tf or th. image_dim_ordering() get_uid(prefix=’’):Get the uid for the default graph. reset_uids():Reset graph identifiers. clear_session():清除当前TF图并创建新图，避免新旧模型的杂乱 manual_variable_initialization(value)：相当于tf.initialize_all_variables() learning_phase()：返回当前阶段 (0 = test, 1 = train) set_learning_phase(value) is_sparse(tensor)：张量是否稀疏 to_dense(tensor)：由稀疏转为dense variable(value, dtype=None, name=None, constraint=None)：创建变量 constant(value, dtype=None, shape=None, name=None)：创建常量 is_keras_tensor(x)：对于由tf创建的为假 placeholder(shape=None, ndim=None, dtype=None, sparse=False, name=None) is_placeholder(x) shape(x) int_shape(x)：返回一个整数tuple ndim(x)：返回整数维度 dtype(x) eval(x) zeros(shape, dtype=None, name=None) ones(shape, dtype=None, name=None) eye(size, dtype=None, name=None)：单位阵 zeros_like(x, dtype=None, name=None) ones_like(x, dtype=None, name=None) identity(x)：返回与相同的张量 random_uniform_variable(shape, low, high, dtype=None, name=None, seed=None) random_normal_variable(shape, mean, scale, dtype=None, name=None, seed=None) count_params(x)：计数标量数目 cast(x, dtype)：转换数据类型 moving_average_update(x, value, momentum)：移动平均更新 dot(x, y) batch_dot(x, y, axes=None) transpose(x)：转置 max(x, axis=None, keepdims=False)：最大值用的是tf.reduce_max min(x, axis=None, keepdims=False)：最小值 sum(x, axis=None, keepdims=False)：求和 prod(x, axis=None, keepdims=False):Computes the product of elements across dimensions of a tensor. 张量元素积 cumsum(x, axis=0)：累加tf.cumsum([a, b, c]) # =&gt; [a, a + b, a + b + c] cumprod(x, axis=0)：累积 var(x, axis=None, keepdims=False)：方差 std(x, axis=None, keepdims=False)：标准差 mean(x, axis=None, keepdims=False)：均值 argmax(x, axis=-1)：最大值索引 argmin(x, axis=-1)：最小值索引 square(x)：元素平方 abs(x)：元素绝对值 sqrt(x)：元素开方 exp(x)：元素指数 log(x)：元素对数（以e为底，如何改为以2为底？（再加一步换底）） logsumexp(x, axis=None, keepdims=False)：相当于log(sum(exp(x)))，避免了溢出。 round(x)：四舍五入 sign(x)：符号 pow(x, a)：幂指数 clip(x, min_value, max_value)：截断 equal(x, y)：两张量元素相等判断，返回布尔张量 not_equal(x, y)：不等判断 greater(x, y)：大于判断 greater_equal(x, y)：大于等于判断 less(x, y)：小于 less_equal(x, y)：小于等于 maximum(x, y)：元素较大值，返回向量 minimum(x, y)：较小值 sin(x)：元素sin cos(x)：元素cos normalize_batch_in_training(x, gamma, beta, reduction_axes, epsilon=0.001)：归一化 batch_normalization(x, mean, var, beta, gamma, epsilon=0.001) concatenate(tensors, axis=-1)：连接 reshape(x, shape)：变形 permute_dimensions(x, pattern)：transpose转置 resize_images(x, height_factor, width_factor, data_format)：图像变形 resize_volumes(x, depth_factor, height_factor, width_factor, data_format)：调整5D张量的大小。 repeat_elements(x, rep, axis)：重复元素 repeat(x, n)：重复二维张量 arange(start, stop=None, step=1, dtype=’int32’)：创建一维连续整数张量 tile(x, n)：平铺张量 flatten(x)：扁平 batch_flatten(x)：批扁平，将nD张量转为2D张量。 expand_dims(x, axis=-1)：增加一维 squeeze(x, axis)：删除一维 temporal_padding(x, padding=(1, 1))：对三维张量中间维进行padding spatial_2d_padding(x, padding=((1, 1), (1, 1)), data_format=None)：对4D图像进行padding spatial_3d_padding(x, padding=((1, 1), (1, 1), (1, 1)), data_format=None)：对5D进行padding stack(x, axis=0)：将R秩堆放为R+1秩的张量 one_hot(indices, num_classes)：one-hot编码 reverse(x, axes)：反向排列元素 get_value(x)：返回numpy array batch_get_value(ops)：get_session().run(ops) set_value(x, value)：从Numpy赋值 batch_set_value(tuples)：tuples为(tensor, value) get_variable_shape(x)：得到变量形状 print_tensor(x, message=’’)：评估时打印张量信息 rnn(step_function, inputs, initial_states, go_backwards=False, mask=None, constants=None, unroll=False, input_length=None)：构建rnn单元 in_train_phase(x, alt, training=None)：在训练阶段选择x否则为alt in_test_phase(x, alt, training=None)：在测试阶段 relu(x, alpha=0.0, max_value=None)：relu函数 elu(x, alpha=1.0)：elu函数 softmax(x)：softmax函数 softplus(x)：log(exp(x) + 1) softsign(x)：x / (abs(x) + 1) categorical_crossentropy(target, output, from_logits=False):交叉熵 sparse_categorical_crossentropy：稀疏交叉熵 binary_crossentropy：二值交叉熵 sigmoid(x) hard_sigmoid(x)：比Sigmoid更快，Returns 0. if x &lt; -2.5, 1. if x &gt; 2.5. In -2.5 &lt;= x &lt;= 2.5, returns 0.2 * x + 0.5. tanh(x) dropout(x, level, noise_shape=None, seed=None) l2_normalize(x, axis=None) in_top_k(predictions, targets, k)：目标是否在预测的topk中 conv1d(x, kernel, strides=1, padding=’valid’, data_format=None, dilation_rate=1)：一维卷积 conv2d(x, kernel, strides=(1, 1), padding=’valid’, data_format=None, dilation_rate=(1, 1))：二维卷积 conv2d_transpose(x, kernel, output_shape, strides=(1, 1), padding=’valid’, data_format=None)：二维卷积转置 separable_conv2d(x, depthwise_kernel, pointwise_kernel, strides=(1, 1), padding=’valid’, data_format=None, dilation_rate=(1, 1))：二维稀疏卷积 depthwise_conv2d(x, depthwise_kernel, strides=(1, 1), padding=’valid’, data_format=None, dilation_rate=(1, 1)) conv3d(x, kernel, strides=(1, 1, 1), padding=’valid’, data_format=None, dilation_rate=(1, 1, 1))：三维卷积 conv3d_transpose(x, kernel, output_shape, strides=(1, 1, 1), padding=’valid’, data_format=None)：三维卷积转置 pool2d(x, pool_size, strides=(1, 1), padding=’valid’, data_format=None, pool_mode=’max’) pool3d(x, pool_size, strides=(1, 1, 1), padding=’valid’, data_format=None, pool_mode=’max’) bias_add(x, bias, data_format=None)：加偏置 random_normal(shape, mean=0.0, stddev=1.0, dtype=None, seed=None) random_uniform(shape, minval=0.0, maxval=1.0, dtype=None, seed=None) random_binomial(shape, p=0.0, dtype=None, seed=None) truncated_normal(shape, mean=0.0, stddev=1.0, dtype=None, seed=None) ctc_label_dense_to_sparse(labels, label_lengths)：将CTC标签转为稀疏。Converts CTC labels from dense to sparse. ctc_batch_cost(y_true, y_pred, input_length, label_length)：计算CTC损失。 ctc_decode(y_pred, input_length, greedy=True, beam_width=100, top_paths=1)：解码softmax输出 backend()：当前使用的后端]]></content>
@@ -20,8 +31,8 @@
         <category>Code</category>
       </categories>
       <tags>
-        <tag>pandas</tag>
         <tag>python</tag>
+        <tag>pandas</tag>
       </tags>
   </entry>
   <entry>
@@ -358,8 +369,8 @@
         <category>ML</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>caffe</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -440,8 +451,8 @@
         <category>ML</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>caffe</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -452,8 +463,8 @@
         <category>ML</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>caffe</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
