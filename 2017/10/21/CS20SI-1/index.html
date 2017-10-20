@@ -1,0 +1,1225 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="tensorflow," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="CS 20SI: Tensorflow for Deep Learning Research
+Fun with TensorBoard
+graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./graphs。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS20SI Operations">
+<meta property="og:url" content="https://joyfyan.github.io/2017/10/21/CS20SI-1/index.html">
+<meta property="og:site_name" content="小一一的小站">
+<meta property="og:description" content="CS 20SI: Tensorflow for Deep Learning Research
+Fun with TensorBoard
+graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./graphs。">
+<meta property="og:image" content="http://img.blog.csdn.net/20171017141826420?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20171017142111738?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20171017151136081?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20171020171901292?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20171020171911233?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-10-20T16:06:29.204Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CS20SI Operations">
+<meta name="twitter:description" content="CS 20SI: Tensorflow for Deep Learning Research
+Fun with TensorBoard
+graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./graphs。">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20171017141826420?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://joyfyan.github.io/2017/10/21/CS20SI-1/"/>
+
+
+
+
+
+  <title> CS20SI Operations | 小一一的小站 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?59765bbe651ba5fb69dc22dd74eb6ba7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小一一的小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Blog of Yan Joy</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2017/10/21/CS20SI-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yan Joy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小一一的小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CS20SI Operations
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-21T00:04:56+08:00">
+                2017-10-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            <!--noindex-->
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/21/CS20SI-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2017/10/21/CS20SI-1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+              <!--/noindex-->
+            
+          
+
+          
+          
+             <span id="/2017/10/21/CS20SI-1/" class="leancloud_visitors" data-flag-title="CS20SI Operations">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="http://web.stanford.edu/class/cs20si/syllabus.html" target="_blank" rel="external">CS 20SI: Tensorflow for Deep Learning Research</a></p>
+<h2 id="Fun-with-TensorBoard"><a href="#Fun-with-TensorBoard" class="headerlink" title="Fun with TensorBoard"></a>Fun with TensorBoard</h2><hr>
+<p>graph 的可视化，语句为<code>tf.summary.FileWriter</code>，将sess的图输出到<code>./graphs</code>。</p>
+<a id="more"></a>
+<p>首先在默认图中建立常数与操作，并在session中运行。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">import tensorflow <span class="keyword">as</span> <span class="keyword">tf</span></div><div class="line"><span class="keyword">a</span> = <span class="keyword">tf</span>.constant(<span class="number">2</span>)</div><div class="line"><span class="keyword">b</span> = <span class="keyword">tf</span>.constant(<span class="number">3</span>)</div><div class="line"><span class="keyword">x</span> = <span class="keyword">tf</span>.<span class="built_in">add</span>(<span class="keyword">a</span>, <span class="keyword">b</span>)</div><div class="line">with <span class="keyword">tf</span>.Session() <span class="keyword">as</span> ses<span class="variable">s:</span></div><div class="line">	writer = <span class="keyword">tf</span>.summary.FileWriter(<span class="string">'./graphs'</span>, sess.graph)</div><div class="line">	<span class="keyword">print</span> sess.run(<span class="keyword">x</span>)</div><div class="line"># <span class="keyword">close</span> the writer when you’re done using it</div><div class="line">writer.<span class="keyword">close</span>()</div></pre></td></tr></table></figure>
+<p>接下来执行这一段代码，再调取<code>Tensorboard</code>命令显示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ python [yourprogram.py]</div><div class="line">$ tensorboard --logdir=&quot;./graphs&quot;</div></pre></td></tr></table></figure>
+<p>默认的端口为6006，打开浏览器访问<a href="http://localhost:6006/" target="_blank" rel="external">http://localhost:6006/</a> ，点击上面的GRAPHS栏，得到了三个节点。</p>
+<p><img src="http://img.blog.csdn.net/20171017141826420?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="pic1"></p>
+<p>由于没有指定名称，Tensorflow会自己命名为不同的名称。当然还是自己命名方便：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a = tf.constant([<span class="number">2</span>, <span class="number">2</span>], name=<span class="string">"a"</span>)</div><div class="line">b = tf.constant([<span class="number">3</span>, <span class="number">6</span>], name=<span class="string">"b"</span>)</div><div class="line">x = tf.add(a, b, name=<span class="string">"add"</span>)</div></pre></td></tr></table></figure>
+<p><img src="http://img.blog.csdn.net/20171017142111738?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="pic2"></p>
+<p>图只包括了操作及其依赖项，并不显示其具体值，只有当运行session时才会返回输出：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tf.Session.run(fetches, feed_dict=<span class="keyword">None</span>, options=<span class="keyword">None</span>, run_metadata=<span class="keyword">None</span>)</div></pre></td></tr></table></figure></p>
+<p><strong>注意</strong>：当多次运行代码时，会产生多个Tensorboard的输出，TF只会显示最新的graph，因此不需要时可以删掉之前的graph。</p>
+<h2 id="Constant-types"><a href="#Constant-types" class="headerlink" title="Constant types"></a>Constant types</h2><hr>
+<h3 id="建立标量或者张量"><a href="#建立标量或者张量" class="headerlink" title="建立标量或者张量"></a>建立标量或者张量</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">tf​.​constant​(​value​,​ dtype​=​<span class="keyword">None</span>​,​ shape​=​<span class="keyword">None</span>​,​ name​=​<span class="string">'Const'</span>​,​ verify_shape​=​<span class="keyword">False</span>)</div><div class="line"><span class="comment"># constant of 1d tensor (vector)</span></div><div class="line">a = tf.constant([<span class="number">2</span>, <span class="number">2</span>], name=<span class="string">"vector"</span>)</div><div class="line"><span class="comment"># constant of 2x2 tensor (matrix)</span></div><div class="line">b = tf.constant([[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">3</span>]], name=<span class="string">"b"</span>)</div></pre></td></tr></table></figure>
+<h3 id="创建指定初值的张量"><a href="#创建指定初值的张量" class="headerlink" title="创建指定初值的张量"></a>创建指定初值的张量</h3><p><code>tf.fill</code> 可以将tensor填充为同一个值。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">tf​.​zeros​(​shape​,​ dtype​=​tf​.​float32​,​ name​=​None)</div><div class="line"># create a tensor of shape and all elements are zeros</div><div class="line">tf.zeros([2, 3], tf.int32) ==&gt; [[0, 0, 0], [0, 0, 0]]</div><div class="line"></div><div class="line">tf​.​zeros_like​(​input_tensor​,​ dtype​=​None​,​ name​=​None​,​ optimize​=​True)</div><div class="line"># create a tensor of shape and type (unless type is specified) as the input_tensor</div><div class="line">but all elements are zeros.</div><div class="line"># input_tensor is [0, 1], [2, 3], [4, 5]]</div><div class="line">tf.zeros_like(input_tensor) ==&gt; [[0, 0], [0, 0], [0, 0]]</div><div class="line"></div><div class="line">tf​.​ones​(​shape​,​ dtype​=​tf​.​float32​,​ name​=​None)</div><div class="line"># create a tensor of shape and all elements are ones</div><div class="line">tf.ones([2, 3], tf.int32) ==&gt; [[1, 1, 1], [1, 1, 1]]</div><div class="line"></div><div class="line">tf​.​ones_like​(​input_tensor​,​ dtype​=​None​,​ name​=​None​,​ optimize​=​True)</div><div class="line"># create a tensor of shape and type (unless type is specified) as the input_tensor</div><div class="line">but all elements are ones.</div><div class="line"># input_tensor is [0, 1], [2, 3], [4, 5]]</div><div class="line">tf.ones_like(input_tensor) ==&gt; [[1, 1], [1, 1], [1, 1]]</div><div class="line"></div><div class="line">tf​.​fill​(​dims​,​ value​,​ name​=​None​)</div><div class="line"># create a tensor filled with a scalar value.</div><div class="line">tf.ones([2, 3], 8) ==&gt; [[8, 8, 8], [8, 8, 8]]</div></pre></td></tr></table></figure>
+<h3 id="常量序列"><a href="#常量序列" class="headerlink" title="常量序列"></a>常量序列</h3><hr>
+<p><code>tf​.​linspace</code>，线性划分。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">tf​.​linspace​(​start​,​ stop​,​ num​,​ name​=​None)</div><div class="line"># create a sequence of num evenly-spaced values are generated beginning at start. If</div><div class="line">num &gt; 1, the values in the sequence increase by stop - start / num - 1, so that the</div><div class="line">last one is exactly stop.</div><div class="line"># start, stop, num must be scalars</div><div class="line"># comparable to but slightly different from numpy.linspace</div><div class="line"># numpy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None)</div><div class="line">tf.linspace(10.0, 13.0, 4, name="linspace") ==&gt; [10.0 11.0 12.0 13.0]</div></pre></td></tr></table></figure>
+<p><code>tf.range</code>递增（减）数列</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">tf​.​range​(​start​,​ limit​=​None​,​ delta​=​1​,​ dtype​=​None​,​ name​=​'range')</div><div class="line"># create a sequence of numbers that begins at start and extends by increments of</div><div class="line">delta up to but not including limit</div><div class="line"># slight different from range in Python</div><div class="line"># 'start' is 3, 'limit' is 18, 'delta' is 3</div><div class="line">tf.range(start, limit, delta) ==&gt; [3, 6, 9, 12, 15]</div><div class="line"># 'start' is 3, 'limit' is 1, 'delta' is -0.5</div><div class="line">tf.range(start, limit, delta) ==&gt; [3, 2.5, 2, 1.5]</div><div class="line"># 'limit' is 5</div><div class="line">tf.range(limit) ==&gt; [0, 1, 2, 3, 4]</div></pre></td></tr></table></figure>
+<p>不像Numpy，TF中的序列不能迭代。</p>
+<p>当然也可以产生某种分布的随机常数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">tf.random_normal(shape, mean=<span class="number">0.0</span>, stddev=<span class="number">1.0</span>, dtype=tf.float32, seed=<span class="keyword">None</span>, name=<span class="keyword">None</span>)</div><div class="line">tf.truncated_normal(shape, mean=<span class="number">0.0</span>, stddev=<span class="number">1.0</span>, dtype=tf.float32, seed=<span class="keyword">None</span>,</div><div class="line">name=<span class="keyword">None</span>)</div><div class="line">tf.random_uniform(shape, minval=<span class="number">0</span>, maxval=<span class="keyword">None</span>, dtype=tf.float32, seed=<span class="keyword">None</span>,</div><div class="line">name=<span class="keyword">None</span>)</div><div class="line">tf.random_shuffle(value, seed=<span class="keyword">None</span>, name=<span class="keyword">None</span>)</div><div class="line">tf.random_crop(value, size, seed=<span class="keyword">None</span>, name=<span class="keyword">None</span>)</div><div class="line">tf.multinomial(logits, num_samples, seed=<span class="keyword">None</span>, name=<span class="keyword">None</span>)</div><div class="line">tf.random_gamma(shape, alpha, beta=<span class="keyword">None</span>, dtype=tf.float32, seed=<span class="keyword">None</span>, name=<span class="keyword">None</span>)</div></pre></td></tr></table></figure>
+<h2 id="数学操作"><a href="#数学操作" class="headerlink" title="数学操作"></a>数学操作</h2><hr>
+<p>TF官网的<a href="https://www.tensorflow.org/api_docs/python/math_ops/arithmetic_operators" target="_blank" rel="external">数学操作文档</a>。<br>具体的类别表格：</p>
+<p><img src="http://img.blog.csdn.net/20171017151136081?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="pic3"></p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><hr>
+<p>TF可以使用Python原生类型、TF原生类型、Numpy数据类型。TF的数据类型基于Numpy，事实上<code>np.int32 == tf.int32</code>返回的是<code>True</code>。</p>
+<p>Note1:  tf.string 没有与Numpy中的字符类型完全对应。但仍可以处理从Numpy中导入的字符——只需要不在Numpy中特别声明dtype。</p>
+<p>Note2: TensorFlow和NumPy都是n-d数组库。 NumPy支持ndarray，但不提供创建张量函数和自动计算导数以及GPU支持的方法。 </p>
+<p>Note3:  使用Python类型来指定TensorFlow对象是快速和容易的，它对于原型设计的想法很有用。 但是，这样做有一个重要的缺陷。 Python类型缺乏显式地声明数据类型的能力，但是TensorFlow的数据类型更为具体。 例如，所有的整数是相同的类型，但是TensorFlow有8位，16位，32位和64位整数可用。 因此，如果您使用Python类型，则TensorFlow必须推断您的数据类型。</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><hr>
+<p>常量constant与变量Variable的区别：</p>
+<ul>
+<li>常量是常数，变量可以被赋值，因此可以被改变。</li>
+<li>常量值被存储在图graph中，并且每当图被加载时值就会被复制。变量则分开存储，并可能依赖于一个参数服务。</li>
+</ul>
+<p>第二点基本上意味着常数存储在图定义中。 当常数占用了大量内存的时候，每次加载图形都会很慢。 要查看图形的定义和图形定义中存储的内容，只需打印出图形的protobuf。</p>
+<h3 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h3><p>注意：变量会创建一个<code>tf.Variable</code>类的实例。<code>tf.constant</code> 是一个操作，因此是小写，<code>tf.Variable</code>是类因此是大写。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#create variable a with scalar value </span></div><div class="line">a = tf . Variable ( <span class="number">2</span> , name = <span class="string">"scalar"</span> )</div><div class="line"><span class="comment">#create variable b as a vector </span></div><div class="line">b = tf . Variable ([ <span class="number">2</span> , <span class="number">3</span> ], name = <span class="string">"vector"</span> )</div><div class="line"><span class="comment">#create variable c as a 2x2 matrix </span></div><div class="line">c = tf . Variable ([[ <span class="number">0</span> , <span class="number">1</span> ], [ <span class="number">2</span> , <span class="number">3</span> ]], name = <span class="string">"matrix"</span> )</div><div class="line"><span class="comment"># create variable W as 784 x 10 tensor, filled with zeros </span></div><div class="line">W = tf . Variable ( tf . zeros ([ <span class="number">784</span> , <span class="number">10</span> ]))</div></pre></td></tr></table></figure>
+<p>变量有如下的操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">x = tf.Variable(...)</div><div class="line">x.initializer <span class="comment"># init </span></div><div class="line">x.value() <span class="comment"># read op </span></div><div class="line">x.assign(...) <span class="comment"># write op </span></div><div class="line">x.assign_add(...) </div><div class="line"><span class="comment"># and more</span></div></pre></td></tr></table></figure>
+<p><strong>你需要在使用变量之前先初始化它们。</strong>否则会报错。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">init = tf . global_variables_initializer ()</div><div class="line"><span class="keyword">with</span> tf . Session () <span class="keyword">as</span> sess: </div><div class="line">	tf . run ( init)</div></pre></td></tr></table></figure>
+<p>使用<code>tf.variables_initializer()</code>可以设置变量的初始化的值，如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">init_ab = tf . variables_initializer ([ a , b ], name = <span class="string">"init_ab"</span>) <span class="keyword">with</span> tf . Session () <span class="keyword">as</span> sess: </div><div class="line">	tf . run ( init_ab)</div></pre></td></tr></table></figure>
+<p>这样<code>init_ab</code>仅会包含a，b两类值。</p>
+<h3 id="估计变量值"><a href="#估计变量值" class="headerlink" title="估计变量值"></a>估计变量值</h3><p>对于一个初始化的变量，打印只能得到一个对象，如果需要得到它的值，则需要使用<code>eval()</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># W is a random 700 x 100 variable object </span></div><div class="line">W = tf . Variable ( tf . truncated_normal ([ <span class="number">700</span> , <span class="number">10</span> ])) </div><div class="line"><span class="keyword">with</span> tf . Session () <span class="keyword">as</span> sess: </div><div class="line">	sess . run ( W . initializer) </div><div class="line">	<span class="keyword">print</span> W . eval ()</div></pre></td></tr></table></figure>
+<h3 id="对变量赋值"><a href="#对变量赋值" class="headerlink" title="对变量赋值"></a>对变量赋值</h3><p>使用<code>tf.Variable.assign()</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">W = tf . Variable ( <span class="number">10</span> ) </div><div class="line">W . assign ( <span class="number">100</span> ) </div><div class="line"><span class="keyword">with</span> tf . Session () <span class="keyword">as</span> sess: </div><div class="line">	sess . run ( W . initializer) </div><div class="line">	<span class="keyword">print</span> W . eval () <span class="comment"># &gt;&gt; 10</span></div></pre></td></tr></table></figure>
+<p>当然只声明不允许时不会改变值的，在打印前运行：<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sess . <span class="keyword">run</span><span class="bash"> ( assign_op)</span></div></pre></td></tr></table></figure></p>
+<p>就会得到正确的值。<br>另外这句话可以直接代替<code>sess . run ( W . initializer)</code>，这是因为在赋值时自动初始化。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># create a variable whose original value is 2 </span></div><div class="line">a = tf . Variable ( <span class="number">2</span> , name = <span class="string">"scalar"</span> )</div><div class="line"><span class="comment"># assign a * 2 to a and call that op </span></div><div class="line">a_times_two a_times_two = a . assign ( a * <span class="number">2</span>)</div><div class="line">init = tf . global_variables_initializer ()</div><div class="line"><span class="keyword">with</span> tf . Session () <span class="keyword">as</span> sess: </div><div class="line">	sess . run ( init)</div><div class="line">	<span class="comment"># have to initialize a, because a_times_two op depends on the value of a </span></div><div class="line">	sess . run ( a_times_two ) <span class="comment"># &gt;&gt; 8 </span></div><div class="line">	sess . run ( a_times_two ) <span class="comment"># &gt;&gt; 16</span></div></pre></td></tr></table></figure>
+<p>由于每次赋值后，a的值都会改变，因此得到的结果都是不一样的。</p>
+<p>对于简单的递增和递减变量，TensorFlow包括<code>tf.Variable.assign_add（）</code>和<code>tf.Variable.assign_sub（）</code>方法。不同于assign，首先这些不会自动初始化，其次其输入仅依赖于初始值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">W = tf.Variable(<span class="number">10</span>)</div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess: </div><div class="line">	sess.run(W.initializer) </div><div class="line">	<span class="keyword">print</span> sess.run(W.assign_add(<span class="number">10</span>)) <span class="comment"># &gt;&gt; 20  </span></div><div class="line">	<span class="keyword">print</span> sess.run(W.assign_sub(<span class="number">2</span>)) <span class="comment"># &gt;&gt; 18</span></div></pre></td></tr></table></figure>
+<p>因为每个sessions会分别保存值，每个session都有他们自己目前的变量。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">W = tf.Variable(<span class="number">10</span>)</div><div class="line">sess1 = tf.Session() </div><div class="line">sess2 = tf.Session()</div><div class="line">sess1.run(W.initializer) </div><div class="line">sess2.run(W.initializer)</div><div class="line"><span class="keyword">print</span> sess1.run(W.assign_add(<span class="number">10</span>)) <span class="comment"># &gt;&gt; 20 </span></div><div class="line"><span class="keyword">print</span> sess2.run(W.assign_sub(<span class="number">2</span>)) <span class="comment"># &gt;&gt; 8</span></div><div class="line"><span class="keyword">print</span> sess1.run(W.assign_add(<span class="number">100</span>)) <span class="comment"># &gt;&gt; 120 </span></div><div class="line"><span class="keyword">print</span> sess2.run(W.assign_sub(<span class="number">50</span>)) <span class="comment"># &gt;&gt; -42</span></div><div class="line">sess1.close() </div><div class="line">sess2.close()</div></pre></td></tr></table></figure>
+<p>当然也可以基于其他变量定义变量：<br>假设你想要定义<code>U=w*2</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># W is a random 700 x 100 tensor W = tf . Variable ( tf .truncated_normal ([ 700 , 10 ])) </span></div><div class="line">U = tf . Variable ( W * <span class="number">2</span>)</div><div class="line">U = tf . Variable ( W . intialized_value () * <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<h2 id="交互会话"><a href="#交互会话" class="headerlink" title="交互会话"></a>交互会话</h2><hr>
+<p>你有时会看到<code>InteractiveSession</code>而不是<code>Session</code>。 唯一的区别是InteractiveSession使自己成为默认会话，因此您可以调用run（）或eval（）而不显式调用会话。 这在交互式shell和IPython笔记本中很方便，因为它避免了传递一个显式的Session对象来运行ops。 但是，当您有多个会话运行时，这是复杂的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">sess = tf . InteractiveSession () </div><div class="line">a = tf . constant ( <span class="number">5.0</span>) </div><div class="line">b = tf . constant ( <span class="number">6.0</span>) </div><div class="line">c = a * b</div><div class="line"><span class="comment"># We can just use 'c.eval()' without passing 'sess' </span></div><div class="line"><span class="keyword">print</span> ( c . eval ()) </div><div class="line">sess . close ()</div></pre></td></tr></table></figure>
+<h2 id="控制依赖"><a href="#控制依赖" class="headerlink" title="控制依赖"></a>控制依赖</h2><hr>
+<p>有时候，我们将有两个独立的操作，但是想要指定首先要运行哪个操作，然后使用<code>tf.Graph.control_dependencies（control_inputs）</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># your graph g have 5 ops: a, b, c, d, e </span></div><div class="line"><span class="keyword">with</span> g . control_dependencies ([ a , b , c ]):</div><div class="line"><span class="comment"># `d` and `e` will only run after `a`, `b`, and `c` have executed. </span></div><div class="line">	d = ... </div><div class="line">	e = …</div></pre></td></tr></table></figure>
+<h2 id="Placeholders-与-feed-dict"><a href="#Placeholders-与-feed-dict" class="headerlink" title="Placeholders 与 feed_dict"></a>Placeholders 与 feed_dict</h2><hr>
+<p>Tensorflow程序通常有两个阶段：</p>
+<ol>
+<li>定义图</li>
+<li>使用会话执行图中的操作</li>
+</ol>
+<p>因此，我们可以先在图中定义一些在计算前不需要知道的数值。比如我们定义一个函数$f(x,y)=x*2+y$，<code>x,y</code>就是占位符Placeholder。定义方法为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tf . placeholder ( dtype , shape = <span class="keyword">None</span> , name = <span class="keyword">None</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># create a placeholder of type float 32-bit, shape is a vector of 3 elements </span></div><div class="line">a = tf . placeholder ( tf . float32 , shape =[ <span class="number">3</span> ])</div><div class="line"><span class="comment"># create a constant of type float 32-bit, shape is a vector of 3 elements </span></div><div class="line">b = tf . constant ([ <span class="number">5</span> , <span class="number">5</span> , <span class="number">5</span> ], tf . float32)</div><div class="line"><span class="comment"># use the placeholder as you would a constant or a variable </span></div><div class="line">c = a + b <span class="comment"># Short for tf.add(a, b)</span></div><div class="line"><span class="comment"># If we try to fetch c , we will run into error.</span></div><div class="line"><span class="keyword">with</span> tf . Session () <span class="keyword">as</span> sess: </div><div class="line">	<span class="keyword">print</span> ( sess . run ( c ))</div><div class="line">&gt;&gt; NameError</div></pre></td></tr></table></figure>
+<p>对于placeholder，在运行时需要使用字典指定其值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> tf . Session () <span class="keyword">as</span> sess:</div><div class="line">	<span class="comment"># feed [1, 2, 3] to placeholder a via the dict &#123;a: [1, 2, 3]&#125; </span></div><div class="line">	<span class="comment"># fetch value of c  </span></div><div class="line">	<span class="keyword">print</span> ( sess . run ( c , &#123; a : [ <span class="number">1</span> , <span class="number">2</span> , <span class="number">3</span> ]&#125;))</div><div class="line">&gt;&gt; [ <span class="number">6.</span> <span class="number">7.</span> <span class="number">8.</span>]</div></pre></td></tr></table></figure>
+<h2 id="The-trap-of-lazy-loading"><a href="#The-trap-of-lazy-loading" class="headerlink" title="The trap of lazy loading"></a>The trap of lazy loading</h2><hr>
+<p>作者还发现了一个有趣的”bug”：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">x</span> = <span class="keyword">tf</span>.Variable(<span class="number">10</span>, name=<span class="string">'x'</span>) </div><div class="line"><span class="keyword">y</span> = <span class="keyword">tf</span>.Variable(<span class="number">20</span>, name=<span class="string">'y'</span>) </div><div class="line"><span class="keyword">z</span> = <span class="keyword">tf</span>.<span class="built_in">add</span>(<span class="keyword">x</span>, <span class="keyword">y</span>)</div><div class="line">with <span class="keyword">tf</span>.Session() <span class="keyword">as</span> ses<span class="variable">s:</span></div><div class="line">	sess.run(<span class="keyword">tf</span>.global_variables_initializer()) </div><div class="line">	<span class="keyword">for</span> _ in <span class="built_in">range</span>(<span class="number">10</span>):  </div><div class="line">		sess.run(<span class="keyword">z</span>)</div><div class="line">		writer.<span class="keyword">close</span>()</div></pre></td></tr></table></figure></p>
+<p>当使用<code>lazy loading</code>时：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">x = tf.Variable(<span class="number">10</span>, name=<span class="string">'x'</span>) </div><div class="line">y = tf.Variable(<span class="number">20</span>, name=<span class="string">'y'</span>)</div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess: </div><div class="line">	sess.run(tf.global_variables_initializer()) </div><div class="line">	<span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">10</span>):  </div><div class="line">		sess.run(tf.add(x, y)) <span class="comment"># create the op add only when you need to compute it</span></div><div class="line">		writer.close()</div></pre></td></tr></table></figure>
+<p>在Tensorboard中，他们的图有很大的不同：</p>
+<p><img src="http://img.blog.csdn.net/20171020171901292?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="add"></p>
+<p><img src="http://img.blog.csdn.net/20171020171911233?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="lazy"></p>
+<p>下面的图竟然没有add节点！让我们打印一下图的定义：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> tf.get_default_graph().as_graph_def()</div></pre></td></tr></table></figure></p>
+<p>正常定义为：<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class">node </span>&#123;</div><div class="line"><span class="symbol">	name:</span> <span class="string">"Add"</span> </div><div class="line"><span class="symbol">	op:</span> <span class="string">"Add"</span></div><div class="line"><span class="symbol">	input:</span> <span class="string">"x/read"</span> </div><div class="line"><span class="symbol">	input:</span> <span class="string">"y/read"</span>  </div><div class="line">	<span class="class">attr </span>&#123;</div><div class="line"><span class="symbol">		key:</span> <span class="string">"T"</span> </div><div class="line">		<span class="class">value </span>&#123;</div><div class="line"><span class="symbol">			type:</span> DT_INT32 </div><div class="line">		&#125; </div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>另一方面，lazy loading有是个”add”节点的复制：<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">node</span> <span class="title">&#123;</span></div><div class="line">	name: <span class="string">"Add"</span> </div><div class="line">	<span class="keyword">op</span>: <span class="string">"Add"</span>  </div><div class="line">	...</div><div class="line">&#125;</div><div class="line"><span class="keyword">node</span> <span class="title">&#123;</span></div><div class="line">	name: <span class="string">"Add_9"</span> </div><div class="line">	<span class="keyword">op</span>: <span class="string">"Add"</span>  </div><div class="line">	...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>例子中的循环可能难以见到，但可能需要计算相同的损失函数或在一定数量的训练样本之后进行一些预测。 采用lazy loading，就会在计算了数千次时，在图形中添加了数千个不必要的节点。 使图形定义变得臃肿，加载速度更慢。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tensorflow/" rel="tag"># tensorflow</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/21/1-and-23/" rel="next" title="1与23">
+                <i class="fa fa-chevron-left"></i> 1与23
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="hypercomments_widget"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Yan Joy" />
+          <p class="site-author-name" itemprop="name">Yan Joy</p>
+           
+              <p class="site-description motion-element" itemprop="description">Default~</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">81</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/yanjoy" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/yan_joy" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              FRIENDS
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.xieqiang.site/" title="Johnny" target="_blank">Johnny</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://pages.coding.me/" title="Hosted by Coding Pages" target="_blank">Hosted by Coding Pages</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Fun-with-TensorBoard"><span class="nav-number">1.</span> <span class="nav-text">Fun with TensorBoard</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Constant-types"><span class="nav-number">2.</span> <span class="nav-text">Constant types</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#建立标量或者张量"><span class="nav-number">2.1.</span> <span class="nav-text">建立标量或者张量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建指定初值的张量"><span class="nav-number">2.2.</span> <span class="nav-text">创建指定初值的张量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常量序列"><span class="nav-number">2.3.</span> <span class="nav-text">常量序列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数学操作"><span class="nav-number">3.</span> <span class="nav-text">数学操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">4.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">5.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义变量"><span class="nav-number">5.1.</span> <span class="nav-text">定义变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#估计变量值"><span class="nav-number">5.2.</span> <span class="nav-text">估计变量值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对变量赋值"><span class="nav-number">5.3.</span> <span class="nav-text">对变量赋值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交互会话"><span class="nav-number">6.</span> <span class="nav-text">交互会话</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制依赖"><span class="nav-number">7.</span> <span class="nav-text">控制依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Placeholders-与-feed-dict"><span class="nav-number">8.</span> <span class="nav-text">Placeholders 与 feed_dict</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-trap-of-lazy-loading"><span class="nav-number">9.</span> <span class="nav-text">The trap of lazy loading</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yan Joy</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 89966, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+		_hcwp.push({widget:"Stream", widget_id: 89966, xid: "2017/10/21/CS20SI-1/"});
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/89966/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz", "owWjRRJ2oBD7Dekc8l1RRctK");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+</body>
+</html>

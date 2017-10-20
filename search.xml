@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[CS20SI Operations]]></title>
+    <url>%2F2017%2F10%2F21%2FCS20SI-1%2F</url>
+    <content type="text"><![CDATA[CS 20SI: Tensorflow for Deep Learning Research Fun with TensorBoard graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./graphs。 首先在默认图中建立常数与操作，并在session中运行。 123456789import tensorflow as tfa = tf.constant(2)b = tf.constant(3)x = tf.add(a, b)with tf.Session() as sess: writer = tf.summary.FileWriter('./graphs', sess.graph) print sess.run(x)# close the writer when you’re done using itwriter.close() 接下来执行这一段代码，再调取Tensorboard命令显示。 12$ python [yourprogram.py]$ tensorboard --logdir=&quot;./graphs&quot; 默认的端口为6006，打开浏览器访问http://localhost:6006/ ，点击上面的GRAPHS栏，得到了三个节点。 由于没有指定名称，Tensorflow会自己命名为不同的名称。当然还是自己命名方便： 123a = tf.constant([2, 2], name="a")b = tf.constant([3, 6], name="b")x = tf.add(a, b, name="add") 图只包括了操作及其依赖项，并不显示其具体值，只有当运行session时才会返回输出：1tf.Session.run(fetches, feed_dict=None, options=None, run_metadata=None) 注意：当多次运行代码时，会产生多个Tensorboard的输出，TF只会显示最新的graph，因此不需要时可以删掉之前的graph。 Constant types 建立标量或者张量12345tf​.​constant​(​value​,​ dtype​=​None​,​ shape​=​None​,​ name​=​'Const'​,​ verify_shape​=​False)# constant of 1d tensor (vector)a = tf.constant([2, 2], name="vector")# constant of 2x2 tensor (matrix)b = tf.constant([[0, 1], [2, 3]], name="b") 创建指定初值的张量tf.fill 可以将tensor填充为同一个值。 1234567891011121314151617181920212223tf​.​zeros​(​shape​,​ dtype​=​tf​.​float32​,​ name​=​None)# create a tensor of shape and all elements are zerostf.zeros([2, 3], tf.int32) ==&gt; [[0, 0, 0], [0, 0, 0]]tf​.​zeros_like​(​input_tensor​,​ dtype​=​None​,​ name​=​None​,​ optimize​=​True)# create a tensor of shape and type (unless type is specified) as the input_tensorbut all elements are zeros.# input_tensor is [0, 1], [2, 3], [4, 5]]tf.zeros_like(input_tensor) ==&gt; [[0, 0], [0, 0], [0, 0]]tf​.​ones​(​shape​,​ dtype​=​tf​.​float32​,​ name​=​None)# create a tensor of shape and all elements are onestf.ones([2, 3], tf.int32) ==&gt; [[1, 1, 1], [1, 1, 1]]tf​.​ones_like​(​input_tensor​,​ dtype​=​None​,​ name​=​None​,​ optimize​=​True)# create a tensor of shape and type (unless type is specified) as the input_tensorbut all elements are ones.# input_tensor is [0, 1], [2, 3], [4, 5]]tf.ones_like(input_tensor) ==&gt; [[1, 1], [1, 1], [1, 1]]tf​.​fill​(​dims​,​ value​,​ name​=​None​)# create a tensor filled with a scalar value.tf.ones([2, 3], 8) ==&gt; [[8, 8, 8], [8, 8, 8]] 常量序列 tf​.​linspace，线性划分。 12345678tf​.​linspace​(​start​,​ stop​,​ num​,​ name​=​None)# create a sequence of num evenly-spaced values are generated beginning at start. Ifnum &gt; 1, the values in the sequence increase by stop - start / num - 1, so that thelast one is exactly stop.# start, stop, num must be scalars# comparable to but slightly different from numpy.linspace# numpy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None)tf.linspace(10.0, 13.0, 4, name="linspace") ==&gt; [10.0 11.0 12.0 13.0] tf.range递增（减）数列 12345678910tf​.​range​(​start​,​ limit​=​None​,​ delta​=​1​,​ dtype​=​None​,​ name​=​'range')# create a sequence of numbers that begins at start and extends by increments ofdelta up to but not including limit# slight different from range in Python# 'start' is 3, 'limit' is 18, 'delta' is 3tf.range(start, limit, delta) ==&gt; [3, 6, 9, 12, 15]# 'start' is 3, 'limit' is 1, 'delta' is -0.5tf.range(start, limit, delta) ==&gt; [3, 2.5, 2, 1.5]# 'limit' is 5tf.range(limit) ==&gt; [0, 1, 2, 3, 4] 不像Numpy，TF中的序列不能迭代。 当然也可以产生某种分布的随机常数： 123456789tf.random_normal(shape, mean=0.0, stddev=1.0, dtype=tf.float32, seed=None, name=None)tf.truncated_normal(shape, mean=0.0, stddev=1.0, dtype=tf.float32, seed=None,name=None)tf.random_uniform(shape, minval=0, maxval=None, dtype=tf.float32, seed=None,name=None)tf.random_shuffle(value, seed=None, name=None)tf.random_crop(value, size, seed=None, name=None)tf.multinomial(logits, num_samples, seed=None, name=None)tf.random_gamma(shape, alpha, beta=None, dtype=tf.float32, seed=None, name=None) 数学操作 TF官网的数学操作文档。具体的类别表格： 数据类型 TF可以使用Python原生类型、TF原生类型、Numpy数据类型。TF的数据类型基于Numpy，事实上np.int32 == tf.int32返回的是True。 Note1: tf.string 没有与Numpy中的字符类型完全对应。但仍可以处理从Numpy中导入的字符——只需要不在Numpy中特别声明dtype。 Note2: TensorFlow和NumPy都是n-d数组库。 NumPy支持ndarray，但不提供创建张量函数和自动计算导数以及GPU支持的方法。 Note3: 使用Python类型来指定TensorFlow对象是快速和容易的，它对于原型设计的想法很有用。 但是，这样做有一个重要的缺陷。 Python类型缺乏显式地声明数据类型的能力，但是TensorFlow的数据类型更为具体。 例如，所有的整数是相同的类型，但是TensorFlow有8位，16位，32位和64位整数可用。 因此，如果您使用Python类型，则TensorFlow必须推断您的数据类型。 变量 常量constant与变量Variable的区别： 常量是常数，变量可以被赋值，因此可以被改变。 常量值被存储在图graph中，并且每当图被加载时值就会被复制。变量则分开存储，并可能依赖于一个参数服务。 第二点基本上意味着常数存储在图定义中。 当常数占用了大量内存的时候，每次加载图形都会很慢。 要查看图形的定义和图形定义中存储的内容，只需打印出图形的protobuf。 定义变量注意：变量会创建一个tf.Variable类的实例。tf.constant 是一个操作，因此是小写，tf.Variable是类因此是大写。 12345678#create variable a with scalar value a = tf . Variable ( 2 , name = "scalar" )#create variable b as a vector b = tf . Variable ([ 2 , 3 ], name = "vector" )#create variable c as a 2x2 matrix c = tf . Variable ([[ 0 , 1 ], [ 2 , 3 ]], name = "matrix" )# create variable W as 784 x 10 tensor, filled with zeros W = tf . Variable ( tf . zeros ([ 784 , 10 ])) 变量有如下的操作： 123456x = tf.Variable(...)x.initializer # init x.value() # read op x.assign(...) # write op x.assign_add(...) # and more 你需要在使用变量之前先初始化它们。否则会报错。 123init = tf . global_variables_initializer ()with tf . Session () as sess: tf . run ( init) 使用tf.variables_initializer()可以设置变量的初始化的值，如： 12init_ab = tf . variables_initializer ([ a , b ], name = "init_ab") with tf . Session () as sess: tf . run ( init_ab) 这样init_ab仅会包含a，b两类值。 估计变量值对于一个初始化的变量，打印只能得到一个对象，如果需要得到它的值，则需要使用eval()。 123456# W is a random 700 x 100 variable object W = tf . Variable ( tf . truncated_normal ([ 700 , 10 ])) with tf . Session () as sess: sess . run ( W . initializer) print W . eval () 对变量赋值使用tf.Variable.assign()： 12345W = tf . Variable ( 10 ) W . assign ( 100 ) with tf . Session () as sess: sess . run ( W . initializer) print W . eval () # &gt;&gt; 10 当然只声明不允许时不会改变值的，在打印前运行：1sess . run ( assign_op) 就会得到正确的值。另外这句话可以直接代替sess . run ( W . initializer)，这是因为在赋值时自动初始化。 12345678910# create a variable whose original value is 2 a = tf . Variable ( 2 , name = "scalar" )# assign a * 2 to a and call that op a_times_two a_times_two = a . assign ( a * 2)init = tf . global_variables_initializer ()with tf . Session () as sess: sess . run ( init) # have to initialize a, because a_times_two op depends on the value of a sess . run ( a_times_two ) # &gt;&gt; 8 sess . run ( a_times_two ) # &gt;&gt; 16 由于每次赋值后，a的值都会改变，因此得到的结果都是不一样的。 对于简单的递增和递减变量，TensorFlow包括tf.Variable.assign_add（）和tf.Variable.assign_sub（）方法。不同于assign，首先这些不会自动初始化，其次其输入仅依赖于初始值： 12345W = tf.Variable(10)with tf.Session() as sess: sess.run(W.initializer) print sess.run(W.assign_add(10)) # &gt;&gt; 20 print sess.run(W.assign_sub(2)) # &gt;&gt; 18 因为每个sessions会分别保存值，每个session都有他们自己目前的变量。 1234567891011W = tf.Variable(10)sess1 = tf.Session() sess2 = tf.Session()sess1.run(W.initializer) sess2.run(W.initializer)print sess1.run(W.assign_add(10)) # &gt;&gt; 20 print sess2.run(W.assign_sub(2)) # &gt;&gt; 8print sess1.run(W.assign_add(100)) # &gt;&gt; 120 print sess2.run(W.assign_sub(50)) # &gt;&gt; -42sess1.close() sess2.close() 当然也可以基于其他变量定义变量：假设你想要定义U=w*2: 123# W is a random 700 x 100 tensor W = tf . Variable ( tf .truncated_normal ([ 700 , 10 ])) U = tf . Variable ( W * 2)U = tf . Variable ( W . intialized_value () * 2) 交互会话 你有时会看到InteractiveSession而不是Session。 唯一的区别是InteractiveSession使自己成为默认会话，因此您可以调用run（）或eval（）而不显式调用会话。 这在交互式shell和IPython笔记本中很方便，因为它避免了传递一个显式的Session对象来运行ops。 但是，当您有多个会话运行时，这是复杂的。 1234567sess = tf . InteractiveSession () a = tf . constant ( 5.0) b = tf . constant ( 6.0) c = a * b# We can just use 'c.eval()' without passing 'sess' print ( c . eval ()) sess . close () 控制依赖 有时候，我们将有两个独立的操作，但是想要指定首先要运行哪个操作，然后使用tf.Graph.control_dependencies（control_inputs） 12345# your graph g have 5 ops: a, b, c, d, e with g . control_dependencies ([ a , b , c ]):# `d` and `e` will only run after `a`, `b`, and `c` have executed. d = ... e = … Placeholders 与 feed_dict Tensorflow程序通常有两个阶段： 定义图 使用会话执行图中的操作 因此，我们可以先在图中定义一些在计算前不需要知道的数值。比如我们定义一个函数$f(x,y)=x*2+y$，x,y就是占位符Placeholder。定义方法为： 1tf . placeholder ( dtype , shape = None , name = None) 12345678910# create a placeholder of type float 32-bit, shape is a vector of 3 elements a = tf . placeholder ( tf . float32 , shape =[ 3 ])# create a constant of type float 32-bit, shape is a vector of 3 elements b = tf . constant ([ 5 , 5 , 5 ], tf . float32)# use the placeholder as you would a constant or a variable c = a + b # Short for tf.add(a, b)# If we try to fetch c , we will run into error.with tf . Session () as sess: print ( sess . run ( c ))&gt;&gt; NameError 对于placeholder，在运行时需要使用字典指定其值： 12345with tf . Session () as sess: # feed [1, 2, 3] to placeholder a via the dict &#123;a: [1, 2, 3]&#125; # fetch value of c print ( sess . run ( c , &#123; a : [ 1 , 2 , 3 ]&#125;))&gt;&gt; [ 6. 7. 8.] The trap of lazy loading 作者还发现了一个有趣的”bug”：12345678x = tf.Variable(10, name='x') y = tf.Variable(20, name='y') z = tf.add(x, y)with tf.Session() as sess: sess.run(tf.global_variables_initializer()) for _ in range(10): sess.run(z) writer.close() 当使用lazy loading时： 1234567x = tf.Variable(10, name='x') y = tf.Variable(20, name='y')with tf.Session() as sess: sess.run(tf.global_variables_initializer()) for _ in range(10): sess.run(tf.add(x, y)) # create the op add only when you need to compute it writer.close() 在Tensorboard中，他们的图有很大的不同： 下面的图竟然没有add节点！让我们打印一下图的定义：1print tf.get_default_graph().as_graph_def() 正常定义为：123456789101112node &#123; name: "Add" op: "Add" input: "x/read" input: "y/read" attr &#123; key: "T" value &#123; type: DT_INT32 &#125; &#125;&#125; 另一方面，lazy loading有是个”add”节点的复制：12345678910node &#123; name: "Add" op: "Add" ...&#125;node &#123; name: "Add_9" op: "Add" ...&#125; 例子中的循环可能难以见到，但可能需要计算相同的损失函数或在一定数量的训练样本之后进行一些预测。 采用lazy loading，就会在计算了数千次时，在图形中添加了数千个不必要的节点。 使图形定义变得臃肿，加载速度更慢。]]></content>
+      <categories>
+        <category>ML</category>
+      </categories>
+      <tags>
+        <tag>tensorflow</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[1与23]]></title>
+    <url>%2F2017%2F10%2F21%2F1-and-23%2F</url>
+    <content type="text"><![CDATA[1 这里的1是指小站从去年8月29到今年已经一年了。 截止目前一共有79篇文章，数量中等吧，文章种类倒是还挺丰富多彩的，不过某一类的数量有点太多了，以后平均一下比较好。 有的像日记，有的是心情，如果事情不被记录，并不一定是不重要，而是不清楚如何表述。 来得及怀念的来不及道别的带我归去酿成一坛坛美酒 曾经这样说过，如今归来，却还未曾实现。当有别人疑惑时，我也推荐他们写一些东西。这些往往只是给自己而已，写出来的甚至未来的自己都无法认同，不过也是你挣扎过的证据。 我想珍藏它们，只是不希望是美酒，醉不如醒着好。 23 23是真实的年龄，远远超过了小站，但小站的年龄可能会在未来追上来。 每一年都有新的计划和任务，生日说，新年说…… 不过如果实现了，还真是一项很好的生日礼物呢。有时候曾经不敢尝试的，曾经恐惧的，不妨过一段再试试吧。小时候就觉得自己不喜欢水，甚至包括洗澡，而游泳更甚。曾经学过游泳（仰泳），学完感冒一场，技术也不怎么好，就觉得此生无缘了。大学也是，室友选了游泳课，我却不想趁机练练，觉得考试50米太困难了。 刚9月入学的一段，又在舍友的怂恿下去了几次游泳馆，现在也淹不死了。不过随着而来就无法回避”老妈和女朋友掉进水里先救哪个的问题了“。只好努力，把未来的女朋友教会游泳了。 另一点还是要多看书吧，开学基本看了两本（感谢中特课程给我的看书时间）。Kindle上买的三本也有两本看了一半。有空也应该读一下。 最后感谢父母，对我的关爱和支持。今年的预算肯定超支了，下一年还是要注意一下的。 2017]]></content>
+      <categories>
+        <category>感</category>
+      </categories>
+      <tags>
+        <tag>生日</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Tensorflow trick 与 细节]]></title>
     <url>%2F2017%2F10%2F15%2Ftensorflow-trick%2F</url>
     <content type="text"><![CDATA[前后传播采用不同方式 How Can I Define Only the Gradient for a Tensorflow Subgraph? Suppose you want group of ops that behave as f(x) in forward mode, but as g(x) in the backward mode. You implement it as12t = g(x)y = t + tf.stop_gradient(f(x) - t) 在一个bnn的实现中有如下一段： 12345def round_through(x): # g(x) = x back # f(x) = round(x) forward rounded = K.round(x) return x + K.stop_gradient(rounded - x) 这里正向传播用的是四舍五入后的x值，而反向传播则保留了小数精度。 停止部分变量的梯度计算 在压缩的retrain步骤中，存在freeze部分变量，retrain另一部分的操作。而在Tensorflow中的tf.stop_gradient函数只能把整个Tensor全部停止计算。How to stop gradient for some entry of a tensor in tensorflow提供了一个较好的方法：1res_matrix = tf.stop_gradient(mask_h*E) + mask*E 其中mask与E对应，决定了梯度是否需要被保留。123def entry_stop_gradients(target, mask): mask_h = tf.abs(mask-1) return tf.stop_gradient(mask_h * target) + mask * target Tensor 与 Variable 先看一段程序： 123456789101112a = tf.Variable([1])with tf.device("/cpu:0"): with tf.Session() as sess: sess.run(tf.global_variables_initializer()) print 'a:',a.eval() print 'type of a:',a a = a + 1 print 'a:',a.eval() print 'type of a:',a b = a + 1 print 'b:',b.eval() print 'type of b:',b 这是很简单的加法，结果肯定都知道，分别是1,2,3。但同时又加上了他们的类型，这就不太一样了。 123456a: [1]type of a: &lt;tf.Variable &apos;Variable:0&apos; shape=(1,) dtype=int32_ref&gt;a: [2]type of a: Tensor(&quot;add:0&quot;, shape=(1,), dtype=int32, device=/device:CPU:0)b: [3]type of b: Tensor(&quot;add_1:0&quot;, shape=(1,), dtype=int32, device=/device:CPU:0) 一开始明明定义的是一个tf.Variable，结果一加却变成了Tensor，之后的b也是这样。说明这些操作只是一些计算过程罢了，就像一些菜谱，没有原材料是无法做饭的。这样说的话，经过了计算，原来的变量a的值其实是没有改变的，因为这些操作都不是针对的Variable。像tf.scatter_update这种操作，输入是Variable，才能进行变量的更新。但当你加入这句话，还是不会有作用，因为这个函数返回的是一个Tensor，也是一个“菜谱”，只有当执行时才会生效。 因此Tensorflow的Variable和Tensor还需要更深的理解啊。]]></content>
@@ -31,8 +53,8 @@
         <category>Code</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>pandas</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -87,8 +109,8 @@
         <category>ML</category>
       </categories>
       <tags>
-        <tag>cuda</tag>
         <tag>tensorflow</tag>
+        <tag>cuda</tag>
       </tags>
   </entry>
   <entry>
@@ -255,9 +277,9 @@
         <category>ML</category>
       </categories>
       <tags>
+        <tag>tensorflow</tag>
         <tag>caffe</tag>
         <tag>cuda</tag>
-        <tag>tensorflow</tag>
       </tags>
   </entry>
   <entry>
@@ -369,8 +391,8 @@
         <category>ML</category>
       </categories>
       <tags>
-        <tag>caffe</tag>
         <tag>python</tag>
+        <tag>caffe</tag>
       </tags>
   </entry>
   <entry>
@@ -451,8 +473,8 @@
         <category>ML</category>
       </categories>
       <tags>
-        <tag>caffe</tag>
         <tag>python</tag>
+        <tag>caffe</tag>
       </tags>
   </entry>
   <entry>
@@ -463,8 +485,8 @@
         <category>ML</category>
       </categories>
       <tags>
-        <tag>caffe</tag>
         <tag>python</tag>
+        <tag>caffe</tag>
       </tags>
   </entry>
   <entry>
