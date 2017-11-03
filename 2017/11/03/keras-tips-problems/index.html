@@ -1,0 +1,1189 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="tensorflow,keras," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="写了一下keras的层，出现了一些问题，值得总结一下~
+Python中对变量是否为None的判断
+这个问题出在以下代码段：
+123456self.mask = np.zeros(shape)if self.mask == None:	passelse:	pass">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Keras tips&problems">
+<meta property="og:url" content="https://joyfyan.github.io/2017/11/03/keras-tips-problems/index.html">
+<meta property="og:site_name" content="小一一的小站">
+<meta property="og:description" content="写了一下keras的层，出现了一些问题，值得总结一下~
+Python中对变量是否为None的判断
+这个问题出在以下代码段：
+123456self.mask = np.zeros(shape)if self.mask == None:	passelse:	pass">
+<meta property="og:image" content="http://img.blog.csdn.net/20171102172949871?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20171102173919163?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-11-03T09:25:18.415Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Keras tips&problems">
+<meta name="twitter:description" content="写了一下keras的层，出现了一些问题，值得总结一下~
+Python中对变量是否为None的判断
+这个问题出在以下代码段：
+123456self.mask = np.zeros(shape)if self.mask == None:	passelse:	pass">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20171102172949871?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://joyfyan.github.io/2017/11/03/keras-tips-problems/"/>
+
+
+
+
+
+  <title> Keras tips&problems | 小一一的小站 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?59765bbe651ba5fb69dc22dd74eb6ba7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小一一的小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Blog of Yan Joy</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2017/11/03/keras-tips-problems/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yan Joy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小一一的小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Keras tips&problems
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-03T17:21:10+08:00">
+                2017-11-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ML/" itemprop="url" rel="index">
+                    <span itemprop="name">ML</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            <!--noindex-->
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/03/keras-tips-problems/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2017/11/03/keras-tips-problems/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+              <!--/noindex-->
+            
+          
+
+          
+          
+             <span id="/2017/11/03/keras-tips-problems/" class="leancloud_visitors" data-flag-title="Keras tips&problems">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>写了一下keras的层，出现了一些问题，值得总结一下~</p>
+<h2 id="Python中对变量是否为None的判断"><a href="#Python中对变量是否为None的判断" class="headerlink" title="Python中对变量是否为None的判断"></a>Python中对变量是否为None的判断</h2><hr>
+<p>这个问题出在以下代码段：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">self.mask = np.zeros(shape)</div><div class="line"></div><div class="line"><span class="keyword">if</span> self.mask == <span class="keyword">None</span>:</div><div class="line">	<span class="keyword">pass</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">	<span class="keyword">pass</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>直接运行会报错，原因在于对于numpy数组，对<code>None</code>的判断是对于其中元素的，而不是对于<code>mask</code>这个对象的。</p>
+<p>如果比较相同的对象实例，is总是返回True 而 <code>==</code> 最终取决于 <code>eq()</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">foo</span><span class="params">(object)</span>:</span></div><div class="line">		<span class="function"><span class="keyword">def</span> <span class="title">__eq__</span><span class="params">(self, other)</span>:</span></div><div class="line">			<span class="keyword">return</span> <span class="keyword">True</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f = foo()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f == <span class="keyword">None</span></div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f <span class="keyword">is</span> <span class="keyword">None</span></div><div class="line"><span class="keyword">False</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>list1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>list2 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>list1==list2</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>list1 <span class="keyword">is</span> list2</div><div class="line"><span class="keyword">False</span></div></pre></td></tr></table></figure></p>
+<p>另外<code>(ob1 is ob2)</code>等价于<code>(id(ob1) == id(ob2))</code>。</p>
+<p>如果要实现我们期望的判断，有三种主要的写法：</p>
+<ol>
+<li><code>if X is None</code>;</li>
+<li><code>if not X</code>；<br> 当X为None,  False, 空字符串””, 0, 空列表[], 空字典{}, 空元组()这些时，not X为真，即无法分辨出他们之间的不同。</li>
+<li><code>if not X is None</code>;</li>
+</ol>
+<p>在Python中，None、空列表[]、空字典{}、空元组()、0等一系列代表空和无的对象会被转换成False。除此之外的其它对象都会被转化成True。</p>
+<p>在命令if not 1中，1便会转换为bool类型的True。not是逻辑运算符非，not 1则恒为False。因此if语句if not 1之下的语句，永远不会执行。</p>
+<blockquote>
+<p><a href="https://github.com/wklken/stackoverflow-py-top-qa/blob/master/contents/qa-control-flow.md" target="_blank" rel="external">stackoverflow-py-top-qa</a><br><a href="http://blog.csdn.net/sasoritattoo/article/details/12451359" target="_blank" rel="external">python代码<code>if not x:</code> 和<code>if x is not None:</code>和<code>if not x is None:</code>使用</a></p>
+</blockquote>
+<h2 id="模型build后无法更改属性？？"><a href="#模型build后无法更改属性？？" class="headerlink" title="模型build后无法更改属性？？"></a>模型build后无法更改属性？？</h2><hr>
+<p>这其实还是未解决的一个疑问。<br><code>mask=foo</code>作为输入传入自定义由<code>Dense()</code>继承而来的类<code>myDense()</code>，并用<code>self.mask</code>作为属性保存。之后在<code>call</code>函数中使用：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">call</span><span class="params">(self, inputs)</span>:</span></div><div class="line">    output = K.dot(inputs, self.mask)</div></pre></td></tr></table></figure></p>
+<p>那么模型经过<code>build</code>、<code>compile</code>后，运行，能够得到相应的结果。但如果想更改这个<code>mask</code>，直接使用在外部对这个属性进行修改：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">myLayer = myDense()</div><div class="line">myLayer.mask = bar</div></pre></td></tr></table></figure></p>
+<p>再次执行上面的相乘，发现结果还是没有更改之前的，证明修改没有作用。但如果输出此时对象的<code>mask</code>属性，其实的确是修改之后的值。<br>是否与build操作有关呢？</p>
+<p>为了验证做了一些实验：</p>
+<ol>
+<li>重新执行<code>model.compile</code><br> 无效</li>
+<li>将<code>myLayer</code>中的<code>self.built</code>置为<code>False</code>，重新<code>model.compile()</code><br> 无效</li>
+<li>将<code>model</code>中的<code>self.built</code>置为<code>False</code>，重新<code>model.compile()</code><br> 无效</li>
+<li>清除目前所构建的图，重新定义网络，重新<code>model.compile()</code><br> 有效</li>
+</ol>
+<p>最后的方法基本就等于关掉程序重新运行了，但其他方法也确实不行，感觉就像层的属性只在第一次<code>compile()</code>时才被应用。个人感觉不应该这么麻烦，希望有大神指点= =</p>
+<h2 id="一些新的functions-amp-tricks"><a href="#一些新的functions-amp-tricks" class="headerlink" title="一些新的functions&amp;tricks"></a>一些新的functions&amp;tricks</h2><hr>
+<p>一个心得：很多想法用<code>numpy</code>数学库很好解决，但在Tensorflow中，由于<code>Tensor</code>类型的限制，某些操作无法直接进行，特别是通常最简单的赋值（当然也可能是我还没有了解到更多的方法）。</p>
+<p>这样有些操作需要搜索半天实现方法，真的挺费劲。。</p>
+<h3 id="非排序分割和"><a href="#非排序分割和" class="headerlink" title="非排序分割和"></a>非排序分割和</h3><hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># unsorted_segment_sum(...): Computes the sum along segments of a tensor.</span></div><div class="line"></div><div class="line">tf.unsorted_segment_sum(</div><div class="line">    data, <span class="comment"># 数据</span></div><div class="line">    segment_ids, <span class="comment"># 不同类的mask</span></div><div class="line">    num_segments, <span class="comment"># 分类总数</span></div><div class="line">    name=<span class="keyword">None</span></div><div class="line">)</div></pre></td></tr></table></figure>
+<p><img src="http://img.blog.csdn.net/20171102172949871?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="unsorted_segment_sum"></p>
+<p>这个对于group by的reduce可是太好用了！赞美</p>
+<h3 id="用一个tensor作为另一个tensor的下标"><a href="#用一个tensor作为另一个tensor的下标" class="headerlink" title="用一个tensor作为另一个tensor的下标"></a>用一个tensor作为另一个tensor的下标</h3><hr>
+<p>在numpy中，对array的操作是否简单：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">x = np.asarray([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">3</span>])</div><div class="line">e = np.asarray([<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>])</div><div class="line"> </div><div class="line"><span class="keyword">print</span> x * e[x]</div></pre></td></tr></table></figure></p>
+<p>得到：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span> <span class="number">0</span> <span class="number">3</span> <span class="number">3</span> <span class="number">0</span> <span class="number">5</span> <span class="number">0</span> <span class="number">7</span> <span class="number">1</span> <span class="number">3</span>]</div></pre></td></tr></table></figure></p>
+<p>而在Tensorflow，则需要<code>tf.gather</code>的帮助：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">gather(</div><div class="line">    params,</div><div class="line">    indices,</div><div class="line">    validate_indices=<span class="keyword">None</span>,</div><div class="line">    name=<span class="keyword">None</span></div><div class="line">)</div></pre></td></tr></table></figure></p>
+<p>通过gather，将params重组。（好像之前博客里也说过）</p>
+<p><img src="http://img.blog.csdn.net/20171102173919163?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="gather"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">x = np.asarray([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">3</span>])</div><div class="line">e = np.asarray([<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>])</div><div class="line">x_t = tf.constant(x)</div><div class="line">e_t = tf.constant(e)</div><div class="line">result = x_t * tf.gather(e_t, x_t)</div><div class="line"></div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">    <span class="keyword">print</span> sess.run(result)  <span class="comment"># ==&gt; 'array([1, 0, 3, 3, 0, 5, 0, 7, 1, 3])'</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://stackoverflow.com/questions/35842598/tensorflow-using-a-tensor-to-index-another-tensor" target="_blank" rel="external">TensorFlow: using a tensor to index another tensor</a></p>
+</blockquote>
+<p>相似的选值还有 <code>tf.boolean_mask</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 1-D example</span></div><div class="line">tensor = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">mask = np.array([<span class="keyword">True</span>, <span class="keyword">False</span>, <span class="keyword">True</span>, <span class="keyword">False</span>])</div><div class="line">boolean_mask(tensor, mask) <span class="comment"># ==&gt; [0, 2]</span></div></pre></td></tr></table></figure>
+<h3 id="按mask对Tensor赋值"><a href="#按mask对Tensor赋值" class="headerlink" title="按mask对Tensor赋值"></a>按mask对Tensor赋值</h3><hr>
+<p>给定一个mask：inds ，mask上的值代表着sumed 数组中的下标，经过更新后得到输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sumed = [<span class="number">1.</span>,<span class="number">-2.</span>,<span class="number">3.</span>]</div><div class="line">inds = [[<span class="number">2.</span>,<span class="number">1.</span>,<span class="number">0.</span>],</div><div class="line">		[<span class="number">0.</span>,<span class="number">1.</span>,<span class="number">2.</span>]]</div><div class="line">out = [[ <span class="number">3.</span> <span class="number">-2.</span>  <span class="number">1.</span>]</div><div class="line">	   [ <span class="number">1.</span> <span class="number">-2.</span>  <span class="number">3.</span>]]</div></pre></td></tr></table></figure>
+<p>这个问题只是目前找到了暂时的解决方法，应该还有改进的地方。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">sumed = np.asarray([<span class="number">1.</span>,<span class="number">-2.</span>,<span class="number">3.</span>])</div><div class="line">inds = np.asarray([[<span class="number">2.</span>,<span class="number">1.</span>,<span class="number">0.</span>],[<span class="number">0.</span>,<span class="number">1.</span>,<span class="number">2.</span>]])</div><div class="line">sumed_tensor = tf.convert_to_tensor(sumed)</div><div class="line">inds_tensor = tf.convert_to_tensor(inds)</div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">    <span class="keyword">with</span> tf.name_scope(<span class="string">'my'</span>):</div><div class="line">	    <span class="comment"># 这个循环感觉很蠢。。</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</div><div class="line">            mask = tf.equal(inds_tensor, i * tf.ones_like(inds_tensor))</div><div class="line">            casted = tf.cast(mask, inds_tensor.dtype)</div><div class="line">            temp = tf.multiply(sumed[int(i)], casted)</div><div class="line">            <span class="keyword">if</span> i == <span class="number">0</span>:</div><div class="line">                new_tensor = temp</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                new_tensor = temp + new_tensor</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tensorflow/" rel="tag"># tensorflow</a>
+          
+            <a href="/tags/keras/" rel="tag"># keras</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/21/CS20SI-1/" rel="next" title="CS20SI Operations">
+                <i class="fa fa-chevron-left"></i> CS20SI Operations
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="hypercomments_widget"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Yan Joy" />
+          <p class="site-author-name" itemprop="name">Yan Joy</p>
+           
+              <p class="site-description motion-element" itemprop="description">Default~</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">82</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/yanjoy" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/yan_joy" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              FRIENDS
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.xieqiang.site/" title="Johnny" target="_blank">Johnny</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://pages.coding.me/" title="Hosted by Coding Pages" target="_blank">Hosted by Coding Pages</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python中对变量是否为None的判断"><span class="nav-number">1.</span> <span class="nav-text">Python中对变量是否为None的判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型build后无法更改属性？？"><span class="nav-number">2.</span> <span class="nav-text">模型build后无法更改属性？？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些新的functions-amp-tricks"><span class="nav-number">3.</span> <span class="nav-text">一些新的functions&tricks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#非排序分割和"><span class="nav-number">3.1.</span> <span class="nav-text">非排序分割和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用一个tensor作为另一个tensor的下标"><span class="nav-number">3.2.</span> <span class="nav-text">用一个tensor作为另一个tensor的下标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按mask对Tensor赋值"><span class="nav-number">3.3.</span> <span class="nav-text">按mask对Tensor赋值</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yan Joy</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 89966, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+		_hcwp.push({widget:"Stream", widget_id: 89966, xid: "2017/11/03/keras-tips-problems/"});
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/89966/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz", "owWjRRJ2oBD7Dekc8l1RRctK");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+</body>
+</html>
