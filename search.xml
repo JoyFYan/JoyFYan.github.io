@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[愿善良能被温柔以待]]></title>
+    <url>%2F2018%2F01%2F01%2F2018-new-year%2F</url>
+    <content type="text"><![CDATA[时间上相隔一年，空间上相距两千公里，每年此时，似乎都应该总结一番。在前一天，脑海中就蹦出了这样的一句话：愿善良能被温柔以待。 一直以来，我或许都是以规则和义务去衡量价值或者评价行为。一个人应做的事情做好了，那就无可厚非。除此之外，如果能做些有益于他人的事情，那确实值得表扬一下，甚至去敬佩，但也不是必需品。但问题也在于，什么是每个人该做的，什么是必须的义务，我的标准似乎又太统一。 就像，扎根农村的支教老师，边远地区的医生。如果有着较高的知识技能水平，其义务当然不应该仅仅局限于一个小破村落：其自身的发展受限，对自己没有尽到挖掘潜力的义务；收入，生活水平较低，自然也没有对家人尽到义务；服务对象所带来的社会价值，也可能不如在高水平的平台下来的多。因此我把他们往往就划分到了“不值得学习”的范畴之中。 另外还有，是一种逼上梁山的行为：为了生存，而去进行的“不善良”的事情。比如家人生病没钱，铤而走险进行了犯罪。不论目的是什么，在我看来都不是从轻处理的一个原因。既然选择了这条路，那么就应该做好其失败、暴露的代价。不然社会中最重要的法律规则就无法保证其公正性。 不管是前一类还是后一类，我以前的心情可能或是崇拜，可能是赞叹，可能是不屑，亦或是可惜。找来找去，似乎缺了一种，那就是感动。在我看来不应该做的事情，不值得做的事情，不必如此。 从自身看少的是感动，从外在看便是缺乏了一丝温柔。在上面那些例子中，我考虑了一圈，考虑了很多，唯独没有把自己考虑成他们。虽然说是不可能的，但至少应该从中寻觅得到他们情感的一些踪迹。这些东西是没有办法用外人的价值所衡量的。 和善良需要区分的，是可怜。分辨的方法，从我看大概就是主动和被动的区别吧。相比于温柔，用同情可能更加适合。可惜的是，这种东西也越来越多被利用。但是否选择同情，往往只在于自己的判断。人们麻木了，判断的阈值就高些，选择无私给予别人的帮助也就少些。 与此相比，善良是别人的主动，是一种已经发生过的别人的某些善意，是已经送出去的礼物，当然对象可能不一定是自己。无论如何，都希望能够抱以温柔相对。当善良无法被识出，被嘲笑，就是对他人最大的伤害。 2018，愿常怀感动，愿善良能被温柔以待。]]></content>
+      <categories>
+        <category>感</category>
+      </categories>
+      <tags>
+        <tag>善良</tag>
+        <tag>温柔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[清华源apt-get update 0%]]></title>
+    <url>%2F2017%2F12%2F28%2Fapt-get-0%2F</url>
+    <content type="text"><![CDATA[本来以为是个小问题，结果查了半天没解决= = 系统环境：Ubuntu 16.04.3 LTS（基于docker） 切换apt为清华源 Ubuntu 镜像使用帮助：Ubuntu 的软件源配置文件是/etc/apt/sources.list。将系统自带的该文件做个备份，将该文件替换为下面内容，即可使用 TUNA 的软件源镜像。 12345678910111213# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted universe multiverse# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted universe multiversedeb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted universe multiversedeb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiversedeb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted universe multiverse# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted universe multiverse# 预发布软件源，不建议启用# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-proposed main restricted universe multiverse# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-proposed main restricted universe multiverse apt-get update 0% 此时如果update可能会出现卡在0%的情况。apt-get clean，删除本地缓存，强制ipv4也都试过，结果都不行。 之后我把另一台服务器的包缓存给复制过来，再安装任意软件，提示：E: The method driver /usr/lib/apt/methods/http could not be found.这时需要安装apt-transport-https。直接的apt-get是不行了，需要手动下载，在任意的镜像源的pool/main/a/apt/目录中找到软件下载，或者在官方搜索。 安装 下载下来是.deb文件，通过：1sudo dpkg -i /path/to/deb/file 安装。 之后问题解决。 docker环境太干净了（ping什么都没有），改之前都要谨慎。。]]></content>
+      <categories>
+        <category>Code</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[挤出来的城]]></title>
     <url>%2F2017%2F12%2F24%2Fguangzhou-2017%2F</url>
     <content type="text"><![CDATA[顺德，游完清晖园，转入一条小街巷，感觉这路就像是从两边的商业门店中挤出来的一样。 在广州这里，也并不是第一次有这种感觉了。印象最深的，则是随处可见融入生活的饭店与早茶厅。十一期间，第一次来到广州，这里也是第一次把吃作为旅游中一项重要任务的城市。相比之下，四川也是美食大省，但其极致是将任何食材都能尽其香辣之才，概况起来方法虽多，本质略同；江浙之肴，就自带着一种含蓄的清香，精致淡雅，舒爽细腻让人流连，但似乎又太精美，以至于抑制了吃在人本性中欲望。而粤菜，就觉得是包罗万象，难以以一而概全，或者说这就是其特色，甚至觉得是想象力限制了粤菜：从餐具来看，比其他任何地方都要精致；从食材种类的广泛，到吃法的广泛（包括生吃），又觉得无比粗犷，实在是觉得矛盾。这可能正是他的魅力。 食物上的介绍，除了亲自去品尝，只能徒增口水罢了，这里餐厅另一大特色，就是看起来会挤一些。一大原因当然是和布局、结构有关。这里著名的餐厅，甚至比成都的“苍蝇馆子”还要外在简陋：比如顺德了能私房菜，感觉就像是在别人的家中，中庭露天，桌子就随着性子摆在其中。菜单也没有，菜谱被高高挂在墙头。等点完菜，坐下来，已是接近两点，但还是能感觉到“挤”。一是人还并完全散去，也有新客人陆续进门，这和其他地方好吃的餐馆没什么区别。但第二点，桌子小，凳子低，同桌的人似乎更贴近一些，就是和其他餐馆最不同的了。能够以这样一种被动的方式互相接近，互相挤在一起，让这里的冬季也没那么冷了。第三点，也是我到广州这里才发现的：当地的食客总是带着一家老小来。无论是满脸皱纹的老人，还是呀呀学语的幼儿，一家人一个都不少。大家围坐挤一起，一张桌子刚好没有什么缝隙。相反，像我和同学一起来吃饭单独的年轻人倒算个另类。综上，我认为广州餐厅的感受，大概用“挤”能概括吧。 广州的老街，也是有点挤的。这是为什么呢？想了想，一是这华盖路，依山而建，一高一低，从低往高处看，视野会受限些；二就是这广州特有的街道风格了。经过搜索才得知，这种样式叫做商业骑楼建筑。”骑楼”部分是在楼房前半部跨人行道而建筑，在马路边相互联接而形成自由步行的长廊，平时步行是可以走在楼下的，所见的范围也就更小了一些。这种头上有“天花板”的步行街，可真是省着带雨伞了。在这种建筑风格下，我突然有着一种幻想：一名美丽的女郎，身着上世纪老上海的服饰，从骑楼的最高层，探窗而出，看着下面对街的行人而微笑。商业店铺在里，骑楼在人行道之上，而女郎又在骑楼之外。如果从对街的楼下看去，一定是会有一种奇妙的立体感，是不是会有整个楼都随着她拥向了你的感觉呢？ 作为内陆的人，广州这里，有魅力的地方还真是不少。感谢大睿的招待，以及子豪，锐生的同游。2017.12.3]]></content>
@@ -311,8 +334,8 @@
         <category>ML</category>
       </categories>
       <tags>
-        <tag>caffe</tag>
         <tag>tensorflow</tag>
+        <tag>caffe</tag>
         <tag>cuda</tag>
       </tags>
   </entry>
