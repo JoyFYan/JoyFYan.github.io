@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[微博树洞关闭之后]]></title>
+    <url>%2F2018%2F03%2F18%2Fweibo%2F</url>
+    <content type="text"><![CDATA[前一段时间早上看微博，发现几个博主都在说学校微博协会的事情。作为原来的运营部部长（虽然一年之后没有去竞选会长副会长这些职务就退休了），我一直都很关注协会的发展。看了一下协会发了一个声明，主要就是因为争议言论，把#成电树洞#栏目给关闭了。 至于是什么不当的言论或者争议，我也不是很想多说，并且也有一个18万粉丝的“大”V转发评论。一石激起千层浪，不光是协会的微博，“大v”的微博，讨论也蔓延到了学校的官方微博去了。说到类似的情况，在我那时候也有，也是树洞上的事情。印象中是一名同学买到了过期的面包，在树洞栏目吐槽，然后学校部门就找到这名同学，谈话、补偿也都做了，后续也跟了反馈。这之后一段时间对我们也稍微严格要求了一下。 能说什么，不能说什么，在微博这片“开放”的空间还是有一定的规则的，特别是做上面有学校的管理，下面有数万粉丝及校友的关注下。我不知道如今这届微博协会是如何管理树洞这个栏目的，当时我的要求是限制数量，提高标准，三分钟之内树洞只能发一条。毕竟我们是微博协会，而不是树洞协会。真正微博协会，是要有自己主办的活动，自己原创的内容。 线上的主页君每天都各司其职，每个人都负责一个话题。我能记起来的有看天下、逛校园、看活动、足球、篮球、音乐、科技、早安、晚安等等。我好像负责的是看活动，每天下课就到银桦食堂前面，看看都有什么活动拍些照片，发到微博上。虽然很简单，但都是我们校园中真实有趣的事情。 主要的主办原创活动一年有四个大的：绿植领养、支教、光棍节、寻找最美银杏，这就要整个协会一起讨论协作。银杏活动是我印象最深刻的，首先这是我作为部长的第一个大活动，其次从效果上看，参与的人数多，发布的照片好看（我个人感觉吧，自己这么说好像有点不客观。。）。 作为曾经的会员，看到没有树洞后空荡的协会，感觉缺失了什么。我仍然能记得起来的，协会的一大目标，就是在学校的大会堂，举办一次微博之夜活动，就像新浪做的一样。这应该是我上两届师兄的愿望吧。那时的会长，现在也恰好和我在一个城市，总要找机会去拜访一下呢。]]></content>
+      <categories>
+        <category>感</category>
+      </categories>
+      <tags>
+        <tag>微博</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[python list 复制拷贝问题]]></title>
     <url>%2F2018%2F03%2F04%2Fpython-copy%2F</url>
     <content type="text"><![CDATA[大概python绕不开这个小小的问题。。很简单不过还是记录一下吧。 问题12my_list = [ ... ]new_list = my_list 这样的操作并不会获得一个my_list的副本，而是会让new_list也“指向”my_list，共享内容。 1234my_list = [ 1 ,2 ,3 ]new_list = my_list new_list[0] = 0print(new_list, my_list) 输出的结果是： 1[0, 2, 3] [0, 2, 3] 而不是 1[0, 2, 3] [1, 2, 3] 原理用一个id()函数就可以明白为什么是这样了： 12print(id(new_list), id(my_list))&gt;&gt; 139941656081864 139941656081864 二者完全相同！因此对new_list操作就等于对my_list操作。 方法 new_list = old_list[:] 这个方法看起来最简单，但大神Alex Martelli并不推荐使用，认为下面的更加可读。 new_list = list(old_list) 这种方法使用了內建的list()函数，生成一个新的list。 new_list = copy.copy(old_list)首先需要导入copy库，利用其中的copy函数进行复制。这种方法比较万能，可以用于任意类型，但缺点是速度稍慢，它需要先确定要复制内容的数据类型。 new_list = copy.deepcopy(old_list)copy库中的深拷贝，最慢的一种，但有时是必须的。 至于深浅拷贝的问题，推荐看Python-copy()与deepcopy()区别的文章。]]></content>
@@ -367,8 +378,8 @@
         <category>ML</category>
       </categories>
       <tags>
-        <tag>tensorflow</tag>
         <tag>caffe</tag>
+        <tag>tensorflow</tag>
         <tag>cuda</tag>
       </tags>
   </entry>
@@ -481,8 +492,8 @@
         <category>ML</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>caffe</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -563,8 +574,8 @@
         <category>ML</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>caffe</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -575,8 +586,8 @@
         <category>ML</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>caffe</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
