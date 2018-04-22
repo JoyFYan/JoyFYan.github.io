@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[cannot import name 'ReparseException' & tf模型参数提取]]></title>
+    <url>%2F2018%2F04%2F16%2Ftensorboard-error-weight-extract%2F</url>
+    <content type="text"><![CDATA[Tensorboard ImportError: cannot import name ‘ReparseException’ 环境： python 3.5.4 Tensorflow==1.4.1 html5lib==1.0.1 错误信息： 1ImportError: cannot import name &apos;ReparseException&apos; 定位咋： 1~/anaconda3/envs/tf3/lib/python3.5/site-packages/bleach/sanitizer.py 找到对应的文件，在1234567from html5lib.constants import ( entities, ReparseException, namespaces, prefixes, tokenTypes,) 中找到出问题的地方，将ReparseException改为_ReparseException即可解决问题。 tf模型参数提取 通过TensorFlow saver 保存的模型是有v1和v2两种格式，在tf.train.Saver中有所说明： write_version: controls what format to use when saving checkpoints. It also affects certain filepath matching logic. The V2 format is the recommended choice: it is much more optimized than V1 in terms of memory required and latency incurred during restore. Regardless of this flag, the Saver is able to restore from both V2 and V1 checkpoints. 实际上通过对比，v1 500M的模型到了v2需要 1.5G。。 在实际的参数提取过程中，如何把模型中的variable变成可直接操作的numpy数组是一个比较麻烦的问题。搜索后大部分答案是先构建图，然后在运行的session中进行eval。（难道就不能直接通过模型拿到参数吗？） 针对v2的模型，可以使用tensorpack包进行快速的参数提取，得到npz的数据格式。 安装tensorpack：首先需要有git，然后命令行输入： pip install -U git+https://github.com/ppwwyyxx/tensorpack.git 脚本在仓库中的./scripts/dump-model-params.py为模型参数提取的脚本文件。 使用示例为： 1./scripts/dump-model-params.py --meta train_log/alexnet-dorefa/graphxxxx.meta train_log/alexnet-dorefa/model-xxx output.npz 源码12345678910111213141516171819202122232425262728293031323334353637383940414243444546#!/usr/bin/env python# -*- coding: UTF-8 -*-# File: dump-model-params.py# Author: Yuxin Wu &lt;ppwwyyxx@gmail.com&gt;import numpy as npimport siximport argparseimport osimport tensorflow as tffrom tensorpack.tfutils import varmanipfrom tensorpack.tfutils.common import get_op_tensor_nameif __name__ == '__main__': parser = argparse.ArgumentParser( description='Keep only TRAINABLE and MODEL variables in a checkpoint.') parser.add_argument('--meta', help='metagraph file', required=True) parser.add_argument(dest='input', help='input model file, has to be a TF checkpoint') parser.add_argument(dest='output', help='output model file, can be npz or TF checkpoint') args = parser.parse_args() # this script does not need GPU os.environ['CUDA_VISIBLE_DEVICES'] = '' tf.train.import_meta_graph(args.meta, clear_devices=True) # loading... if args.input.endswith('.npz'): dic = np.load(args.input) else: dic = varmanip.load_chkpt_vars(args.input) dic = &#123;get_op_tensor_name(k)[1]: v for k, v in six.iteritems(dic)&#125; # save variables that are GLOBAL, and either TRAINABLE or MODEL var_to_dump = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES) var_to_dump.extend(tf.get_collection(tf.GraphKeys.MODEL_VARIABLES)) assert len(set(var_to_dump)) == len(var_to_dump), "TRAINABLE and MODEL variables have duplication!" globvarname = [k.name for k in tf.global_variables()] var_to_dump = set([k.name for k in var_to_dump if k.name in globvarname]) for name in var_to_dump: assert name in dic, "Variable &#123;&#125; not found in the model!".format(name) dic_to_dump = &#123;k: v for k, v in six.iteritems(dic) if k in var_to_dump&#125; varmanip.save_chkpt_vars(dic_to_dump, args.output)]]></content>
+      <categories>
+        <category>ML</category>
+      </categories>
+      <tags>
+        <tag>tensorflow</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[tf的条件赋值（量化）]]></title>
+    <url>%2F2018%2F04%2F08%2Ftf-cond-quan%2F</url>
+    <content type="text"><![CDATA[在numpy中一行实现的代码，始终不知道如何在tf中快速实现= = 问题 对于一个任意维度张量a，使其值在0到1之间的值量化到0.5。 Numpy 12# Input:aa[(a&gt;0)&amp;(a&lt;1)] = 0.5 这大概是最简单的实现方式吧。 TensorFlow 而在tf中，每一步操作都需要Tensor实现，那么我所找到的一种方法： 1234greater = a&gt;0less = a&lt;1greater_less = tf.logical_and(greater, less)a = tf.where(greater_less , 0.5 * tf.ones_like(a), a) 可以说把每一步都拆开了。 找到a中大于0的值，greater是一个布尔型张量； 找到a中小于1的值； 逻辑与操作； 使用tf.where根据布尔值张量的真假，赋值0.5或者保持不变。 真的是挺复杂的，但限于目前知识也不知道最简单的方法是什么。。 如果有更好的解决方法希望大家多交流~]]></content>
+      <categories>
+        <category>ML</category>
+      </categories>
+      <tags>
+        <tag>tensorflow</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[微博树洞关闭之后]]></title>
     <url>%2F2018%2F03%2F18%2Fweibo%2F</url>
     <content type="text"><![CDATA[前一段时间早上看微博，发现几个博主都在说学校微博协会的事情。作为原来的运营部部长（虽然一年之后没有去竞选会长副会长这些职务就退休了），我一直都很关注协会的发展。看了一下协会发了一个声明，主要就是因为争议言论，把#成电树洞#栏目给关闭了。 至于是什么不当的言论或者争议，我也不是很想多说，并且也有一个18万粉丝的“大”V转发评论。一石激起千层浪，不光是协会的微博，“大v”的微博，讨论也蔓延到了学校的官方微博去了。说到类似的情况，在我那时候也有，也是树洞上的事情。印象中是一名同学买到了过期的面包，在树洞栏目吐槽，然后学校部门就找到这名同学，谈话、补偿也都做了，后续也跟了反馈。这之后一段时间对我们也稍微严格要求了一下。 能说什么，不能说什么，在微博这片“开放”的空间还是有一定的规则的，特别是做上面有学校的管理，下面有数万粉丝及校友的关注下。我不知道如今这届微博协会是如何管理树洞这个栏目的，当时我的要求是限制数量，提高标准，三分钟之内树洞只能发一条。毕竟我们是微博协会，而不是树洞协会。真正微博协会，是要有自己主办的活动，自己原创的内容。 线上的主页君每天都各司其职，每个人都负责一个话题。我能记起来的有看天下、逛校园、看活动、足球、篮球、音乐、科技、早安、晚安等等。我好像负责的是看活动，每天下课就到银桦食堂前面，看看都有什么活动拍些照片，发到微博上。虽然很简单，但都是我们校园中真实有趣的事情。 主要的主办原创活动一年有四个大的：绿植领养、支教、光棍节、寻找最美银杏，这就要整个协会一起讨论协作。银杏活动是我印象最深刻的，首先这是我作为部长的第一个大活动，其次从效果上看，参与的人数多，发布的照片好看（我个人感觉吧，自己这么说好像有点不客观。。）。 作为曾经的会员，看到没有树洞后空荡的协会，感觉缺失了什么。我仍然能记得起来的，协会的一大目标，就是在学校的大会堂，举办一次微博之夜活动，就像新浪做的一样。这应该是我上两届师兄的愿望吧。那时的会长，现在也恰好和我在一个城市，总要找机会去拜访一下呢。]]></content>
