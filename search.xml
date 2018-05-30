@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[失控还是受控？]]></title>
+    <url>%2F2018%2F05%2F30%2Fcontrol-or-not%2F</url>
+    <content type="text"><![CDATA[On the Internet, nobody knows you’re a dog 上个世纪末这句话非常流行，特别是对于那些热衷于BBS和聊天室的人们。人与人之间的交流没有如此方便快捷过。不过很快，这句话似乎向相反的方向在发展：在互联网上，没人知道你是否是一个正常的人。 失控因为互联网的广泛性、实时性、及时性，让管理受到了严重的挑战。不过目前来看，内容审查似乎已经渗透到了方方面面，只要拥有服务器的权限，我们就可以轻松选择让哪些信息出现，哪些信息消失。不仅有敏感词，还会对图像、视频进行一定的处理。不过目前的处理方式还是很不智能，一方面会进行错误的分词，导致误杀；另一方面对联想、替换等无法识别，造成遗漏。不过最重要的往往是我们所容易忽视的，我们还是有着一个大前提：我们需要控制服务器。因此那些不被控制的，还是可以为所欲为。 如何不被控制？去中心化似乎是目前很火的一个词汇，当然也比不上其具体的一个例子的热度：比特币。简单来说，其货币发行、交易都不需要一个强大的第三方作为保障：币是靠算力“挖”出来的，而交易是通过区块链技术而确保安全的。我们无法（很难）控制这样的系统，只好完全依靠其规则运行。这么来看，也算是一种失控。 类似的，Mastodon试图在社交领域去中心化，当然目前他的影响力并没有那么大，并且人与人之间的交流，也无法完全依靠算法规则去解决纷争，因此还是会有管理人员的，不过除了在社区公告禁止的事项外，可能不会有较为严格的控制。 自由可能是每个人的渴望，失控会满足他们。 受控人们如果感受到自己受控了，就不是一次好的受控形式。 具体的做与不做，要靠自己所约束、指导，我们很难怀疑自己，也就很难去明白自己受控的过程。 比如Facebook出卖用户数据给剑桥分析，导致美国大选特朗普团队的获胜。“导致”这两个字其实并不清楚这些数据起了多大作用，不过从只言片语，再发挥下想象力，还是觉得这种方法确实可能有效：就像你的一个知根知底的好朋友，天天在讲特朗普上台对你的好处，希拉里上台对你的坏处，那么总会有一些效果的。算法可能无罪，但数据输入和优化方向往往是人为规定的。 电幕如果真的要实现它，那么可能用不了多久了。 以前我们看是否违规，必须要等信息上传到服务器才能检查，一方面有一定的滞后性，另一方面会耗用一定的服务器资源，特别是流量大的热点事件。不过随着智能算法的优化，和硬件设备性能的提升，这些检查工作，完全可以置于每个人的个人设备之中，甚至于出现专用的小型芯片。如果出现了违规，连发送都无法进行，那么服务器是否被控制也已经不再重要了。 未来我们可能不会是一个人，而是会有一个电子形式的复制的存在。它通过对我们日常工作、学习、生活的了解，或许比我们自己更了解自己，既明白自己的优势，又洞悉自己的缺点。了解是改变的前提，我们真的能控制自己吗？ 希望自己是杞人忧天，未来的某年，开篇的话不会成为：”On the Internet, everybody knows you must be a dog”。]]></content>
+      <categories>
+        <category>感</category>
+      </categories>
+      <tags>
+        <tag>互联网</tag>
+        <tag>去中心化</tag>
+        <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[PyTorch 0.4 升级指南]]></title>
     <url>%2F2018%2F05%2F13%2Fpytorch0-4%2F</url>
     <content type="text"><![CDATA[4月25日，PyTorch团队正式发布了0.4.0的release版本。这是在与caffe2合并后的首个稳定版本。其中核心的变化有： Tensor/Variable合并 零维张量（标量） volatile标志的弃用 dtypes,devices和Numpy型Tensor的创建函数 写设备无关的代码 下面对其中的升级注意的问题进行说明。 原文参考：PyTorch 0.4.0 Migration Guide 合并Tensor与Variable类 torch.Tensor和torch.autograd.Variable目前是同一类了。更确切地说，是torch.Tensor有了像Variable一样追踪历史与行为的能力。Variable像之前一样工作，但返回类型为torch.Tensor的对象。这意味着你不用再像之前在代码中到处使用Variable wrapper。 type() 对Tensor作用发生改变 type()函数不再反映Tensor类的具体数据格式。可以使用isinstance() 或者x.type() 代替。 1234567&gt;&gt;&gt; x = torch.DoubleTensor([1, 1, 1])&gt;&gt;&gt; print(type(x)) # 原本会输出 torch.DoubleTensor"&lt;class 'torch.Tensor'&gt;" # 但现在只会输出是一个torch.Tensor&gt;&gt;&gt; print(x.type()) # 正确: 'torch.DoubleTensor''torch.DoubleTensor'&gt;&gt;&gt; print(isinstance(x, torch.DoubleTensor)) # 正确: TrueTrue 什么时候autograd开始追踪历史？ autograd的核心标志位：requires_grad，目前是Tensor的一个属性。之前应用于Variables的规则现在也适用于Tensors；因此autograd在当任何输入的Tensor操作的requires_grad=True时开始追踪历史。 12345678910111213141516171819202122232425262728&gt;&gt;&gt; x = torch.ones(1) # 创建一个requires_grad属性为False的Tensor (默认属性)&gt;&gt;&gt; x.requires_gradFalse # 默认为FALSE&gt;&gt;&gt; y = torch.ones(1) # 另一个requires_grad属性为False的Tensor&gt;&gt;&gt; z = x + y&gt;&gt;&gt; # 两个输入Tensor的requires_grad属性都是False因此其输出的Tensor requires_grad属性也为False&gt;&gt;&gt; z.requires_gradFalse&gt;&gt;&gt; # 接下来尝试验证追踪计算（反向传播）&gt;&gt;&gt; z.backward()RuntimeError: element 0 of tensors does not require grad and does not have a grad_fn&gt;&gt;&gt;&gt;&gt;&gt; # 现在创建一个requires_grad属性为True的Tensor&gt;&gt;&gt; w = torch.ones(1, requires_grad=True)&gt;&gt;&gt; w.requires_gradTrue&gt;&gt;&gt; # 与另一个requires_grad属性为False的Tensor相加&gt;&gt;&gt; total = w + z&gt;&gt;&gt; # 这样输出的requires_grad属性为True&gt;&gt;&gt; total.requires_gradTrue&gt;&gt;&gt; # autograd 便可以计算其梯度&gt;&gt;&gt; total.backward()&gt;&gt;&gt; w.gradtensor([ 1.])&gt;&gt;&gt; # 对于不需要计算grad的Tensor，其.grad 为None，这样也节省了计算资源&gt;&gt;&gt; z.grad == x.grad == y.grad == NoneTrue 对requires_grad标志位的操作除了直接设置requires_grad为真或假，也可以使用[my_tensor.requires_grad_()](http://pytorch.org/docs/stable/tensors.html)，或者在创建Tensor时作为参数传入： 123456&gt;&gt;&gt; existing_tensor.requires_grad_()&gt;&gt;&gt; existing_tensor.requires_gradTrue&gt;&gt;&gt; my_tensor = torch.zeros(3, 4, requires_grad=True)&gt;&gt;&gt; my_tensor.requires_gradTrue 至于.data？ .data是从Variable中获得张量的方法。在这次合并后，调用y = x.data依然有相同的效果。y将是一个与x共享相同数据的Tensor，不包括x的历史，并且requires_grad=False。 但是在某些情况下.data可能不够安全。对x.data的任何修改都不会被autograd记录跟踪。如果x在反向传播中使用，则会导致梯度的不正确。另一种更安全的方法是使用x.detach()。它还返回一个与x共享数据且requires_grad = False的Tensor，但如果在后向需要x，autograd将记录它的就地（in-place）更改操作。 对0-维张量（标量）的支持 之前对Tensor矢量（1维）的索引需要给Python一个数字，但对Variable矢量的索引需要一个大小为(1,)的矢量。类似的情况也出现在归约函数中。如tensor.sum()将会返回一个Python的数，但variable.sum()将会返回大小为(1,)的矢量。 幸运的是在这个版本中加入了对标量（0维张量）的支持。标量可以由torch.tensor创建（可以看做是numpy.array）： 123456789101112131415161718192021&gt;&gt;&gt; torch.tensor(3.1416) # 直接创建标量tensor(3.1416)&gt;&gt;&gt; torch.tensor(3.1416).size() # 标量是0维的torch.Size([])&gt;&gt;&gt; torch.tensor([3]).size() # 与大小为1的矢量对比torch.Size([1])&gt;&gt;&gt;&gt;&gt;&gt; vector = torch.arange(2, 6) # 这是一个矢量&gt;&gt;&gt; vectortensor([ 2., 3., 4., 5.])&gt;&gt;&gt; vector.size()torch.Size([4])&gt;&gt;&gt; vector[3] # 通过标量对矢量进行索引tensor(5.)&gt;&gt;&gt; vector[3].item() # .item() 会以Python数的形式给出值5.0&gt;&gt;&gt; mysum = torch.tensor([2, 3]).sum()&gt;&gt;&gt; mysumtensor(5)&gt;&gt;&gt; mysum.size()torch.Size([]) 损失的累计 考虑广泛使用的模式：total_loss += loss.data[0]。在0.4.0之前，损失是一个以Variable包装的大小为(1,)的张量。但是在0.4.0中，损失的维度为0（标量），因此再使用索引是没有意义的（目前会给出警告，但在0.5.0中会成为错误）。使用loss.item()来从标量中获得Python数字。 请注意：如果在累计损失时没有转为Python数字，可能会发现内存使用量的增加。这是因为上面表达式的结果之前是一个Python浮点数，而现在是一个0维张量。因此总损失会累加张量和梯度历史，从而产生了一个很大的autograd图。 volatile标志位的废除 volatile标志位现在已经废除并不会产生效果。之前任何涉及volatile=True的Variable都不会被autograd所追踪。目前这已经被更灵活的上下午管理器如 torch.no_grad(), torch.set_grad_enabled(grad_mode),等所替代。 12345678910111213141516171819&gt;&gt;&gt; x = torch.zeros(1, requires_grad=True)&gt;&gt;&gt; with torch.no_grad():... y = x * 2&gt;&gt;&gt; y.requires_gradFalse&gt;&gt;&gt;&gt;&gt;&gt; is_train = False&gt;&gt;&gt; with torch.set_grad_enabled(is_train):... y = x * 2&gt;&gt;&gt; y.requires_gradFalse&gt;&gt;&gt; torch.set_grad_enabled(True) # 同样可作为函数使用&gt;&gt;&gt; y = x * 2&gt;&gt;&gt; y.requires_gradTrue&gt;&gt;&gt; torch.set_grad_enabled(False)&gt;&gt;&gt; y = x * 2&gt;&gt;&gt; y.requires_gradFalse dtypes,devices和Numpy型Tensor的创建函数 在以前的版本中，我们使用特定的数据类型（如float与double），设备类型（如cpu与cuda）以及布局（dense和sparse）作为“Tensor的类型”。例如，torch.cuda.sparse.DoubleTensor代表了使用double数据类型，运行于CUDA设备，采用COO稀疏表示的张量。 在这个版本中，我们介绍了torch.dtype，torch.device和torch.layout类，以便通过NumPy风格的创建函数更好地管理这些属性。 torch.dtype 下表为可用的torch.dtypes（数据类型）及相应张量类型的完整列表： Tensor的dtype可通过其dtype属性访问。 torch.device torch.device包含设备类型（cpu或cuda）和可选设备序号（id）。它可以通过torch.device（&#39;{device_type}&#39;）或torch.device（&#39;{device_type}：{device_ordinal}&#39;）来初始化。 如果设备序号不存在，则表示目前可用的设备；如torch.device(&#39;cuda&#39;)等同于torch.device(&#39;cuda：X&#39;)，其中X是torch.cuda.current_device()的结果。 张量的设备可以通过其设备属性访问。 torch.layout torch.layout表示张量的数据分布。 目前支持torch.strided（稠密张量，默认值）和torch.sparse_coo（具有COO格式的稀疏张量）。 创建Tensor 创建张量的方法现在还可以使用dtype，device，layout和requires_grad选项，在返回的张量中指定所需的属性。例如： 12345678910&gt;&gt;&gt; device = torch.device("cuda:1")&gt;&gt;&gt; x = torch.randn(3, 3, dtype=torch.float64, device=device)tensor([[-0.6344, 0.8562, -1.2758], [ 0.8414, 1.7962, 1.0589], [-0.1369, -1.0462, -0.4373]], dtype=torch.float64, device='cuda:1')&gt;&gt;&gt; x.requires_grad # default is FalseFalse&gt;&gt;&gt; x = torch.zeros(3, requires_grad=True)&gt;&gt;&gt; x.requires_gradTrue torch.tensor(data, ...)torch.tensor(data, ...)是新添加的张量创建方法之一。它采用各种类似数组的数据并将包含的值复制到新的张量中。 如前所述，torch.tensor是PyTorch中与NumPy的numpy.array等价的类型。 与torch.*Tensor方法不同，也可以通过这种方式（单个python数字在该对象中被视为Size 在torch.*Tensor方法中）创建0维张量（标量）。 此外，如果没有给出dtype参数，它会根据数据推断出合适的dtype。 这是从现有数据（如Python列表）创建张量的推荐方法。例如： 1234567891011&gt;&gt;&gt; cuda = torch.device("cuda")&gt;&gt;&gt; torch.tensor([[1], [2], [3]], dtype=torch.half, device=cuda)tensor([[ 1], [ 2], [ 3]], device='cuda:0')&gt;&gt;&gt; torch.tensor(1) # 标量tensor(1)&gt;&gt;&gt; torch.tensor([1, 2.3]).dtype # type inferecetorch.float32&gt;&gt;&gt; torch.tensor([1, 2]).dtype # type inferecetorch.int64 除此之外，也添加了更多的创建方法。其中有torch.*_like或tensor.new_*的变体。 torch.*_like除非另有说明，它默认返回一个与输入张量相同属性的张量： 12345&gt;&gt;&gt; x = torch.randn(3, dtype=torch.float64) &gt;&gt;&gt; torch.zeros_like(x) tensor([ 0., 0., 0.], dtype=torch.float64) &gt;&gt;&gt; torch.zeros_like(x, dtype=torch.int) tensor([ 0, 0, 0], dtype=torch.int32) tensor.new_*也可以创建与张量具有相同属性的张量，但它总是需要一个形状参数： 12345&gt;&gt;&gt; x = torch.randn(3, dtype=torch.float64)&gt;&gt;&gt; x.new_ones(2)tensor([ 1., 1.], dtype=torch.float64)&gt;&gt;&gt; x.new_ones(4, dtype=torch.int)tensor([ 1, 1, 1, 1], dtype=torch.int32) 要指定所需的形状，在大多数情况下，可以使用元组（例如 torch.zeros((2，3))）或可变参数（例如torch.zeros(2,3)）。 写设备无关的代码 先前版本的PyTorch使得编写设备不可知的代码变得困难（即：可以在没有修改的情况下在CUDA-enabled的和CPU-only的计算机上运行）。 PyTorch 0.4.0有两种更简单的方法： Tensor的device属性为所有张量提供了torch.device（get_device仅适用于CUDA张量） Tensors和Modules的to方法可用于将对象轻松移动到不同的设备（而不必根据上下文调用cpu()或`cuda()） 推荐的模式如下： 123456789# at beginning of the scriptdevice = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")...# then whenever you get a new Tensor or Module# this won't copy if they are already on the desired deviceinput = data.to(device)model = MyModule(...).to(device) 代码样例下面是0.3.1与0.4.0的对比： 0.3.11234567891011121314151617181920model = MyRNN()if use_cuda: model = model.cuda()# traintotal_loss = 0for input, target in train_loader: input, target = Variable(input), Variable(target) hidden = Variable(torch.zeros(*h_shape)) # init hidden if use_cuda: input, target, hidden = input.cuda(), target.cuda(), hidden.cuda() ... # get loss and optimize total_loss += loss.data[0]# evaluatefor input, target in test_loader: input = Variable(input, volatile=True) if use_cuda: ... ... 0.4.01234567891011121314151617# torch.device object used throughout this scriptdevice = torch.device("cuda" if use_cuda else "cpu")model = MyRNN().to(device)# traintotal_loss = 0for input, target in train_loader: input, target = input.to(device), target.to(device) hidden = input.new_zeros(*h_shape) # has the same device &amp; dtype as `input` ... # get loss and optimize total_loss += loss.item() # get Python number from 1-element Tensor# evaluatewith torch.no_grad(): # operations inside don't track history for input, target in test_loader: ... 感谢阅读，这次的更新很大程度是简化了数据结构，并让创建Tensor更加便捷。但要注意0维张量的出现会在loss累计中出现普遍的问题。在平时的编写代码过程中，还是要多参考手册。]]></content>
@@ -412,8 +425,8 @@
         <category>ML</category>
       </categories>
       <tags>
-        <tag>tensorflow</tag>
         <tag>caffe</tag>
+        <tag>tensorflow</tag>
         <tag>cuda</tag>
       </tags>
   </entry>
@@ -526,8 +539,8 @@
         <category>ML</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>caffe</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -608,8 +621,8 @@
         <category>ML</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>caffe</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -620,8 +633,8 @@
         <category>ML</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>caffe</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
