@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[升级到Next6.4.0]]></title>
+    <url>%2F2018%2F08%2F07%2Fuptonext6%2F</url>
+    <content type="text"><![CDATA[很久没有对网站进行升级了，简单做了一些工作： 升级Next主题 关闭无法使用的hypercomments 关闭不支持的jiathis 使用addthis Share 配置设置文件 目前来看还需要做的是： 解决图片问题 寻找替代hypercomments的评论系统 哎，从多说到disqus再到hypercomments，心好累。]]></content>
+      <categories>
+        <category>网站维护</category>
+      </categories>
+      <tags>
+        <tag>建站</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[CLIP-Q：先剪枝后量化的压缩框架]]></title>
     <url>%2F2018%2F08%2F06%2FCLIP-Q%2F</url>
     <content type="text"><![CDATA[前段时间CVPR2018结束了，搜索quantization、compression关键词，得到的论文并不多，有空就看了几篇。CLIP-Q这个方法看起来挺简单的，而且得到的效果也不错，就简单解读一下。 论文CLIP-Q: Deep Network Compression Learning by In-Parallel Pruning-Quantization，CVPR2018。 In-parallel pruning-quantization Clipping. 设置两个截止点标量$c^-$和$c^+$，用超参数$p$来确定，使正参数中$(p \times 100)\%$的参数小于$c^+$，同时使负参数中$(p\times100)\%$的参数大于$c^-$。位于$c^-$和$c^+$之间的参数置为0。注意的是这种减除是暂时的，在下个周期中，用这个规则作用于更新后的参数，之前被剪枝的连接可能会重新出现。 Partitioning。第二步把未被剪掉的参数分到不同的量化区间。可以被可视化到一个一维数轴上。通过给定的权重位宽$b$，将数轴划分为$2^b-1$个区间，再加上从$c^-$到$c^+$的0区间。文中采用了Deep compression中linear (uniform) partitioning方式。 Quantizing.量化值是由量化区间中的值平均得来的，并在下次的前向传播中赋值。和Clipping一样，值只是暂时的量化，可能在后面的过程进行更改。 具体用以下一个小实例做示范： 首先设置$p = 0.25, b = 2$ 根据设置的阈值减去不需要的小权重； 剩下的12个权重分为$2^2-1=3$类； 计算每一类的均值，作为量化值。 训练中量化值和全精度值都会被跟踪，其中全精度值用于参数更新和反向传播，量化值用于前向计算。训练完成之后只需要保留量化值即可。整体算法的伪代码如图： 超参数预测算法中的超参数有$p,b$两个，文中采用贝叶斯优化方法确定最优参数$\theta_i = (p_i, b_i)$： $$\min_\theta \epsilon (\theta)-\lambda \cdot c_i(\theta)$$ 对于第$i$层，$ \epsilon (\theta)$为Top1误差，$c_i(\theta)$表示压缩效果，经由： $$c_i(\theta)=(m_i-s_i(\theta))/ \sum_i m_i$$ 计算得来。其中$m_i$是$i$层需要以非压缩形式存储的权重所需的比特数，$s_i(\theta)$是使用稀疏编码方案在使用$\theta$进行剪枝量化之后来存储所需的比特数。后面使用高斯过程进行建模，有些复杂，不再进行讲解。 总结其实这个方法很容易想到，最大的创新我觉得也是他超参数的自动设置了。由于每个mini-batch之后继续更新，所以是一种不固定的量化剪枝，因而给定的$b,p$参数也随着网络不断更新。结果在GoogLeNet 上有10x压缩，ResNet-50有15x，还是不错的。但实际上真的需要用超参数的自动设置吗？从目前自己的实验上来看感觉也没有那么重要，损失可能也就在1%以内。]]></content>
