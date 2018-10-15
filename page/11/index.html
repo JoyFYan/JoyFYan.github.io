@@ -380,6 +380,253 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/11/06/caffe学习（4）数据层/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yan Joy">
+      <meta itemprop="description" content="Default~">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小一一的小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/11/06/caffe学习（4）数据层/" itemprop="url">
+                  caffe学习（4）数据层
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2016-11-06 21:10:00" itemprop="dateCreated datePublished" datetime="2016-11-06T21:10:00+08:00">2016-11-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2016-11-18 15:34:10" itemprop="dateModified" datetime="2016-11-18T15:34:10+08:00">2016-11-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ML/" itemprop="url" rel="index"><span itemprop="name">ML</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/11/06/caffe学习（4）数据层/" class="leancloud_visitors" data-flag-title="caffe学习（4）数据层">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>数据是学习的原料，参考官网和网友的资料，来看一下数据与数据层。</p>
+<blockquote>
+<p><a href="http://caffe.berkeleyvision.org/tutorial/data.html" target="_blank" rel="external">Data：Ins and Outs</a><br><a href="http://www.cnblogs.com/denny402/p/5070928.html" target="_blank" rel="external">Caffe学习系列(2)：数据层及参数，denny402</a></p>
+</blockquote>
+<h2 id="数据：输入与输出"><a href="#数据：输入与输出" class="headerlink" title="数据：输入与输出"></a>数据：输入与输出</h2><hr>
+<p>在Caffe中，数据是以Blobs流动的（见<a href="http://blog.csdn.net/yan_joy/article/details/53048154" target="_blank" rel="external">caffe学习（1）caffe模型三种结构</a>）。数据层的输入输出便需要由其他格式与Blobs进行相互转换。一些常见的变换如平均减法（mean-subtraction）、特征缩放是通过data layer配置完成。新的输入类型需要开发新的数据层，网络的其余部分遵循Caffe层目录的模块化。下段加载了MNIST数据：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">layer &#123;</div><div class="line">  name: <span class="string">"mnist"</span></div><div class="line">  <span class="comment"># Data layer loads leveldb or lmdb storage DBs for high-throughput.加载leveldb 或 lmdb类型的数据实现高吞吐量</span></div><div class="line">  type: <span class="string">"Data"</span></div><div class="line">  <span class="comment"># the 1st top is the data itself: the name is only convention</span></div><div class="line">  top: <span class="string">"data"</span></div><div class="line">  <span class="comment"># the 2nd top is the ground truth: the name is only convention</span></div><div class="line">  top: <span class="string">"label"</span></div><div class="line">  <span class="comment"># the Data layer configuration</span></div><div class="line">  data_param &#123;</div><div class="line">    <span class="comment"># path to the DB</span></div><div class="line">    source: <span class="string">"examples/mnist/mnist_train_lmdb"</span></div><div class="line">    <span class="comment"># type of DB: LEVELDB or LMDB (LMDB supports concurrent reads)</span></div><div class="line">    backend: LMDB</div><div class="line">    <span class="comment"># batch processing improves efficiency.</span></div><div class="line">    batch_size: <span class="number">64</span></div><div class="line">  &#125;</div><div class="line">  <span class="comment"># common data transformations</span></div><div class="line">  transform_param &#123;</div><div class="line">    <span class="comment"># feature scaling coefficient: this maps the [0, 255] MNIST data to [0, 1]</span></div><div class="line">    scale: <span class="number">0.00390625</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>name: 表示该层的名称，可随意取，本层为”mnist”。</li>
+<li>type: 层类型，如果是Data，表示数据来源于LevelDB或LMDB。根据数据的来源不同，数据层的类型也不同（后面会详细阐述）。一般在练习的时候，我们都是采用的LevelDB或LMDB数据，因此层类型设置为Data。</li>
+<li>top或bottom: 每一层用bottom来输入数据，用top来输出数据。如果只有top没有bottom，则此层只有输出，没有输入。反之亦然。如果有多个 top或多个bottom，表示有多个blobs数据的输入和输出。</li>
+<li>data 与 label: 在数据层中，至少有一个命名为data的top。如果有第二个top，一般命名为label。 这种(data,label)配对是分类模型所必需的。本例中第一个top是数据本身，第二个top是label（ground truth）（这些名字只是约定的）。</li>
+<li><p>include: 一般训练的时候和测试的时候，模型的层是不一样的。该层（layer）是属于训练阶段的层，还是属于测试阶段的层，需要用include来指定。如果没有include参数，则表示该层既在训练模型中，又在测试模型中。（上例中没有出现）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">include &#123;</div><div class="line">    phase: TRAIN <span class="comment">#仅在训练中出现</span></div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Transformations: 数据的预处理，可以将数据变换到定义的范围内。如设置scale为0.00390625，实际上就是1/255, 即将输入数据由0-255归一化到0-1之间。除了缩放，还有其他的一些预处理操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">transform_param &#123;</div><div class="line">    scale: <span class="number">0.00390625</span></div><div class="line">    mean_file_size: <span class="string">"examples/cifar10/mean.binaryproto"</span></div><div class="line">    <span class="comment"># 用一个配置文件来进行均值操作</span></div><div class="line">    mirror: <span class="number">1</span>  <span class="comment"># 1表示开启镜像，0表示关闭，也可用ture和false来表示</span></div><div class="line">    <span class="comment"># 剪裁一个 227*227的图块，在训练阶段随机剪裁（random cropping），在测试阶段从中间裁剪</span></div><div class="line">    crop_size: <span class="number">227</span></div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>prefetching：预取，对于吞吐量数据层获取下一批数据，并在Net计算当前批处理时在后台准备。</p>
+</li>
+</ul>
+<p>具体的还需要分析<a href="http://caffe.berkeleyvision.org/tutorial/layers.html#data-layers" target="_blank" rel="external">data_param</a>，data_param部分，就是根据数据的来源不同，来进行不同的设置。</p>
+<ol>
+<li>数据来自于数据库（如LevelDB和LMDB）<br>层类型（layer type）:Data</li>
+</ol>
+<ul>
+<li>必须设置的参数：<br>source: 包含数据库的目录名称<br>batch_size: 每次处理的数据个数，如64</li>
+<li><p>可选的参数：<br>rand_skip: 在开始的时候，跳过一定数量的数据输入，通常对异步的SGD很有用（useful for asynchronous sgd）。<br>backend: 选择是采用LevelDB还是LMDB, 默认是LevelDB.<br>示例：</p>
+<pre><code><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">data_param</span> &#123;</div><div class="line">	<span class="attribute">source</span>: <span class="string">"examples/mnist/mnist_train_lmdb"</span></div><div class="line">    batch_size: <span class="number">64</span>&#125;</div></pre></td></tr></table></figure>
+</code></pre></li>
+</ul>
+<ol>
+<li>数据来自于内存<br>层类型：MemoryData</li>
+</ol>
+<ul>
+<li>必须设置的参数：<br>batch_size：每一次处理的数据个数，比如2<br>channels：通道数<br>height：高度<br>width: 宽度<br>即指定要从内存中读取的输入块的大小。存储器数据层直接从存储器读取数据，而不复制它。为了使用它，必须调用<code>MemoryDataLayer :: Reset</code>（C ++）或<code>Net.set_input_arrays</code>（Python），以便指定一个连续数据源（<a href="http://blog.csdn.net/yan_joy/article/details/53048154" target="_blank" rel="external">作为4D行主数组</a>），一次读取一个批处理大小的块。示例： <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">  layer &#123;</div><div class="line">	  top: <span class="string">"data"</span></div><div class="line">	  top: <span class="string">"label"</span></div><div class="line">	  name: <span class="string">"memory_data"</span></div><div class="line">	  type: <span class="string">"MemoryData"</span></div><div class="line">	  memory_data_param&#123;</div><div class="line">		    batch_size: <span class="number">2</span></div><div class="line">		    height: <span class="number">100</span></div><div class="line">		    width: <span class="number">100</span></div><div class="line">		    channels: <span class="number">1</span></div><div class="line">		  &#125;</div><div class="line">	  transform_param &#123;</div><div class="line">		    scale: <span class="number">0.0078125</span></div><div class="line">		    mean_file: <span class="string">"mean.proto"</span></div><div class="line">		    mirror: false</div><div class="line">		  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol>
+<li>数据来自于HDF5(Input)<br>层类型：HDF5Data</li>
+</ol>
+<ul>
+<li>必须设置的参数：<br>source: 读取的文件名称<br>batch_size: 每一次处理的数据个数<br>示例： <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">layer &#123;</div><div class="line">	  name: <span class="string">"data"</span></div><div class="line">	  type: <span class="string">"HDF5Data"</span></div><div class="line">	  top: <span class="string">"data"</span></div><div class="line">	  top: <span class="string">"label"</span></div><div class="line">	  hdf5_data_param &#123;</div><div class="line">		    source: <span class="string">"examples/hdf5_classification/data/train.txt"</span></div><div class="line">		    batch_size: <span class="number">10</span></div><div class="line">		  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol>
+<li>数据输出到HDF5(Output)<br>层类型：HDF5Data</li>
+</ol>
+<ul>
+<li>必须设置的参数：<br>file_name: 输出到的文件名称<br>HDF5输出层执行与本节中其他层相反的功能：它将其输出blob写入磁盘。</li>
+</ul>
+<ol>
+<li><p>数据来自于图片<br>层类型：ImageData</p>
+<ul>
+<li>必须设置的参数：<br>source: 一个文本文件的名字，每一行给定一个图片文件的名称和标签（label）<br>batch_size: 每一次处理的数据个数，即图片数</li>
+<li>可选参数：<br>rand_skip: 在开始的时候，跳过一定的数据输入。通常对异步的SGD很有用。<br>shuffle: 随机打乱顺序，默认值为false<br>new_height,new_width: 如果设置，则将图片进行resize<br>示例：<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">layer &#123;</div><div class="line">	  name: <span class="string">"data"</span></div><div class="line">	  type: <span class="string">"ImageData"</span></div><div class="line">	  top: <span class="string">"data"</span></div><div class="line">	  top: <span class="string">"label"</span></div><div class="line">	  transform_param &#123;</div><div class="line">		    mirror: false</div><div class="line">		    crop_size: <span class="number">227</span></div><div class="line">		    mean_file: <span class="string">"data/ilsvrc12/imagenet_mean.binaryproto"</span></div><div class="line">		  &#125;</div><div class="line">	  image_data_param &#123;</div><div class="line">		    source: <span class="string">"examples/_temp/file_list.txt"</span></div><div class="line">		    batch_size: <span class="number">50</span></div><div class="line">		    new_height: <span class="number">256</span></div><div class="line">		    new_width: <span class="number">256</span></div><div class="line">		  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>数据来源于Windows<br>层类型：WindowData</p>
+<ul>
+<li>必须设置的参数：<br>source: 一个文本文件的名字<br>batch_size: 每一次处理的数据个数，即图片数<br>示例：<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">  layer &#123;</div><div class="line">	  name: <span class="string">"data"</span></div><div class="line">	  type: <span class="string">"WindowData"</span></div><div class="line">	  top: <span class="string">"data"</span></div><div class="line">	  top: <span class="string">"label"</span></div><div class="line">	  include &#123;</div><div class="line">		    phase: TRAIN</div><div class="line">		  &#125;</div><div class="line">	  transform_param &#123;</div><div class="line">		    mirror: true</div><div class="line">		    crop_size: <span class="number">227</span></div><div class="line">		    mean_file: <span class="string">"data/ilsvrc12/imagenet_mean.binaryproto"</span></div><div class="line">		  &#125;</div><div class="line">  window_data_param &#123;</div><div class="line">		    source: <span class="string">"examples/finetune_pascal_detection/window_file_2007_trainval.txt"</span></div><div class="line">		    batch_size: <span class="number">128</span></div><div class="line">		    fg_threshold: <span class="number">0.5</span></div><div class="line">		    bg_threshold: <span class="number">0.5</span></div><div class="line">		    fg_fraction: <span class="number">0.25</span></div><div class="line">		    context_pad: <span class="number">16</span></div><div class="line">		    crop_mode: <span class="string">"warp"</span></div><div class="line">		  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Dummy<br>DummyData用于调试，详见DummyDataParameter。</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/11/06/caffe学习（3）接口/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1737,191 +1984,6 @@ pip install protobuf
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/09/13/e4-bb-8eflash-e5-88-b0-e6-89-8b-e6-b8-b8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yan Joy">
-      <meta itemprop="description" content="Default~">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小一一的小站">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/09/13/e4-bb-8eflash-e5-88-b0-e6-89-8b-e6-b8-b8/" itemprop="url">
-                  从flash到手游
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2016-09-13 23:53:51" itemprop="dateCreated datePublished" datetime="2016-09-13T23:53:51+08:00">2016-09-13</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2016-11-18 15:11:18" itemprop="dateModified" datetime="2016-11-18T15:11:18+08:00">2016-11-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/感/" itemprop="url" rel="index"><span itemprop="name">感</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2016/09/13/e4-bb-8eflash-e5-88-b0-e6-89-8b-e6-b8-b8/" class="leancloud_visitors" data-flag-title="从flash到手游">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>近日室友又重新怀旧，玩起了金庸群侠传这个flash游戏。老实说我对这个游戏印象并不是很深，因为一没读过金庸，二来游戏确实很复杂，系统、任务众多，不是简单的休闲游戏。在我看来，这样一个出色的rpg游戏，可以算是flash游戏的巅峰了。如果是一个pc游戏，可能反而没有这么大的影响力。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/09/13/e4-bb-8eflash-e5-88-b0-e6-89-8b-e6-b8-b8/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1973,7 +2035,7 @@ pip install protobuf
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">97</span>
+                    <span class="site-state-item-count">98</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2006,7 +2068,9 @@ pip install protobuf
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -2133,7 +2197,9 @@ pip install protobuf
                     
                       
                     
-                    <span class="site-state-item-count">57</span>
+                      
+                    
+                    <span class="site-state-item-count">58</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

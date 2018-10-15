@@ -154,7 +154,7 @@ Python中对变量是否为None的判断
 123456self.mask = np.zeros(shape)if self.mask == None:	passelse:	pass">
 <meta property="og:image" content="http://img.blog.csdn.net/20171102172949871?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20171102173919163?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2017-11-03T09:25:18.415Z">
+<meta property="og:updated_time" content="2018-09-18T02:14:14.548Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Keras tips&problems">
 <meta name="twitter:description" content="写了一下keras的层，出现了一些问题，值得总结一下~
@@ -434,12 +434,24 @@ Python中对变量是否为None的判断
                 
               
 
-              <time title="Created: 2017-11-03 17:21:10 / Modified: 17:25:18" itemprop="dateCreated datePublished" datetime="2017-11-03T17:21:10+08:00">2017-11-03</time>
+              <time title="Created: 2017-11-03 17:21:10" itemprop="dateCreated datePublished" datetime="2017-11-03T17:21:10+08:00">2017-11-03</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-09-18 10:14:14" itemprop="dateModified" datetime="2018-09-18T10:14:14+08:00">2018-09-18</time>
               
             
           </span>
@@ -540,7 +552,7 @@ Python中对变量是否为None的判断
 <p><img src="http://img.blog.csdn.net/20171102172949871?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="unsorted_segment_sum"></p>
 <p>这个对于group by的reduce可是太好用了！赞美</p>
 <h3 id="用一个tensor作为另一个tensor的下标"><a href="#用一个tensor作为另一个tensor的下标" class="headerlink" title="用一个tensor作为另一个tensor的下标"></a>用一个tensor作为另一个tensor的下标</h3><hr>
-<p>在numpy中，对array的操作是否简单：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">x = np.asarray([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">3</span>])</div><div class="line">e = np.asarray([<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>])</div><div class="line"> </div><div class="line"><span class="keyword">print</span> x * e[x]</div></pre></td></tr></table></figure></p>
+<p>在numpy中，对array的操作十分简单：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">x = np.asarray([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">3</span>])</div><div class="line">e = np.asarray([<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>])</div><div class="line"> </div><div class="line"><span class="keyword">print</span> x * e[x]</div></pre></td></tr></table></figure></p>
 <p>得到：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span> <span class="number">0</span> <span class="number">3</span> <span class="number">3</span> <span class="number">0</span> <span class="number">5</span> <span class="number">0</span> <span class="number">7</span> <span class="number">1</span> <span class="number">3</span>]</div></pre></td></tr></table></figure></p>
 <p>而在Tensorflow，则需要<code>tf.gather</code>的帮助：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">gather(</div><div class="line">    params,</div><div class="line">    indices,</div><div class="line">    validate_indices=<span class="keyword">None</span>,</div><div class="line">    name=<span class="keyword">None</span></div><div class="line">)</div></pre></td></tr></table></figure></p>
 <p>通过gather，将params重组。（好像之前博客里也说过）</p>
@@ -626,6 +638,11 @@ Python中对变量是否为None的判断
           
 
   
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zODc5Ni8xNTMyNA=="></div>
+    </div>
+
+  
 
 
 
@@ -677,7 +694,7 @@ Python中对变量是否为None的判断
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">97</span>
+                    <span class="site-state-item-count">98</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -710,7 +727,9 @@ Python中对变量是否为None的判断
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -837,7 +856,9 @@ Python中对变量是否为None的判断
                     
                       
                     
-                    <span class="site-state-item-count">57</span>
+                      
+                    
+                    <span class="site-state-item-count">58</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1076,6 +1097,17 @@ Python中对变量是否为None的判断
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
