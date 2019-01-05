@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Tensorflow 静态图的动态收缩]]></title>
+    <url>%2F2019%2F01%2F05%2Ftf-shrink%2F</url>
+    <content type="text"><![CDATA[Tensorflow 的静态图机制给一个动态调整区间和mask的网络带来了不少麻烦。 问题描述随着训练的进行，扩大区间$r$的范围，并对区间内的权重进行量化操作。一次训练可能要量化多个区间，量化后权重冻结。 静态图思路权重冻结这是一个老问题，之前的文章中也有介绍。解决方法还是： 1234def entry_stop_gradients(target, mask): mask = tf.cast(mask, tf.float32) mask_h = tf.abs(mask-1.) return tf.stop_gradient(mask * target) + mask_h * target 卷积、全连接层计算层比较尴尬，他们不能直接对权重进行更改操作。如果基于slim或keras库，conv2d只能进行计算和mask的赋值操作，这也是目前大部分量化的训练方式。其实这个层只是进行了前向的传播，导致网络数据流经此层后，由于反向传播的更新值覆盖了用户想要赋值固定的值，导致无法量化。更大的一个问题在于不同区间的转换，如果一个层仅对一个区间进行量化，那么在完成一个区间量化，想进行下一个区间量化时，就要重新构建网络。 在这类层，一方面可以通过停止量化区间内的反向传播，另一方面对之前已量化的权重进行mask标记。 123456789101112131415161718192021222324def call(self, inputs): S = tf.cond(self.s &lt; 1.0, lambda: tf.assign_add(self.s, self.d_s), lambda: tf.identity(1.0)) mask_b = tf.logical_and(tf.less_equal(self.kernel, self.center+self.max_dis*S),tf.greater_equal(self.kernel, self.center-self.min_dis*S)) mask_f = tf.assign(self.mask_f, tf.logical_or(self.mask_f, mask_b)) stopped = entry_stop_gradients(self.kernel, mask_f) # stop kernel &lt; 0 1停止，0继续 outputs = tf.nn.conv2d( inputs, stopped, strides=[1, self.strides[0], self.strides[1], 1], data_format='NHWC', padding=self.padding) if self.use_bias: outputs = K.bias_add( outputs, self.bias, data_format=self.data_format) if self.activation is not None: return self.activation(outputs) return outputs 限制器如果想要进行权重的赋值和更改，还是要依靠限制器。通过限制器对网络进行赋值，可以不利用mask而保存真正的量化值。 12345kernel_c = tf.where(self.r_mask, K.clip(w, self.b_retrain[0]+1e-6, self.b_retrain[1]-1e-6), w)S = tf.cond(self.s &lt; 1.0, lambda: tf.assign_add(self.s, self.d_s), lambda: tf.identity(1.0))mask_b = tf.logical_and(tf.less_equal(kernel_c, self.center+self.max_dis*S),tf.greater_equal(kernel_c, self.center-self.min_dis*S))kernel_m = tf.where(mask_b , self.center*tf.ones_like(kernel_c), kernel_c)stopped = entry_stop_gradients(kernel_m, tf.logical_or(mask_b, self.f_mask) if self.f_mask is not None else mask_b) 总结以上只是这个问题的一个解决思路，实际在训练中出现了准确率无法在后续收缩中保持的情况。还在寻找其问题根源……]]></content>
+      <categories>
+        <category>ML</category>
+      </categories>
+      <tags>
+        <tag>tensorflow</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[魔咒的破灭]]></title>
     <url>%2F2018%2F10%2F15%2Fti-8%2F</url>
     <content type="text"><![CDATA[8月25日，10点左右优势，注视着一排灰色头像，和上面缓慢跳动的数字，我脑子里一片空白，只有手微微颤抖着关闭了浏览器的窗口。就在几十秒前，roshan洞口还是一片混战，神圣的不朽之盾也即将掉落。而这和现实中象征着象征着冠军的神盾，都没有落入LGD之手。他们的敌人OG在最后的关键时刻出现了，依靠着视野的优势将LGD队员分得四分五裂逐个击破，即便是代表着殊死一搏而出现的买活标志，也未能持续很久，便被扑灭了。经此一役，之前的所有优势也荡然无存，之后所发生的我便无需再看。 一个多小时之前，LGD其实已经触碰到了冠军神盾，却又被一次优势下的冲动所葬送。因而才多了一场决胜局。同样的剧情也发生在前一天，同样一个对手，打到了OG的家门口却没能一鼓作气拿下比赛…… 一切的一切，无不令人遗憾。之所以会有如此高的期望，不仅仅是因为这是一次冠军，还包括了前七次中国队偶数年必冠，奇数年必亚军的加成，它可以说是一个魔咒，当然对于今年可以看作是一个祝福的优势。除了偶冠奇亚，也存在着没有一个队伍拿过两次冠军的魔咒。或许是高昂的奖金让队伍迷失方向了。这当然也是好事，没有垄断，大家才都有充足的进取心。今年破了魔咒，也就说明明年我们也有机会干回来，并且在上海主场。 其实还有这样一个说法，当国内的所有希望都寄托在LGD身上时，LGD一定会让你失望。历届的TI比赛，中国队从来没有打出过像今年这样差的成绩：决赛八强仅有LGD一支队伍，面对围剿，还是失败了。这样的结果真正应该反思的不仅仅是那只成绩最好的队伍。 反观他们的对手OG，似乎是一个更为传奇的存在：比赛前几个月才组建好了队伍，二号位选手没有什么职业经验，只是在天梯上有不错的排名罢了。真正的豪强们，比如VP、LGD、Liquid，都在一年的磨练中积攒了不少的版本和比赛经验，也有更好的临场发挥。就这样面对着一个个强敌，他们还是挺了过来，并且在最后一局拿出了火猫拉比克这样，最近没有使用过又不是很稳定的阵容。不得不说，他们的表现也确实很漂亮。仅仅是一波就扭转了劣势，把握了最后的机会。 类似的奇迹也曾出现过。两年前，一只名为Wings的二线队伍，成立一年，在最危急的时刻也夺得了冠军，一时间人们称之为护国神翼。他们打法飘逸，战术多样，配合默契，每个人都称不上是明星选手，但一个个胜利证明了他们。如今，他们仅仅停留在那传说之中。17年因俱乐部问题宣布解散，各个选手状态也大幅下滑，Wings确实已经不在了。 CN dota，best dota。是我们自信的口号，我们总是在与世界为敌。而如今的形势并不容乐观，魔咒只是自己迷惑自己的一个手段。梦醒了，总要继续前行。新的道路上，既有多年未酬的老将，也有刚上战场的新兵。]]></content>

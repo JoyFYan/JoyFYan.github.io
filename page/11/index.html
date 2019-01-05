@@ -380,6 +380,279 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/11/06/caffe学习（5）视觉层/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yan Joy">
+      <meta itemprop="description" content="Default~">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小一一的小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/11/06/caffe学习（5）视觉层/" itemprop="url">
+                  caffe学习（5）视觉层
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2016-11-06 22:52:00" itemprop="dateCreated datePublished" datetime="2016-11-06T22:52:00+08:00">2016-11-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2016-11-18 15:34:56" itemprop="dateModified" datetime="2016-11-18T15:34:56+08:00">2016-11-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ML/" itemprop="url" rel="index"><span itemprop="name">ML</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/11/06/caffe学习（5）视觉层/" class="leancloud_visitors" data-flag-title="caffe学习（5）视觉层">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>上一篇是数据层，这一篇是视觉层（Vision Layers）。参考官网和网友博客。</p>
+<blockquote>
+<p><a href="http://caffe.berkeleyvision.org/tutorial/layers.html" target="_blank" rel="external">Vision Layers</a><br><a href="http://www.cnblogs.com/denny402/p/5071126.html" target="_blank" rel="external">Caffe学习系列(3)：视觉层（Vision Layers)及参数，denny402</a><br><a href="http://www.cnblogs.com/louyihang-loves-baiyan/p/5154337.html" target="_blank" rel="external">Caffe源码解析5：Conv_Layer，楼燚航的blog</a></p>
+</blockquote>
+<hr>
+<p>视觉层通常将图像作为输入，产生其他图像作为输出。图像输入可以是灰度图（通道C=1），RGB图（通道C=3）。同样图像也具有二维的空间结构，其高度$h&gt;1$宽度$w&gt;1$。大多数视觉层通过对输入区域应用特定操作产生输出的相应区域，这里就有点像传统的数字图像处理的工作了。相比之下其他层常常忽略输入的空间结构，视其为具有$chw$维度的大向量。</p>
+<h2 id="卷积层Convolution"><a href="#卷积层Convolution" class="headerlink" title="卷积层Convolution"></a>卷积层Convolution</h2><hr>
+<ul>
+<li>层类型：Convolution</li>
+<li>CPU实现：./src/caffe/layers/convolution_layer.cpp</li>
+<li>CUDA GPU实现： ./src/caffe/layers/convolution_layer.cu</li>
+<li><p>参数 (ConvolutionParameter convolution_param)：</p>
+<ul>
+<li>必须参数<ul>
+<li>num_output (c_o):卷积核（filter）的个数。</li>
+<li>kernel_size (or kernel_h and kernel_w): 卷积核大小，非方阵用_h _w。</li>
+</ul>
+</li>
+<li>推荐参数<ul>
+<li>weight_filler [default type: ‘constant’ value: 0]：卷积核的初始化，默认为全0，可以用”xavier”算法来进行初始化，也可以设置为”gaussian”。</li>
+</ul>
+</li>
+<li><p>可选参数</p>
+<ul>
+<li>bias_term [default true]:是否开启偏置项，默认为true, 开启。</li>
+<li>pad (or pad_h and pad_w) [default 0]: 填零操作，默认为0，不填零。是对原图进行填零，使卷积核在图像边缘能够进行卷积操作，运算后和原图的尺寸相同。扩充的时候是左右、上下对称的，比如卷积核的大小为5*5，那么pad设置为2，则四个边缘都扩充2个像素，即宽度和高度都扩充了4个像素。</li>
+<li>stride (or stride_h and stride_w) [default 1]: 卷积核的移动步长，默认为1。</li>
+<li><p>group (g) [default 1]: 分组，默认为1组。如果大于1，我们限制卷积的连接操作在一个子集内。如果我们根据图像的通道来分组，那么第i个输出分组只能与第i个输入分组进行连接。groups是代表filter 组的个数。引入gruop主要是为了选择性的连接卷基层的输入端和输出端的channels，否则参数会太多。</p>
+<blockquote>
+<p>It was there to implement the grouped convolution in Alex Krizhevsky’s paper: when group=2, the first half of the filters are only connected to the first half of the input channels, and the second half only connected to the second half.</p>
+</blockquote>
+<p> 当group=2时，前半部分filter与输入的前半部分通道连接，后半部分filter与后半部分输入通道连接。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>输入：n <em> c_i </em> h_i * w_i</p>
+</li>
+<li>输出：n <em> c_o </em> h_o <em> w_o, where h_o = (h_i + 2 </em> pad_h - kernel_h) / stride_h + 1 and w_o likewise。</li>
+<li><p>示例 (./models/bvlc_reference_caffenet/train_val.prototxt)</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">layer &#123;</div><div class="line">	  name: <span class="string">"conv1"</span></div><div class="line">	  type: <span class="string">"Convolution"</span></div><div class="line">	  bottom: <span class="string">"data"</span></div><div class="line">	  top: <span class="string">"conv1"</span></div><div class="line">	  <span class="comment"># learning rate and decay multipliers for the </span></div><div class="line">	  <span class="comment"># filters</span></div><div class="line">	  param &#123; lr_mult: <span class="number">1</span> decay_mult: <span class="number">1</span> &#125;</div><div class="line">	  <span class="comment"># learning rate and decay multipliers for the biases</span></div><div class="line">	  param &#123; lr_mult: <span class="number">2</span> decay_mult: <span class="number">0</span> &#125;</div><div class="line">	  convolution_param &#123;</div><div class="line">		    num_output: <span class="number">96</span>     </div><div class="line">		    <span class="comment"># learn 96 filters</span></div><div class="line">		    kernel_size: <span class="number">11</span>    </div><div class="line">		    <span class="comment"># each filter is 11x11</span></div><div class="line">			stride: <span class="number">4</span>      </div><div class="line">			<span class="comment"># step 4 pixels between each filter </span></div><div class="line">			<span class="comment"># application</span></div><div class="line">		    weight_filler &#123;</div><div class="line">			    type: <span class="string">"gaussian"</span> </div><div class="line">			    <span class="comment"># initialize the filters from a Gaussian</span></div><div class="line">			    std: <span class="number">0.01</span>        </div><div class="line">			    <span class="comment"># distribution with stdev 0.01 (default </span></div><div class="line">			    <span class="comment"># mean: 0)</span></div><div class="line">		    &#125;</div><div class="line">		    bias_filler &#123;</div><div class="line">			    type: <span class="string">"constant"</span> </div><div class="line">			    <span class="comment"># initialize the biases to zero (0)</span></div><div class="line">			    value: <span class="number">0</span></div><div class="line">			&#125;</div><div class="line">		 &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>卷积层将输入图像与一组可学习的滤波器进行卷积，每个在输出图像中产生一个特征图。</p>
+</li>
+</ul>
+<h2 id="池化层Pooling"><a href="#池化层Pooling" class="headerlink" title="池化层Pooling"></a>池化层Pooling</h2><hr>
+<p>Pooling 层一般在网络中是跟在Conv卷积层之后，做采样操作，其实是为了进一步缩小feature map，同时也能增大神经元的视野。</p>
+<ul>
+<li>层类型：Pooling</li>
+<li>CPU实现：./src/caffe/layers/pooling_layer.cpp</li>
+<li>CUDA GPU实现：./src/caffe/layers/pooling_layer.cu</li>
+<li>参数(PoolingParameter pooling_param)：<ul>
+<li>必须<ul>
+<li>kernel_size (or kernel_h and kernel_w)：池化核大小。</li>
+</ul>
+</li>
+<li>可选参数<ul>
+<li>pool [default MAX]: 池化方法，默认为MAX，还有 AVE, or STOCHASTIC。</li>
+<li>pad (or pad_h and pad_w) [default 0]:填零。</li>
+<li>stride (or stride_h and stride_w) [default 1]:步长。</li>
+</ul>
+</li>
+<li>输入：n <em> c </em> h_i * w_i</li>
+<li>输出：n <em> c </em> h_o * w_o，h_o and w_o 与卷积层计算方法相同。</li>
+</ul>
+</li>
+<li><p>示例 ( ./models/bvlc_reference_caffenet/train_val.prototxt)</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">layer &#123;</div><div class="line">	  name: <span class="string">"pool1"</span></div><div class="line">	  type: <span class="string">"Pooling"</span></div><div class="line">	  bottom: <span class="string">"conv1"</span></div><div class="line">	  top: <span class="string">"pool1"</span></div><div class="line">	  pooling_param &#123;</div><div class="line">		    pool: MAX</div><div class="line">		    kernel_size: <span class="number">3</span> <span class="comment"># pool over a 3x3 region</span></div><div class="line">		    stride: <span class="number">2</span>      <span class="comment"># step two pixels (in the </span></div><div class="line">						   <span class="comment"># bottom blob) between pooling </span></div><div class="line">						   <span class="comment"># regions</span></div><div class="line">		  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="局部响应归一化层RNL"><a href="#局部响应归一化层RNL" class="headerlink" title="局部响应归一化层RNL"></a>局部响应归一化层RNL</h2><hr>
+<p>局部响应归一化层通过对局部输入区域进行归一化来执行一种“横向抑制”。具体作用感觉和特征缩放有点像，使梯度下降在所有方向上具有相同的曲率。而RNL这种方法的计算相比对每个神经元输入归一化要简单。</p>
+<ul>
+<li>层类型：LRN</li>
+<li>CPU实现： ./src/caffe/layers/lrn_layer.cpp</li>
+<li>CUDA GPU实现：./src/caffe/layers/lrn_layer.cu</li>
+<li>参数 (LRNParameter lrn_param)：<ul>
+<li>可选参数<ul>
+<li>local_size [default 5]:需要求和的通道数数目（对于跨通道LRN），或者是方形区域求和的变长（对于通道内LRN）。</li>
+<li>alpha [default 1]: 比例参数。</li>
+<li>beta [default 5]: 指数参数。</li>
+<li>norm_region [default ACROSS_CHANNELS]:ACROSS_CHANNELS表示在相邻的通道间求和归一化，但没有空间延伸，即大小为local_size x 1 x 1；WITHIN_CHANNEL表示在一个通道内部特定的区域内进行求和归一化，其大小为：1 x local_size x local_size。每个输入值被除以$(1 + (\alpha/n) \sum_i x_i^2)^\beta$，$n$是每个局部区域的大小。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>示例：</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">layers &#123;</div><div class="line">	  name: <span class="string">"norm1"</span></div><div class="line">	  type: LRN</div><div class="line">	  bottom: <span class="string">"pool1"</span></div><div class="line">	  top: <span class="string">"norm1"</span></div><div class="line">	  lrn_param &#123;</div><div class="line">		    local_size: <span class="number">5</span></div><div class="line">		    alpha: <span class="number">0.0001</span></div><div class="line">		    beta: <span class="number">0.75</span></div><div class="line">		  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Im2col"><a href="#Im2col" class="headerlink" title="Im2col"></a>Im2col</h2><hr>
+<p>Caffe中卷积操作需要先对数据进行im2col，再进行内积运算，如下图所示：<br><img src="http://images2015.cnblogs.com/blog/140867/201512/140867-20151224103937640-1245969956.jpg" alt="卷积计算"></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/11/06/caffe学习（4）数据层/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1799,191 +2072,6 @@ pip install protobuf
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2016/09/19/e6-9c-ba-e4-bc-9a-e8-bf-98-e6-98-af-e4-bc-9a-e7-95-99-e7-bb-99-e6-9c-89-e5-87-86-e5-a4-87-e7-9a-84-e4-ba-ba-e5-95-8a/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yan Joy">
-      <meta itemprop="description" content="Default~">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小一一的小站">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/09/19/e6-9c-ba-e4-bc-9a-e8-bf-98-e6-98-af-e4-bc-9a-e7-95-99-e7-bb-99-e6-9c-89-e5-87-86-e5-a4-87-e7-9a-84-e4-ba-ba-e5-95-8a/" itemprop="url">
-                  机会还是会留给有准备的人啊~
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2016-09-19 21:44:38" itemprop="dateCreated datePublished" datetime="2016-09-19T21:44:38+08:00">2016-09-19</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2016-11-18 15:16:46" itemprop="dateModified" datetime="2016-11-18T15:16:46+08:00">2016-11-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/感/" itemprop="url" rel="index"><span itemprop="name">感</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2016/09/19/e6-9c-ba-e4-bc-9a-e8-bf-98-e6-98-af-e4-bc-9a-e7-95-99-e7-bb-99-e6-9c-89-e5-87-86-e5-a4-87-e7-9a-84-e4-ba-ba-e5-95-8a/" class="leancloud_visitors" data-flag-title="机会还是会留给有准备的人啊~">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>这段时间这么盲目、慌张，也好久没有这样的感觉了，可能习惯了按部就班的生活……</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/09/19/e6-9c-ba-e4-bc-9a-e8-bf-98-e6-98-af-e4-bc-9a-e7-95-99-e7-bb-99-e6-9c-89-e5-87-86-e5-a4-87-e7-9a-84-e4-ba-ba-e5-95-8a/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2035,7 +2123,7 @@ pip install protobuf
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">98</span>
+                    <span class="site-state-item-count">99</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2275,7 +2363,7 @@ pip install protobuf
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
