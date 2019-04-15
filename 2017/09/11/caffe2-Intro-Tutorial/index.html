@@ -14,11 +14,11 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="en">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -32,8 +32,6 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -46,6 +44,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -53,72 +66,15 @@
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=6.3.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -140,33 +96,30 @@
 
 
 
-  <meta name="description" content="Caffe2 概念
-Caffe2已经发布几个月了，但目前的使用率并不高，相关文档并不完善，与Caffe（1）相比入门较难。本文主要讲解Caffe2的一些概念，由于本人也是新手，仅做参考，欢迎交流。
-Tutorials: Intro Tutorial">
+  <meta name="description" content="Caffe2 概念 Caffe2已经发布几个月了，但目前的使用率并不高，相关文档并不完善，与Caffe（1）相比入门较难。本文主要讲解Caffe2的一些概念，由于本人也是新手，仅做参考，欢迎交流。 Tutorials: Intro Tutorial">
+<meta name="keywords" content="caffe2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Caffe2 入门教程">
 <meta property="og:url" content="https://joyfyan.github.io/2017/09/11/caffe2-Intro-Tutorial/index.html">
 <meta property="og:site_name" content="小一一的小站">
-<meta property="og:description" content="Caffe2 概念
-Caffe2已经发布几个月了，但目前的使用率并不高，相关文档并不完善，与Caffe（1）相比入门较难。本文主要讲解Caffe2的一些概念，由于本人也是新手，仅做参考，欢迎交流。
-Tutorials: Intro Tutorial">
-<meta property="og:updated_time" content="2017-09-12T00:44:50.054Z">
+<meta property="og:description" content="Caffe2 概念 Caffe2已经发布几个月了，但目前的使用率并不高，相关文档并不完善，与Caffe（1）相比入门较难。本文主要讲解Caffe2的一些概念，由于本人也是新手，仅做参考，欢迎交流。 Tutorials: Intro Tutorial">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-09-12T00:44:50.055Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Caffe2 入门教程">
-<meta name="twitter:description" content="Caffe2 概念
-Caffe2已经发布几个月了，但目前的使用率并不高，相关文档并不完善，与Caffe（1）相比入门较难。本文主要讲解Caffe2的一些概念，由于本人也是新手，仅做参考，欢迎交流。
-Tutorials: Intro Tutorial">
+<meta name="twitter:description" content="Caffe2 概念 Caffe2已经发布几个月了，但目前的使用率并不高，相关文档并不完善，与Caffe（1）相比入门较难。本文主要讲解Caffe2的一些概念，由于本人也是新手，仅做参考，欢迎交流。 Tutorials: Intro Tutorial">
 
 
 
 
 
+  
+  
+  <link rel="canonical" href="https://joyfyan.github.io/2017/09/11/caffe2-Intro-Tutorial/">
 
-  <link rel="canonical" href="https://joyfyan.github.io/2017/09/11/caffe2-Intro-Tutorial/"/>
 
 
-
-<script type="text/javascript" id="page.configurations">
+<script id="page.configurations">
   CONFIG.page = {
     sidebar: "",
   };
@@ -180,7 +133,7 @@ Tutorials: Intro Tutorial">
 
 
 
-  <script type="text/javascript">
+  <script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -193,30 +146,31 @@ Tutorials: Intro Tutorial">
 
 
 
+
+
+
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
@@ -234,7 +188,7 @@ Tutorials: Intro Tutorial">
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -248,6 +202,7 @@ Tutorials: Intro Tutorial">
       
         <p class="site-subtitle">Blog of Yan Joy</p>
       
+    
     
   </div>
 
@@ -271,40 +226,85 @@ Tutorials: Intro Tutorial">
         
           
           <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
   </li>
 
       
@@ -314,7 +314,7 @@ Tutorials: Intro Tutorial">
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
         </li>
       
     </ul>
@@ -334,9 +334,7 @@ Tutorials: Intro Tutorial">
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="Searching..." spellcheck="false"
-             type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -404,6 +402,7 @@ Tutorials: Intro Tutorial">
         
         
           <h1 class="post-title" itemprop="name headline">Caffe2 入门教程
+
               
             
           </h1>
@@ -451,7 +450,7 @@ Tutorials: Intro Tutorial">
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -472,20 +471,21 @@ Tutorials: Intro Tutorial">
 
           
             
+            
           
 
           
           
-             <span id="/2017/09/11/caffe2-Intro-Tutorial/" class="leancloud_visitors" data-flag-title="Caffe2 入门教程">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
+            <span id="/2017/09/11/caffe2-Intro-Tutorial/" class="leancloud_visitors" data-flag-title="Caffe2 入门教程">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -509,12 +509,12 @@ Tutorials: Intro Tutorial">
       
         <h1 id="Caffe2-概念"><a href="#Caffe2-概念" class="headerlink" title="Caffe2 概念"></a>Caffe2 概念</h1><hr>
 <p>Caffe2已经发布几个月了，但目前的使用率并不高，相关文档并不完善，与Caffe（1）相比入门较难。本文主要讲解Caffe2的一些概念，由于本人也是新手，仅做参考，欢迎交流。</p>
-<p><a href="https://caffe2.ai/docs/intro-tutorial.html" target="_blank" rel="external">Tutorials: Intro Tutorial</a></p>
+<p><a href="https://caffe2.ai/docs/intro-tutorial.html" target="_blank" rel="noopener">Tutorials: Intro Tutorial</a></p>
 <a id="more"></a>
 <h2 id="Blobs-and-Workspace-Tensors"><a href="#Blobs-and-Workspace-Tensors" class="headerlink" title="Blobs and Workspace, Tensors"></a>Blobs and Workspace, Tensors</h2><hr>
 <p>和Caffe1一样，Caffe2也有<strong>Blobs</strong>，并也代表着内存中的数据块。大多数的blobs中都含有<strong>tensor</strong>，就像Tensorflow一样，可以简单视为一种多维数组，具体在python中被视为numpy arrays。</p>
-<p>除了tensor还有<strong><a href="https://caffe2.ai/docs/workspace.html" target="_blank" rel="external">workspace</a></strong>这一全新概念。下面举个例子，演示一下如何把blobs 添加到 <code>workspace</code>，并取出。Workspace会在你开始使用时初始化。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> caffe2.python <span class="keyword">import</span> workspace, model_helper</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="comment"># 创建三维随机张量</span></div><div class="line">x = np.random.rand(<span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>)</div><div class="line">print(x)</div><div class="line">print(x.shape)</div><div class="line"></div><div class="line"><span class="comment"># 将创建的tensor输入到Workspace中，命名为"my_x"</span></div><div class="line">workspace.FeedBlob(<span class="string">"my_x"</span>, x)</div><div class="line"></div><div class="line"><span class="comment"># 从Workspace中取出数据</span></div><div class="line">x2 = workspace.FetchBlob(<span class="string">"my_x"</span>)</div><div class="line">print(x2)</div></pre></td></tr></table></figure>
+<p>除了tensor还有<strong><a href="https://caffe2.ai/docs/workspace.html" target="_blank" rel="noopener">workspace</a></strong>这一全新概念。下面举个例子，演示一下如何把blobs 添加到 <code>workspace</code>，并取出。Workspace会在你开始使用时初始化。</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> caffe2.python <span class="keyword">import</span> workspace, model_helper</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment"># 创建三维随机张量</span></span><br><span class="line">x = np.random.rand(<span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"><span class="built_in">print</span>(x.shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将创建的tensor输入到Workspace中，命名为"my_x"</span></span><br><span class="line">workspace.FeedBlob(<span class="string">"my_x"</span>, x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从Workspace中取出数据</span></span><br><span class="line">x2 = workspace.FetchBlob(<span class="string">"my_x"</span>)</span><br><span class="line"><span class="built_in">print</span>(x2)</span><br></pre></td></tr></table></figure>
 <p>对比一下<code>x</code>与<code>x2</code>，发现是一样的。</p>
 <h2 id="网络与操作符"><a href="#网络与操作符" class="headerlink" title="网络与操作符"></a>网络与操作符</h2><hr>
 <p>Caffe2的基本对象是网络(net)。Net 是一种操作符（operators）的图，并每个操作符取输入blobs数据并输出一或多个blobs。<br>下面的程序块会创建一个简单的模型，包含这些组成：</p>
@@ -530,35 +530,35 @@ Tutorials: Intro Tutorial">
 <li>一个初始化参数 (ref. init_net)</li>
 <li>一个运行实际的训练(ref. exec_net)</li>
 </ol>
-<figure class="highlight elm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 创建随机输入数据</div><div class="line"><span class="title">data</span> = np.random.rand(<span class="number">16</span>, <span class="number">100</span>).<span class="keyword">as</span><span class="keyword">type</span>(np.float32)</div><div class="line"></div><div class="line"># 创建随机标签</div><div class="line"><span class="title">label</span> = (np.random.rand(<span class="number">16</span>) * <span class="number">10</span>).<span class="keyword">as</span><span class="keyword">type</span>(np.int32)</div><div class="line"></div><div class="line"><span class="title">workspace</span>.<span class="type">FeedBlob</span>(<span class="string">"data"</span>, data)</div><div class="line"><span class="title">workspace</span>.<span class="type">FeedBlob</span>(<span class="string">"label"</span>, label)</div></pre></td></tr></table></figure>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 创建随机输入数据</span><br><span class="line"><span class="title">data</span> = np.random.rand(<span class="number">16</span>, <span class="number">100</span>).<span class="keyword">as</span><span class="keyword">type</span>(np.float32)</span><br><span class="line"></span><br><span class="line"># 创建随机标签</span><br><span class="line"><span class="title">label</span> = (np.random.rand(<span class="number">16</span>) * <span class="number">10</span>).<span class="keyword">as</span><span class="keyword">type</span>(np.int32)</span><br><span class="line"></span><br><span class="line"><span class="title">workspace</span>.<span class="type">FeedBlob</span>(<span class="string">"data"</span>, data)</span><br><span class="line"><span class="title">workspace</span>.<span class="type">FeedBlob</span>(<span class="string">"label"</span>, label)</span><br></pre></td></tr></table></figure>
 <p>我们创建一些随机的输入和输出，并且添加到Workspace中。</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 使用模型助手建立模型</span></div><div class="line"><span class="attr">m</span> = model_helper.ModelHelper(name=<span class="string">"my first net"</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用模型助手建立模型</span></span><br><span class="line"><span class="attr">m</span> = model_helper.ModelHelper(name=<span class="string">"my first net"</span>)</span><br></pre></td></tr></table></figure>
 <p>现在使用<code>model_helper</code>创建了我们之前提到的两个网络（<code>init_net</code>，<code>exec_net</code>）。 在下面的模型中使用FC操作符添加一个全连接层，但首先我们需要做一些准备工作：创建FC操作符所期望的一些随机数作为权重。 接下来，我们可以添加操作，并使用我们创建的权重和偏差blobs。</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">weight = m<span class="selector-class">.param_init_net</span><span class="selector-class">.XavierFill</span>([], <span class="string">'fc_w'</span>, shape=[<span class="number">10</span>, <span class="number">100</span>])</div><div class="line">bias = m<span class="selector-class">.param_init_net</span><span class="selector-class">.ConstantFill</span>([], <span class="string">'fc_b'</span>, shape=[<span class="number">10</span>, ])</div></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">weight = m<span class="selector-class">.param_init_net</span><span class="selector-class">.XavierFill</span>([], <span class="string">'fc_w'</span>, shape=[<span class="number">10</span>, <span class="number">100</span>])</span><br><span class="line">bias = m<span class="selector-class">.param_init_net</span><span class="selector-class">.ConstantFill</span>([], <span class="string">'fc_b'</span>, shape=[<span class="number">10</span>, ])</span><br></pre></td></tr></table></figure>
 <p>在Caffe2中，FC操作符的输入为：数据、权重、偏置。权重和偏置分别使用<code>XavierFill</code> 和<code>ConstantFill</code>初始化，输入为空数组、名称、形状。</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">fc_1 = m<span class="selector-class">.net</span><span class="selector-class">.FC</span>([<span class="string">"data"</span>, <span class="string">"fc_w"</span>, <span class="string">"fc_b"</span>], <span class="string">"fc1"</span>)</div><div class="line">pred = m<span class="selector-class">.net</span><span class="selector-class">.Sigmoid</span>(fc_1, <span class="string">"pred"</span>)</div><div class="line">[softmax, loss] = m<span class="selector-class">.net</span><span class="selector-class">.SoftmaxWithLoss</span>([pred, <span class="string">"label"</span>], [<span class="string">"softmax"</span>, <span class="string">"loss"</span>])</div></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fc_1 = m<span class="selector-class">.net</span><span class="selector-class">.FC</span>([<span class="string">"data"</span>, <span class="string">"fc_w"</span>, <span class="string">"fc_b"</span>], <span class="string">"fc1"</span>)</span><br><span class="line">pred = m<span class="selector-class">.net</span><span class="selector-class">.Sigmoid</span>(fc_1, <span class="string">"pred"</span>)</span><br><span class="line">[softmax, loss] = m<span class="selector-class">.net</span><span class="selector-class">.SoftmaxWithLoss</span>([pred, <span class="string">"label"</span>], [<span class="string">"softmax"</span>, <span class="string">"loss"</span>])</span><br></pre></td></tr></table></figure>
 <p>首先创建了内存中的数据和标签的blob（但没有加载数据）。数据和标签第一个维度为16，是一个mini-batch。 许多Caffe2的操作符可以通过ModelHelper直接访问，并且可以处理一个mini-batch的输入。<br>其次，我们通过定义一组操作符来创建一个模型：FC，Sigmoid和SoftmaxWithLoss。 注意：在这一点上，运算符没有被执行，你只是创建模型的定义。<br>Model helper将创建两个网络：<code>m.param_init_net</code>只运行一次。它会初始化所有blob参数，如FC的权重。实际的训练是通过<code>m.net</code>的。 这对你来说是透明的，并且会自动运行。</p>
 <p>网络定义储存在protobuf中，可以通过<code>net.Proto()</code>查看：</p>
-<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(<span class="name">str</span>(<span class="name">m</span>.net.Proto()))</div></pre></td></tr></table></figure>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="name">str</span>(<span class="name">m</span>.net.Proto()))</span><br></pre></td></tr></table></figure>
 <p>输出为：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">name: "my first net"</div><div class="line">op &#123;</div><div class="line">  input: "data"</div><div class="line">  input: "fc_w"</div><div class="line">  input: "fc_b"</div><div class="line">  output: "fc1"</div><div class="line">  name: ""</div><div class="line">  type: "FC"</div><div class="line">&#125;</div><div class="line">op &#123;</div><div class="line">  input: "fc1"</div><div class="line">  output: "pred"</div><div class="line">  name: ""</div><div class="line">  type: "Sigmoid"</div><div class="line">&#125;</div><div class="line">op &#123;</div><div class="line">  input: "pred"</div><div class="line">  input: "label"</div><div class="line">  output: "softmax"</div><div class="line">  output: "loss"</div><div class="line">  name: ""</div><div class="line">  type: "SoftmaxWithLoss"</div><div class="line">&#125;</div><div class="line">external_input: "data"</div><div class="line">external_input: "fc_w"</div><div class="line">external_input: "fc_b"</div><div class="line">external_input: "label"</div></pre></td></tr></table></figure>
-<p>你也可以查看参数初始网络：<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(<span class="name">str</span>(<span class="name">m</span>.param_init_net.Proto()))</div></pre></td></tr></table></figure></p>
-<p>输出为：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">name: "my first net_init"</div><div class="line">op &#123;</div><div class="line">  output: "fc_w"</div><div class="line">  name: ""</div><div class="line">  type: "XavierFill"</div><div class="line">  arg &#123;</div><div class="line">    name: "shape"</div><div class="line">    ints: 10</div><div class="line">    ints: 100</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">op &#123;</div><div class="line">  output: "fc_b"</div><div class="line">  name: ""</div><div class="line">  type: "ConstantFill"</div><div class="line">  arg &#123;</div><div class="line">    name: "shape"</div><div class="line">    ints: 10</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">name: "my first net"</span><br><span class="line">op &#123;</span><br><span class="line">  input: "data"</span><br><span class="line">  input: "fc_w"</span><br><span class="line">  input: "fc_b"</span><br><span class="line">  output: "fc1"</span><br><span class="line">  name: ""</span><br><span class="line">  type: "FC"</span><br><span class="line">&#125;</span><br><span class="line">op &#123;</span><br><span class="line">  input: "fc1"</span><br><span class="line">  output: "pred"</span><br><span class="line">  name: ""</span><br><span class="line">  type: "Sigmoid"</span><br><span class="line">&#125;</span><br><span class="line">op &#123;</span><br><span class="line">  input: "pred"</span><br><span class="line">  input: "label"</span><br><span class="line">  output: "softmax"</span><br><span class="line">  output: "loss"</span><br><span class="line">  name: ""</span><br><span class="line">  type: "SoftmaxWithLoss"</span><br><span class="line">&#125;</span><br><span class="line">external_input: "data"</span><br><span class="line">external_input: "fc_w"</span><br><span class="line">external_input: "fc_b"</span><br><span class="line">external_input: "label"</span><br></pre></td></tr></table></figure>
+<p>你也可以查看参数初始网络：<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="name">str</span>(<span class="name">m</span>.param_init_net.Proto()))</span><br></pre></td></tr></table></figure></p>
+<p>输出为：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">name: "my first net_init"</span><br><span class="line">op &#123;</span><br><span class="line">  output: "fc_w"</span><br><span class="line">  name: ""</span><br><span class="line">  type: "XavierFill"</span><br><span class="line">  arg &#123;</span><br><span class="line">    name: "shape"</span><br><span class="line">    ints: 10</span><br><span class="line">    ints: 100</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">op &#123;</span><br><span class="line">  output: "fc_b"</span><br><span class="line">  name: ""</span><br><span class="line">  type: "ConstantFill"</span><br><span class="line">  arg &#123;</span><br><span class="line">    name: "shape"</span><br><span class="line">    ints: 10</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>可以看到有两个操作符可以为FC操作符的权重和偏置点创建随机初始化。<br>这是Caffe2 API的主要思想：使用Python方便地编写网络来训练模型，将网络传递给C ++代码作为序列化的原始缓冲区，然后让C ++代码运行网络，可以达到最好的性能。</p>
 <h2 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h2><hr>
 <p>现在，当我们定义了模型训练运算符时，我们可以开始运行它来训练我们的模型。<br>首先，我们只运行一次param初始化：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">workspace</span><span class="selector-class">.RunNetOnce</span>(<span class="selector-tag">m</span><span class="selector-class">.param_init_net</span>)</div></pre></td></tr></table></figure>
-<p>注意，像往常一样，这将实际上将<code>param_init_net</code>的protobuf下载到C ++运行。<br>然后我们创建实际的训练网络：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">workspace</span><span class="selector-class">.CreateNet</span>(<span class="selector-tag">m</span><span class="selector-class">.net</span>)</div></pre></td></tr></table></figure></p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">workspace.<span class="constructor">RunNetOnce(<span class="params">m</span>.<span class="params">param_init_net</span>)</span></span><br></pre></td></tr></table></figure>
+<p>注意，像往常一样，这将实际上将<code>param_init_net</code>的protobuf下载到C ++运行。<br>然后我们创建实际的训练网络：<br><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">workspace.<span class="constructor">CreateNet(<span class="params">m</span>.<span class="params">net</span>)</span></span><br></pre></td></tr></table></figure></p>
 <p>我们创建一次，然后我们可以有效地运行它多次：</p>
-<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># 运行 <span class="number">100</span> x <span class="number">10</span> 次迭代</div><div class="line"><span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">100</span>):</div><div class="line">    data = <span class="built_in">np</span>.<span class="built_in">random</span>.rand(<span class="number">16</span>, <span class="number">100</span>).astype(<span class="built_in">np</span>.float32)</div><div class="line">    <span class="built_in">label</span> = (<span class="built_in">np</span>.<span class="built_in">random</span>.rand(<span class="number">16</span>) * <span class="number">10</span>).astype(<span class="built_in">np</span>.int32)</div><div class="line"></div><div class="line">    workspace.FeedBlob(<span class="string">"data"</span>, data)</div><div class="line">    workspace.FeedBlob(<span class="string">"label"</span>, <span class="built_in">label</span>)</div><div class="line"></div><div class="line">    workspace.RunNet(m.name, <span class="number">10</span>)   # 运行<span class="number">10</span>次</div></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 运行 <span class="number">100</span> x <span class="number">10</span> 次迭代</span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">100</span>):</span><br><span class="line">    data = np.random.rand(<span class="number">16</span>, <span class="number">100</span>).astype(np.<span class="built_in">float</span>32)</span><br><span class="line">    label = (np.random.rand(<span class="number">16</span>) * <span class="number">10</span>).astype(np.<span class="built_in">int</span>32)</span><br><span class="line"></span><br><span class="line">    workspace.FeedBlob(<span class="string">"data"</span>, data)</span><br><span class="line">    workspace.FeedBlob(<span class="string">"label"</span>, label)</span><br><span class="line"></span><br><span class="line">    workspace.RunNet(m.name, <span class="number">10</span>)   # 运行<span class="number">10</span>次</span><br></pre></td></tr></table></figure>
 <p>注意我们如何引用RunNet()中的网络名称。 由于网络是在workspace内创建的，所以我们不需要再次通过网络定义。<br>执行后，可以检查存储在输出blob中的结果（包含张量，即numpy数组）：</p>
 <h1 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h1><hr>
 <p>这个网只包含正向传播，所以没有学习任何东西。反向传播是通过在正向传播中为每个运算符创建梯度运算符而创建的。</p>
 <p>在调用<code>RunNetOnce()</code>之前插入以下内容：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">m</span><span class="selector-class">.AddGradientOperators</span>(<span class="selector-attr">[loss]</span>)</div></pre></td></tr></table></figure>
-<p>检查protobuf的输出：<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(<span class="name">str</span>(<span class="name">m</span>.net.Proto()))</div></pre></td></tr></table></figure></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">m</span><span class="selector-class">.AddGradientOperators</span>(<span class="selector-attr">[loss]</span>)</span><br></pre></td></tr></table></figure>
+<p>检查protobuf的输出：<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="name">str</span>(<span class="name">m</span>.net.Proto()))</span><br></pre></td></tr></table></figure></p>
 <hr>
-<p>本文只是简单翻译一下官方教程，涉及内容不多，以后会尝试更多的功能。<br>原文的jupyter notebook 版本上传到<a href="https://github.com/JoyFYan/JoyFYan.github.io/blob/master/uploads/Blobs-and-Workspace%2C%20Tensors.ipynb" target="_blank" rel="external">git</a>中。</p>
+<p>本文只是简单翻译一下官方教程，涉及内容不多，以后会尝试更多的功能。<br>原文的jupyter notebook 版本上传到<a href="https://github.com/JoyFYan/JoyFYan.github.io/blob/master/uploads/Blobs-and-Workspace%2C%20Tensors.ipynb" target="_blank" rel="noopener">git</a>中。</p>
 
       
     </div>
@@ -572,7 +572,34 @@ Tutorials: Intro Tutorial">
     
 
     
+      
+    
+    
 
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yan Joy</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    
+    <a href="https://joyfyan.github.io/2017/09/11/caffe2-Intro-Tutorial/" title="Caffe2 入门教程">https://joyfyan.github.io/2017/09/11/caffe2-Intro-Tutorial/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -648,7 +675,6 @@ Tutorials: Intro Tutorial">
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -664,16 +690,14 @@ Tutorials: Intro Tutorial">
         </ul>
       
 
-      <section class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
-                alt="Yan Joy" />
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Yan Joy">
             
               <p class="site-author-name" itemprop="name">Yan Joy</p>
-              <p class="site-description motion-element" itemprop="description">Default~</p>
+              <div class="site-description motion-element" itemprop="description">Default~</div>
           </div>
 
           
@@ -683,7 +707,7 @@ Tutorials: Intro Tutorial">
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">99</span>
+                    <span class="site-state-item-count">104</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -693,7 +717,11 @@ Tutorials: Intro Tutorial">
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -728,7 +756,11 @@ Tutorials: Intro Tutorial">
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -847,7 +879,11 @@ Tutorials: Intro Tutorial">
                     
                       
                     
-                    <span class="site-state-item-count">58</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">60</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -858,22 +894,35 @@ Tutorials: Intro Tutorial">
           
 
           
+
+          
             <div class="links-of-author motion-element">
               
                 <span class="links-of-author-item">
-                  <a href="http://weibo.com/yanjoy" target="_blank" title="Weibo"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
                   
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="http://weibo.com/yanjoy" title="Weibo &rarr; http://weibo.com/yanjoy" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="http://blog.csdn.net/yan_joy" target="_blank" title="CSDN"><i class="fa fa-fw fa-linux"></i>CSDN</a>
                   
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="http://blog.csdn.net/yan_joy" title="CSDN &rarr; http://blog.csdn.net/yan_joy" rel="noopener" target="_blank"><i class="fa fa-fw fa-linux"></i>CSDN</a>
                 </span>
               
             </div>
           
 
-          
           
 
           
@@ -881,20 +930,20 @@ Tutorials: Intro Tutorial">
             <div class="links-of-blogroll motion-element links-of-blogroll-block">
               <div class="links-of-blogroll-title">
                 <i class="fa  fa-fw fa-link"></i>
-                FRIENDS
+                Links
               </div>
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://www.xieqiang.site/" title="Johnny" target="_blank">Johnny</a>
+                    <a href="http://www.xieqiang.site/" title="http://www.xieqiang.site/" rel="noopener" target="_blank">Johnny</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://judasdie.github.io/" title="ZP Zhang" target="_blank">ZP Zhang</a>
+                    <a href="https://judasdie.github.io/" title="https://judasdie.github.io/" rel="noopener" target="_blank">ZP Zhang</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://pages.coding.me/" title="Hosted by Coding Pages" target="_blank">Hosted by Coding Pages</a>
+                    <a href="https://pages.coding.me/" title="https://pages.coding.me/" rel="noopener" target="_blank">Hosted by Coding Pages</a>
                   </li>
                 
               </ul>
@@ -907,15 +956,16 @@ Tutorials: Intro Tutorial">
           
 
         </div>
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
@@ -923,7 +973,7 @@ Tutorials: Intro Tutorial">
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
@@ -931,6 +981,7 @@ Tutorials: Intro Tutorial">
 
     </div>
   </aside>
+  
 
 
         
@@ -951,9 +1002,7 @@ Tutorials: Intro Tutorial">
 </div>
 
 
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.2.2</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 
@@ -961,7 +1010,7 @@ Tutorials: Intro Tutorial">
 
 
 
-  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.3.0</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.0</div>
 
 
 
@@ -987,14 +1036,13 @@ Tutorials: Intro Tutorial">
     
 
     
-	
+
     
 
     
       <div>
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<div class="addthis_inline_share_toolbox">
-  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b692d42870e12d9" async = "async" ></script>
+        <div class="addthis_inline_share_toolbox">
+  <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b692d42870e12d9" async="async"></script>
 </div>
 
       </div>
@@ -1003,7 +1051,7 @@ Tutorials: Intro Tutorial">
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -1035,27 +1083,21 @@ Tutorials: Intro Tutorial">
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
 
 
 
@@ -1063,54 +1105,54 @@ Tutorials: Intro Tutorial">
   
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
 
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
 
 
 
   
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
 
 
 
   
 
 
-
-  
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  
-
-
-
-
-
-
-
-
+  <script src="/js/next-boot.js?v=7.1.0"></script>
 
 
   
 
-  <script type="text/javascript">
+  
+
+  
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2017/09/11/caffe2-Intro-Tutorial/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+  <script>
     // Popup Window;
     var isfetched = false;
     var isXml = true;
@@ -1196,7 +1238,7 @@ Tutorials: Intro Tutorial">
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
                 
                 var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
                 var indexOfTitle = [];
                 var indexOfContent = [];
                 // only match articles with not empty titles
@@ -1365,9 +1407,9 @@ Tutorials: Intro Tutorial">
               })
             };
             if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
             } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
             } else {
               resultItems.sort(function (resultLeft, resultRight) {
                 if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
@@ -1435,120 +1477,71 @@ Tutorials: Intro Tutorial">
 
 
   
-
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz", "owWjRRJ2oBD7Dekc8l1RRctK");</script>
   <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
+    
     function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
+      var $visitors = $('.leancloud_visitors');
       var url = $visitors.attr('id').trim();
       var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
 
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
           if (results.length > 0) {
             var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
             
-            counter.save(null, {
-              success: function(counter) {
-                
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
           } else {
             
-              var newcounter = new Counter();
-              /* Set ACL */
-              var acl = new AV.ACL();
-              acl.setPublicReadAccess(true);
-              acl.setPublicWriteAccess(true);
-              newcounter.setACL(acl);
-              /* End Set ACL */
-              newcounter.set("title", title);
-              newcounter.set("url", url);
-              newcounter.set("time", 1);
-              newcounter.save(null, {
-                success: function(newcounter) {
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
                   var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                },
-                error: function(newcounter, error) {
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
                   console.log('Failed to create');
-                }
-              });
+                });
             
           }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
     }
+    
 
     $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz',
+                'X-LC-Key': 'owWjRRJ2oBD7Dekc8l1RRctK',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
     });
   </script>
 
 
-
-  
 
   
 
@@ -1561,31 +1554,56 @@ Tutorials: Intro Tutorial">
   
     
       <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      TeX: {equationNumbers: { autoNumber: "AMS" }}
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
     });
+  });
 </script>
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
 </script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     
   
 
 
   
+
+  
+
+  
+
+  
+
+  
+
   
 
   

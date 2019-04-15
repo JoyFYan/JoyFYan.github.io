@@ -14,11 +14,11 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="en">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -32,8 +32,6 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -46,6 +44,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -53,72 +66,15 @@
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=6.3.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -140,45 +96,30 @@
 
 
 
-  <meta name="description" content="Solver是求解学习模型的核心配置文件，网络确定后，solver就决定了学习的效果。本文结合caffe.proto和网上资料，对solver配置进行学习。
-
-SolverCaffe学习系列(7)：solver及其配置，denny402
-
-
-Solver在caffe中的定义通常的solver文件与net文件相互关联，同样的net我们往往使用不同的solver尝试得到最好的效果，其运行代码为：
-ca">
+  <meta name="description" content="Solver是求解学习模型的核心配置文件，网络确定后，solver就决定了学习的效果。本文结合caffe.proto和网上资料，对solver配置进行学习。  SolverCaffe学习系列(7)：solver及其配置，denny402   Solver在caffe中的定义通常的solver文件与net文件相互关联，同样的net我们往往使用不同的solver尝试得到最好的效果，其运行代码为： ca">
+<meta name="keywords" content="caffe">
 <meta property="og:type" content="article">
 <meta property="og:title" content="caffe学习（8）Solver 配置详解">
 <meta property="og:url" content="https://joyfyan.github.io/2016/11/08/caffe学习（8）Solver 配置详解/index.html">
 <meta property="og:site_name" content="小一一的小站">
-<meta property="og:description" content="Solver是求解学习模型的核心配置文件，网络确定后，solver就决定了学习的效果。本文结合caffe.proto和网上资料，对solver配置进行学习。
-
-SolverCaffe学习系列(7)：solver及其配置，denny402
-
-
-Solver在caffe中的定义通常的solver文件与net文件相互关联，同样的net我们往往使用不同的solver尝试得到最好的效果，其运行代码为：
-ca">
+<meta property="og:description" content="Solver是求解学习模型的核心配置文件，网络确定后，solver就决定了学习的效果。本文结合caffe.proto和网上资料，对solver配置进行学习。  SolverCaffe学习系列(7)：solver及其配置，denny402   Solver在caffe中的定义通常的solver文件与net文件相互关联，同样的net我们往往使用不同的solver尝试得到最好的效果，其运行代码为： ca">
+<meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2016-11-18T07:29:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="caffe学习（8）Solver 配置详解">
-<meta name="twitter:description" content="Solver是求解学习模型的核心配置文件，网络确定后，solver就决定了学习的效果。本文结合caffe.proto和网上资料，对solver配置进行学习。
-
-SolverCaffe学习系列(7)：solver及其配置，denny402
-
-
-Solver在caffe中的定义通常的solver文件与net文件相互关联，同样的net我们往往使用不同的solver尝试得到最好的效果，其运行代码为：
-ca">
+<meta name="twitter:description" content="Solver是求解学习模型的核心配置文件，网络确定后，solver就决定了学习的效果。本文结合caffe.proto和网上资料，对solver配置进行学习。  SolverCaffe学习系列(7)：solver及其配置，denny402   Solver在caffe中的定义通常的solver文件与net文件相互关联，同样的net我们往往使用不同的solver尝试得到最好的效果，其运行代码为： ca">
 
 
 
 
 
+  
+  
+  <link rel="canonical" href="https://joyfyan.github.io/2016/11/08/caffe学习（8）Solver 配置详解/">
 
-  <link rel="canonical" href="https://joyfyan.github.io/2016/11/08/caffe学习（8）Solver 配置详解/"/>
 
 
-
-<script type="text/javascript" id="page.configurations">
+<script id="page.configurations">
   CONFIG.page = {
     sidebar: "",
   };
@@ -192,7 +133,7 @@ ca">
 
 
 
-  <script type="text/javascript">
+  <script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -205,30 +146,31 @@ ca">
 
 
 
+
+
+
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
@@ -246,7 +188,7 @@ ca">
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -260,6 +202,7 @@ ca">
       
         <p class="site-subtitle">Blog of Yan Joy</p>
       
+    
     
   </div>
 
@@ -283,40 +226,85 @@ ca">
         
           
           <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
   </li>
 
       
@@ -326,7 +314,7 @@ ca">
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
         </li>
       
     </ul>
@@ -346,9 +334,7 @@ ca">
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="Searching..." spellcheck="false"
-             type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -416,6 +402,7 @@ ca">
         
         
           <h1 class="post-title" itemprop="name headline">caffe学习（8）Solver 配置详解
+
               
             
           </h1>
@@ -463,7 +450,7 @@ ca">
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -484,20 +471,21 @@ ca">
 
           
             
+            
           
 
           
           
-             <span id="/2016/11/08/caffe学习（8）Solver 配置详解/" class="leancloud_visitors" data-flag-title="caffe学习（8）Solver 配置详解">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
+            <span id="/2016/11/08/caffe学习（8）Solver 配置详解/" class="leancloud_visitors" data-flag-title="caffe学习（8）Solver 配置详解">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -521,23 +509,23 @@ ca">
       
         <p>Solver是求解学习模型的核心配置文件，网络确定后，solver就决定了学习的效果。本文结合caffe.proto和网上资料，对solver配置进行学习。</p>
 <blockquote>
-<p><a href="http://caffe.berkeleyvision.org/tutorial/solver.html" target="_blank" rel="external">Solver</a><br><a href="http://www.cnblogs.com/denny402/p/5074049.html" target="_blank" rel="external">Caffe学习系列(7)：solver及其配置，denny402</a></p>
+<p><a href="http://caffe.berkeleyvision.org/tutorial/solver.html" target="_blank" rel="noopener">Solver</a><br><a href="http://www.cnblogs.com/denny402/p/5074049.html" target="_blank" rel="noopener">Caffe学习系列(7)：solver及其配置，denny402</a></p>
 </blockquote>
 <hr>
 <h2 id="Solver在caffe中的定义"><a href="#Solver在caffe中的定义" class="headerlink" title="Solver在caffe中的定义"></a>Solver在caffe中的定义</h2><p>通常的solver文件与net文件相互关联，同样的net我们往往使用不同的solver尝试得到最好的效果，其运行代码为：</p>
 <pre><code>caffe train --solver=*_slover.prototxt
 </code></pre><p>关于solver的一切，都在caffe.proto文件中message SolverParameter 这一部分。</p>
-<p><strong>网络文件源</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Proto filename for the train net, possibly combined with one or more</span></div><div class="line"><span class="comment">// test nets.</span></div><div class="line">optional <span class="built_in">string</span> net = <span class="number">24</span>;</div><div class="line"><span class="comment">// Inline train net param, possibly combined with one or more test nets.</span></div><div class="line">optional NetParameter net_param = <span class="number">25</span>;</div><div class="line"></div><div class="line">optional <span class="built_in">string</span> train_net = <span class="number">1</span>; <span class="comment">// Proto filename for the train net.</span></div><div class="line">repeated <span class="built_in">string</span> test_net = <span class="number">2</span>; <span class="comment">// Proto filenames for the test nets.</span></div><div class="line">optional NetParameter train_net_param = <span class="number">21</span>; <span class="comment">// Inline train net params.</span></div><div class="line">repeated NetParameter test_net_param = <span class="number">22</span>; <span class="comment">// Inline test net params.</span></div></pre></td></tr></table></figure></p>
+<p><strong>网络文件源</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Proto filename for the train net, possibly combined with one or more</span></span><br><span class="line"><span class="comment">// test nets.</span></span><br><span class="line">optional <span class="built_in">string</span> net = <span class="number">24</span>;</span><br><span class="line"><span class="comment">// Inline train net param, possibly combined with one or more test nets.</span></span><br><span class="line">optional NetParameter net_param = <span class="number">25</span>;</span><br><span class="line"></span><br><span class="line">optional <span class="built_in">string</span> train_net = <span class="number">1</span>; <span class="comment">// Proto filename for the train net.</span></span><br><span class="line">repeated <span class="built_in">string</span> test_net = <span class="number">2</span>; <span class="comment">// Proto filenames for the test nets.</span></span><br><span class="line">optional NetParameter train_net_param = <span class="number">21</span>; <span class="comment">// Inline train net params.</span></span><br><span class="line">repeated NetParameter test_net_param = <span class="number">22</span>; <span class="comment">// Inline test net params.</span></span><br></pre></td></tr></table></figure></p>
 <p>这是最开始的部分，需要说明net文件的位置。在这四个train_net_param, train_net, net_param, net字段中至少需要出现一个，当出现多个时，就会按着(1) test_net_param, (2) test_net, (3) net_param/net 的顺序依次求解。必须为每个test_net指定一个test_iter。还可以为每个test_net指定test_level和/或test_stage。注意的是：文件的路径要从caffe的根目录开始，其它的所有配置都是这样。<br>可以看到这几行的标签序号并不是顺序的，也说明caffe在不断地修改，下一个可用的序号是41。</p>
-<p><strong>网络状态</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// The states for the train/test nets. Must be unspecified or</span></div><div class="line"><span class="comment">// specified once per net.</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">// By default, all states will have solver = true;</span></div><div class="line"><span class="comment">// train_state will have phase = TRAIN,</span></div><div class="line"><span class="comment">// and all test_state's will have phase = TEST.</span></div><div class="line"><span class="comment">// Other defaults are set according to the NetState defaults.</span></div><div class="line">optional NetState train_state = <span class="number">26</span>;</div><div class="line">repeated NetState test_state = <span class="number">27</span>;</div></pre></td></tr></table></figure></p>
-<p>网络状态必须是未指定的或者只能在一个网络中指定一次。<br>关于NetState，其定义为：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">message NetState &#123;</div><div class="line">  optional Phase phase = <span class="number">1</span> [<span class="keyword">default</span> = TEST];</div><div class="line">  optional int32 level = <span class="number">2</span> [<span class="keyword">default</span> = <span class="number">0</span>];</div><div class="line">  repeated <span class="built_in">string</span> stage = <span class="number">3</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">enum</span> Phase &#123;</div><div class="line">   TRAIN = <span class="number">0</span>;</div><div class="line">   TEST = <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>迭代器</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// The number of iterations for each test net.</span></div><div class="line">repeated int32 test_iter = <span class="number">3</span>;</div></pre></td></tr></table></figure></p>
-<p>首先是<code>test_iter</code>，这需要与test layer中的batch_size结合起来理解。mnist数据中测试样本总数为10000，一次性执行全部数据效率很低，因此我们将测试数据分成几个批次来执行，每个批次的数量就是batch_size。假设我们设置batch_size为100，则需要迭代100次才能将10000个数据全部执行完。因此test_iter设置为100。执行完一次全部数据，称之为一个epoch。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// The number of iterations between two testing phases.</span></div><div class="line">optional int32 test_interval = <span class="number">4</span> [<span class="keyword">default</span> = <span class="number">0</span>];</div><div class="line">optional <span class="keyword">bool</span> test_compute_loss = <span class="number">19</span> [<span class="keyword">default</span> = <span class="literal">false</span>];</div><div class="line"><span class="comment">// If true, run an initial test pass before the first iteration,</span></div><div class="line"><span class="comment">// ensuring memory availability and printing the starting value of the loss.</span></div><div class="line">optional <span class="keyword">bool</span> test_initialization = <span class="number">32</span> [<span class="keyword">default</span> = <span class="literal">true</span>];</div></pre></td></tr></table></figure></p>
+<p><strong>网络状态</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The states for the train/test nets. Must be unspecified or</span></span><br><span class="line"><span class="comment">// specified once per net.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// By default, all states will have solver = true;</span></span><br><span class="line"><span class="comment">// train_state will have phase = TRAIN,</span></span><br><span class="line"><span class="comment">// and all test_state's will have phase = TEST.</span></span><br><span class="line"><span class="comment">// Other defaults are set according to the NetState defaults.</span></span><br><span class="line">optional NetState train_state = <span class="number">26</span>;</span><br><span class="line">repeated NetState test_state = <span class="number">27</span>;</span><br></pre></td></tr></table></figure></p>
+<p>网络状态必须是未指定的或者只能在一个网络中指定一次。<br>关于NetState，其定义为：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">message NetState &#123;</span><br><span class="line">  optional Phase phase = <span class="number">1</span> [<span class="keyword">default</span> = TEST];</span><br><span class="line">  optional int32 level = <span class="number">2</span> [<span class="keyword">default</span> = <span class="number">0</span>];</span><br><span class="line">  repeated <span class="built_in">string</span> stage = <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">enum</span> Phase &#123;</span><br><span class="line">   TRAIN = <span class="number">0</span>;</span><br><span class="line">   TEST = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>迭代器</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The number of iterations for each test net.</span></span><br><span class="line">repeated int32 test_iter = <span class="number">3</span>;</span><br></pre></td></tr></table></figure></p>
+<p>首先是<code>test_iter</code>，这需要与test layer中的batch_size结合起来理解。mnist数据中测试样本总数为10000，一次性执行全部数据效率很低，因此我们将测试数据分成几个批次来执行，每个批次的数量就是batch_size。假设我们设置batch_size为100，则需要迭代100次才能将10000个数据全部执行完。因此test_iter设置为100。执行完一次全部数据，称之为一个epoch。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The number of iterations between two testing phases.</span></span><br><span class="line">optional int32 test_interval = <span class="number">4</span> [<span class="keyword">default</span> = <span class="number">0</span>];</span><br><span class="line">optional <span class="keyword">bool</span> test_compute_loss = <span class="number">19</span> [<span class="keyword">default</span> = <span class="literal">false</span>];</span><br><span class="line"><span class="comment">// If true, run an initial test pass before the first iteration,</span></span><br><span class="line"><span class="comment">// ensuring memory availability and printing the starting value of the loss.</span></span><br><span class="line">optional <span class="keyword">bool</span> test_initialization = <span class="number">32</span> [<span class="keyword">default</span> = <span class="literal">true</span>];</span><br></pre></td></tr></table></figure></p>
 <p><code>test_interval</code>是指测试间隔，每训练test_interval次，进行一次测试。同时<code>test_compute_loss</code>可以选择是否计算loss。<code>test_initialization</code>是指在第一次迭代前，计算初始的loss以确保内存可用。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">optional <span class="keyword">float</span> base_lr = <span class="number">5</span>; <span class="comment">// The base learning rate</span></div><div class="line"><span class="comment">// the number of iterations between displaying info. If display = 0, no info</span></div><div class="line"><span class="comment">// will be displayed.</span></div><div class="line">optional int32 display = <span class="number">6</span>;</div><div class="line"><span class="comment">// Display the loss averaged over the last average_loss iterations</span></div><div class="line">optional int32 average_loss = <span class="number">33</span> [<span class="keyword">default</span> = <span class="number">1</span>];</div><div class="line">optional int32 max_iter = <span class="number">7</span>; <span class="comment">// the maximum number of iterations</span></div><div class="line"><span class="comment">// accumulate gradients over `iter_size` x `batch_size` instances</span></div><div class="line">optional int32 iter_size = <span class="number">36</span> [<span class="keyword">default</span> = <span class="number">1</span>];</div></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">optional <span class="keyword">float</span> base_lr = <span class="number">5</span>; <span class="comment">// The base learning rate</span></span><br><span class="line"><span class="comment">// the number of iterations between displaying info. If display = 0, no info</span></span><br><span class="line"><span class="comment">// will be displayed.</span></span><br><span class="line">optional int32 display = <span class="number">6</span>;</span><br><span class="line"><span class="comment">// Display the loss averaged over the last average_loss iterations</span></span><br><span class="line">optional int32 average_loss = <span class="number">33</span> [<span class="keyword">default</span> = <span class="number">1</span>];</span><br><span class="line">optional int32 max_iter = <span class="number">7</span>; <span class="comment">// the maximum number of iterations</span></span><br><span class="line"><span class="comment">// accumulate gradients over `iter_size` x `batch_size` instances</span></span><br><span class="line">optional int32 iter_size = <span class="number">36</span> [<span class="keyword">default</span> = <span class="number">1</span>];</span><br></pre></td></tr></table></figure>
 <p><code>base_lr</code>指基础的学习率；<code>display</code>是信息显示间隔，迭代一定次数显示一次信息。<code>average_loss</code>用于显示在上次average_loss迭代中的平均损失。<code>max_iter</code>是最大迭代次数，需要合适设置达到精度、震荡的平衡。<code>iter_size</code>是迭代器大小，梯度的计算是通过<code>iter_size</code> x <code>batch_size</code>决定的。</p>
 <p><strong>学习策略</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">optional <span class="built_in">string</span> lr_policy = <span class="number">8</span>;</div><div class="line">optional <span class="keyword">float</span> gamma = <span class="number">9</span>; <span class="comment">// The parameter to compute the learning rate.</span></div><div class="line">optional <span class="keyword">float</span> power = <span class="number">10</span>; <span class="comment">// The parameter to compute the learning rate.</span></div><div class="line">optional <span class="keyword">float</span> momentum = <span class="number">11</span>; <span class="comment">// The momentum value.</span></div><div class="line">optional <span class="keyword">float</span> weight_decay = <span class="number">12</span>; <span class="comment">// The weight decay.</span></div><div class="line"><span class="comment">// regularization types supported: L1 and L2</span></div><div class="line"><span class="comment">// controlled by weight_decay</span></div><div class="line">optional <span class="built_in">string</span> regularization_type = <span class="number">29</span> [<span class="keyword">default</span> = <span class="string">"L2"</span>];</div><div class="line"><span class="comment">// the stepsize for learning rate policy "step"</span></div><div class="line">optional int32 stepsize = <span class="number">13</span>;</div><div class="line"><span class="comment">// the stepsize for learning rate policy "multistep"</span></div><div class="line">repeated int32 stepvalue = <span class="number">34</span>;</div></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">optional <span class="built_in">string</span> lr_policy = <span class="number">8</span>;</span><br><span class="line">optional <span class="keyword">float</span> gamma = <span class="number">9</span>; <span class="comment">// The parameter to compute the learning rate.</span></span><br><span class="line">optional <span class="keyword">float</span> power = <span class="number">10</span>; <span class="comment">// The parameter to compute the learning rate.</span></span><br><span class="line">optional <span class="keyword">float</span> momentum = <span class="number">11</span>; <span class="comment">// The momentum value.</span></span><br><span class="line">optional <span class="keyword">float</span> weight_decay = <span class="number">12</span>; <span class="comment">// The weight decay.</span></span><br><span class="line"><span class="comment">// regularization types supported: L1 and L2</span></span><br><span class="line"><span class="comment">// controlled by weight_decay</span></span><br><span class="line">optional <span class="built_in">string</span> regularization_type = <span class="number">29</span> [<span class="keyword">default</span> = <span class="string">"L2"</span>];</span><br><span class="line"><span class="comment">// the stepsize for learning rate policy "step"</span></span><br><span class="line">optional int32 stepsize = <span class="number">13</span>;</span><br><span class="line"><span class="comment">// the stepsize for learning rate policy "multistep"</span></span><br><span class="line">repeated int32 stepvalue = <span class="number">34</span>;</span><br></pre></td></tr></table></figure>
 <p>只要是梯度下降法来求解优化，都会有一个学习率，也叫步长。base_lr用于设置基础学习率，在迭代的过程中，可以对基础学习率进行调整。怎么样进行调整，就是调整的策略，由lr_policy来设置。caffe提供了多种policy：</p>
 <ul>
 <li>fixed: 总是返回base_lr（学习率不变）</li>
@@ -548,20 +536,20 @@ ca">
 <li>poly: 学习率进行多项式误差, 返回 base_lr (1 - iter/max_iter) ^ (power)</li>
 <li>sigmoid: 学习率进行sigmod衰减，返回 base_lr ( 1/(1 + exp(-gamma * (iter - stepsize))))。</li>
 </ul>
-<p>multistep示例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">base_lr: <span class="number">0.01</span></div><div class="line">momentum: <span class="number">0.9</span></div><div class="line">weight_decay: <span class="number">0.0005</span></div><div class="line"><span class="comment"># The learning rate policy</span></div><div class="line">lr_policy: <span class="string">"multistep"</span></div><div class="line">gamma: <span class="number">0.9</span></div><div class="line">stepvalue: <span class="number">5000</span></div><div class="line">stepvalue: <span class="number">7000</span></div><div class="line">stepvalue: <span class="number">8000</span></div><div class="line">stepvalue: <span class="number">9000</span></div><div class="line">stepvalue: <span class="number">9500</span></div></pre></td></tr></table></figure></p>
+<p>multistep示例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">base_lr: <span class="number">0.01</span></span><br><span class="line">momentum: <span class="number">0.9</span></span><br><span class="line">weight_decay: <span class="number">0.0005</span></span><br><span class="line"><span class="comment"># The learning rate policy</span></span><br><span class="line">lr_policy: <span class="string">"multistep"</span></span><br><span class="line">gamma: <span class="number">0.9</span></span><br><span class="line">stepvalue: <span class="number">5000</span></span><br><span class="line">stepvalue: <span class="number">7000</span></span><br><span class="line">stepvalue: <span class="number">8000</span></span><br><span class="line">stepvalue: <span class="number">9000</span></span><br><span class="line">stepvalue: <span class="number">9500</span></span><br></pre></td></tr></table></figure></p>
 <p>之后有<code>momentum</code>，上次梯度更新的权重；<code>weight_decay</code>权重衰减，防止过拟合；<code>regularization_type</code>正则化方式。</p>
-<p><strong>clip_gradients</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">optional <span class="keyword">float</span> clip_gradients = <span class="number">35</span> [<span class="keyword">default</span> = <span class="number">-1</span>];</div></pre></td></tr></table></figure></p>
+<p><strong>clip_gradients</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">optional <span class="keyword">float</span> clip_gradients = <span class="number">35</span> [<span class="keyword">default</span> = <span class="number">-1</span>];</span><br></pre></td></tr></table></figure></p>
 <p>参数梯度的实际L2范数较大时，将clip_gradients设置为&gt; = 0，以将参数梯度剪切到该L2范数。具体作用还不是很理解。</p>
-<p><strong>snapshot快照</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">optional int32 snapshot = <span class="number">14</span> [<span class="keyword">default</span> = <span class="number">0</span>]; <span class="comment">// The snapshot interval</span></div><div class="line">optional <span class="built_in">string</span> snapshot_prefix = <span class="number">15</span>; <span class="comment">// The prefix for the snapshot.</span></div><div class="line"><span class="comment">// whether to snapshot diff in the results or not. Snapshotting diff will help</span></div><div class="line"><span class="comment">// debugging but the final protocol buffer size will be much larger.</span></div><div class="line">optional <span class="keyword">bool</span> snapshot_diff = <span class="number">16</span> [<span class="keyword">default</span> = <span class="literal">false</span>];</div><div class="line"><span class="keyword">enum</span> SnapshotFormat &#123;</div><div class="line">  HDF5 = <span class="number">0</span>;</div><div class="line">  BINARYPROTO = <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line">optional SnapshotFormat snapshot_format = <span class="number">37</span> [<span class="keyword">default</span> = BINARYPROTO];</div></pre></td></tr></table></figure></p>
+<p><strong>snapshot快照</strong><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">optional int32 snapshot = <span class="number">14</span> [<span class="keyword">default</span> = <span class="number">0</span>]; <span class="comment">// The snapshot interval</span></span><br><span class="line">optional <span class="built_in">string</span> snapshot_prefix = <span class="number">15</span>; <span class="comment">// The prefix for the snapshot.</span></span><br><span class="line"><span class="comment">// whether to snapshot diff in the results or not. Snapshotting diff will help</span></span><br><span class="line"><span class="comment">// debugging but the final protocol buffer size will be much larger.</span></span><br><span class="line">optional <span class="keyword">bool</span> snapshot_diff = <span class="number">16</span> [<span class="keyword">default</span> = <span class="literal">false</span>];</span><br><span class="line"><span class="keyword">enum</span> SnapshotFormat &#123;</span><br><span class="line">  HDF5 = <span class="number">0</span>;</span><br><span class="line">  BINARYPROTO = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">optional SnapshotFormat snapshot_format = <span class="number">37</span> [<span class="keyword">default</span> = BINARYPROTO];</span><br></pre></td></tr></table></figure></p>
 <p>快照可以将训练出来的model和solver状态进行保存，<code>snapshot</code>用于设置训练多少次后进行保存，默认为0，不保存。<code>snapshot_prefix</code>设置保存路径。还可以设置<code>snapshot_diff</code>，是否保存梯度值，保存有利于调试，但需要较大空间存储，默认为false，不保存。也可以设置<code>snapshot_format</code>，保存的类型。有两种选择：HDF5 和BINARYPROTO ，默认为BINARYPROTO。</p>
 <p><strong>运行模式</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">enum</span> SolverMode &#123;</div><div class="line">  CPU = <span class="number">0</span>;</div><div class="line">  GPU = <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line">optional SolverMode solver_mode = <span class="number">17</span> [<span class="keyword">default</span> = GPU];</div><div class="line"><span class="comment">// the device_id will that be used in GPU mode. Use device_id = 0 in default.</span></div><div class="line">optional int32 device_id = <span class="number">18</span> [<span class="keyword">default</span> = <span class="number">0</span>];</div><div class="line"><span class="comment">// If non-negative, the seed with which the Solver will initialize the Caffe</span></div><div class="line"><span class="comment">// random number generator -- useful for reproducible results. Otherwise,</span></div><div class="line"><span class="comment">// (and by default) initialize using a seed derived from the system clock.</span></div><div class="line">optional int64 random_seed = <span class="number">20</span> [<span class="keyword">default</span> = <span class="number">-1</span>];</div></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> SolverMode &#123;</span><br><span class="line">  CPU = <span class="number">0</span>;</span><br><span class="line">  GPU = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">optional SolverMode solver_mode = <span class="number">17</span> [<span class="keyword">default</span> = GPU];</span><br><span class="line"><span class="comment">// the device_id will that be used in GPU mode. Use device_id = 0 in default.</span></span><br><span class="line">optional int32 device_id = <span class="number">18</span> [<span class="keyword">default</span> = <span class="number">0</span>];</span><br><span class="line"><span class="comment">// If non-negative, the seed with which the Solver will initialize the Caffe</span></span><br><span class="line"><span class="comment">// random number generator -- useful for reproducible results. Otherwise,</span></span><br><span class="line"><span class="comment">// (and by default) initialize using a seed derived from the system clock.</span></span><br><span class="line">optional int64 random_seed = <span class="number">20</span> [<span class="keyword">default</span> = <span class="number">-1</span>];</span><br></pre></td></tr></table></figure>
 <p>设置CPU或GPU模式，在GPU下还可以指定使用哪一块GPU运行。<code>random_seed</code>用于初始生成随机数种子。</p>
 <p><strong>Solver类型</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// type of the solver</span></div><div class="line">optional <span class="built_in">string</span> type = <span class="number">40</span> [<span class="keyword">default</span> = <span class="string">"SGD"</span>];</div><div class="line"></div><div class="line"><span class="comment">// numerical stability for RMSProp, AdaGrad and AdaDelta and Adam</span></div><div class="line">optional <span class="keyword">float</span> delta = <span class="number">31</span> [<span class="keyword">default</span> = <span class="number">1e-8</span>];</div><div class="line"><span class="comment">// parameters for the Adam solver</span></div><div class="line">optional <span class="keyword">float</span> momentum2 = <span class="number">39</span> [<span class="keyword">default</span> = <span class="number">0.999</span>];</div><div class="line"></div><div class="line"><span class="comment">// RMSProp decay value</span></div><div class="line"><span class="comment">// MeanSquare(t) = rms_decay*MeanSquare(t-1) + (1-rms_decay)*SquareGradient(t)</span></div><div class="line">optional <span class="keyword">float</span> rms_decay = <span class="number">38</span>;</div></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// type of the solver</span></span><br><span class="line">optional <span class="built_in">string</span> type = <span class="number">40</span> [<span class="keyword">default</span> = <span class="string">"SGD"</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// numerical stability for RMSProp, AdaGrad and AdaDelta and Adam</span></span><br><span class="line">optional <span class="keyword">float</span> delta = <span class="number">31</span> [<span class="keyword">default</span> = <span class="number">1e-8</span>];</span><br><span class="line"><span class="comment">// parameters for the Adam solver</span></span><br><span class="line">optional <span class="keyword">float</span> momentum2 = <span class="number">39</span> [<span class="keyword">default</span> = <span class="number">0.999</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// RMSProp decay value</span></span><br><span class="line"><span class="comment">// MeanSquare(t) = rms_decay*MeanSquare(t-1) + (1-rms_decay)*SquareGradient(t)</span></span><br><span class="line">optional <span class="keyword">float</span> rms_decay = <span class="number">38</span>;</span><br></pre></td></tr></table></figure>
 <p><code>type</code>是solver的类型，目前有SGD、NESTEROV、ADAGRAD、RMSPROP、ADADELTA、ADAM = 5这六类。之后的一些是这些类型的特有参数，根据需要设置。</p>
 <p><strong>杂项</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// If true, print information about the state of the net that may help with</span></div><div class="line"><span class="comment">// debugging learning problems.</span></div><div class="line">optional <span class="keyword">bool</span> debug_info = <span class="number">23</span> [<span class="keyword">default</span> = <span class="literal">false</span>];</div><div class="line"></div><div class="line"><span class="comment">// If false, don't save a snapshot after training finishes.</span></div><div class="line">optional <span class="keyword">bool</span> snapshot_after_train = <span class="number">28</span> [<span class="keyword">default</span> = <span class="literal">true</span>];</div></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// If true, print information about the state of the net that may help with</span></span><br><span class="line"><span class="comment">// debugging learning problems.</span></span><br><span class="line">optional <span class="keyword">bool</span> debug_info = <span class="number">23</span> [<span class="keyword">default</span> = <span class="literal">false</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// If false, don't save a snapshot after training finishes.</span></span><br><span class="line">optional <span class="keyword">bool</span> snapshot_after_train = <span class="number">28</span> [<span class="keyword">default</span> = <span class="literal">true</span>];</span><br></pre></td></tr></table></figure>
 <p><code>debug_info</code>用于输出调试信息。<code>snapshot_after_train</code>用于训练后是否输出快照。</p>
 
       
@@ -576,7 +564,34 @@ ca">
     
 
     
+      
+    
+    
 
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yan Joy</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    
+    <a href="https://joyfyan.github.io/2016/11/08/caffe学习（8）Solver 配置详解/" title="caffe学习（8）Solver 配置详解">https://joyfyan.github.io/2016/11/08/caffe学习（8）Solver 配置详解/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -652,7 +667,6 @@ ca">
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -668,16 +682,14 @@ ca">
         </ul>
       
 
-      <section class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
-                alt="Yan Joy" />
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Yan Joy">
             
               <p class="site-author-name" itemprop="name">Yan Joy</p>
-              <p class="site-description motion-element" itemprop="description">Default~</p>
+              <div class="site-description motion-element" itemprop="description">Default~</div>
           </div>
 
           
@@ -687,7 +699,7 @@ ca">
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">99</span>
+                    <span class="site-state-item-count">104</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -697,7 +709,11 @@ ca">
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -732,7 +748,11 @@ ca">
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -851,7 +871,11 @@ ca">
                     
                       
                     
-                    <span class="site-state-item-count">58</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">60</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -862,22 +886,35 @@ ca">
           
 
           
+
+          
             <div class="links-of-author motion-element">
               
                 <span class="links-of-author-item">
-                  <a href="http://weibo.com/yanjoy" target="_blank" title="Weibo"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
                   
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="http://weibo.com/yanjoy" title="Weibo &rarr; http://weibo.com/yanjoy" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="http://blog.csdn.net/yan_joy" target="_blank" title="CSDN"><i class="fa fa-fw fa-linux"></i>CSDN</a>
                   
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="http://blog.csdn.net/yan_joy" title="CSDN &rarr; http://blog.csdn.net/yan_joy" rel="noopener" target="_blank"><i class="fa fa-fw fa-linux"></i>CSDN</a>
                 </span>
               
             </div>
           
 
-          
           
 
           
@@ -885,20 +922,20 @@ ca">
             <div class="links-of-blogroll motion-element links-of-blogroll-block">
               <div class="links-of-blogroll-title">
                 <i class="fa  fa-fw fa-link"></i>
-                FRIENDS
+                Links
               </div>
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://www.xieqiang.site/" title="Johnny" target="_blank">Johnny</a>
+                    <a href="http://www.xieqiang.site/" title="http://www.xieqiang.site/" rel="noopener" target="_blank">Johnny</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://judasdie.github.io/" title="ZP Zhang" target="_blank">ZP Zhang</a>
+                    <a href="https://judasdie.github.io/" title="https://judasdie.github.io/" rel="noopener" target="_blank">ZP Zhang</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://pages.coding.me/" title="Hosted by Coding Pages" target="_blank">Hosted by Coding Pages</a>
+                    <a href="https://pages.coding.me/" title="https://pages.coding.me/" rel="noopener" target="_blank">Hosted by Coding Pages</a>
                   </li>
                 
               </ul>
@@ -911,15 +948,16 @@ ca">
           
 
         </div>
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
@@ -927,7 +965,7 @@ ca">
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
@@ -935,6 +973,7 @@ ca">
 
     </div>
   </aside>
+  
 
 
         
@@ -955,9 +994,7 @@ ca">
 </div>
 
 
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.2.2</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 
@@ -965,7 +1002,7 @@ ca">
 
 
 
-  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.3.0</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.0</div>
 
 
 
@@ -991,14 +1028,13 @@ ca">
     
 
     
-	
+
     
 
     
       <div>
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<div class="addthis_inline_share_toolbox">
-  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b692d42870e12d9" async = "async" ></script>
+        <div class="addthis_inline_share_toolbox">
+  <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b692d42870e12d9" async="async"></script>
 </div>
 
       </div>
@@ -1007,7 +1043,7 @@ ca">
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -1039,27 +1075,21 @@ ca">
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
 
 
 
@@ -1067,54 +1097,54 @@ ca">
   
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
 
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
 
 
 
   
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
 
 
 
   
 
 
-
-  
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  
-
-
-
-
-
-
-
-
+  <script src="/js/next-boot.js?v=7.1.0"></script>
 
 
   
 
-  <script type="text/javascript">
+  
+
+  
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2016/11/08/caffe学习（8）Solver 配置详解/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+  <script>
     // Popup Window;
     var isfetched = false;
     var isXml = true;
@@ -1200,7 +1230,7 @@ ca">
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
                 
                 var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
                 var indexOfTitle = [];
                 var indexOfContent = [];
                 // only match articles with not empty titles
@@ -1369,9 +1399,9 @@ ca">
               })
             };
             if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
             } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
             } else {
               resultItems.sort(function (resultLeft, resultRight) {
                 if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
@@ -1439,120 +1469,71 @@ ca">
 
 
   
-
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz", "owWjRRJ2oBD7Dekc8l1RRctK");</script>
   <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
+    
     function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
+      var $visitors = $('.leancloud_visitors');
       var url = $visitors.attr('id').trim();
       var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
 
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
           if (results.length > 0) {
             var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
             
-            counter.save(null, {
-              success: function(counter) {
-                
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
           } else {
             
-              var newcounter = new Counter();
-              /* Set ACL */
-              var acl = new AV.ACL();
-              acl.setPublicReadAccess(true);
-              acl.setPublicWriteAccess(true);
-              newcounter.setACL(acl);
-              /* End Set ACL */
-              newcounter.set("title", title);
-              newcounter.set("url", url);
-              newcounter.set("time", 1);
-              newcounter.save(null, {
-                success: function(newcounter) {
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
                   var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                },
-                error: function(newcounter, error) {
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
                   console.log('Failed to create');
-                }
-              });
+                });
             
           }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
     }
+    
 
     $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz',
+                'X-LC-Key': 'owWjRRJ2oBD7Dekc8l1RRctK',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
     });
   </script>
 
 
-
-  
 
   
 
@@ -1565,31 +1546,56 @@ ca">
   
     
       <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      TeX: {equationNumbers: { autoNumber: "AMS" }}
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
     });
+  });
 </script>
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
 </script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     
   
 
 
   
+
+  
+
+  
+
+  
+
+  
+
   
 
   

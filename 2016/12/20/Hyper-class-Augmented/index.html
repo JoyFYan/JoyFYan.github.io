@@ -14,11 +14,11 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="en">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -32,8 +32,6 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -46,6 +44,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -53,72 +66,15 @@
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=6.3.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -140,24 +96,14 @@
 
 
 
-  <meta name="description" content="介绍
-难点：
-
-精细粒度的标记数据的获取要昂贵得多（通常需要专业领域）; 
-存在大的类内（intra-class）和小类间（inter-class）方差。
-
-目前训练策略：在已有模型上预训练CNN并在小规模数据集上fine-tune。">
+  <meta name="description" content="介绍 难点：  精细粒度的标记数据的获取要昂贵得多（通常需要专业领域）;  存在大的类内（intra-class）和小类间（inter-class）方差。  目前训练策略：在已有模型上预训练CNN并在小规模数据集上fine-tune。">
+<meta name="keywords" content="论文,fine-grained">
 <meta property="og:type" content="article">
 <meta property="og:title" content="论文阅读：Hyper-class Augmented and Regularized Deep Learning for Fine-grained Image Classification">
 <meta property="og:url" content="https://joyfyan.github.io/2016/12/20/Hyper-class-Augmented/index.html">
 <meta property="og:site_name" content="小一一的小站">
-<meta property="og:description" content="介绍
-难点：
-
-精细粒度的标记数据的获取要昂贵得多（通常需要专业领域）; 
-存在大的类内（intra-class）和小类间（inter-class）方差。
-
-目前训练策略：在已有模型上预训练CNN并在小规模数据集上fine-tune。">
+<meta property="og:description" content="介绍 难点：  精细粒度的标记数据的获取要昂贵得多（通常需要专业领域）;  存在大的类内（intra-class）和小类间（inter-class）方差。  目前训练策略：在已有模型上预训练CNN并在小规模数据集上fine-tune。">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://joyfyan.github.io/images/hyperclass.png">
 <meta property="og:image" content="http://img.blog.csdn.net/20160229164548588">
 <meta property="og:image" content="http://img.blog.csdn.net/20160229164849568">
@@ -174,25 +120,20 @@
 <meta property="og:updated_time" content="2016-12-20T08:44:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="论文阅读：Hyper-class Augmented and Regularized Deep Learning for Fine-grained Image Classification">
-<meta name="twitter:description" content="介绍
-难点：
-
-精细粒度的标记数据的获取要昂贵得多（通常需要专业领域）; 
-存在大的类内（intra-class）和小类间（inter-class）方差。
-
-目前训练策略：在已有模型上预训练CNN并在小规模数据集上fine-tune。">
+<meta name="twitter:description" content="介绍 难点：  精细粒度的标记数据的获取要昂贵得多（通常需要专业领域）;  存在大的类内（intra-class）和小类间（inter-class）方差。  目前训练策略：在已有模型上预训练CNN并在小规模数据集上fine-tune。">
 <meta name="twitter:image" content="https://joyfyan.github.io/images/hyperclass.png">
 
 
 
 
 
+  
+  
+  <link rel="canonical" href="https://joyfyan.github.io/2016/12/20/Hyper-class-Augmented/">
 
-  <link rel="canonical" href="https://joyfyan.github.io/2016/12/20/Hyper-class-Augmented/"/>
 
 
-
-<script type="text/javascript" id="page.configurations">
+<script id="page.configurations">
   CONFIG.page = {
     sidebar: "",
   };
@@ -206,7 +147,7 @@
 
 
 
-  <script type="text/javascript">
+  <script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -219,30 +160,31 @@
 
 
 
+
+
+
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
@@ -260,7 +202,7 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -274,6 +216,7 @@
       
         <p class="site-subtitle">Blog of Yan Joy</p>
       
+    
     
   </div>
 
@@ -297,40 +240,85 @@
         
           
           <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
   </li>
 
       
@@ -340,7 +328,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
         </li>
       
     </ul>
@@ -360,9 +348,7 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="Searching..." spellcheck="false"
-             type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -430,6 +416,7 @@
         
         
           <h1 class="post-title" itemprop="name headline">论文阅读：Hyper-class Augmented and Regularized Deep Learning for Fine-grained Image Classification
+
               
             
           </h1>
@@ -465,7 +452,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -486,20 +473,21 @@
 
           
             
+            
           
 
           
           
-             <span id="/2016/12/20/Hyper-class-Augmented/" class="leancloud_visitors" data-flag-title="论文阅读：Hyper-class Augmented and Regularized Deep Learning for Fine-grained Image Classification">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
+            <span id="/2016/12/20/Hyper-class-Augmented/" class="leancloud_visitors" data-flag-title="论文阅读：Hyper-class Augmented and Regularized Deep Learning for Fine-grained Image Classification">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -550,12 +538,12 @@
 <h2 id="正则化学习模型"><a href="#正则化学习模型" class="headerlink" title="正则化学习模型"></a>正则化学习模型</h2><hr>
 <p> 给定细粒度训练图像（fine-grained<br>training images）和辅助超类标记图像（auxiliary hyper-class labeled images），一个直接的策略是通过共享共同的特征和学习分类器来训练多任务CNN。在多任务学习中，hyper-class类和fine-grained类的标签集是不相交的，我们不用hyper-class标签来标记fine-grained的数据。</p>
 <h3 id="Factor-type-Hyper-class-Regularized-Learning"><a href="#Factor-type-Hyper-class-Regularized-Learning" class="headerlink" title="Factor-type Hyper-class Regularized Learning"></a>Factor-type Hyper-class Regularized Learning</h3><hr>
-<p>给定图像x，识别结果为y的概率为：<br><img src="http://img.blog.csdn.net/20160229164548588" alt="pic1"><br>Pr(v|x)是任何 factor-type hyper-class v的概率，并且Pr(y|v,x)指定给定factor-type hyper-class和输入图像x的任何fine-grained class的概率。<br>使用softmax函数对factor-type hyper-class概率进行建模，h(x)表示x的高层特征，即：<br><img src="http://img.blog.csdn.net/20160229164849568" alt="pic2"><br>其中u<em>v表示hyper-class分类模型的权值，Pr(y=c|v,x)如下计算：<br><img src="http://img.blog.csdn.net/20160229165128767" alt="pic3"><br>其中w</em>{v,c}表示factor-specific精细分类模型的权值，此时预测公式为：<br><img src="http://img.blog.csdn.net/20160229165349382" alt="pic4"><br>虽然我们的模型在混合模型中有其根，但是值得注意的是，不像大多数以前的混合模型，处理Pr(v|x)作为自由参数，我们将其制定为一个鉴别模型。它是 hyper-class增强图像，允许我们准确地学习{uv}。 然后我们可以记录Dt中的细粒度识别数据的负对数似然性和Da中的数据的hyper-class识别：<br><img src="/images/hyperclass1.png" alt="pic5"><br>为了激励非平凡正则化，我们注意到factor-specific权重w_{v,c}应该捕获与对应的factor-type hyper-class分类器u<em>v类似的高水平factor-related特征。为此在w</em>{v,c}和u<em>v间引入正则化：<br><img src="/images/hyperclass2.png" alt="pic6"><br>为了理解正则化，在我们的汽车识别示例中，原始的fine-grained 数据不能够学习每视角类别分类器w</em>{v,c}，因为没有办法推断视角hyper-class。但现在我们可以在hyper-class增强数据上训练视点分类器u<em>v，因此正则化负责将知识传递到每个视角类别分类器，从而帮助模糊fine-grained任务中的类内方差。<br>引入w’</em>{v,c}=w_{v,c}-u_v，则上式化简为：<br><img src="/images/hyperclass3.png" alt="pic7"><br>$Pr(y=c|x)$由下式给出：<br><img src="/images/hyperclass4.png" alt="pic8"><br>可以看出，fine-grained 分类器与factor-type hyper-class分类器共享相同的分量$u_v$。 因此，它将所提出的模型连接到传统的浅层多任务学习中使用的权重共享。</p>
+<p>给定图像x，识别结果为y的概率为：<br><img src="http://img.blog.csdn.net/20160229164548588" alt="pic1"><br>Pr(v|x)是任何 factor-type hyper-class v的概率，并且Pr(y|v,x)指定给定factor-type hyper-class和输入图像x的任何fine-grained class的概率。<br>使用softmax函数对factor-type hyper-class概率进行建模，h(x)表示x的高层特征，即：<br><img src="http://img.blog.csdn.net/20160229164849568" alt="pic2"><br>其中u<em>v表示hyper-class分类模型的权值，Pr(y=c|v,x)如下计算：<br><img src="http://img.blog.csdn.net/20160229165128767" alt="pic3"><br>其中w</em>{v,c}表示factor-specific精细分类模型的权值，此时预测公式为：<br><img src="http://img.blog.csdn.net/20160229165349382" alt="pic4"><br>虽然我们的模型在混合模型中有其根，但是值得注意的是，不像大多数以前的混合模型，处理Pr(v|x)作为自由参数，我们将其制定为一个鉴别模型。它是 hyper-class增强图像，允许我们准确地学习{uv}。 然后我们可以记录Dt中的细粒度识别数据的负对数似然性和Da中的数据的hyper-class识别：<br><img src="/images/hyperclass1.png" alt="pic5"><br>为了激励非平凡正则化，我们注意到factor-specific权重w<em>{v,c}应该捕获与对应的factor-type hyper-class分类器u_v类似的高水平factor-related特征。为此在w</em>{v,c}和u<em>v间引入正则化：<br><img src="/images/hyperclass2.png" alt="pic6"><br>为了理解正则化，在我们的汽车识别示例中，原始的fine-grained 数据不能够学习每视角类别分类器w</em>{v,c}，因为没有办法推断视角hyper-class。但现在我们可以在hyper-class增强数据上训练视点分类器u<em>v，因此正则化负责将知识传递到每个视角类别分类器，从而帮助模糊fine-grained任务中的类内方差。<br>引入w’</em>{v,c}=w_{v,c}-u_v，则上式化简为：<br><img src="/images/hyperclass3.png" alt="pic7"><br>$Pr(y=c|x)$由下式给出：<br><img src="/images/hyperclass4.png" alt="pic8"><br>可以看出，fine-grained 分类器与factor-type hyper-class分类器共享相同的分量$u_v$。 因此，它将所提出的模型连接到传统的浅层多任务学习中使用的权重共享。</p>
 <h3 id="Super-type-hyper-class-regularized-learning"><a href="#Super-type-hyper-class-regularized-learning" class="headerlink" title="Super-type hyper-class regularized learning"></a>Super-type hyper-class regularized learning</h3><p>super-type hyper-class正则化深度学习的唯一区别在于$Pr(y|v,x)$，它可以简单地建模<br><img src="/images/hyperclass5.png" alt="pic9"><br>因为super-type hyper-class $v_c$由fine-grained标签c隐含地表示。正则化为：<br><img src="/images/hyperclass6.png" alt="pic10"></p>
 <h1 id="统一的深度CNN"><a href="#统一的深度CNN" class="headerlink" title="统一的深度CNN"></a>统一的深度CNN</h1><hr>
 <p>使用hyper-class增强数据和多任务正则化学习技术，我们达到统一的深CNN框架，如图所示：<br><img src="http://img.blog.csdn.net/20160229164313565" alt="pic11"><br>其示了优化问题：<br><img src="/images/hyperclass7.png" alt="pic12"></p>
 <blockquote>
-<p>Xie S, Yang T, Wang X, et al. Hyper-class augmented and regularized deep learning for fine-grained image classification[C]// IEEE Conference on Computer Vision and Pattern Recognition. 2015.<br><a href="http://blog.csdn.net/cv_family_z/article/details/50766708" target="_blank" rel="external">车型识别“Hyper-class Augmented and Regularized Deep Learning for Fine-grained Image Classification”</a></p>
+<p>Xie S, Yang T, Wang X, et al. Hyper-class augmented and regularized deep learning for fine-grained image classification[C]// IEEE Conference on Computer Vision and Pattern Recognition. 2015.<br><a href="http://blog.csdn.net/cv_family_z/article/details/50766708" target="_blank" rel="noopener">车型识别“Hyper-class Augmented and Regularized Deep Learning for Fine-grained Image Classification”</a></p>
 </blockquote>
 
       
@@ -570,7 +558,34 @@
     
 
     
+      
+    
+    
 
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yan Joy</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    
+    <a href="https://joyfyan.github.io/2016/12/20/Hyper-class-Augmented/" title="论文阅读：Hyper-class Augmented and Regularized Deep Learning for Fine-grained Image Classification">https://joyfyan.github.io/2016/12/20/Hyper-class-Augmented/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -648,7 +663,6 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -664,16 +678,14 @@
         </ul>
       
 
-      <section class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
-                alt="Yan Joy" />
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Yan Joy">
             
               <p class="site-author-name" itemprop="name">Yan Joy</p>
-              <p class="site-description motion-element" itemprop="description">Default~</p>
+              <div class="site-description motion-element" itemprop="description">Default~</div>
           </div>
 
           
@@ -683,7 +695,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">99</span>
+                    <span class="site-state-item-count">104</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -693,7 +705,11 @@
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -728,7 +744,11 @@
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -847,7 +867,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">58</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">60</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -858,22 +882,35 @@
           
 
           
+
+          
             <div class="links-of-author motion-element">
               
                 <span class="links-of-author-item">
-                  <a href="http://weibo.com/yanjoy" target="_blank" title="Weibo"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
                   
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="http://weibo.com/yanjoy" title="Weibo &rarr; http://weibo.com/yanjoy" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="http://blog.csdn.net/yan_joy" target="_blank" title="CSDN"><i class="fa fa-fw fa-linux"></i>CSDN</a>
                   
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="http://blog.csdn.net/yan_joy" title="CSDN &rarr; http://blog.csdn.net/yan_joy" rel="noopener" target="_blank"><i class="fa fa-fw fa-linux"></i>CSDN</a>
                 </span>
               
             </div>
           
 
-          
           
 
           
@@ -881,20 +918,20 @@
             <div class="links-of-blogroll motion-element links-of-blogroll-block">
               <div class="links-of-blogroll-title">
                 <i class="fa  fa-fw fa-link"></i>
-                FRIENDS
+                Links
               </div>
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://www.xieqiang.site/" title="Johnny" target="_blank">Johnny</a>
+                    <a href="http://www.xieqiang.site/" title="http://www.xieqiang.site/" rel="noopener" target="_blank">Johnny</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://judasdie.github.io/" title="ZP Zhang" target="_blank">ZP Zhang</a>
+                    <a href="https://judasdie.github.io/" title="https://judasdie.github.io/" rel="noopener" target="_blank">ZP Zhang</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://pages.coding.me/" title="Hosted by Coding Pages" target="_blank">Hosted by Coding Pages</a>
+                    <a href="https://pages.coding.me/" title="https://pages.coding.me/" rel="noopener" target="_blank">Hosted by Coding Pages</a>
                   </li>
                 
               </ul>
@@ -907,15 +944,16 @@
           
 
         </div>
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
@@ -923,7 +961,7 @@
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
@@ -931,6 +969,7 @@
 
     </div>
   </aside>
+  
 
 
         
@@ -951,9 +990,7 @@
 </div>
 
 
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.2.2</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 
@@ -961,7 +998,7 @@
 
 
 
-  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.3.0</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.0</div>
 
 
 
@@ -987,14 +1024,13 @@
     
 
     
-	
+
     
 
     
       <div>
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<div class="addthis_inline_share_toolbox">
-  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b692d42870e12d9" async = "async" ></script>
+        <div class="addthis_inline_share_toolbox">
+  <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b692d42870e12d9" async="async"></script>
 </div>
 
       </div>
@@ -1003,7 +1039,7 @@
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -1035,27 +1071,21 @@
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
 
 
 
@@ -1063,54 +1093,54 @@
   
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
 
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
 
 
 
   
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
 
 
 
   
 
 
-
-  
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  
-
-
-
-
-
-
-
-
+  <script src="/js/next-boot.js?v=7.1.0"></script>
 
 
   
 
-  <script type="text/javascript">
+  
+
+  
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2016/12/20/Hyper-class-Augmented/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+  <script>
     // Popup Window;
     var isfetched = false;
     var isXml = true;
@@ -1196,7 +1226,7 @@
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
                 
                 var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
                 var indexOfTitle = [];
                 var indexOfContent = [];
                 // only match articles with not empty titles
@@ -1365,9 +1395,9 @@
               })
             };
             if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
             } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
             } else {
               resultItems.sort(function (resultLeft, resultRight) {
                 if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
@@ -1435,120 +1465,71 @@
 
 
   
-
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz", "owWjRRJ2oBD7Dekc8l1RRctK");</script>
   <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
+    
     function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
+      var $visitors = $('.leancloud_visitors');
       var url = $visitors.attr('id').trim();
       var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
 
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
           if (results.length > 0) {
             var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
             
-            counter.save(null, {
-              success: function(counter) {
-                
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
           } else {
             
-              var newcounter = new Counter();
-              /* Set ACL */
-              var acl = new AV.ACL();
-              acl.setPublicReadAccess(true);
-              acl.setPublicWriteAccess(true);
-              newcounter.setACL(acl);
-              /* End Set ACL */
-              newcounter.set("title", title);
-              newcounter.set("url", url);
-              newcounter.set("time", 1);
-              newcounter.save(null, {
-                success: function(newcounter) {
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
                   var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                },
-                error: function(newcounter, error) {
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
                   console.log('Failed to create');
-                }
-              });
+                });
             
           }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
     }
+    
 
     $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz',
+                'X-LC-Key': 'owWjRRJ2oBD7Dekc8l1RRctK',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
     });
   </script>
 
 
-
-  
 
   
 
@@ -1561,31 +1542,56 @@
   
     
       <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      TeX: {equationNumbers: { autoNumber: "AMS" }}
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
     });
+  });
 </script>
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
 </script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     
   
 
 
   
+
+  
+
+  
+
+  
+
+  
+
   
 
   

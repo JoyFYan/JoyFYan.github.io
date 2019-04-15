@@ -14,11 +14,11 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="en">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -32,8 +32,6 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -46,6 +44,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -53,72 +66,15 @@
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=6.3.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -141,11 +97,13 @@
 
 
   <meta name="description" content="继续python接口的学习。剩下还有solver、deploy文件的生成和模型的测试。">
+<meta name="keywords" content="caffe,python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Caffe-python interface 学习-网络训练、部署、测试">
 <meta property="og:url" content="https://joyfyan.github.io/2017/01/08/pycaffe-interface2/index.html">
 <meta property="og:site_name" content="小一一的小站">
 <meta property="og:description" content="继续python接口的学习。剩下还有solver、deploy文件的生成和模型的测试。">
+<meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2017-01-08T05:58:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Caffe-python interface 学习-网络训练、部署、测试">
@@ -155,12 +113,13 @@
 
 
 
+  
+  
+  <link rel="canonical" href="https://joyfyan.github.io/2017/01/08/pycaffe-interface2/">
 
-  <link rel="canonical" href="https://joyfyan.github.io/2017/01/08/pycaffe-interface2/"/>
 
 
-
-<script type="text/javascript" id="page.configurations">
+<script id="page.configurations">
   CONFIG.page = {
     sidebar: "",
   };
@@ -174,7 +133,7 @@
 
 
 
-  <script type="text/javascript">
+  <script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -187,30 +146,31 @@
 
 
 
+
+
+
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
@@ -228,7 +188,7 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -242,6 +202,7 @@
       
         <p class="site-subtitle">Blog of Yan Joy</p>
       
+    
     
   </div>
 
@@ -265,40 +226,85 @@
         
           
           <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
   </li>
 
       
@@ -308,7 +314,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
         </li>
       
     </ul>
@@ -328,9 +334,7 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="Searching..." spellcheck="false"
-             type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -398,6 +402,7 @@
         
         
           <h1 class="post-title" itemprop="name headline">Caffe-python interface 学习-网络训练、部署、测试
+
               
             
           </h1>
@@ -433,7 +438,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -454,20 +459,21 @@
 
           
             
+            
           
 
           
           
-             <span id="/2017/01/08/pycaffe-interface2/" class="leancloud_visitors" data-flag-title="Caffe-python interface 学习-网络训练、部署、测试">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
+            <span id="/2017/01/08/pycaffe-interface2/" class="leancloud_visitors" data-flag-title="Caffe-python interface 学习-网络训练、部署、测试">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -490,31 +496,31 @@
 
       
         <p>继续python接口的学习。剩下还有solver、deploy文件的生成和模型的测试。<br><a id="more"></a></p>
-<h1 id="网络训练"><a href="#网络训练" class="headerlink" title="网络训练"></a>网络训练</h1><h2 id="solver文件生成"><a href="#solver文件生成" class="headerlink" title="solver文件生成"></a>solver文件生成</h2><p>其实我觉得用python生成solver并不如直接写个配置文件，它不像net配置一样有很多重复的东西。<br>对于一下的solver配置文件：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">base_lr: <span class="number">0.001</span></div><div class="line">display: <span class="number">782</span></div><div class="line">gamma: <span class="number">0.1</span></div><div class="line">lr_policy: “step”</div><div class="line">max_iter: <span class="number">78200</span> <span class="comment">#训练样本迭代次数=max_iter/782(训练完一次全部样本的迭代数)</span></div><div class="line">momentum: <span class="number">0.9</span></div><div class="line">snapshot: <span class="number">7820</span></div><div class="line">snapshot_prefix: <span class="string">"snapshot"</span></div><div class="line">solver_mode: GPU</div><div class="line">solver_type: SGD</div><div class="line">stepsize: <span class="number">26067</span> </div><div class="line">test_interval: <span class="number">782</span> <span class="comment">#test_interval=训练样本数(50000)/batch_size(train:64)</span></div><div class="line">test_iter: <span class="number">313</span>     <span class="comment">#test_iter=测试样本数(10000)/batch_size(test:32)</span></div><div class="line">test_net: <span class="string">"/home/xxx/data/val.prototxt"</span></div><div class="line">train_net: <span class="string">"/home/xxx/data/proto/train.prototxt"</span></div><div class="line">weight_decay: <span class="number">0.0005</span></div></pre></td></tr></table></figure></p>
-<p>可以用以下方式实现生成：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> caffe.proto <span class="keyword">import</span> caffe_pb2</div><div class="line">s = caffe_pb2.SolverParameter()</div><div class="line"></div><div class="line">path=<span class="string">'/home/xxx/data/'</span></div><div class="line">solver_file=path+<span class="string">'solver1.prototxt'</span></div><div class="line"></div><div class="line">s.train_net = path+<span class="string">'train.prototxt'</span></div><div class="line">s.test_net.append(path+<span class="string">'val.prototxt'</span>)</div><div class="line">s.test_interval = <span class="number">782</span>  </div><div class="line">s.test_iter.append(<span class="number">313</span>) <span class="comment">#这里用的是append，码风不太一样</span></div><div class="line">s.max_iter = <span class="number">78200</span> </div><div class="line"></div><div class="line">s.base_lr = <span class="number">0.001</span> </div><div class="line">s.momentum = <span class="number">0.9</span></div><div class="line">s.weight_decay = <span class="number">5e-4</span></div><div class="line">s.lr_policy = <span class="string">'step'</span></div><div class="line">s.stepsize=<span class="number">26067</span></div><div class="line">s.gamma = <span class="number">0.1</span></div><div class="line">s.display = <span class="number">782</span></div><div class="line">s.snapshot = <span class="number">7820</span></div><div class="line">s.snapshot_prefix = <span class="string">'shapshot'</span></div><div class="line">s.type = “SGD”</div><div class="line">s.solver_mode = caffe_pb2.SolverParameter.GPU</div><div class="line"></div><div class="line"><span class="keyword">with</span> open(solver_file, <span class="string">'w'</span>) <span class="keyword">as</span> f:</div><div class="line">    f.write(str(s))</div></pre></td></tr></table></figure></p>
+<h1 id="网络训练"><a href="#网络训练" class="headerlink" title="网络训练"></a>网络训练</h1><h2 id="solver文件生成"><a href="#solver文件生成" class="headerlink" title="solver文件生成"></a>solver文件生成</h2><p>其实我觉得用python生成solver并不如直接写个配置文件，它不像net配置一样有很多重复的东西。<br>对于一下的solver配置文件：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">base_lr: <span class="number">0.001</span></span><br><span class="line">display: <span class="number">782</span></span><br><span class="line">gamma: <span class="number">0.1</span></span><br><span class="line">lr_policy: “step”</span><br><span class="line">max_iter: <span class="number">78200</span> <span class="comment">#训练样本迭代次数=max_iter/782(训练完一次全部样本的迭代数)</span></span><br><span class="line">momentum: <span class="number">0.9</span></span><br><span class="line">snapshot: <span class="number">7820</span></span><br><span class="line">snapshot_prefix: <span class="string">"snapshot"</span></span><br><span class="line">solver_mode: GPU</span><br><span class="line">solver_type: SGD</span><br><span class="line">stepsize: <span class="number">26067</span> </span><br><span class="line">test_interval: <span class="number">782</span> <span class="comment">#test_interval=训练样本数(50000)/batch_size(train:64)</span></span><br><span class="line">test_iter: <span class="number">313</span>     <span class="comment">#test_iter=测试样本数(10000)/batch_size(test:32)</span></span><br><span class="line">test_net: <span class="string">"/home/xxx/data/val.prototxt"</span></span><br><span class="line">train_net: <span class="string">"/home/xxx/data/proto/train.prototxt"</span></span><br><span class="line">weight_decay: <span class="number">0.0005</span></span><br></pre></td></tr></table></figure></p>
+<p>可以用以下方式实现生成：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> caffe.proto <span class="keyword">import</span> caffe_pb2</span><br><span class="line">s = caffe_pb2.SolverParameter()</span><br><span class="line"></span><br><span class="line">path=<span class="string">'/home/xxx/data/'</span></span><br><span class="line">solver_file=path+<span class="string">'solver1.prototxt'</span></span><br><span class="line"></span><br><span class="line">s.train_net = path+<span class="string">'train.prototxt'</span></span><br><span class="line">s.test_net.append(path+<span class="string">'val.prototxt'</span>)</span><br><span class="line">s.test_interval = <span class="number">782</span>  </span><br><span class="line">s.test_iter.append(<span class="number">313</span>) <span class="comment">#这里用的是append，码风不太一样</span></span><br><span class="line">s.max_iter = <span class="number">78200</span> </span><br><span class="line"></span><br><span class="line">s.base_lr = <span class="number">0.001</span> </span><br><span class="line">s.momentum = <span class="number">0.9</span></span><br><span class="line">s.weight_decay = <span class="number">5e-4</span></span><br><span class="line">s.lr_policy = <span class="string">'step'</span></span><br><span class="line">s.stepsize=<span class="number">26067</span></span><br><span class="line">s.gamma = <span class="number">0.1</span></span><br><span class="line">s.display = <span class="number">782</span></span><br><span class="line">s.snapshot = <span class="number">7820</span></span><br><span class="line">s.snapshot_prefix = <span class="string">'shapshot'</span></span><br><span class="line">s.type = “SGD”</span><br><span class="line">s.solver_mode = caffe_pb2.SolverParameter.GPU</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(solver_file, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(str(s))</span><br></pre></td></tr></table></figure></p>
 <p>并没有简单多少。<br>需要注意的是有些参数需要计算得到：</p>
 <ul>
 <li>test_interval：<br>假设我们有50000个训练样本，batch_size为64，即每批次处理64个样本，那么需要迭代50000/64=782次才处理完一次全部的样本。我们把处理完一次所有的样本，称之为一代，即epoch。所以，这里的test_interval设置为782，即处理完一次所有的训练数据后，才去进行测试。如果我们想训练100代，则需要设置max_iter为78200.</li>
 <li>test_iter：<br>同理，如果有10000个测试样本，batch_size设为32，那么需要迭代10000/32=313次才完整地测试完一次，所以设置test_iter为313.</li>
 <li>lr_rate：<br>学习率变化规律我们设置为随着迭代次数的增加，慢慢变低。总共迭代78200次，我们将变化lr_rate三次，所以stepsize设置为78200/3=26067，即每迭代26067次，我们就降低一次学习率。 </li>
 </ul>
-<h2 id="模型训练"><a href="#模型训练" class="headerlink" title="模型训练"></a>模型训练</h2><p>完整按照定义的网络和solver去训练，就像命令行一样：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">solver = caffe.SGDSolver(<span class="string">'/home/xxx/solver.prototxt'</span>)</div><div class="line">solver.solve()</div></pre></td></tr></table></figure></p>
-<p>不过也可以分得更细一些，比如先加载模型：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">solver = caffe.get_solver(<span class="string">'models/bvlc_reference_caffenet/solver.prototxt'</span>)</div></pre></td></tr></table></figure></p>
-<p>这里用的是<code>.get_solver</code>，默认按照SGD方法求解。<br>向前传播一次网络，即从输入层到loss层，计算<code>net.blobs[k].data</code>。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">solver.net.forward()  <span class="comment"># train net</span></div></pre></td></tr></table></figure></p>
-<p>反向传播一次网络，即从loss层到输入层，计算<code>net.blobs[k].diff and net.params[k][j].diff</code>。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">solver.net.backward()</div></pre></td></tr></table></figure></p>
-<p>如果需要一次完整的计算，正向、反向、更新权重（<code>net.params[k][j].data</code>），可以使用<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">solver.step(<span class="number">1</span>)</div></pre></td></tr></table></figure></p>
+<h2 id="模型训练"><a href="#模型训练" class="headerlink" title="模型训练"></a>模型训练</h2><p>完整按照定义的网络和solver去训练，就像命令行一样：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">solver = caffe.SGDSolver(<span class="string">'/home/xxx/solver.prototxt'</span>)</span><br><span class="line">solver.solve()</span><br></pre></td></tr></table></figure></p>
+<p>不过也可以分得更细一些，比如先加载模型：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">solver = caffe.get_solver(<span class="string">'models/bvlc_reference_caffenet/solver.prototxt'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>这里用的是<code>.get_solver</code>，默认按照SGD方法求解。<br>向前传播一次网络，即从输入层到loss层，计算<code>net.blobs[k].data</code>。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">solver.net.forward()  <span class="comment"># train net</span></span><br></pre></td></tr></table></figure></p>
+<p>反向传播一次网络，即从loss层到输入层，计算<code>net.blobs[k].diff and net.params[k][j].diff</code>。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">solver.net.backward()</span><br></pre></td></tr></table></figure></p>
+<p>如果需要一次完整的计算，正向、反向、更新权重（<code>net.params[k][j].data</code>），可以使用<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">solver.step(<span class="number">1</span>)</span><br></pre></td></tr></table></figure></p>
 <p>改变数字进行多次计算。</p>
-<h1 id="网络部署"><a href="#网络部署" class="headerlink" title="网络部署"></a>网络部署</h1><p>部署即生成一个deploy文件，用于下面的模型测试。这里既可以用python，也可以直接修改net文件。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> caffe <span class="keyword">import</span> layers <span class="keyword">as</span> L,params <span class="keyword">as</span> P,to_proto</div><div class="line">root=<span class="string">'/home/xxx/'</span></div><div class="line">deploy=root+<span class="string">'mnist/deploy.prototxt'</span>    <span class="comment">#文件保存路径</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_deploy</span><span class="params">()</span>:</span></div><div class="line">    <span class="comment">#少了第一层，data层</span></div><div class="line">    conv1=L.Convolution(bottom=<span class="string">'data'</span>, kernel_size=<span class="number">5</span>, stride=<span class="number">1</span>,num_output=<span class="number">20</span>, pad=<span class="number">0</span>,weight_filler=dict(type=<span class="string">'xavier'</span>))</div><div class="line">    pool1=L.Pooling(conv1, pool=P.Pooling.MAX, kernel_size=<span class="number">2</span>, stride=<span class="number">2</span>)</div><div class="line">    conv2=L.Convolution(pool1, kernel_size=<span class="number">5</span>, stride=<span class="number">1</span>,num_output=<span class="number">50</span>, pad=<span class="number">0</span>,weight_filler=dict(type=<span class="string">'xavier'</span>))</div><div class="line">    pool2=L.Pooling(conv2, pool=P.Pooling.MAX, kernel_size=<span class="number">2</span>, stride=<span class="number">2</span>)</div><div class="line">    fc3=L.InnerProduct(pool2, num_output=<span class="number">500</span>,weight_filler=dict(type=<span class="string">'xavier'</span>))</div><div class="line">    relu3=L.ReLU(fc3, in_place=<span class="keyword">True</span>)</div><div class="line">    fc4 = L.InnerProduct(relu3, num_output=<span class="number">10</span>,weight_filler=dict(type=<span class="string">'xavier'</span>))</div><div class="line">    <span class="comment">#最后没有accuracy层，但有一个Softmax层</span></div><div class="line">    prob=L.Softmax(fc4)</div><div class="line">    <span class="keyword">return</span> to_proto(prob)</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">write_deploy</span><span class="params">()</span>:</span> </div><div class="line">    <span class="keyword">with</span> open(deploy, <span class="string">'w'</span>) <span class="keyword">as</span> f:</div><div class="line">        f.write(<span class="string">'name:"Lenet"\n'</span>)</div><div class="line">        f.write(<span class="string">'input:"data"\n'</span>)</div><div class="line">        f.write(<span class="string">'input_dim:1\n'</span>)</div><div class="line">        f.write(<span class="string">'input_dim:3\n'</span>)</div><div class="line">        f.write(<span class="string">'input_dim:28\n'</span>)</div><div class="line">        f.write(<span class="string">'input_dim:28\n'</span>)</div><div class="line">        f.write(str(create_deploy()))</div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    write_deploy()</div></pre></td></tr></table></figure></p>
-<p>如果自己修改net，需要修改数据输入：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">layer</span> &#123;</div><div class="line">  <span class="attribute">name</span>: <span class="string">"data"</span></div><div class="line">  <span class="attribute">type</span>: <span class="string">"Input"</span></div><div class="line">  <span class="attribute">top</span>: <span class="string">"data"</span></div><div class="line">  input_param &#123; <span class="attribute">shape</span>: &#123; <span class="attribute">dim</span>: <span class="number">1</span> <span class="attribute">dim</span>: <span class="number">3</span> <span class="attribute">dim</span>: <span class="number">100</span> <span class="attribute">dim</span>: <span class="number">100</span> &#125; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="网络部署"><a href="#网络部署" class="headerlink" title="网络部署"></a>网络部署</h1><p>部署即生成一个deploy文件，用于下面的模型测试。这里既可以用python，也可以直接修改net文件。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> caffe <span class="keyword">import</span> layers <span class="keyword">as</span> L,params <span class="keyword">as</span> P,to_proto</span><br><span class="line">root=<span class="string">'/home/xxx/'</span></span><br><span class="line">deploy=root+<span class="string">'mnist/deploy.prototxt'</span>    <span class="comment">#文件保存路径</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_deploy</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment">#少了第一层，data层</span></span><br><span class="line">    conv1=L.Convolution(bottom=<span class="string">'data'</span>, kernel_size=<span class="number">5</span>, stride=<span class="number">1</span>,num_output=<span class="number">20</span>, pad=<span class="number">0</span>,weight_filler=dict(type=<span class="string">'xavier'</span>))</span><br><span class="line">    pool1=L.Pooling(conv1, pool=P.Pooling.MAX, kernel_size=<span class="number">2</span>, stride=<span class="number">2</span>)</span><br><span class="line">    conv2=L.Convolution(pool1, kernel_size=<span class="number">5</span>, stride=<span class="number">1</span>,num_output=<span class="number">50</span>, pad=<span class="number">0</span>,weight_filler=dict(type=<span class="string">'xavier'</span>))</span><br><span class="line">    pool2=L.Pooling(conv2, pool=P.Pooling.MAX, kernel_size=<span class="number">2</span>, stride=<span class="number">2</span>)</span><br><span class="line">    fc3=L.InnerProduct(pool2, num_output=<span class="number">500</span>,weight_filler=dict(type=<span class="string">'xavier'</span>))</span><br><span class="line">    relu3=L.ReLU(fc3, in_place=<span class="literal">True</span>)</span><br><span class="line">    fc4 = L.InnerProduct(relu3, num_output=<span class="number">10</span>,weight_filler=dict(type=<span class="string">'xavier'</span>))</span><br><span class="line">    <span class="comment">#最后没有accuracy层，但有一个Softmax层</span></span><br><span class="line">    prob=L.Softmax(fc4)</span><br><span class="line">    <span class="keyword">return</span> to_proto(prob)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">write_deploy</span><span class="params">()</span>:</span> </span><br><span class="line">    <span class="keyword">with</span> open(deploy, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(<span class="string">'name:"Lenet"\n'</span>)</span><br><span class="line">        f.write(<span class="string">'input:"data"\n'</span>)</span><br><span class="line">        f.write(<span class="string">'input_dim:1\n'</span>)</span><br><span class="line">        f.write(<span class="string">'input_dim:3\n'</span>)</span><br><span class="line">        f.write(<span class="string">'input_dim:28\n'</span>)</span><br><span class="line">        f.write(<span class="string">'input_dim:28\n'</span>)</span><br><span class="line">        f.write(str(create_deploy()))</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    write_deploy()</span><br></pre></td></tr></table></figure></p>
+<p>如果自己修改net，需要修改数据输入：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">layer</span> &#123;</span><br><span class="line">  <span class="attribute">name</span>: <span class="string">"data"</span></span><br><span class="line">  <span class="attribute">type</span>: <span class="string">"Input"</span></span><br><span class="line">  <span class="attribute">top</span>: <span class="string">"data"</span></span><br><span class="line">  input_param &#123; <span class="attribute">shape</span>: &#123; <span class="attribute">dim</span>: <span class="number">1</span> <span class="attribute">dim</span>: <span class="number">3</span> <span class="attribute">dim</span>: <span class="number">100</span> <span class="attribute">dim</span>: <span class="number">100</span> &#125; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>并且增加一个softmax，对于原来的softmaxwithloss直接换掉就行。</p>
-<h1 id="网络测试"><a href="#网络测试" class="headerlink" title="网络测试"></a>网络测试</h1><p>训练好之后得到模型，实际使用是需要用模型进行预测。这时需要用到deploy文件和caffemodel。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> caffe</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">root=<span class="string">'/home/xxx/'</span>   <span class="comment">#根目录</span></div><div class="line">deploy=root + <span class="string">'mnist/deploy.prototxt'</span>    <span class="comment">#deploy文件</span></div><div class="line">caffe_model=root + <span class="string">'mnist/lenet_iter_9380.caffemodel'</span>   <span class="comment">#训练好的 caffemodel</span></div><div class="line">img=root+<span class="string">'mnist/test/5/00008.png'</span>    <span class="comment">#随机找的一张待测图片</span></div><div class="line">labels_filename = root + <span class="string">'mnist/test/labels.txt'</span>  <span class="comment">#类别名称文件，将数字标签转换回类别名称</span></div><div class="line"></div><div class="line">net = caffe.Net(deploy,caffe_model,caffe.TEST)   <span class="comment">#加载model和network</span></div><div class="line"></div><div class="line"><span class="comment">#图片预处理设置</span></div><div class="line">transformer = caffe.io.Transformer(&#123;<span class="string">'data'</span>: net.blobs[<span class="string">'data'</span>].data.shape&#125;)  <span class="comment">#设定图片的shape格式(1,3,28,28)</span></div><div class="line">transformer.set_transpose(<span class="string">'data'</span>, (<span class="number">2</span>,<span class="number">0</span>,<span class="number">1</span>))    <span class="comment">#改变维度的顺序，由原始图片(28,28,3)变为(3,28,28)</span></div><div class="line"><span class="comment">#transformer.set_mean('data', np.load(mean_file).mean(1).mean(1))    #减去均值，前面训练模型时没有减均值，这儿就不用</span></div><div class="line">transformer.set_raw_scale(<span class="string">'data'</span>, <span class="number">255</span>)    <span class="comment"># 缩放到【0，255】之间</span></div><div class="line">transformer.set_channel_swap(<span class="string">'data'</span>, (<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>))   <span class="comment">#交换通道，将图片由RGB变为BGR</span></div><div class="line"></div><div class="line">im=caffe.io.load_image(img)                   <span class="comment">#加载图片</span></div><div class="line">net.blobs[<span class="string">'data'</span>].data[...] = transformer.preprocess(<span class="string">'data'</span>,im)      <span class="comment">#执行上面设置的图片预处理操作，并将图片载入到blob中</span></div><div class="line"></div><div class="line"><span class="comment">#执行测试</span></div><div class="line">out = net.forward()</div><div class="line"></div><div class="line">labels = np.loadtxt(labels_filename, str, delimiter=<span class="string">'\t'</span>)   <span class="comment">#读取类别名称文件</span></div><div class="line">prob= net.blobs[<span class="string">'Softmax1'</span>].data[<span class="number">0</span>].flatten() <span class="comment">#取出最后一层（Softmax）属于某个类别的概率值，并打印</span></div><div class="line"><span class="keyword">print</span> prob</div><div class="line">order=prob.argsort()[<span class="number">-1</span>]  <span class="comment">#将概率值排序，取出最大值所在的序号 </span></div><div class="line"><span class="keyword">print</span> <span class="string">'the class is:'</span>,labels[order]   <span class="comment">#将该序号转换成对应的类别名称，并打印</span></div></pre></td></tr></table></figure></p>
+<h1 id="网络测试"><a href="#网络测试" class="headerlink" title="网络测试"></a>网络测试</h1><p>训练好之后得到模型，实际使用是需要用模型进行预测。这时需要用到deploy文件和caffemodel。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> caffe</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">root=<span class="string">'/home/xxx/'</span>   <span class="comment">#根目录</span></span><br><span class="line">deploy=root + <span class="string">'mnist/deploy.prototxt'</span>    <span class="comment">#deploy文件</span></span><br><span class="line">caffe_model=root + <span class="string">'mnist/lenet_iter_9380.caffemodel'</span>   <span class="comment">#训练好的 caffemodel</span></span><br><span class="line">img=root+<span class="string">'mnist/test/5/00008.png'</span>    <span class="comment">#随机找的一张待测图片</span></span><br><span class="line">labels_filename = root + <span class="string">'mnist/test/labels.txt'</span>  <span class="comment">#类别名称文件，将数字标签转换回类别名称</span></span><br><span class="line"></span><br><span class="line">net = caffe.Net(deploy,caffe_model,caffe.TEST)   <span class="comment">#加载model和network</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#图片预处理设置</span></span><br><span class="line">transformer = caffe.io.Transformer(&#123;<span class="string">'data'</span>: net.blobs[<span class="string">'data'</span>].data.shape&#125;)  <span class="comment">#设定图片的shape格式(1,3,28,28)</span></span><br><span class="line">transformer.set_transpose(<span class="string">'data'</span>, (<span class="number">2</span>,<span class="number">0</span>,<span class="number">1</span>))    <span class="comment">#改变维度的顺序，由原始图片(28,28,3)变为(3,28,28)</span></span><br><span class="line"><span class="comment">#transformer.set_mean('data', np.load(mean_file).mean(1).mean(1))    #减去均值，前面训练模型时没有减均值，这儿就不用</span></span><br><span class="line">transformer.set_raw_scale(<span class="string">'data'</span>, <span class="number">255</span>)    <span class="comment"># 缩放到【0，255】之间</span></span><br><span class="line">transformer.set_channel_swap(<span class="string">'data'</span>, (<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>))   <span class="comment">#交换通道，将图片由RGB变为BGR</span></span><br><span class="line"></span><br><span class="line">im=caffe.io.load_image(img)                   <span class="comment">#加载图片</span></span><br><span class="line">net.blobs[<span class="string">'data'</span>].data[...] = transformer.preprocess(<span class="string">'data'</span>,im)      <span class="comment">#执行上面设置的图片预处理操作，并将图片载入到blob中</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#执行测试</span></span><br><span class="line">out = net.forward()</span><br><span class="line"></span><br><span class="line">labels = np.loadtxt(labels_filename, str, delimiter=<span class="string">'\t'</span>)   <span class="comment">#读取类别名称文件</span></span><br><span class="line">prob= net.blobs[<span class="string">'Softmax1'</span>].data[<span class="number">0</span>].flatten() <span class="comment">#取出最后一层（Softmax）属于某个类别的概率值，并打印</span></span><br><span class="line"><span class="keyword">print</span> prob</span><br><span class="line">order=prob.argsort()[<span class="number">-1</span>]  <span class="comment">#将概率值排序，取出最大值所在的序号 </span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'the class is:'</span>,labels[order]   <span class="comment">#将该序号转换成对应的类别名称，并打印</span></span><br></pre></td></tr></table></figure></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>利用python接口，对网络的具体参数能够有更全面的认识和理解。不过也有几点需要注意：</p>
 <ol>
 <li>数据格式的转换<br>caffe的数据blob shape是N<em>C</em>H<em>W，通道数在前。而python图像处理时shape是H</em>W*C，通道数在后。因此需要转换一下。</li>
 <li>图片显示与保存<br>由于没有图形界面，很方便的jupyter notebook不能使用，只好保存图片查看。</li>
 </ol>
 <blockquote>
-<p><a href="http://www.cnblogs.com/denny402/p/5679154.html" target="_blank" rel="external">caffe的python接口学习（2）：生成solver文件</a><br><a href="http://www.cnblogs.com/denny402/p/5685818.html" target="_blank" rel="external">caffe的python接口学习（5）：生成deploy文件</a><br><a href="http://www.cnblogs.com/denny402/p/5685909.html" target="_blank" rel="external">caffe的python接口学习（6）：用训练好的模型（caffemodel）来分类新的图片</a><br><a href="http://christopher5106.github.io/deep/learning/2015/09/04/Deep-learning-tutorial-on-Caffe-Technology.html" target="_blank" rel="external">Deep learning tutorial on Caffe technology : basic commands, Python and C++ code.</a><br><a href="http://nbviewer.jupyter.org/github/BVLC/caffe/blob/master/examples/pascal-multilabel-with-datalayer.ipynb" target="_blank" rel="external">Multilabel classification on PASCAL using python data-layers</a></p>
+<p><a href="http://www.cnblogs.com/denny402/p/5679154.html" target="_blank" rel="noopener">caffe的python接口学习（2）：生成solver文件</a><br><a href="http://www.cnblogs.com/denny402/p/5685818.html" target="_blank" rel="noopener">caffe的python接口学习（5）：生成deploy文件</a><br><a href="http://www.cnblogs.com/denny402/p/5685909.html" target="_blank" rel="noopener">caffe的python接口学习（6）：用训练好的模型（caffemodel）来分类新的图片</a><br><a href="http://christopher5106.github.io/deep/learning/2015/09/04/Deep-learning-tutorial-on-Caffe-Technology.html" target="_blank" rel="noopener">Deep learning tutorial on Caffe technology : basic commands, Python and C++ code.</a><br><a href="http://nbviewer.jupyter.org/github/BVLC/caffe/blob/master/examples/pascal-multilabel-with-datalayer.ipynb" target="_blank" rel="noopener">Multilabel classification on PASCAL using python data-layers</a></p>
 </blockquote>
 
       
@@ -529,16 +535,43 @@
     
 
     
+      
+    
+    
 
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yan Joy</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    
+    <a href="https://joyfyan.github.io/2017/01/08/pycaffe-interface2/" title="Caffe-python interface 学习-网络训练、部署、测试">https://joyfyan.github.io/2017/01/08/pycaffe-interface2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag"># python</a>
-          
             <a href="/tags/caffe/" rel="tag"># caffe</a>
+          
+            <a href="/tags/python/" rel="tag"># python</a>
           
         </div>
       
@@ -607,7 +640,6 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -623,16 +655,14 @@
         </ul>
       
 
-      <section class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
-                alt="Yan Joy" />
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Yan Joy">
             
               <p class="site-author-name" itemprop="name">Yan Joy</p>
-              <p class="site-description motion-element" itemprop="description">Default~</p>
+              <div class="site-description motion-element" itemprop="description">Default~</div>
           </div>
 
           
@@ -642,7 +672,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">99</span>
+                    <span class="site-state-item-count">104</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -652,7 +682,11 @@
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -687,7 +721,11 @@
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -806,7 +844,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">58</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">60</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -817,22 +859,35 @@
           
 
           
+
+          
             <div class="links-of-author motion-element">
               
                 <span class="links-of-author-item">
-                  <a href="http://weibo.com/yanjoy" target="_blank" title="Weibo"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
                   
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="http://weibo.com/yanjoy" title="Weibo &rarr; http://weibo.com/yanjoy" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="http://blog.csdn.net/yan_joy" target="_blank" title="CSDN"><i class="fa fa-fw fa-linux"></i>CSDN</a>
                   
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="http://blog.csdn.net/yan_joy" title="CSDN &rarr; http://blog.csdn.net/yan_joy" rel="noopener" target="_blank"><i class="fa fa-fw fa-linux"></i>CSDN</a>
                 </span>
               
             </div>
           
 
-          
           
 
           
@@ -840,20 +895,20 @@
             <div class="links-of-blogroll motion-element links-of-blogroll-block">
               <div class="links-of-blogroll-title">
                 <i class="fa  fa-fw fa-link"></i>
-                FRIENDS
+                Links
               </div>
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://www.xieqiang.site/" title="Johnny" target="_blank">Johnny</a>
+                    <a href="http://www.xieqiang.site/" title="http://www.xieqiang.site/" rel="noopener" target="_blank">Johnny</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://judasdie.github.io/" title="ZP Zhang" target="_blank">ZP Zhang</a>
+                    <a href="https://judasdie.github.io/" title="https://judasdie.github.io/" rel="noopener" target="_blank">ZP Zhang</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://pages.coding.me/" title="Hosted by Coding Pages" target="_blank">Hosted by Coding Pages</a>
+                    <a href="https://pages.coding.me/" title="https://pages.coding.me/" rel="noopener" target="_blank">Hosted by Coding Pages</a>
                   </li>
                 
               </ul>
@@ -866,15 +921,16 @@
           
 
         </div>
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
@@ -882,7 +938,7 @@
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
@@ -890,6 +946,7 @@
 
     </div>
   </aside>
+  
 
 
         
@@ -910,9 +967,7 @@
 </div>
 
 
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.2.2</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 
@@ -920,7 +975,7 @@
 
 
 
-  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.3.0</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.0</div>
 
 
 
@@ -946,14 +1001,13 @@
     
 
     
-	
+
     
 
     
       <div>
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<div class="addthis_inline_share_toolbox">
-  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b692d42870e12d9" async = "async" ></script>
+        <div class="addthis_inline_share_toolbox">
+  <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b692d42870e12d9" async="async"></script>
 </div>
 
       </div>
@@ -962,7 +1016,7 @@
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -994,27 +1048,21 @@
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
 
 
 
@@ -1022,54 +1070,54 @@
   
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
 
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
 
 
 
   
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
 
 
 
   
 
 
-
-  
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  
-
-
-
-
-
-
-
-
+  <script src="/js/next-boot.js?v=7.1.0"></script>
 
 
   
 
-  <script type="text/javascript">
+  
+
+  
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2017/01/08/pycaffe-interface2/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+  <script>
     // Popup Window;
     var isfetched = false;
     var isXml = true;
@@ -1155,7 +1203,7 @@
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
                 
                 var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
                 var indexOfTitle = [];
                 var indexOfContent = [];
                 // only match articles with not empty titles
@@ -1324,9 +1372,9 @@
               })
             };
             if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
             } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
             } else {
               resultItems.sort(function (resultLeft, resultRight) {
                 if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
@@ -1394,120 +1442,71 @@
 
 
   
-
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz", "owWjRRJ2oBD7Dekc8l1RRctK");</script>
   <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
+    
     function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
+      var $visitors = $('.leancloud_visitors');
       var url = $visitors.attr('id').trim();
       var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
 
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
           if (results.length > 0) {
             var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
             
-            counter.save(null, {
-              success: function(counter) {
-                
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
           } else {
             
-              var newcounter = new Counter();
-              /* Set ACL */
-              var acl = new AV.ACL();
-              acl.setPublicReadAccess(true);
-              acl.setPublicWriteAccess(true);
-              newcounter.setACL(acl);
-              /* End Set ACL */
-              newcounter.set("title", title);
-              newcounter.set("url", url);
-              newcounter.set("time", 1);
-              newcounter.save(null, {
-                success: function(newcounter) {
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
                   var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                },
-                error: function(newcounter, error) {
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
                   console.log('Failed to create');
-                }
-              });
+                });
             
           }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
     }
+    
 
     $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz',
+                'X-LC-Key': 'owWjRRJ2oBD7Dekc8l1RRctK',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
     });
   </script>
 
 
-
-  
 
   
 
@@ -1520,31 +1519,56 @@
   
     
       <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      TeX: {equationNumbers: { autoNumber: "AMS" }}
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
     });
+  });
 </script>
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
 </script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     
   
 
 
   
+
+  
+
+  
+
+  
+
+  
+
   
 
   

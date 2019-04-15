@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Quantization Algorithms  量化算法注意:对于任何需要量化感知训练的以下方法，请参阅这里，了解如何使用Distiller的机制调用它。">
+<meta name="keywords" content="distiller">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Distiller：量化算法">
+<meta property="og:url" content="https://joyfyan.github.io/2019/01/08/distiller-quantization/index.html">
+<meta property="og:site_name" content="小一一的小站">
+<meta property="og:description" content="Quantization Algorithms  量化算法注意:对于任何需要量化感知训练的以下方法，请参阅这里，了解如何使用Distiller的机制调用它。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://nervanasystems.github.io/distiller/imgs/quant_asym.png">
+<meta property="og:image" content="https://nervanasystems.github.io/distiller/imgs/quant_sym.png">
+<meta property="og:image" content="https://nervanasystems.github.io/distiller/imgs/quant_clipped.png">
+<meta property="og:updated_time" content="2019-04-04T12:04:05.047Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Distiller：量化算法">
+<meta name="twitter:description" content="Quantization Algorithms  量化算法注意:对于任何需要量化感知训练的以下方法，请参阅这里，了解如何使用Distiller的机制调用它。">
+<meta name="twitter:image" content="https://nervanasystems.github.io/distiller/imgs/quant_asym.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://joyfyan.github.io/2019/01/08/distiller-quantization/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Distiller：量化算法 | 小一一的小站</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?59765bbe651ba5fb69dc22dd74eb6ba7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小一一的小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Blog of Yan Joy</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://joyfyan.github.io/2019/01/08/distiller-quantization/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yan Joy">
+      <meta itemprop="description" content="Default~">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小一一的小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Distiller：量化算法
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-08 15:26:30" itemprop="dateCreated datePublished" datetime="2019-01-08T15:26:30+08:00">2019-01-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-04 20:04:05" itemprop="dateModified" datetime="2019-04-04T20:04:05+08:00">2019-04-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ML/" itemprop="url" rel="index"><span itemprop="name">ML</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+            <span id="/2019/01/08/distiller-quantization/" class="leancloud_visitors" data-flag-title="Distiller：量化算法">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p><a href="https://nervanasystems.github.io/distiller/algo_quantization/index.html" target="_blank" rel="noopener">Quantization Algorithms</a></p>
+</blockquote>
+<h1 id="量化算法"><a href="#量化算法" class="headerlink" title="量化算法"></a>量化算法</h1><p><strong>注意:</strong><br>对于任何需要量化感知训练的以下方法，请参阅<a href="https://nervanasystems.github.io/distiller/schedule/index.html#quantization" target="_blank" rel="noopener">这里</a>，了解如何使用Distiller的机制调用它。</p>
+<a id="more"></a>
+<h2 id="基于范围的线性量化（Range-Based-Linear-Quantization）"><a href="#基于范围的线性量化（Range-Based-Linear-Quantization）" class="headerlink" title="基于范围的线性量化（Range-Based Linear Quantization）"></a>基于范围的线性量化（Range-Based Linear Quantization）</h2><p>让我们在此分解使用的术语：</p>
+<ul>
+<li><strong>线性（Linear）:</strong> 表示通过乘以数字常数（<strong>比例因子</strong>）来量化浮点值。</li>
+<li><strong>基于范围（Range-Based）:</strong> 意味着为了计算比例因子，我们查看张量值的实际范围。 在最原始的实现中，我们使用张量的实际最小/最大值。或者，我们使用一些基于张量范围/分布的推导来得出更窄的最小/最大范围，以便去除可能的异常值。这与此处描述的其他方法形成对比，我们可以将其称为<strong>基于截断</strong>的（clipping-based），因为它们在张量采用截断函数。</li>
+</ul>
+<h3 id="非对称（Asymmetric）与对称（Symmetric）"><a href="#非对称（Asymmetric）与对称（Symmetric）" class="headerlink" title="非对称（Asymmetric）与对称（Symmetric）"></a>非对称（Asymmetric）与对称（Symmetric）</h3><p>在这种方法中，我们可以使用两种模式 -  <strong>非对称</strong>和<strong>对称</strong>。</p>
+<h4 id="非对称模式"><a href="#非对称模式" class="headerlink" title="非对称模式"></a>非对称模式</h4><p><img src="https://nervanasystems.github.io/distiller/imgs/quant_asym.png" alt="Asymmetric Mode"></p>
+<p>在<strong>非对称</strong>模式下，我们将浮点范围中的最小值/最大值映射到整数范围的最小值/最大值。除了比例因子之外，这通过使用<strong>零点</strong>（也称为<em>量化偏差</em>，或<em>偏移</em>）来完成。</p>
+<p>让我们用$x_f$表示原始浮点张量，用$x_q$表示量化张量，用$q_x$表示比例因子，用$zp_x$表示零点，以及用$n$表示量化的比特。然后，我们得到：</p>
+<script type="math/tex; mode=display">x_q = round\left ((x_f - min_{x_f})\underbrace{\frac{2^n - 1}{max_{x_f} - min_{x_f}}}_{q_x} \right) = round(q_x x_f - \underbrace{min_{x_f}q_x)}_{zp_x} = round(q_x x_f - zp_x)\</script><p>我们实际上使用 $zp<em>x = round(min</em>{x_f}q_x)$。这意味着零可以通过量化范围中的整数精确表示。例如，对于具有零填充的层（zero-padding），这很重要。通过四舍五入零点，我们有效地“微调”浮动范围中的最小值/最大值，以获得零的精确量化。</p>
+<p>请注意，在上面的推导中，我们使用无符号整数来表示量化范围。也就是说，$x_q \in [0,2 ^ n-1]$。如果需要，可以使用有符号整数（可能由于硬件考虑因素。这可以通过减去$2 ^ {n-1}$来实现。</p>
+<p>让我们看看<strong>卷积</strong>或<strong>全连接</strong>层如何在非对称模式下量化(我们分别用$x,y,w$和$b$表示输入，输出，权重和偏置）：</p>
+<script type="math/tex; mode=display">y_f = \sum{x_f w_f} + b_f = \sum{\frac{x_q + zp_x}{q_x} \frac{w_q + zp_w}{q_w}} + \frac{b_q + zp_b}{q_b} =</script><script type="math/tex; mode=display">= \frac{1}{q_x q_w} \left( \sum { (x_q + zp_x) (w_q + zp_w) + \frac{q_x q_w}{q_b}(b_q + zp_b) } \right)</script><p>因此有：</p>
+<script type="math/tex; mode=display">y_q = round(q_y y_f) = round\left(\frac{q_y}{q_x q_w} \left( \sum { (x_q+zp_x) (w_q+zp_w) + \frac{q_x q_w}{q_b}(b_q+zp_b) } \right) \right)</script><p>注意：</p>
+<ul>
+<li>可以看到，必须重新调整偏置以匹配求和的比例。</li>
+<li>在适当的全整数HW（宽高）通道中，我们希望我们的主要累积项简单地表示为$\sum {x_q w_q}$。为了实现这一点，我们需要进一步发展上面得出的表达式。有关详细信息，请参阅<a href="https://github.com/google/gemmlowp/blob/master/doc/quantization.md#implementation-of-quantized-matrix-multiplication" target="_blank" rel="noopener">gemmlowp</a>。</li>
+</ul>
+<h4 id="对称模式"><a href="#对称模式" class="headerlink" title="对称模式"></a>对称模式</h4><p><img src="https://nervanasystems.github.io/distiller/imgs/quant_sym.png" alt="对称模式"></p>
+<p>在<strong>对称</strong>模式中，我们选择最小/最大值之间的最大绝对值，而不是将浮点范围的精确最小值/最大值映射到量化范围。另外，我们不使用零点。因此，我们有效量化的浮点范围相对于零是对称的，量化范围也是如此。</p>
+<p>用同样的符号，我们得到：</p>
+<script type="math/tex; mode=display">x_q = round\left (x_f \underbrace{\frac{2^{n-1} - 1}{\max|x_f|}}_{q_x} \right) = round(q_x x_f)</script><p><strong>卷积</strong>或<strong>全连接</strong>层如何在对称模式下量化:</p>
+<script type="math/tex; mode=display">y_f = \sum{x_f w_f} + b_f = \sum{\frac{x_q}{q_x} \frac{w_q}{q_w}} + \frac{b_q}{q_b} = \frac{1}{q_x q_w} \left( \sum { x_q w_q + \frac{q_x q_w}{q_b}b_q } \right)</script><p>因此：</p>
+<script type="math/tex; mode=display">y_q = round(q_y y_f) = round\left(\frac{q_y}{q_x q_w} \left( \sum { x_q w_q + \frac{q_x q_w}{q_b}b_q } \right) \right)</script><h4 id="模式对比"><a href="#模式对比" class="headerlink" title="模式对比"></a>模式对比</h4><p>这两种模式之间的主要权衡是<strong>简单性</strong>与<strong>量化范围的利用</strong>。</p>
+<ul>
+<li>当使用非对称量化时，充分利用量化范围。这是因为我们精确地将浮点范围中的最小值/最大值映射到量化范围的最小值/最大值。使用对称模式，如果浮动范围偏向一侧，则可能导致量化范围，其中显着的动态范围专用于我们将永远看不到的值。最极端的例子是在ReLU之后，整个张量是正的。在对称模式下量化它意味着我们实际上失去了1位。</li>
+<li>另一方面，如果我们查看上面的卷积/全连接层的偏差，我们可以看到对称模式的实际实现要简单得多。在非对称模式下，零点需要宽高中的附加逻辑。在延迟和/或功率方面，这种额外逻辑的成本当然取决于具体的实现。</li>
+</ul>
+<h3 id="其他特点"><a href="#其他特点" class="headerlink" title="其他特点"></a>其他特点</h3><ul>
+<li><strong>删除异常值:</strong> 如<a href="https://nervanasystems.github.io/distiller/quantization/index.html#outliers-removal" target="_blank" rel="noopener">这里</a>所讨论的，在某些情况下，激活的浮动范围包含异常值。在这些异常值上花费动态范围会损害我们准确表达我们实际关注的值的能力。<br><img src="https://nervanasystems.github.io/distiller/imgs/quant_clipped.png" alt="outliers-removal"><br>目前，Distiller支持在训练后量化期间通过平均来截断激活。即对于每批数据（batch），而不是计算全局最小/最大值，而是批次中每个样品的最小/最大值的平均值。</li>
+<li><strong>比例因子范围:</strong> 对于权重张量，Distiller支持每通道量化（每个输出通道）。</li>
+</ul>
+<h3 id="在Distiller中的实现"><a href="#在Distiller中的实现" class="headerlink" title="在Distiller中的实现"></a>在Distiller中的实现</h3><h4 id="训练后"><a href="#训练后" class="headerlink" title="训练后"></a>训练后</h4><p>对于训练后量化，目前使用此方法支持<strong>卷积</strong>和<strong>全连接</strong>。</p>
+<ul>
+<li>它们是通过利用量化和去量化操作包装现有PyTorch层来实现的。也就是说，计算是在浮点张量上完成的，但值本身仅限于整数值。在<code>RangeLinearQuantParamLayerWrapper</code>类中实现。</li>
+<li>所有其他层不受影响，并使用其原始FP32实现执行。 </li>
+<li>要使用此方法将现有模型自动转换为量化模型，请使用<code>PostTrainLinearQuantizer</code>类。 有关如何执行此操作的示例，请参阅<a href="https://github.com/NervanaSystems/distiller/blob/master/examples/classifier_compression/compress_classifier.py" target="_blank" rel="noopener"><code>compress_classifier.py</code></a>。此示例提供命令行参数以调用训练后量化。详阅<a href="https://nervanasystems.github.io/distiller/usage/index.html#post-training-quantization" target="_blank" rel="noopener">这里</a>。</li>
+<li>对于权重和偏置，在量化设置（“离线”）处确定一次比例因子和零点，并且对于激活，在运行时（“在线”）动态地确定比例因子和零点。计算出的量化参数作为缓冲区存储在模块中，因此在保存模型检查点时会自动序列化。</li>
+<li>由于这是训练后量化，因此使用位数&lt;8的情况可能会导致精确度降低。</li>
+</ul>
+<h4 id="Quantization-Aware训练"><a href="#Quantization-Aware训练" class="headerlink" title="Quantization-Aware训练"></a>Quantization-Aware训练</h4><p>要在训练中应用基于范围的线性量化，请使用<code>QuantAwareTrainRangeLinearQuantizer</code>类。它将权重量化应用于卷积和全连接模块。 对于激活量化，它将在ReLU之后插入实例<code>FakeLinearQuantization</code>模块。 该模块遵循<a href="http://openaccess.thecvf.com/content_cvpr_2018/html/Jacob_Quantization_and_Training_CVPR_2018_paper.html" target="_blank" rel="noopener">Benoit et al., 2018</a>中描述的方法，并使用指数移动平均值来跟踪激活范围。</p>
+<p>与post-training类似，计算出的量化参数（比例因子，零点，跟踪激活范围）作为缓冲区存储在各自的模块中，因此在创建检查点时会保存它们。</p>
+<p>注意，尚不支持从量化感知训练模型到训练后量化模型的转换。这种转换将使用在训练期间跟踪的激活范围，因此将不需要额外的离线或在线计算量化参数。</p>
+<h2 id="DoReFa"><a href="#DoReFa" class="headerlink" title="DoReFa"></a>DoReFa</h2><p>(方法提出在 <a href="https://arxiv.org/abs/1606.06160" target="_blank" rel="noopener">DoReFa-Net: Training Low Bitwidth Convolutional Neural Networks with Low Bitwidth Gradients</a>）</p>
+<p>在这个方法中，我们首先定义量化函数$quantize_k$，输入实数值$a_f \in [0, 1]$并且输出离散值$a_q \in \left{ \frac{0}{2^k-1}, \frac{1}{2^k-1}, … , \frac{2^k-1}{2^k-1} \right}$，其中$k$ 是量化比特数。</p>
+<script type="math/tex; mode=display">a_q = quantize_k(a_f) = \frac{1}{2^k-1} round \left( \left(2^k - 1 \right) a_f \right)</script><p>激活值被截断为$[0, 1]$的范围并遵循下式量化：</p>
+<script type="math/tex; mode=display">x_q = quantize_k(x_f)</script><p>对于权重，我们定义以下函数$f$，它接受无界实值输入并在$[0,1]$中输出实数值：</p>
+<script type="math/tex; mode=display">f(w) = \frac{tanh(w)}{2 max(|tanh(w)|)} + \frac{1}{2}</script><p>现在我们可以使用$quantize_k$来获得量化的权重值，如下所示：</p>
+<script type="math/tex; mode=display">w_q = 2 quantize_k \left( f(w_f) \right) - 1</script><p>该方法需要用量化感知训练训练模型，如<a href="https://nervanasystems.github.io/distiller/quantization/index.html#quantization-aware-training" target="_blank" rel="noopener">这里</a>所讨论的。 使用<code>DorefaQuantizer</code>类将现有模型转换为使用DoReFa进行量化训练的模型。</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h3><ul>
+<li>本文提出的梯度量化尚不支持。</li>
+<li>本文定义了二进制权重的特殊处理，但Distiller尚不支持。</li>
+</ul>
+<h2 id="PACT"><a href="#PACT" class="headerlink" title="PACT"></a>PACT</h2><p>(方法提出在 <a href="https://arxiv.org/abs/1805.06085" target="_blank" rel="noopener">PACT: Parameterized Clipping Activation for Quantized Neural Networks</a>)</p>
+<p>此方法类似于DoReFa，但激活函数的截断上界$\alpha$是学习的参数而不是直接设置为1。请注意，根据论文的建议，$\alpha$是每层共享的。</p>
+<p>该方法需要用量化感知训练训练模型，如<a href="https://nervanasystems.github.io/distiller/quantization/index.html#quantization-aware-training" target="_blank" rel="noopener">这里</a>所讨论的。 使用<code>PACTQuantizer</code>类将现有模型转换为使用PACT进行量化训练的模型。</p>
+<h2 id="WRPN"><a href="#WRPN" class="headerlink" title="WRPN"></a>WRPN</h2><p>(方法提出在 <a href="https://arxiv.org/abs/1709.01134" target="_blank" rel="noopener">WRPN: Wide Reduced-Precision Networks</a>)  </p>
+<p>在这种方法中，激活被剪切为$[0,1]$并按照如下方式量化（$k$是用于量化的比特数）：</p>
+<script type="math/tex; mode=display">x_q = \frac{1}{2^k-1} round \left( \left(2^k - 1 \right) x_f \right)</script><p>权重被剪切为$[ -1,1]$并量化如下：</p>
+<script type="math/tex; mode=display">w_q = \frac{1}{2^{k-1}-1} round \left( \left(2^{k-1} - 1 \right)w_f \right)</script><p>注意，$k-1$位用于量化权重，留下一位用于符号。</p>
+<p>该方法需要用量化感知训练训练模型，如<a href="https://nervanasystems.github.io/distiller/quantization/index.html#quantization-aware-training" target="_blank" rel="noopener">这里</a>所讨论的。 使用<code>WRPNQuantizer</code>类将现有模型转换为使用WRPN进行量化训练的模型。</p>
+<h3 id="注意-1"><a href="#注意-1" class="headerlink" title="注意:"></a>注意:</h3><ul>
+<li>该论文提出扩大层作为降低精度损失的手段。 目前，这不是作为<code>WRPNQuantizer</code>的一部分实现的。 要试验这一点，请修改模型实现以获得更宽的层。</li>
+<li>本文定义了二进制权重的特殊处理，但Distiller尚不支持。</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yan Joy</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    
+    <a href="https://joyfyan.github.io/2019/01/08/distiller-quantization/" title="Distiller：量化算法">https://joyfyan.github.io/2019/01/08/distiller-quantization/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/distiller/" rel="tag"># distiller</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/07/distiller-framework/" rel="next" title="Distiller_神经网络压缩研究框架">
+                <i class="fa fa-chevron-left"></i> Distiller_神经网络压缩研究框架
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/08/distiller-regularization/" rel="prev" title="Distiller：正则化">
+                Distiller：正则化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zODc5Ni8xNTMyNA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Yan Joy">
+            
+              <p class="site-author-name" itemprop="name">Yan Joy</p>
+              <div class="site-description motion-element" itemprop="description">Default~</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">104</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">60</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="http://weibo.com/yanjoy" title="Weibo &rarr; http://weibo.com/yanjoy" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="http://blog.csdn.net/yan_joy" title="CSDN &rarr; http://blog.csdn.net/yan_joy" rel="noopener" target="_blank"><i class="fa fa-fw fa-linux"></i>CSDN</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.xieqiang.site/" title="http://www.xieqiang.site/" rel="noopener" target="_blank">Johnny</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://judasdie.github.io/" title="https://judasdie.github.io/" rel="noopener" target="_blank">ZP Zhang</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://pages.coding.me/" title="https://pages.coding.me/" rel="noopener" target="_blank">Hosted by Coding Pages</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#量化算法"><span class="nav-number">1.</span> <span class="nav-text">量化算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于范围的线性量化（Range-Based-Linear-Quantization）"><span class="nav-number">1.1.</span> <span class="nav-text">基于范围的线性量化（Range-Based Linear Quantization）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#非对称（Asymmetric）与对称（Symmetric）"><span class="nav-number">1.1.1.</span> <span class="nav-text">非对称（Asymmetric）与对称（Symmetric）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#非对称模式"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">非对称模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对称模式"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">对称模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模式对比"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">模式对比</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他特点"><span class="nav-number">1.1.2.</span> <span class="nav-text">其他特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在Distiller中的实现"><span class="nav-number">1.1.3.</span> <span class="nav-text">在Distiller中的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#训练后"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">训练后</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Quantization-Aware训练"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">Quantization-Aware训练</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DoReFa"><span class="nav-number">1.2.</span> <span class="nav-text">DoReFa</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">1.2.1.</span> <span class="nav-text">注意:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PACT"><span class="nav-number">1.3.</span> <span class="nav-text">PACT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WRPN"><span class="nav-number">1.4.</span> <span class="nav-text">WRPN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意-1"><span class="nav-number">1.4.1.</span> <span class="nav-text">注意:</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joy</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+      <div>
+        <div class="addthis_inline_share_toolbox">
+  <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b692d42870e12d9" async="async"></script>
+</div>
+
+      </div>
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2019/01/08/distiller-quantization/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz',
+                'X-LC-Key': 'owWjRRJ2oBD7Dekc8l1RRctK',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

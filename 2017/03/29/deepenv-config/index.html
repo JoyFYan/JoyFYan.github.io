@@ -14,11 +14,11 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="en">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -32,8 +32,6 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -46,6 +44,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -53,72 +66,15 @@
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=6.3.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -141,11 +97,13 @@
 
 
   <meta name="description" content="有一台空闲的服务器，上面有一块K40的卡，原来的系统进不去了可以拿来搞一搞。。">
+<meta name="keywords" content="caffe,cuda,tensorflow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从零开始配置深度学习环境：ubuntu16.04 cuda opencv caffe 需要的库">
 <meta property="og:url" content="https://joyfyan.github.io/2017/03/29/deepenv-config/index.html">
 <meta property="og:site_name" content="小一一的小站">
 <meta property="og:description" content="有一台空闲的服务器，上面有一块K40的卡，原来的系统进不去了可以拿来搞一搞。。">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="http://img.blog.csdn.net/20170327190922278?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20170327191542865?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20170327191959919?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
@@ -160,12 +118,13 @@
 
 
 
+  
+  
+  <link rel="canonical" href="https://joyfyan.github.io/2017/03/29/deepenv-config/">
 
-  <link rel="canonical" href="https://joyfyan.github.io/2017/03/29/deepenv-config/"/>
 
 
-
-<script type="text/javascript" id="page.configurations">
+<script id="page.configurations">
   CONFIG.page = {
     sidebar: "",
   };
@@ -179,7 +138,7 @@
 
 
 
-  <script type="text/javascript">
+  <script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -192,30 +151,31 @@
 
 
 
+
+
+
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
@@ -233,7 +193,7 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -247,6 +207,7 @@
       
         <p class="site-subtitle">Blog of Yan Joy</p>
       
+    
     
   </div>
 
@@ -270,40 +231,85 @@
         
           
           <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
   </li>
 
       
@@ -313,7 +319,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
         </li>
       
     </ul>
@@ -333,9 +339,7 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="Searching..." spellcheck="false"
-             type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -403,6 +407,7 @@
         
         
           <h1 class="post-title" itemprop="name headline">从零开始配置深度学习环境：ubuntu16.04 cuda opencv caffe 需要的库
+
               
             
           </h1>
@@ -450,7 +455,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -471,20 +476,21 @@
 
           
             
+            
           
 
           
           
-             <span id="/2017/03/29/deepenv-config/" class="leancloud_visitors" data-flag-title="从零开始配置深度学习环境：ubuntu16.04 cuda opencv caffe 需要的库">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
+            <span id="/2017/03/29/deepenv-config/" class="leancloud_visitors" data-flag-title="从零开始配置深度学习环境：ubuntu16.04 cuda opencv caffe 需要的库">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -509,49 +515,49 @@
         <p>有一台空闲的服务器，上面有一块K40的卡，原来的系统进不去了可以拿来搞一搞。。</p>
 <a id="more"></a>
 <hr>
-<h1 id="nvidia驱动"><a href="#nvidia驱动" class="headerlink" title="nvidia驱动"></a>nvidia驱动</h1><p>这一步好像可以跳过，因为之后安装cuda能选择是否安装驱动。<br>上官网<a href="http://www.nvidia.com/Download/index.aspx?lang=en-us" target="_blank" rel="external">NVIDIA Driver Downloads</a>找自己显卡的型号，看看适合的驱动编号是什么。<br><img src="http://img.blog.csdn.net/20170327190922278?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="driver"><br>之后输入命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sudo add-apt-repository ppa:graphics-drivers/ppa</div><div class="line">sudo apt-get update </div><div class="line">sudo apt-get install nvidia-375 </div><div class="line">sudo apt-get install mesa-common-dev </div><div class="line">sudo apt-get install freeglut3-dev</div></pre></td></tr></table></figure></p>
+<h1 id="nvidia驱动"><a href="#nvidia驱动" class="headerlink" title="nvidia驱动"></a>nvidia驱动</h1><p>这一步好像可以跳过，因为之后安装cuda能选择是否安装驱动。<br>上官网<a href="http://www.nvidia.com/Download/index.aspx?lang=en-us" target="_blank" rel="noopener">NVIDIA Driver Downloads</a>找自己显卡的型号，看看适合的驱动编号是什么。<br><img src="http://img.blog.csdn.net/20170327190922278?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="driver"><br>之后输入命令：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:graphics-drivers/ppa</span><br><span class="line">sudo apt-get update </span><br><span class="line">sudo apt-get install nvidia-375 </span><br><span class="line">sudo apt-get install mesa-common-dev </span><br><span class="line">sudo apt-get install freeglut3-dev</span><br></pre></td></tr></table></figure></p>
 <p>之后重启系统让显卡驱动生效。<br><strong>但是，Ubuntu自带的驱动更新也可以完成这样的操作而且不用输命令！</strong><br>点左边栏的设置，下面找到“Software &amp; Updates”，在点上面的“Additional Drivers”，会发现会有一个显卡的驱动，恰好和要找的版本相同~选中之后确认更新即可。<br><img src="http://img.blog.csdn.net/20170327191542865?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="driver_ubuntu"><br>其实这也是碰巧，这里面只识别出了Quadro K600，和K40的驱动型号相同，但如果是其他的卡，也需要自己确认一下。</p>
 <hr>
-<h1 id="CUDA"><a href="#CUDA" class="headerlink" title="CUDA"></a>CUDA</h1><p>还是先进网页下载<a href="https://developer.nvidia.com/cuda-downloads" target="_blank" rel="external">CUDA</a>。<br>我选的配置如下：<br><img src="http://img.blog.csdn.net/20170327191959919?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="download cuda"><br>之后按照要求，运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo sh cuda_8.0.61_375.26_linux.run</div></pre></td></tr></table></figure></p>
+<h1 id="CUDA"><a href="#CUDA" class="headerlink" title="CUDA"></a>CUDA</h1><p>还是先进网页下载<a href="https://developer.nvidia.com/cuda-downloads" target="_blank" rel="noopener">CUDA</a>。<br>我选的配置如下：<br><img src="http://img.blog.csdn.net/20170327191959919?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="download cuda"><br>之后按照要求，运行：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sh cuda_8.0.61_375.26_linux.run</span><br></pre></td></tr></table></figure></p>
 <p>之后会有三个提示：</p>
 <ol>
 <li>是否安装驱动（装过的不要装）</li>
 <li>是否安装CUDA（yes）</li>
 <li>是否安装sample（看自己）</li>
 </ol>
-<p>结束之后会有摘要：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">=========== </div><div class="line">= Summary = </div><div class="line">===========</div><div class="line"><span class="symbol"></span></div><div class="line">Driver: Not Selected </div><div class="line"><span class="string">Toolkit:</span> Installed <span class="keyword">in</span> <span class="regexp">/usr/</span>local/cuda<span class="number">-8.0</span> </div><div class="line"><span class="string">Samples:</span> Not Selected </div><div class="line"></div><div class="line">Please make sure that </div><div class="line">– PATH includes <span class="regexp">/usr/</span>local<span class="regexp">/cuda-8.0/</span>bin </div><div class="line">– LD_LIBRARY_PATH includes <span class="regexp">/usr/</span>local<span class="regexp">/cuda-8.0/</span>lib64, or, add <span class="regexp">/usr/</span>local<span class="regexp">/cuda-8.0/</span>lib64 to <span class="regexp">/etc/</span>ld.so.conf and run ldconfig <span class="keyword">as</span> root</div></pre></td></tr></table></figure></p>
-<p>接下来是添加到环境变量。<br>首先打开文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/profile</div></pre></td></tr></table></figure></p>
-<p>在最下面添加两行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export PATH=/usr/local/cuda-8.0/bin:$PATH</div><div class="line">export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH</div></pre></td></tr></table></figure></p>
+<p>结束之后会有摘要：<br><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">=========== </span><br><span class="line">= <span class="keyword">Summary</span> = </span><br><span class="line">===========</span><br><span class="line"></span><br><span class="line">Driver: <span class="keyword">Not</span> Selected </span><br><span class="line">Toolkit: Installed <span class="keyword">in</span> /usr/<span class="keyword">local</span>/cuda<span class="number">-8.0</span> </span><br><span class="line">Samples: <span class="keyword">Not</span> Selected </span><br><span class="line"></span><br><span class="line">Please make sure that </span><br><span class="line">– <span class="type">PATH</span> includes /usr/<span class="keyword">local</span>/cuda<span class="number">-8.0</span>/bin </span><br><span class="line">– LD_LIBRARY_PATH includes /usr/<span class="keyword">local</span>/cuda<span class="number">-8.0</span>/lib64, <span class="keyword">or</span>, <span class="keyword">add</span> /usr/<span class="keyword">local</span>/cuda<span class="number">-8.0</span>/lib64 <span class="keyword">to</span> /etc/ld.so.conf <span class="keyword">and</span> run ldconfig <span class="keyword">as</span> root</span><br></pre></td></tr></table></figure></p>
+<p>接下来是添加到环境变量。<br>首先打开文件：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/profile</span><br></pre></td></tr></table></figure></p>
+<p>在最下面添加两行：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PATH=/usr/local/cuda-8.0/bin:$PATH</span><br><span class="line">export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH</span><br></pre></td></tr></table></figure></p>
 <p>至此安装结束~</p>
 <hr>
-<h1 id="cudnn"><a href="#cudnn" class="headerlink" title="cudnn"></a>cudnn</h1><p>1.下载cuDNN压缩包；<br>2.对下载文件进行解压：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">tar</span> <span class="selector-tag">-zxvf</span> <span class="selector-tag">cudnn-8</span><span class="selector-class">.0-linux-x64-v5</span><span class="selector-class">.1</span><span class="selector-class">.tgz</span></div></pre></td></tr></table></figure></p>
-<p>3.解压后会看到一个cuda文件夹，里面包含了include以及lib64两个子目录。我们需要做的就是将这两个字母里面的文件复制到cuda对应的安装目录。这里以cuda的安装目录为/usr/local/cuda/，这个目录下也会包含include/以及lib64/这两个文件夹，将之前目录的文件复制过来即可。<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo cp -p cuda<span class="regexp">/include/</span>cudnn.h <span class="regexp">/usr/</span>local<span class="regexp">/cuda/i</span>nclude</div><div class="line">sudo cp -p cuda<span class="regexp">/lib64/</span>* <span class="regexp">/usr/</span>local<span class="regexp">/cuda/</span>lib64<span class="regexp">/</span></div></pre></td></tr></table></figure></p>
+<h1 id="cudnn"><a href="#cudnn" class="headerlink" title="cudnn"></a>cudnn</h1><p>1.下载cuDNN压缩包；<br>2.对下载文件进行解压：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">tar</span> <span class="selector-tag">-zxvf</span> <span class="selector-tag">cudnn-8</span><span class="selector-class">.0-linux-x64-v5</span><span class="selector-class">.1</span><span class="selector-class">.tgz</span></span><br></pre></td></tr></table></figure></p>
+<p>3.解压后会看到一个cuda文件夹，里面包含了include以及lib64两个子目录。我们需要做的就是将这两个字母里面的文件复制到cuda对应的安装目录。这里以cuda的安装目录为/usr/local/cuda/，这个目录下也会包含include/以及lib64/这两个文件夹，将之前目录的文件复制过来即可。<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cp -p cuda<span class="regexp">/include/</span>cudnn.h <span class="regexp">/usr/</span>local<span class="regexp">/cuda/i</span>nclude</span><br><span class="line">sudo cp -p cuda<span class="regexp">/lib64/</span>* <span class="regexp">/usr/</span>local<span class="regexp">/cuda/</span>lib64<span class="regexp">/</span></span><br></pre></td></tr></table></figure></p>
 <hr>
 <h1 id="远程桌面"><a href="#远程桌面" class="headerlink" title="远程桌面"></a>远程桌面</h1><blockquote>
-<p><a href="http://ubuntuhandbook.org/index.php/2016/07/remote-access-ubuntu-16-04/" target="_blank" rel="external">How to Remote Access to Ubuntu 16.04 from Windows</a></p>
+<p><a href="http://ubuntuhandbook.org/index.php/2016/07/remote-access-ubuntu-16-04/" target="_blank" rel="noopener">How to Remote Access to Ubuntu 16.04 from Windows</a></p>
 </blockquote>
 <p>在windows通过VNC进行远程桌面连接。<br>首先在服务器上打开桌面分享：<br><img src="http://img.blog.csdn.net/20170328110948839?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="desk"><br>如图所示勾选，即可通过vnc访问。</p>
 <p>如果有连接错误，可以尝试以下方式解决：<br>运行dconf-editor（没有的话先安装<code>sudo apt install dconf-editor</code>）。<br>导航至：org -&gt; gnome -&gt; desktop -&gt; remote-access，反选“require-encryption”即可。</p>
 <hr>
-<h1 id="opencv"><a href="#opencv" class="headerlink" title="opencv"></a>opencv</h1><p>下载源码，解压。<br>可以先在目录下建立release文件夹作为输出目录。<br>我的编译参数为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_TBB=ON -D BUILD_NEW_PYTHON_SUPPORT=ON -D WITH_V4L=ON -D WITH_OPENGL=ON -D WITH_CUBLAS=ON -D WIHT_CUDA=ON -D WITH_OPENGL=ON ..</div></pre></td></tr></table></figure></p>
-<p>之后<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">make -j</div><div class="line">sudo make install</div></pre></td></tr></table></figure></p>
+<h1 id="opencv"><a href="#opencv" class="headerlink" title="opencv"></a>opencv</h1><p>下载源码，解压。<br>可以先在目录下建立release文件夹作为输出目录。<br>我的编译参数为：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_TBB=ON -D BUILD_NEW_PYTHON_SUPPORT=ON -D WITH_V4L=ON -D WITH_OPENGL=ON -D WITH_CUBLAS=ON -D WIHT_CUDA=ON -D WITH_OPENGL=ON ..</span><br></pre></td></tr></table></figure></p>
+<p>之后<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make -j</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h1 id="Protocol-Buffers-v3-安装"><a href="#Protocol-Buffers-v3-安装" class="headerlink" title="Protocol Buffers v3 安装"></a>Protocol Buffers v3 安装</h1><p>caffe需要这个东西。。<br>到<a href="https://github.com/google/protobuf/releases/tag/v3.2.0" target="_blank" rel="external">github</a>上下载源码。<br>解压之后进入目录，在Ubuntu上先需要确保前置程序的安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install autoconf automake libtool curl make g++ unzip</div></pre></td></tr></table></figure></p>
-<p>安装之后，再运行脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./autogen.sh</div></pre></td></tr></table></figure></p>
-<p>这样才会生成<code>configure</code>文件。之后<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">./configure</div><div class="line">make</div><div class="line">make check</div><div class="line">sudo make install</div><div class="line">sudo ldconfig # refresh shared library cache.</div></pre></td></tr></table></figure></p>
+<h1 id="Protocol-Buffers-v3-安装"><a href="#Protocol-Buffers-v3-安装" class="headerlink" title="Protocol Buffers v3 安装"></a>Protocol Buffers v3 安装</h1><p>caffe需要这个东西。。<br>到<a href="https://github.com/google/protobuf/releases/tag/v3.2.0" target="_blank" rel="noopener">github</a>上下载源码。<br>解压之后进入目录，在Ubuntu上先需要确保前置程序的安装：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install autoconf automake libtool curl make g++ unzip</span><br></pre></td></tr></table></figure></p>
+<p>安装之后，再运行脚本：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./autogen.sh</span><br></pre></td></tr></table></figure></p>
+<p>这样才会生成<code>configure</code>文件。之后<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make check</span><br><span class="line">sudo make install</span><br><span class="line">sudo ldconfig # refresh shared library cache.</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h1 id="MKL-安装"><a href="#MKL-安装" class="headerlink" title="MKL 安装"></a>MKL 安装</h1><p>去官网下载，会让你留一个邮箱。<a href="https://registrationcenter.intel.com/en/forms/?productid=2558&amp;licensetype=2" target="_blank" rel="external">Intel® Math Kernel Library (Intel® MKL)</a><a href="http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/11306/l_mkl_2017.2.174.tgz" target="_blank" rel="external">Build date: 16 Feb 2017</a><br>下载之后解压，运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo ./install.sh</div></pre></td></tr></table></figure></p>
-<p>按着提示继续走，默认安装就行。<br>结束后添加环境目录：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">vim</span> /etc/<span class="keyword">profile</span></div></pre></td></tr></table></figure></p>
-<p>在末尾处加入代码：<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export PATH=<span class="string">":/opt/intel/bin:$PATH"</span></div><div class="line">export LD_LIBRARY_PATH=<span class="variable">$LD_LIBRARY_LIB</span><span class="symbol">:/opt/intel/lib/intel64</span><span class="symbol">:/opt/intel/mkl/lib/intel64</span></div></pre></td></tr></table></figure></p>
+<h1 id="MKL-安装"><a href="#MKL-安装" class="headerlink" title="MKL 安装"></a>MKL 安装</h1><p>去官网下载，会让你留一个邮箱。<a href="https://registrationcenter.intel.com/en/forms/?productid=2558&amp;licensetype=2" target="_blank" rel="noopener">Intel® Math Kernel Library (Intel® MKL)</a><a href="http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/11306/l_mkl_2017.2.174.tgz" target="_blank" rel="noopener">Build date: 16 Feb 2017</a><br>下载之后解压，运行<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./install.sh</span><br></pre></td></tr></table></figure></p>
+<p>按着提示继续走，默认安装就行。<br>结束后添加环境目录：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">vim</span> /etc/<span class="keyword">profile</span></span><br></pre></td></tr></table></figure></p>
+<p>在末尾处加入代码：<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PATH=<span class="string">":/opt/intel/bin:$PATH"</span></span><br><span class="line">export LD_LIBRARY_PATH=<span class="variable">$LD_LIBRARY_LIB</span><span class="symbol">:/opt/intel/lib/intel64</span><span class="symbol">:/opt/intel/mkl/lib/intel64</span></span><br></pre></td></tr></table></figure></p>
 <p>退出，使设置生效。</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">source</span> <span class="regexp">/etc/</span>profile</div></pre></td></tr></table></figure>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">source</span> <span class="regexp">/etc/</span>profile</span><br></pre></td></tr></table></figure>
 <hr>
-<h1 id="boost库"><a href="#boost库" class="headerlink" title="boost库"></a>boost库</h1><p>下载<a href="http://www.boost.org/" target="_blank" rel="external">boost库</a>，本文使用的是1.58版本。<br>解压：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar --bzip2 -xvf boost_1_58_0<span class="selector-class">.tar</span><span class="selector-class">.bz2</span></div></pre></td></tr></table></figure></p>
-<p>进入解压后的文件夹，运行：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./<span class="keyword">bootstrap</span>.<span class="keyword">sh</span></div></pre></td></tr></table></figure></p>
+<h1 id="boost库"><a href="#boost库" class="headerlink" title="boost库"></a>boost库</h1><p>下载<a href="http://www.boost.org/" target="_blank" rel="noopener">boost库</a>，本文使用的是1.58版本。<br>解压：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar --bzip2 -xvf boost_1_58_0<span class="selector-class">.tar</span><span class="selector-class">.bz2</span></span><br></pre></td></tr></table></figure></p>
+<p>进入解压后的文件夹，运行：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./<span class="keyword">bootstrap</span>.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure></p>
 <p>如果失败尝试使用<code>sudo sh ./bootstrap.sh</code><br>之后会在当前目录下生成bjam文件，继续编译。。。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./bjam</div></pre></td></tr></table></figure>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">./bjam</span></span><br></pre></td></tr></table></figure>
 <p>   编译时间比较长<br>将生成的库默认安装到 /urs/local/lib 目录</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./<span class="keyword">bjam </span>install</div></pre></td></tr></table></figure>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./<span class="keyword">bjam </span>install</span><br></pre></td></tr></table></figure>
 <hr>
 <p>其实整个过程中没有什么出错的地方，不过不知道怎么回事电脑运行很慢，为这还重装一回。<br>而且有开机不显示自检的情况。师兄帮忙插拔了内存好像解决了，原理不是很懂。。</p>
 
@@ -567,7 +573,34 @@
     
 
     
+      
+    
+    
 
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yan Joy</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    
+    <a href="https://joyfyan.github.io/2017/03/29/deepenv-config/" title="从零开始配置深度学习环境：ubuntu16.04 cuda opencv caffe 需要的库">https://joyfyan.github.io/2017/03/29/deepenv-config/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -576,9 +609,9 @@
           
             <a href="/tags/caffe/" rel="tag"># caffe</a>
           
-            <a href="/tags/tensorflow/" rel="tag"># tensorflow</a>
-          
             <a href="/tags/cuda/" rel="tag"># cuda</a>
+          
+            <a href="/tags/tensorflow/" rel="tag"># tensorflow</a>
           
         </div>
       
@@ -647,7 +680,6 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -663,16 +695,14 @@
         </ul>
       
 
-      <section class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
-                alt="Yan Joy" />
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Yan Joy">
             
               <p class="site-author-name" itemprop="name">Yan Joy</p>
-              <p class="site-description motion-element" itemprop="description">Default~</p>
+              <div class="site-description motion-element" itemprop="description">Default~</div>
           </div>
 
           
@@ -682,7 +712,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">99</span>
+                    <span class="site-state-item-count">104</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -692,7 +722,11 @@
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -727,7 +761,11 @@
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -846,7 +884,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">58</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">60</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -857,22 +899,35 @@
           
 
           
+
+          
             <div class="links-of-author motion-element">
               
                 <span class="links-of-author-item">
-                  <a href="http://weibo.com/yanjoy" target="_blank" title="Weibo"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
                   
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="http://weibo.com/yanjoy" title="Weibo &rarr; http://weibo.com/yanjoy" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="http://blog.csdn.net/yan_joy" target="_blank" title="CSDN"><i class="fa fa-fw fa-linux"></i>CSDN</a>
                   
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="http://blog.csdn.net/yan_joy" title="CSDN &rarr; http://blog.csdn.net/yan_joy" rel="noopener" target="_blank"><i class="fa fa-fw fa-linux"></i>CSDN</a>
                 </span>
               
             </div>
           
 
-          
           
 
           
@@ -880,20 +935,20 @@
             <div class="links-of-blogroll motion-element links-of-blogroll-block">
               <div class="links-of-blogroll-title">
                 <i class="fa  fa-fw fa-link"></i>
-                FRIENDS
+                Links
               </div>
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://www.xieqiang.site/" title="Johnny" target="_blank">Johnny</a>
+                    <a href="http://www.xieqiang.site/" title="http://www.xieqiang.site/" rel="noopener" target="_blank">Johnny</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://judasdie.github.io/" title="ZP Zhang" target="_blank">ZP Zhang</a>
+                    <a href="https://judasdie.github.io/" title="https://judasdie.github.io/" rel="noopener" target="_blank">ZP Zhang</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://pages.coding.me/" title="Hosted by Coding Pages" target="_blank">Hosted by Coding Pages</a>
+                    <a href="https://pages.coding.me/" title="https://pages.coding.me/" rel="noopener" target="_blank">Hosted by Coding Pages</a>
                   </li>
                 
               </ul>
@@ -906,15 +961,16 @@
           
 
         </div>
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
@@ -922,7 +978,7 @@
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
@@ -930,6 +986,7 @@
 
     </div>
   </aside>
+  
 
 
         
@@ -950,9 +1007,7 @@
 </div>
 
 
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.2.2</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 
@@ -960,7 +1015,7 @@
 
 
 
-  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.3.0</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.0</div>
 
 
 
@@ -986,14 +1041,13 @@
     
 
     
-	
+
     
 
     
       <div>
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<div class="addthis_inline_share_toolbox">
-  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b692d42870e12d9" async = "async" ></script>
+        <div class="addthis_inline_share_toolbox">
+  <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b692d42870e12d9" async="async"></script>
 </div>
 
       </div>
@@ -1002,7 +1056,7 @@
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -1034,27 +1088,21 @@
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
 
 
 
@@ -1062,54 +1110,54 @@
   
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
 
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
 
 
 
   
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
 
 
 
   
 
 
-
-  
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  
-
-
-
-
-
-
-
-
+  <script src="/js/next-boot.js?v=7.1.0"></script>
 
 
   
 
-  <script type="text/javascript">
+  
+
+  
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2017/03/29/deepenv-config/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+  <script>
     // Popup Window;
     var isfetched = false;
     var isXml = true;
@@ -1195,7 +1243,7 @@
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
                 
                 var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
                 var indexOfTitle = [];
                 var indexOfContent = [];
                 // only match articles with not empty titles
@@ -1364,9 +1412,9 @@
               })
             };
             if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
             } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
             } else {
               resultItems.sort(function (resultLeft, resultRight) {
                 if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
@@ -1434,120 +1482,71 @@
 
 
   
-
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz", "owWjRRJ2oBD7Dekc8l1RRctK");</script>
   <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
+    
     function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
+      var $visitors = $('.leancloud_visitors');
       var url = $visitors.attr('id').trim();
       var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
 
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
           if (results.length > 0) {
             var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
             
-            counter.save(null, {
-              success: function(counter) {
-                
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
           } else {
             
-              var newcounter = new Counter();
-              /* Set ACL */
-              var acl = new AV.ACL();
-              acl.setPublicReadAccess(true);
-              acl.setPublicWriteAccess(true);
-              newcounter.setACL(acl);
-              /* End Set ACL */
-              newcounter.set("title", title);
-              newcounter.set("url", url);
-              newcounter.set("time", 1);
-              newcounter.save(null, {
-                success: function(newcounter) {
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
                   var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                },
-                error: function(newcounter, error) {
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
                   console.log('Failed to create');
-                }
-              });
+                });
             
           }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
     }
+    
 
     $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz',
+                'X-LC-Key': 'owWjRRJ2oBD7Dekc8l1RRctK',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
     });
   </script>
 
 
-
-  
 
   
 
@@ -1560,31 +1559,56 @@
   
     
       <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      TeX: {equationNumbers: { autoNumber: "AMS" }}
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
     });
+  });
 </script>
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
 </script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     
   
 
 
   
+
+  
+
+  
+
+  
+
+  
+
   
 
   

@@ -14,11 +14,11 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="en">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -32,8 +32,6 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -46,6 +44,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -53,72 +66,15 @@
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=6.3.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -141,11 +97,13 @@
 
 
   <meta name="description" content="Deepdream是一年半前谷歌搞的一个深度学习“艺术品”，最近在cs231n课上看到了，感觉还是很interesting。">
+<meta name="keywords" content="caffe,deepdream">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Deepdream 实现">
 <meta property="og:url" content="https://joyfyan.github.io/2017/01/11/Deepdream/index.html">
 <meta property="og:site_name" content="小一一的小站">
 <meta property="og:description" content="Deepdream是一年半前谷歌搞的一个深度学习“艺术品”，最近在cs231n课上看到了，感觉还是很interesting。">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="http://img.blog.csdn.net/20170111163957781?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20170111164114329?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20170111164154612?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
@@ -166,12 +124,13 @@
 
 
 
+  
+  
+  <link rel="canonical" href="https://joyfyan.github.io/2017/01/11/Deepdream/">
 
-  <link rel="canonical" href="https://joyfyan.github.io/2017/01/11/Deepdream/"/>
 
 
-
-<script type="text/javascript" id="page.configurations">
+<script id="page.configurations">
   CONFIG.page = {
     sidebar: "",
   };
@@ -185,7 +144,7 @@
 
 
 
-  <script type="text/javascript">
+  <script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -198,30 +157,31 @@
 
 
 
+
+
+
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
@@ -239,7 +199,7 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -253,6 +213,7 @@
       
         <p class="site-subtitle">Blog of Yan Joy</p>
       
+    
     
   </div>
 
@@ -276,40 +237,85 @@
         
           
           <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
   </li>
 
       
@@ -319,7 +325,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
         </li>
       
     </ul>
@@ -339,9 +345,7 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="Searching..." spellcheck="false"
-             type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -409,6 +413,7 @@
         
         
           <h1 class="post-title" itemprop="name headline">Deepdream 实现
+
               
             
           </h1>
@@ -444,7 +449,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -465,20 +470,21 @@
 
           
             
+            
           
 
           
           
-             <span id="/2017/01/11/Deepdream/" class="leancloud_visitors" data-flag-title="Deepdream 实现">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
+            <span id="/2017/01/11/Deepdream/" class="leancloud_visitors" data-flag-title="Deepdream 实现">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -505,13 +511,13 @@
 <h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><hr>
 <p>deepdream还是基于python和caffe深度网络的，因此大概需要以下环境：</p>
 <ul>
-<li>Standard Python scientific stack: <a href="http://www.numpy.org/" target="_blank" rel="external">NumPy</a>, <a href="http://www.scipy.org/" target="_blank" rel="external">SciPy</a>, <a href="http://www.pythonware.com/products/pil/" target="_blank" rel="external">PIL</a>, <a href="http://ipython.org/" target="_blank" rel="external">IPython</a>. Those libraries can also be installed as a part of one of the scientific packages for Python, such as <a href="http://continuum.io/downloads" target="_blank" rel="external">Anaconda</a> or <a href="https://store.enthought.com/" target="_blank" rel="external">Canopy</a>.</li>
-<li><a href="http://caffe.berkeleyvision.org/" target="_blank" rel="external">Caffe</a> deep learning framework (<a href="http://caffe.berkeleyvision.org/installation.html" target="_blank" rel="external">installation instructions</a>).</li>
-<li>Google <a href="https://developers.google.com/protocol-buffers/" target="_blank" rel="external">protobuf</a> library that is used for Caffe model manipulation.</li>
+<li>Standard Python scientific stack: <a href="http://www.numpy.org/" target="_blank" rel="noopener">NumPy</a>, <a href="http://www.scipy.org/" target="_blank" rel="noopener">SciPy</a>, <a href="http://www.pythonware.com/products/pil/" target="_blank" rel="noopener">PIL</a>, <a href="http://ipython.org/" target="_blank" rel="noopener">IPython</a>. Those libraries can also be installed as a part of one of the scientific packages for Python, such as <a href="http://continuum.io/downloads" target="_blank" rel="noopener">Anaconda</a> or <a href="https://store.enthought.com/" target="_blank" rel="noopener">Canopy</a>.</li>
+<li><a href="http://caffe.berkeleyvision.org/" target="_blank" rel="noopener">Caffe</a> deep learning framework (<a href="http://caffe.berkeleyvision.org/installation.html" target="_blank" rel="noopener">installation instructions</a>).</li>
+<li>Google <a href="https://developers.google.com/protocol-buffers/" target="_blank" rel="noopener">protobuf</a> library that is used for Caffe model manipulation.</li>
 </ul>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><hr>
-<h2 id="导入库"><a href="#导入库" class="headerlink" title="导入库"></a>导入库</h2><p>相关的环境配置好了之后，可以先试试库能不能被导入进来：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># imports and basic notebook setup</span></div><div class="line"><span class="keyword">from</span> cStringIO <span class="keyword">import</span> StringIO</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> scipy.ndimage <span class="keyword">as</span> nd</div><div class="line"><span class="keyword">import</span> PIL.Image</div><div class="line"><span class="keyword">from</span> IPython.display <span class="keyword">import</span> clear_output, Image, display</div><div class="line"><span class="keyword">from</span> google.protobuf <span class="keyword">import</span> text_format</div><div class="line"></div><div class="line"><span class="keyword">import</span> caffe</div><div class="line">caffe.set_mode_gpu();</div><div class="line">caffe.set_device(<span class="number">2</span>);<span class="comment"># 默认GPU 为0</span></div><div class="line"><span class="comment"># 如果GPU 支持 CUDA 并且 Caffe 编译时添加对 CUDA 支持,可以使用caffe.set_mode_gpu()和caffe.set_device(0);</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">showarray</span><span class="params">(a, fmt=<span class="string">'jpeg'</span>)</span>:</span></div><div class="line">    a = np.uint8(np.clip(a, <span class="number">0</span>, <span class="number">255</span>))</div><div class="line">    f = StringIO()</div><div class="line">    PIL.Image.fromarray(a).save(f, fmt)</div><div class="line">    display(Image(data=f.getvalue()))</div></pre></td></tr></table></figure></p>
-<h2 id="加载模型"><a href="#加载模型" class="headerlink" title="加载模型"></a>加载模型</h2><p>网络采用了<a href="http://dl.caffe.berkeleyvision.org/bvlc_googlenet.caffemodel" target="_blank" rel="external">GoogLeNet模型</a>，需要提前下好。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">model_path = <span class="string">'../caffe/models/bvlc_googlenet/'</span> <span class="comment"># 替换为自己模型的目录</span></div><div class="line">net_fn   = model_path + <span class="string">'deploy.prototxt'</span></div><div class="line">param_fn = model_path + <span class="string">'bvlc_googlenet.caffemodel'</span></div><div class="line"></div><div class="line"><span class="comment"># Patching model to be able to compute gradients.</span></div><div class="line"><span class="comment"># Note that you can also manually add "force_backward: true" line to "deploy.prototxt".</span></div><div class="line"><span class="comment"># 以下部分是更改了deploy的参数，增加了"force_backward: true"，然后保存成一个临时文件用于网络。当然也可以自己手动改。</span></div><div class="line">model = caffe.io.caffe_pb2.NetParameter()</div><div class="line">text_format.Merge(open(net_fn).read(), model)</div><div class="line">model.force_backward = <span class="keyword">True</span></div><div class="line">open(<span class="string">'tmp.prototxt'</span>, <span class="string">'w'</span>).write(str(model))</div><div class="line"></div><div class="line">net = caffe.Classifier(<span class="string">'tmp.prototxt'</span>, param_fn,</div><div class="line">                       mean = np.float32([<span class="number">104.0</span>, <span class="number">116.0</span>, <span class="number">122.0</span>]), </div><div class="line">                       <span class="comment"># ImageNet mean, training set dependent </span></div><div class="line">                       <span class="comment"># 均值</span></div><div class="line">                       channel_swap = (<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>))  </div><div class="line">                       <span class="comment"># the reference model has channels in BGR order instead of RGB </span></div><div class="line">                       <span class="comment"># 改RGB通道</span></div><div class="line"></div><div class="line"><span class="comment"># a couple of utility functions for converting to and from Caffe's input image layout</span></div><div class="line"><span class="comment"># 为了caffe 数据处理的功能函数</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">preprocess</span><span class="params">(net, img)</span>:</span></div><div class="line">    <span class="keyword">return</span> np.float32(np.rollaxis(img, <span class="number">2</span>)[::<span class="number">-1</span>]) - net.transformer.mean[<span class="string">'data'</span>]</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">deprocess</span><span class="params">(net, img)</span>:</span></div><div class="line">    <span class="keyword">return</span> np.dstack((img + net.transformer.mean[<span class="string">'data'</span>])[::<span class="number">-1</span>])</div></pre></td></tr></table></figure></p>
+<h2 id="导入库"><a href="#导入库" class="headerlink" title="导入库"></a>导入库</h2><p>相关的环境配置好了之后，可以先试试库能不能被导入进来：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># imports and basic notebook setup</span></span><br><span class="line"><span class="keyword">from</span> cStringIO <span class="keyword">import</span> StringIO</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> scipy.ndimage <span class="keyword">as</span> nd</span><br><span class="line"><span class="keyword">import</span> PIL.Image</span><br><span class="line"><span class="keyword">from</span> IPython.display <span class="keyword">import</span> clear_output, Image, display</span><br><span class="line"><span class="keyword">from</span> google.protobuf <span class="keyword">import</span> text_format</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> caffe</span><br><span class="line">caffe.set_mode_gpu();</span><br><span class="line">caffe.set_device(<span class="number">2</span>);<span class="comment"># 默认GPU 为0</span></span><br><span class="line"><span class="comment"># 如果GPU 支持 CUDA 并且 Caffe 编译时添加对 CUDA 支持,可以使用caffe.set_mode_gpu()和caffe.set_device(0);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">showarray</span><span class="params">(a, fmt=<span class="string">'jpeg'</span>)</span>:</span></span><br><span class="line">    a = np.uint8(np.clip(a, <span class="number">0</span>, <span class="number">255</span>))</span><br><span class="line">    f = StringIO()</span><br><span class="line">    PIL.Image.fromarray(a).save(f, fmt)</span><br><span class="line">    display(Image(data=f.getvalue()))</span><br></pre></td></tr></table></figure></p>
+<h2 id="加载模型"><a href="#加载模型" class="headerlink" title="加载模型"></a>加载模型</h2><p>网络采用了<a href="http://dl.caffe.berkeleyvision.org/bvlc_googlenet.caffemodel" target="_blank" rel="noopener">GoogLeNet模型</a>，需要提前下好。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">model_path = <span class="string">'../caffe/models/bvlc_googlenet/'</span> <span class="comment"># 替换为自己模型的目录</span></span><br><span class="line">net_fn   = model_path + <span class="string">'deploy.prototxt'</span></span><br><span class="line">param_fn = model_path + <span class="string">'bvlc_googlenet.caffemodel'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Patching model to be able to compute gradients.</span></span><br><span class="line"><span class="comment"># Note that you can also manually add "force_backward: true" line to "deploy.prototxt".</span></span><br><span class="line"><span class="comment"># 以下部分是更改了deploy的参数，增加了"force_backward: true"，然后保存成一个临时文件用于网络。当然也可以自己手动改。</span></span><br><span class="line">model = caffe.io.caffe_pb2.NetParameter()</span><br><span class="line">text_format.Merge(open(net_fn).read(), model)</span><br><span class="line">model.force_backward = <span class="literal">True</span></span><br><span class="line">open(<span class="string">'tmp.prototxt'</span>, <span class="string">'w'</span>).write(str(model))</span><br><span class="line"></span><br><span class="line">net = caffe.Classifier(<span class="string">'tmp.prototxt'</span>, param_fn,</span><br><span class="line">                       mean = np.float32([<span class="number">104.0</span>, <span class="number">116.0</span>, <span class="number">122.0</span>]), </span><br><span class="line">                       <span class="comment"># ImageNet mean, training set dependent </span></span><br><span class="line">                       <span class="comment"># 均值</span></span><br><span class="line">                       channel_swap = (<span class="number">2</span>,<span class="number">1</span>,<span class="number">0</span>))  </span><br><span class="line">                       <span class="comment"># the reference model has channels in BGR order instead of RGB </span></span><br><span class="line">                       <span class="comment"># 改RGB通道</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># a couple of utility functions for converting to and from Caffe's input image layout</span></span><br><span class="line"><span class="comment"># 为了caffe 数据处理的功能函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">preprocess</span><span class="params">(net, img)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> np.float32(np.rollaxis(img, <span class="number">2</span>)[::<span class="number">-1</span>]) - net.transformer.mean[<span class="string">'data'</span>]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">deprocess</span><span class="params">(net, img)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> np.dstack((img + net.transformer.mean[<span class="string">'data'</span>])[::<span class="number">-1</span>])</span><br></pre></td></tr></table></figure></p>
 <h2 id="做梦"><a href="#做梦" class="headerlink" title="做梦"></a>做梦</h2><blockquote>
 <p>Making the “dream” images is very simple. Essentially it is just a gradient ascent process that tries to maximize the L2 norm of activations of a particular DNN layer. Here are a few simple tricks that we found useful for getting good images:</p>
 <ul>
@@ -526,24 +532,24 @@
 <li>规则化梯度上升步长的幅度</li>
 <li>在多个尺度上应用上升</li>
 </ul>
-<p>首先我们实现一个基本的梯度上升阶跃函数，应用前两个技巧：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 将输入的数据(data)复制给梯度(diff)</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">objective_L2</span><span class="params">(dst)</span>:</span></div><div class="line">    dst.diff[:] = dst.data </div><div class="line"></div><div class="line"><span class="comment"># 核心函数</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_step</span><span class="params">(net, step_size=<span class="number">1.5</span>, end=<span class="string">'inception_4c/output'</span>, </span></span></div><div class="line">              jitter=<span class="number">32</span>, clip=True, objective=objective_L2):</div><div class="line">    <span class="string">'''Basic gradient ascent step.'''</span></div><div class="line"></div><div class="line">    src = net.blobs[<span class="string">'data'</span>] <span class="comment"># input image is stored in Net's 'data' blob </span></div><div class="line">                            <span class="comment"># 输入图像</span></div><div class="line">    dst = net.blobs[end]    <span class="comment"># 目标层，默认为'inception_4c/output'</span></div><div class="line"></div><div class="line">    ox, oy = np.random.randint(-jitter, jitter+<span class="number">1</span>, <span class="number">2</span>) <span class="comment"># 生产抖动</span></div><div class="line">    src.data[<span class="number">0</span>] = np.roll(np.roll(src.data[<span class="number">0</span>], ox, <span class="number">-1</span>), oy, <span class="number">-2</span>) <span class="comment"># apply jitter shift </span></div><div class="line">                                                                <span class="comment"># 应用抖动</span></div><div class="line">            </div><div class="line">    net.forward(end=end) <span class="comment"># 向前传播到指定层</span></div><div class="line">    objective(dst)  <span class="comment"># specify the optimization objective </span></div><div class="line">                    <span class="comment"># 指定优化目标（默认为objective_L2优化）</span></div><div class="line">    net.backward(start=end) <span class="comment"># 反向传播到优化层</span></div><div class="line">    g = src.diff[<span class="number">0</span>] <span class="comment"># 输入图像梯度</span></div><div class="line">    <span class="comment"># apply normalized ascent step to the input image</span></div><div class="line">    <span class="comment"># 对输入图像应用归一化上升步长</span></div><div class="line">    src.data[:] += step_size/np.abs(g).mean() * g</div><div class="line"></div><div class="line">    src.data[<span class="number">0</span>] = np.roll(np.roll(src.data[<span class="number">0</span>], -ox, <span class="number">-1</span>), -oy, <span class="number">-2</span>) <span class="comment"># unshift image </span></div><div class="line">                                                                  <span class="comment"># 还原抖动</span></div><div class="line">            </div><div class="line">    <span class="keyword">if</span> clip:</div><div class="line">        bias = net.transformer.mean[<span class="string">'data'</span>]</div><div class="line">        src.data[:] = np.clip(src.data, -bias, <span class="number">255</span>-bias)</div></pre></td></tr></table></figure></p>
+<p>首先我们实现一个基本的梯度上升阶跃函数，应用前两个技巧：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将输入的数据(data)复制给梯度(diff)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">objective_L2</span><span class="params">(dst)</span>:</span></span><br><span class="line">    dst.diff[:] = dst.data </span><br><span class="line"></span><br><span class="line"><span class="comment"># 核心函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_step</span><span class="params">(net, step_size=<span class="number">1.5</span>, end=<span class="string">'inception_4c/output'</span>, </span></span></span><br><span class="line"><span class="function"><span class="params">              jitter=<span class="number">32</span>, clip=True, objective=objective_L2)</span>:</span></span><br><span class="line">    <span class="string">'''Basic gradient ascent step.'''</span></span><br><span class="line"></span><br><span class="line">    src = net.blobs[<span class="string">'data'</span>] <span class="comment"># input image is stored in Net's 'data' blob </span></span><br><span class="line">                            <span class="comment"># 输入图像</span></span><br><span class="line">    dst = net.blobs[end]    <span class="comment"># 目标层，默认为'inception_4c/output'</span></span><br><span class="line"></span><br><span class="line">    ox, oy = np.random.randint(-jitter, jitter+<span class="number">1</span>, <span class="number">2</span>) <span class="comment"># 生产抖动</span></span><br><span class="line">    src.data[<span class="number">0</span>] = np.roll(np.roll(src.data[<span class="number">0</span>], ox, <span class="number">-1</span>), oy, <span class="number">-2</span>) <span class="comment"># apply jitter shift </span></span><br><span class="line">                                                                <span class="comment"># 应用抖动</span></span><br><span class="line">            </span><br><span class="line">    net.forward(end=end) <span class="comment"># 向前传播到指定层</span></span><br><span class="line">    objective(dst)  <span class="comment"># specify the optimization objective </span></span><br><span class="line">                    <span class="comment"># 指定优化目标（默认为objective_L2优化）</span></span><br><span class="line">    net.backward(start=end) <span class="comment"># 反向传播到优化层</span></span><br><span class="line">    g = src.diff[<span class="number">0</span>] <span class="comment"># 输入图像梯度</span></span><br><span class="line">    <span class="comment"># apply normalized ascent step to the input image</span></span><br><span class="line">    <span class="comment"># 对输入图像应用归一化上升步长</span></span><br><span class="line">    src.data[:] += step_size/np.abs(g).mean() * g</span><br><span class="line"></span><br><span class="line">    src.data[<span class="number">0</span>] = np.roll(np.roll(src.data[<span class="number">0</span>], -ox, <span class="number">-1</span>), -oy, <span class="number">-2</span>) <span class="comment"># unshift image </span></span><br><span class="line">                                                                  <span class="comment"># 还原抖动</span></span><br><span class="line">            </span><br><span class="line">    <span class="keyword">if</span> clip:</span><br><span class="line">        bias = net.transformer.mean[<span class="string">'data'</span>]</span><br><span class="line">        src.data[:] = np.clip(src.data, -bias, <span class="number">255</span>-bias)</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>Next we implement an ascent through different scales. We call these scales “octaves”.</p>
 </blockquote>
-<p>接下来，我们通过不同的尺度实现上升。 我们称这些尺度为“octaves”。<br>iter_n是迭代次数，octave_n是尺度缩放次数，octave_scale是尺度缩放比例。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 默认参数：迭代10次，缩放4次，缩放比1.4</span></div><div class="line"><span class="comment"># 即原始图像迭代10次，长宽缩小1.4倍后再次迭代，一共进行4轮（包括原始尺寸）</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">deepdream</span><span class="params">(net, base_img, iter_n=<span class="number">10</span>, octave_n=<span class="number">4</span>, octave_scale=<span class="number">1.4</span>, </span></span></div><div class="line">              end=<span class="string">'inception_4c/output'</span>, clip=True, **step_params):</div><div class="line">    <span class="comment"># prepare base images for all octaves</span></div><div class="line">    <span class="comment"># 准备数据，生成octave_n个数据</span></div><div class="line">    octaves = [preprocess(net, base_img)]</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(octave_n<span class="number">-1</span>):</div><div class="line">        octaves.append(nd.zoom(octaves[<span class="number">-1</span>], (<span class="number">1</span>, <span class="number">1.0</span>/octave_scale,<span class="number">1.0</span>/octave_scale), order=<span class="number">1</span>))</div><div class="line">    </div><div class="line">    src = net.blobs[<span class="string">'data'</span>]</div><div class="line">    <span class="comment">#  np.zeros_like(a):　依据给定数组(a)的形状和类型返回一个新的元素全部为1的数组。</span></div><div class="line">    detail = np.zeros_like(octaves[<span class="number">-1</span>]) <span class="comment"># allocate image for network-produced details </span></div><div class="line">    </div><div class="line">    <span class="keyword">for</span> octave, octave_base <span class="keyword">in</span> enumerate(octaves[::<span class="number">-1</span>]):</div><div class="line">        h, w = octave_base.shape[<span class="number">-2</span>:]</div><div class="line">        <span class="keyword">if</span> octave &gt; <span class="number">0</span>:</div><div class="line">            <span class="comment"># upscale details from the previous octave</span></div><div class="line">            h1, w1 = detail.shape[<span class="number">-2</span>:]</div><div class="line">            detail = nd.zoom(detail, (<span class="number">1</span>, <span class="number">1.0</span>*h/h1,<span class="number">1.0</span>*w/w1), order=<span class="number">1</span>)</div><div class="line"></div><div class="line">        src.reshape(<span class="number">1</span>,<span class="number">3</span>,h,w) <span class="comment"># resize the network's input image size</span></div><div class="line">        src.data[<span class="number">0</span>] = octave_base+detail</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(iter_n):</div><div class="line">            make_step(net, end=end, clip=clip, **step_params)</div><div class="line">            </div><div class="line">            <span class="comment"># visualization</span></div><div class="line">            vis = deprocess(net, src.data[<span class="number">0</span>])</div><div class="line">            <span class="keyword">if</span> <span class="keyword">not</span> clip: <span class="comment"># adjust image contrast if clipping is disabled</span></div><div class="line">                vis = vis*(<span class="number">255.0</span>/np.percentile(vis, <span class="number">99.98</span>))</div><div class="line">            showarray(vis)</div><div class="line">            <span class="keyword">print</span> octave, i, end, vis.shape</div><div class="line">            clear_output(wait=<span class="keyword">True</span>)</div><div class="line">            </div><div class="line">        <span class="comment"># extract details produced on the current octave</span></div><div class="line">        detail = src.data[<span class="number">0</span>]-octave_base</div><div class="line">    <span class="comment"># returning the resulting image</span></div><div class="line">    <span class="keyword">return</span> deprocess(net, src.data[<span class="number">0</span>])</div></pre></td></tr></table></figure></p>
-<h2 id="开始做梦"><a href="#开始做梦" class="headerlink" title="开始做梦"></a>开始做梦</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 打开并显示图片</span></div><div class="line">img = np.float32(PIL.Image.open(<span class="string">'sky1024px.jpg'</span>))</div><div class="line">showarray(img)</div></pre></td></tr></table></figure>
-<p><img src="http://img.blog.csdn.net/20170111163957781?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="sky1024px"><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">_=deepdream(net, img)<span class="comment"># 运行</span></div></pre></td></tr></table></figure></p>
-<p><img src="http://img.blog.csdn.net/20170111164114329?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="0_9"><br><img src="http://img.blog.csdn.net/20170111164154612?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="1_9"><br><img src="http://img.blog.csdn.net/20170111164212924?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="2_9"><br><img src="http://img.blog.csdn.net/20170111164230518?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="3_9"><br>一共会得到4（尺度）*10（迭代）=40张图片。<br>更改结束层会改变结果，如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">_=deepdream(net, img, end=<span class="string">'inception_3b/5x5_reduce'</span>)<span class="comment"># 更改结束层</span></div></pre></td></tr></table></figure></p>
+<p>接下来，我们通过不同的尺度实现上升。 我们称这些尺度为“octaves”。<br>iter_n是迭代次数，octave_n是尺度缩放次数，octave_scale是尺度缩放比例。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 默认参数：迭代10次，缩放4次，缩放比1.4</span></span><br><span class="line"><span class="comment"># 即原始图像迭代10次，长宽缩小1.4倍后再次迭代，一共进行4轮（包括原始尺寸）</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">deepdream</span><span class="params">(net, base_img, iter_n=<span class="number">10</span>, octave_n=<span class="number">4</span>, octave_scale=<span class="number">1.4</span>, </span></span></span><br><span class="line"><span class="function"><span class="params">              end=<span class="string">'inception_4c/output'</span>, clip=True, **step_params)</span>:</span></span><br><span class="line">    <span class="comment"># prepare base images for all octaves</span></span><br><span class="line">    <span class="comment"># 准备数据，生成octave_n个数据</span></span><br><span class="line">    octaves = [preprocess(net, base_img)]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(octave_n<span class="number">-1</span>):</span><br><span class="line">        octaves.append(nd.zoom(octaves[<span class="number">-1</span>], (<span class="number">1</span>, <span class="number">1.0</span>/octave_scale,<span class="number">1.0</span>/octave_scale), order=<span class="number">1</span>))</span><br><span class="line">    </span><br><span class="line">    src = net.blobs[<span class="string">'data'</span>]</span><br><span class="line">    <span class="comment">#  np.zeros_like(a):　依据给定数组(a)的形状和类型返回一个新的元素全部为1的数组。</span></span><br><span class="line">    detail = np.zeros_like(octaves[<span class="number">-1</span>]) <span class="comment"># allocate image for network-produced details </span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> octave, octave_base <span class="keyword">in</span> enumerate(octaves[::<span class="number">-1</span>]):</span><br><span class="line">        h, w = octave_base.shape[<span class="number">-2</span>:]</span><br><span class="line">        <span class="keyword">if</span> octave &gt; <span class="number">0</span>:</span><br><span class="line">            <span class="comment"># upscale details from the previous octave</span></span><br><span class="line">            h1, w1 = detail.shape[<span class="number">-2</span>:]</span><br><span class="line">            detail = nd.zoom(detail, (<span class="number">1</span>, <span class="number">1.0</span>*h/h1,<span class="number">1.0</span>*w/w1), order=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        src.reshape(<span class="number">1</span>,<span class="number">3</span>,h,w) <span class="comment"># resize the network's input image size</span></span><br><span class="line">        src.data[<span class="number">0</span>] = octave_base+detail</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(iter_n):</span><br><span class="line">            make_step(net, end=end, clip=clip, **step_params)</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># visualization</span></span><br><span class="line">            vis = deprocess(net, src.data[<span class="number">0</span>])</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> clip: <span class="comment"># adjust image contrast if clipping is disabled</span></span><br><span class="line">                vis = vis*(<span class="number">255.0</span>/np.percentile(vis, <span class="number">99.98</span>))</span><br><span class="line">            showarray(vis)</span><br><span class="line">            <span class="keyword">print</span> octave, i, end, vis.shape</span><br><span class="line">            clear_output(wait=<span class="literal">True</span>)</span><br><span class="line">            </span><br><span class="line">        <span class="comment"># extract details produced on the current octave</span></span><br><span class="line">        detail = src.data[<span class="number">0</span>]-octave_base</span><br><span class="line">    <span class="comment"># returning the resulting image</span></span><br><span class="line">    <span class="keyword">return</span> deprocess(net, src.data[<span class="number">0</span>])</span><br></pre></td></tr></table></figure></p>
+<h2 id="开始做梦"><a href="#开始做梦" class="headerlink" title="开始做梦"></a>开始做梦</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打开并显示图片</span></span><br><span class="line">img = np.float32(PIL.Image.open(<span class="string">'sky1024px.jpg'</span>))</span><br><span class="line">showarray(img)</span><br></pre></td></tr></table></figure>
+<p><img src="http://img.blog.csdn.net/20170111163957781?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="sky1024px"><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_=deepdream(net, img)<span class="comment"># 运行</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="http://img.blog.csdn.net/20170111164114329?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="0_9"><br><img src="http://img.blog.csdn.net/20170111164154612?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="1_9"><br><img src="http://img.blog.csdn.net/20170111164212924?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="2_9"><br><img src="http://img.blog.csdn.net/20170111164230518?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="3_9"><br>一共会得到4（尺度）*10（迭代）=40张图片。<br>更改结束层会改变结果，如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_=deepdream(net, img, end=<span class="string">'inception_3b/5x5_reduce'</span>)<span class="comment"># 更改结束层</span></span><br></pre></td></tr></table></figure></p>
 <p><img src="http://img.blog.csdn.net/20170111164645649?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="3_9"><br>具体的层可以参考配置文件，googlenet还是比较复杂的。而且结束的越晚，就更能从图像识别出现实物体。<br>如：<code>_=deepdream(net, img, end=&#39;inception_4e/output&#39;)</code><br><img src="http://img.blog.csdn.net/20170111165052881?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="3_9"><br>左边的云已经可以看出是一只狗的脸了。</p>
 <h2 id="前方高能！"><a href="#前方高能！" class="headerlink" title="前方高能！"></a>前方高能！</h2><p>上面一步就得到了奇怪的结果，<br>如果把这样的输出再作为输入放到网络里呢？<br>结果比较精神污染：</p>
 <p><img src="http://img.blog.csdn.net/20170111170107245?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="5_3_9"><br>这是经过大概5轮反复输入得到的结果。<br>官方迭代了100次，丧心病狂啊= =</p>
-<h2 id="控制做梦"><a href="#控制做梦" class="headerlink" title="控制做梦"></a>控制做梦</h2><p>如果调整了我们的优化目标，就可以控制我们想要的结果。<br>比如我们想把原始图像往另一张图像上靠近，可以定义一个指向性的优化目标：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">objective_guide</span><span class="params">(dst)</span>:</span></div><div class="line">    x = dst.data[<span class="number">0</span>].copy()</div><div class="line">    y = guide_features</div><div class="line">    ch = x.shape[<span class="number">0</span>]</div><div class="line">    x = x.reshape(ch,<span class="number">-1</span>)</div><div class="line">    y = y.reshape(ch,<span class="number">-1</span>)</div><div class="line">    A = x.T.dot(y) <span class="comment"># compute the matrix of dot-products with guide features</span></div><div class="line">    dst.diff[<span class="number">0</span>].reshape(ch,<span class="number">-1</span>)[:] = y[:,A.argmax(<span class="number">1</span>)] <span class="comment"># select ones that match best</span></div></pre></td></tr></table></figure></p>
-<p><code>guide_features</code>是需要预先提取的目标特征：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">end = <span class="string">'inception_3b/output'</span></div><div class="line">h, w = guide.shape[:<span class="number">2</span>]</div><div class="line">src, dst = net.blobs[<span class="string">'data'</span>], net.blobs[end]</div><div class="line">src.reshape(<span class="number">1</span>,<span class="number">3</span>,h,w)</div><div class="line">src.data[<span class="number">0</span>] = preprocess(net, guide)</div><div class="line">net.forward(end=end)</div><div class="line">guide_features = dst.data[<span class="number">0</span>].copy()</div></pre></td></tr></table></figure></p>
-<p><img src="http://img.blog.csdn.net/20170111171107094?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="flower"><br>好了，运行！<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">_=deepdream(net, img, end=end, objective=objective_guide)</div></pre></td></tr></table></figure></p>
+<h2 id="控制做梦"><a href="#控制做梦" class="headerlink" title="控制做梦"></a>控制做梦</h2><p>如果调整了我们的优化目标，就可以控制我们想要的结果。<br>比如我们想把原始图像往另一张图像上靠近，可以定义一个指向性的优化目标：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">objective_guide</span><span class="params">(dst)</span>:</span></span><br><span class="line">    x = dst.data[<span class="number">0</span>].copy()</span><br><span class="line">    y = guide_features</span><br><span class="line">    ch = x.shape[<span class="number">0</span>]</span><br><span class="line">    x = x.reshape(ch,<span class="number">-1</span>)</span><br><span class="line">    y = y.reshape(ch,<span class="number">-1</span>)</span><br><span class="line">    A = x.T.dot(y) <span class="comment"># compute the matrix of dot-products with guide features</span></span><br><span class="line">    dst.diff[<span class="number">0</span>].reshape(ch,<span class="number">-1</span>)[:] = y[:,A.argmax(<span class="number">1</span>)] <span class="comment"># select ones that match best</span></span><br></pre></td></tr></table></figure></p>
+<p><code>guide_features</code>是需要预先提取的目标特征：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">end = <span class="string">'inception_3b/output'</span></span><br><span class="line">h, w = guide.shape[:<span class="number">2</span>]</span><br><span class="line">src, dst = net.blobs[<span class="string">'data'</span>], net.blobs[end]</span><br><span class="line">src.reshape(<span class="number">1</span>,<span class="number">3</span>,h,w)</span><br><span class="line">src.data[<span class="number">0</span>] = preprocess(net, guide)</span><br><span class="line">net.forward(end=end)</span><br><span class="line">guide_features = dst.data[<span class="number">0</span>].copy()</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://img.blog.csdn.net/20170111171107094?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="flower"><br>好了，运行！<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_=deepdream(net, img, end=end, objective=objective_guide)</span><br></pre></td></tr></table></figure></p>
 <p><img src="http://img.blog.csdn.net/20170111171143626?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="flower_3_9"><br>有了花的感觉啊~</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>正着传播过来是分类，反着过去是生成，用深度学习产生艺术作品似乎是一个很有意思的方向。而目前也有较为成熟甚至是商业化的项目了，比如<a href="https://github.com/google/deepdream" target="_blank" rel="external">deepart</a>。如果你能够承受一定的精神污染，建议挑战一下<a href="http://pjreddie.com/darknet/nightmare/" target="_blank" rel="external">Nightmare</a>，这是YOLO大神的另一个作品。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>正着传播过来是分类，反着过去是生成，用深度学习产生艺术作品似乎是一个很有意思的方向。而目前也有较为成熟甚至是商业化的项目了，比如<a href="https://github.com/google/deepdream" target="_blank" rel="noopener">deepart</a>。如果你能够承受一定的精神污染，建议挑战一下<a href="http://pjreddie.com/darknet/nightmare/" target="_blank" rel="noopener">Nightmare</a>，这是YOLO大神的另一个作品。</p>
 <blockquote>
-<p><a href="https://github.com/google/deepdream" target="_blank" rel="external">deepdream-github</a></p>
+<p><a href="https://github.com/google/deepdream" target="_blank" rel="noopener">deepdream-github</a></p>
 </blockquote>
 
       
@@ -558,7 +564,34 @@
     
 
     
+      
+    
+    
 
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yan Joy</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    
+    <a href="https://joyfyan.github.io/2017/01/11/Deepdream/" title="Deepdream 实现">https://joyfyan.github.io/2017/01/11/Deepdream/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -636,7 +669,6 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -652,16 +684,14 @@
         </ul>
       
 
-      <section class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
-                alt="Yan Joy" />
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Yan Joy">
             
               <p class="site-author-name" itemprop="name">Yan Joy</p>
-              <p class="site-description motion-element" itemprop="description">Default~</p>
+              <div class="site-description motion-element" itemprop="description">Default~</div>
           </div>
 
           
@@ -671,7 +701,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">99</span>
+                    <span class="site-state-item-count">104</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -681,7 +711,11 @@
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -716,7 +750,11 @@
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -835,7 +873,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">58</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">60</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -846,22 +888,35 @@
           
 
           
+
+          
             <div class="links-of-author motion-element">
               
                 <span class="links-of-author-item">
-                  <a href="http://weibo.com/yanjoy" target="_blank" title="Weibo"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
                   
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="http://weibo.com/yanjoy" title="Weibo &rarr; http://weibo.com/yanjoy" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="http://blog.csdn.net/yan_joy" target="_blank" title="CSDN"><i class="fa fa-fw fa-linux"></i>CSDN</a>
                   
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="http://blog.csdn.net/yan_joy" title="CSDN &rarr; http://blog.csdn.net/yan_joy" rel="noopener" target="_blank"><i class="fa fa-fw fa-linux"></i>CSDN</a>
                 </span>
               
             </div>
           
 
-          
           
 
           
@@ -869,20 +924,20 @@
             <div class="links-of-blogroll motion-element links-of-blogroll-block">
               <div class="links-of-blogroll-title">
                 <i class="fa  fa-fw fa-link"></i>
-                FRIENDS
+                Links
               </div>
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://www.xieqiang.site/" title="Johnny" target="_blank">Johnny</a>
+                    <a href="http://www.xieqiang.site/" title="http://www.xieqiang.site/" rel="noopener" target="_blank">Johnny</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://judasdie.github.io/" title="ZP Zhang" target="_blank">ZP Zhang</a>
+                    <a href="https://judasdie.github.io/" title="https://judasdie.github.io/" rel="noopener" target="_blank">ZP Zhang</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://pages.coding.me/" title="Hosted by Coding Pages" target="_blank">Hosted by Coding Pages</a>
+                    <a href="https://pages.coding.me/" title="https://pages.coding.me/" rel="noopener" target="_blank">Hosted by Coding Pages</a>
                   </li>
                 
               </ul>
@@ -895,15 +950,16 @@
           
 
         </div>
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
@@ -911,7 +967,7 @@
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
@@ -919,6 +975,7 @@
 
     </div>
   </aside>
+  
 
 
         
@@ -939,9 +996,7 @@
 </div>
 
 
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.2.2</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 
@@ -949,7 +1004,7 @@
 
 
 
-  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.3.0</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.0</div>
 
 
 
@@ -975,14 +1030,13 @@
     
 
     
-	
+
     
 
     
       <div>
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<div class="addthis_inline_share_toolbox">
-  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b692d42870e12d9" async = "async" ></script>
+        <div class="addthis_inline_share_toolbox">
+  <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b692d42870e12d9" async="async"></script>
 </div>
 
       </div>
@@ -991,7 +1045,7 @@
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -1023,27 +1077,21 @@
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
 
 
 
@@ -1051,54 +1099,54 @@
   
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
 
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
 
 
 
   
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
 
 
 
   
 
 
-
-  
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  
-
-
-
-
-
-
-
-
+  <script src="/js/next-boot.js?v=7.1.0"></script>
 
 
   
 
-  <script type="text/javascript">
+  
+
+  
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2017/01/11/Deepdream/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+  <script>
     // Popup Window;
     var isfetched = false;
     var isXml = true;
@@ -1184,7 +1232,7 @@
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
                 
                 var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
                 var indexOfTitle = [];
                 var indexOfContent = [];
                 // only match articles with not empty titles
@@ -1353,9 +1401,9 @@
               })
             };
             if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
             } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
             } else {
               resultItems.sort(function (resultLeft, resultRight) {
                 if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
@@ -1423,120 +1471,71 @@
 
 
   
-
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz", "owWjRRJ2oBD7Dekc8l1RRctK");</script>
   <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
+    
     function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
+      var $visitors = $('.leancloud_visitors');
       var url = $visitors.attr('id').trim();
       var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
 
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
           if (results.length > 0) {
             var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
             
-            counter.save(null, {
-              success: function(counter) {
-                
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
           } else {
             
-              var newcounter = new Counter();
-              /* Set ACL */
-              var acl = new AV.ACL();
-              acl.setPublicReadAccess(true);
-              acl.setPublicWriteAccess(true);
-              newcounter.setACL(acl);
-              /* End Set ACL */
-              newcounter.set("title", title);
-              newcounter.set("url", url);
-              newcounter.set("time", 1);
-              newcounter.save(null, {
-                success: function(newcounter) {
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
                   var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                },
-                error: function(newcounter, error) {
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
                   console.log('Failed to create');
-                }
-              });
+                });
             
           }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
     }
+    
 
     $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz',
+                'X-LC-Key': 'owWjRRJ2oBD7Dekc8l1RRctK',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
     });
   </script>
 
 
-
-  
 
   
 
@@ -1549,31 +1548,56 @@
   
     
       <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      TeX: {equationNumbers: { autoNumber: "AMS" }}
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
     });
+  });
 </script>
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
 </script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     
   
 
 
   
+
+  
+
+  
+
+  
+
+  
+
   
 
   

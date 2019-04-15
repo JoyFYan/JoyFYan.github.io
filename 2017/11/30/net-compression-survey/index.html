@@ -14,11 +14,11 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="en">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -32,8 +32,6 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -46,6 +44,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -53,72 +66,15 @@
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=6.3.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -140,18 +96,14 @@
 
 
 
-  <meta name="description" content="A Survey of Model Compression and Acceleration for Deep Neural Networks
-
-研究背景
-在神经网络方面，早在上个世纪末，Yann LeCun等人已经使用神经网络成功识别了邮件上的手写邮编。至于深度学习的概念是由Geoffrey Hinton等人首次提出，而在2012年，Krizhevsky等人采用深度学习算法，以超过第二名以传统">
+  <meta name="description" content="A Survey of Model Compression and Acceleration for Deep Neural Networks  研究背景 在神经网络方面，早在上个世纪末，Yann LeCun等人已经使用神经网络成功识别了邮件上的手写邮编。至于深度学习的概念是由Geoffrey Hinton等人首次提出，而在2012年，Krizhevsky等人采用深度学习算法，以超过第二名以传统">
+<meta name="keywords" content="论文">
 <meta property="og:type" content="article">
 <meta property="og:title" content="综述：当前深度神经网络模型压缩和加速方法速览">
 <meta property="og:url" content="https://joyfyan.github.io/2017/11/30/net-compression-survey/index.html">
 <meta property="og:site_name" content="小一一的小站">
-<meta property="og:description" content="A Survey of Model Compression and Acceleration for Deep Neural Networks
-
-研究背景
-在神经网络方面，早在上个世纪末，Yann LeCun等人已经使用神经网络成功识别了邮件上的手写邮编。至于深度学习的概念是由Geoffrey Hinton等人首次提出，而在2012年，Krizhevsky等人采用深度学习算法，以超过第二名以传统">
+<meta property="og:description" content="A Survey of Model Compression and Acceleration for Deep Neural Networks  研究背景 在神经网络方面，早在上个世纪末，Yann LeCun等人已经使用神经网络成功识别了邮件上的手写邮编。至于深度学习的概念是由Geoffrey Hinton等人首次提出，而在2012年，Krizhevsky等人采用深度学习算法，以超过第二名以传统">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="http://img.blog.csdn.net/20171130082729516?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20171130083308865?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20171130083609657?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
@@ -159,22 +111,20 @@
 <meta property="og:updated_time" content="2017-11-30T00:57:24.615Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="综述：当前深度神经网络模型压缩和加速方法速览">
-<meta name="twitter:description" content="A Survey of Model Compression and Acceleration for Deep Neural Networks
-
-研究背景
-在神经网络方面，早在上个世纪末，Yann LeCun等人已经使用神经网络成功识别了邮件上的手写邮编。至于深度学习的概念是由Geoffrey Hinton等人首次提出，而在2012年，Krizhevsky等人采用深度学习算法，以超过第二名以传统">
+<meta name="twitter:description" content="A Survey of Model Compression and Acceleration for Deep Neural Networks  研究背景 在神经网络方面，早在上个世纪末，Yann LeCun等人已经使用神经网络成功识别了邮件上的手写邮编。至于深度学习的概念是由Geoffrey Hinton等人首次提出，而在2012年，Krizhevsky等人采用深度学习算法，以超过第二名以传统">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20171130082729516?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 
 
 
 
 
+  
+  
+  <link rel="canonical" href="https://joyfyan.github.io/2017/11/30/net-compression-survey/">
 
-  <link rel="canonical" href="https://joyfyan.github.io/2017/11/30/net-compression-survey/"/>
 
 
-
-<script type="text/javascript" id="page.configurations">
+<script id="page.configurations">
   CONFIG.page = {
     sidebar: "",
   };
@@ -188,7 +138,7 @@
 
 
 
-  <script type="text/javascript">
+  <script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -201,30 +151,31 @@
 
 
 
+
+
+
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
@@ -242,7 +193,7 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -256,6 +207,7 @@
       
         <p class="site-subtitle">Blog of Yan Joy</p>
       
+    
     
   </div>
 
@@ -279,40 +231,85 @@
         
           
           <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
   </li>
 
       
@@ -322,7 +319,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
         </li>
       
     </ul>
@@ -342,9 +339,7 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="Searching..." spellcheck="false"
-             type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -412,6 +407,7 @@
         
         
           <h1 class="post-title" itemprop="name headline">综述：当前深度神经网络模型压缩和加速方法速览
+
               
             
           </h1>
@@ -447,7 +443,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -468,20 +464,21 @@
 
           
             
+            
           
 
           
           
-             <span id="/2017/11/30/net-compression-survey/" class="leancloud_visitors" data-flag-title="综述：当前深度神经网络模型压缩和加速方法速览">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
+            <span id="/2017/11/30/net-compression-survey/" class="leancloud_visitors" data-flag-title="综述：当前深度神经网络模型压缩和加速方法速览">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -504,7 +501,7 @@
 
       
         <blockquote>
-<p><a href="https://arxiv.org/abs/1710.09282" target="_blank" rel="external">A Survey of Model Compression and Acceleration for Deep Neural Networks</a></p>
+<p><a href="https://arxiv.org/abs/1710.09282" target="_blank" rel="noopener">A Survey of Model Compression and Acceleration for Deep Neural Networks</a></p>
 </blockquote>
 <h1 id="研究背景"><a href="#研究背景" class="headerlink" title="研究背景"></a>研究背景</h1><hr>
 <p>在神经网络方面，早在上个世纪末，Yann LeCun等人已经使用神经网络成功识别了邮件上的手写邮编。至于深度学习的概念是由Geoffrey Hinton等人首次提出，而在2012年，Krizhevsky等人采用深度学习算法，以超过第二名以传统人工设计特征方法准确率10%的巨大领先取得了ImageNet图像分类比赛冠军。</p>
@@ -522,6 +519,7 @@
 </ul>
 <p>基于参数修剪和共享的方法针对模型参数的冗余性，试图去除冗余和不重要的项。基于低秩因子分解的技术使用矩阵/张量分解来估计深度学习模型的信息参数。基于传输/紧凑卷积滤波器的方法设计了特殊的结构卷积滤波器来降低存储和计算复杂度。知识蒸馏方法通过学习一个蒸馏模型，训练一个更紧凑的神经网络来重现一个更大的网络的输出。</p>
 <p>一般来说，参数修剪和共享，低秩分解和知识蒸馏方法可以用于全连接层和卷积层的CNN，但另一方面，使用转移/紧凑型卷积核的方法仅支持卷积层。低秩因子分解和基于转换/紧凑型卷积核的方法提供了一个端到端的流水线，可以很容易地在CPU/GPU环境中实现。相反参数修剪和共享使用不同的方法，如矢量量化，二进制编码和稀疏约束来执行任务，这导致常需要几个步骤才能达到目标。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -558,6 +556,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>关于训练协议，基于参数修剪/共享、低秩分解的模型可以从预训练模型或者从头开始训练，因此灵活而有效。然而转移/紧凑的卷积核和知识蒸馏模型只能支持从零开始训练。这些方法是独立设计和相辅相成的。例如，转移层和参数修剪和共享可以一起使用，并且模型量化和二值化可以与低秩近似一起使用以实现进一步的加速。不同模型的简要对比，如表1所示。下文针对这些方法做一简单介绍与讨论。</p>
 <h2 id="参数修剪和共享"><a href="#参数修剪和共享" class="headerlink" title="参数修剪和共享"></a>参数修剪和共享</h2><hr>
 <p>根据减少冗余（信息冗余或参数空间冗余）的方式，这些参数修剪和共享可以进一步分为三类：模型量化和二进制化、参数共享和结构化矩阵（structural matrix）。</p>
@@ -577,9 +576,9 @@
 <p>低阶逼近是逐层完成的。完成一层的参数确定后，根据重建误差准则对上述层进行微调。这些是压缩二维卷积层的典型低秩方法，如图2所示。按照这个方向，Lebedev提出了核张量的典型多项式（CP）分解，使用非线性最小二乘法来计算。Tai提出了一种新的从头开始训练低秩约束CNN的低秩张量分解算法。它使用批量标准化（BN）来转换内部隐藏单元的激活。一般来说， CP和BN分解方案都可以用来从头开始训练CNN。</p>
 <p>低秩方法很适合模型压缩和加速，但是低秩方法的实现并不容易，因为它涉及计算成本高昂的分解操作。另一个问题是目前的方法都是逐层执行低秩近似，无法执行全局参数压缩，因为不同的层具备不同的信息。最后，分解需要大量的重新训练来达到收敛。</p>
 <h2 id="迁移-压缩卷积滤波器"><a href="#迁移-压缩卷积滤波器" class="headerlink" title="迁移/压缩卷积滤波器"></a>迁移/压缩卷积滤波器</h2><hr>
-<p>虽然目前缺乏强有力的理论，但大量的实证证据支持平移不变性和卷积权重共享对于良好预测性能的重要性。使用迁移卷积层对CNN模型进行压缩受到Cohen的等变群论（equivariant group theory）的启发。使x作为输入，Φ(·)作为网络或层，T(·)作为变换矩阵。则等变概念可以定义为：<br>$$T’Φ(x)=Φ(Tx) $$<br>即使用变换矩阵T(·)转换输入x，然后将其传送至网络或层Φ(·)，其结果和先将x映射到网络再变换映射后的表征结果一致。注意T和T’在作用到不同对象时可能会有不同的操作。根据这个理论，将变换应用到层次或滤波器Φ(·)来压缩整个网络模型是合理的。使用紧凑的卷积滤波器可以直接降低计算成本。在Inception结构中使用了将3×3卷积分解成两个1×1的卷积；SqueezeNet提出用1×1卷积来代替3×3卷积，与AlexNet相比，SqueezeNet创建了一个紧凑的神经网络，参数少了50倍，准确度相当。<br>这种方法仍有一些小问题解决。首先，这些方法擅长处理广泛/平坦的体系结构（如VGGNet）网络，而不是狭窄的/特殊的（如GoogleNet，ResidualNet）。其次，转移的假设有时过于强大，不足以指导算法，导致某些数据集的结果不稳定。</p>
-<p>##知识蒸馏</p>
-<hr>
+<p>虽然目前缺乏强有力的理论，但大量的实证证据支持平移不变性和卷积权重共享对于良好预测性能的重要性。使用迁移卷积层对CNN模型进行压缩受到Cohen的等变群论（equivariant group theory）的启发。使x作为输入，Φ(·)作为网络或层，T(·)作为变换矩阵。则等变概念可以定义为：</p>
+<script type="math/tex; mode=display">T'Φ(x)=Φ(Tx)</script><p>即使用变换矩阵T(·)转换输入x，然后将其传送至网络或层Φ(·)，其结果和先将x映射到网络再变换映射后的表征结果一致。注意T和T’在作用到不同对象时可能会有不同的操作。根据这个理论，将变换应用到层次或滤波器Φ(·)来压缩整个网络模型是合理的。使用紧凑的卷积滤波器可以直接降低计算成本。在Inception结构中使用了将3×3卷积分解成两个1×1的卷积；SqueezeNet提出用1×1卷积来代替3×3卷积，与AlexNet相比，SqueezeNet创建了一个紧凑的神经网络，参数少了50倍，准确度相当。<br>这种方法仍有一些小问题解决。首先，这些方法擅长处理广泛/平坦的体系结构（如VGGNet）网络，而不是狭窄的/特殊的（如GoogleNet，ResidualNet）。其次，转移的假设有时过于强大，不足以指导算法，导致某些数据集的结果不稳定。</p>
+<h2 id="知识蒸馏"><a href="#知识蒸馏" class="headerlink" title="知识蒸馏"></a>知识蒸馏</h2><hr>
 <p>利用知识转移（knowledge transfer）来压缩模型最早是由Caruana等人提出的。他们训练了带有伪数据标记的强分类器的压缩/集成模型，并复制了原始大型网络的输出，但是，这项工作仅限于浅模型。后来改进为知识蒸馏，将深度和宽度的网络压缩成较浅的网络，其中压缩模型模拟复杂模型所学习的功能，主要思想是通过学习通过softmax获得的类分布输出，将知识从一个大的模型转移到一个小的模型。<br>Hinton的工作引入了知识蒸馏压缩框架，即通过遵循“学生-教师”的范式减少深度网络的训练量，这种“学生-教师”的范式，即通过软化“教师”的输出而惩罚“学生”。为了完成这一点，学生学要训练以预测教师的输出，即真实的分类标签。这种方法十分简单，但它同样在各种图像分类任务中表现出较好的结果。<br>基于知识蒸馏的方法能令更深的模型变得更加浅而显著地降低计算成本。但是也有一些缺点，例如只能用于具有Softmax损失函数分类任务，这阻碍了其应用。另一个缺点是模型的假设有时太严格，其性能有时比不上其它方法。</p>
 <h1 id="讨论与挑战"><a href="#讨论与挑战" class="headerlink" title="讨论与挑战"></a>讨论与挑战</h1><hr>
 <p>深度模型的压缩和加速技术还处在早期阶段，目前还存在以下挑战：</p>
@@ -603,7 +602,34 @@
     
 
     
+      
+    
+    
 
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yan Joy</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    
+    <a href="https://joyfyan.github.io/2017/11/30/net-compression-survey/" title="综述：当前深度神经网络模型压缩和加速方法速览">https://joyfyan.github.io/2017/11/30/net-compression-survey/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -679,7 +705,6 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -695,16 +720,14 @@
         </ul>
       
 
-      <section class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
-                alt="Yan Joy" />
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Yan Joy">
             
               <p class="site-author-name" itemprop="name">Yan Joy</p>
-              <p class="site-description motion-element" itemprop="description">Default~</p>
+              <div class="site-description motion-element" itemprop="description">Default~</div>
           </div>
 
           
@@ -714,7 +737,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">99</span>
+                    <span class="site-state-item-count">104</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -724,7 +747,11 @@
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -759,7 +786,11 @@
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -878,7 +909,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">58</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">60</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -889,22 +924,35 @@
           
 
           
+
+          
             <div class="links-of-author motion-element">
               
                 <span class="links-of-author-item">
-                  <a href="http://weibo.com/yanjoy" target="_blank" title="Weibo"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
                   
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="http://weibo.com/yanjoy" title="Weibo &rarr; http://weibo.com/yanjoy" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="http://blog.csdn.net/yan_joy" target="_blank" title="CSDN"><i class="fa fa-fw fa-linux"></i>CSDN</a>
                   
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="http://blog.csdn.net/yan_joy" title="CSDN &rarr; http://blog.csdn.net/yan_joy" rel="noopener" target="_blank"><i class="fa fa-fw fa-linux"></i>CSDN</a>
                 </span>
               
             </div>
           
 
-          
           
 
           
@@ -912,20 +960,20 @@
             <div class="links-of-blogroll motion-element links-of-blogroll-block">
               <div class="links-of-blogroll-title">
                 <i class="fa  fa-fw fa-link"></i>
-                FRIENDS
+                Links
               </div>
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://www.xieqiang.site/" title="Johnny" target="_blank">Johnny</a>
+                    <a href="http://www.xieqiang.site/" title="http://www.xieqiang.site/" rel="noopener" target="_blank">Johnny</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://judasdie.github.io/" title="ZP Zhang" target="_blank">ZP Zhang</a>
+                    <a href="https://judasdie.github.io/" title="https://judasdie.github.io/" rel="noopener" target="_blank">ZP Zhang</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://pages.coding.me/" title="Hosted by Coding Pages" target="_blank">Hosted by Coding Pages</a>
+                    <a href="https://pages.coding.me/" title="https://pages.coding.me/" rel="noopener" target="_blank">Hosted by Coding Pages</a>
                   </li>
                 
               </ul>
@@ -938,23 +986,24 @@
           
 
         </div>
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#研究背景"><span class="nav-number">1.</span> <span class="nav-text">研究背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#研究现状"><span class="nav-number">2.</span> <span class="nav-text">研究现状</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数修剪和共享"><span class="nav-number">2.1.</span> <span class="nav-text">参数修剪和共享</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#量化和二进制化"><span class="nav-number">2.1.1.</span> <span class="nav-text">量化和二进制化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#剪枝和共享"><span class="nav-number">2.1.2.</span> <span class="nav-text">剪枝和共享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设计结构化矩阵"><span class="nav-number">2.1.3.</span> <span class="nav-text">设计结构化矩阵</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#低秩分解和稀疏性"><span class="nav-number">2.2.</span> <span class="nav-text">低秩分解和稀疏性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迁移-压缩卷积滤波器"><span class="nav-number">2.3.</span> <span class="nav-text">迁移/压缩卷积滤波器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#讨论与挑战"><span class="nav-number">3.</span> <span class="nav-text">讨论与挑战</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#研究背景"><span class="nav-number">1.</span> <span class="nav-text">研究背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#研究现状"><span class="nav-number">2.</span> <span class="nav-text">研究现状</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数修剪和共享"><span class="nav-number">2.1.</span> <span class="nav-text">参数修剪和共享</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#量化和二进制化"><span class="nav-number">2.1.1.</span> <span class="nav-text">量化和二进制化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#剪枝和共享"><span class="nav-number">2.1.2.</span> <span class="nav-text">剪枝和共享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设计结构化矩阵"><span class="nav-number">2.1.3.</span> <span class="nav-text">设计结构化矩阵</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#低秩分解和稀疏性"><span class="nav-number">2.2.</span> <span class="nav-text">低秩分解和稀疏性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迁移-压缩卷积滤波器"><span class="nav-number">2.3.</span> <span class="nav-text">迁移/压缩卷积滤波器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#知识蒸馏"><span class="nav-number">2.4.</span> <span class="nav-text">知识蒸馏</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#讨论与挑战"><span class="nav-number">3.</span> <span class="nav-text">讨论与挑战</span></a></li></ol></div>
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
@@ -962,6 +1011,7 @@
 
     </div>
   </aside>
+  
 
 
         
@@ -982,9 +1032,7 @@
 </div>
 
 
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.2.2</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 
@@ -992,7 +1040,7 @@
 
 
 
-  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.3.0</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.0</div>
 
 
 
@@ -1018,14 +1066,13 @@
     
 
     
-	
+
     
 
     
       <div>
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<div class="addthis_inline_share_toolbox">
-  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b692d42870e12d9" async = "async" ></script>
+        <div class="addthis_inline_share_toolbox">
+  <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b692d42870e12d9" async="async"></script>
 </div>
 
       </div>
@@ -1034,7 +1081,7 @@
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -1066,27 +1113,21 @@
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
 
 
 
@@ -1094,54 +1135,54 @@
   
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
 
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
 
 
 
   
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
 
 
 
   
 
 
-
-  
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  
-
-
-
-
-
-
-
-
+  <script src="/js/next-boot.js?v=7.1.0"></script>
 
 
   
 
-  <script type="text/javascript">
+  
+
+  
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2017/11/30/net-compression-survey/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+  <script>
     // Popup Window;
     var isfetched = false;
     var isXml = true;
@@ -1227,7 +1268,7 @@
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
                 
                 var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
                 var indexOfTitle = [];
                 var indexOfContent = [];
                 // only match articles with not empty titles
@@ -1396,9 +1437,9 @@
               })
             };
             if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
             } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
             } else {
               resultItems.sort(function (resultLeft, resultRight) {
                 if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
@@ -1466,120 +1507,71 @@
 
 
   
-
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz", "owWjRRJ2oBD7Dekc8l1RRctK");</script>
   <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
+    
     function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
+      var $visitors = $('.leancloud_visitors');
       var url = $visitors.attr('id').trim();
       var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
 
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
           if (results.length > 0) {
             var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
             
-            counter.save(null, {
-              success: function(counter) {
-                
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
           } else {
             
-              var newcounter = new Counter();
-              /* Set ACL */
-              var acl = new AV.ACL();
-              acl.setPublicReadAccess(true);
-              acl.setPublicWriteAccess(true);
-              newcounter.setACL(acl);
-              /* End Set ACL */
-              newcounter.set("title", title);
-              newcounter.set("url", url);
-              newcounter.set("time", 1);
-              newcounter.save(null, {
-                success: function(newcounter) {
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
                   var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                },
-                error: function(newcounter, error) {
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
                   console.log('Failed to create');
-                }
-              });
+                });
             
           }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
     }
+    
 
     $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz',
+                'X-LC-Key': 'owWjRRJ2oBD7Dekc8l1RRctK',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
     });
   </script>
 
 
-
-  
 
   
 
@@ -1592,31 +1584,56 @@
   
     
       <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      TeX: {equationNumbers: { autoNumber: "AMS" }}
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
     });
+  });
 </script>
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
 </script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     
   
 
 
   
+
+  
+
+  
+
+  
+
+  
+
   
 
   

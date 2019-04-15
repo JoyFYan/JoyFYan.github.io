@@ -14,11 +14,11 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="en">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -32,8 +32,6 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -46,6 +44,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -53,72 +66,15 @@
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=6.3.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -140,39 +96,36 @@
 
 
 
-  <meta name="description" content="CS 20SI: Tensorflow for Deep Learning Research
-Fun with TensorBoard
-graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./graphs。">
+  <meta name="description" content="CS 20SI: Tensorflow for Deep Learning Research Fun with TensorBoard graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./graphs。">
+<meta name="keywords" content="tensorflow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS20SI Operations">
 <meta property="og:url" content="https://joyfyan.github.io/2017/10/21/CS20SI-1/index.html">
 <meta property="og:site_name" content="小一一的小站">
-<meta property="og:description" content="CS 20SI: Tensorflow for Deep Learning Research
-Fun with TensorBoard
-graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./graphs。">
+<meta property="og:description" content="CS 20SI: Tensorflow for Deep Learning Research Fun with TensorBoard graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./graphs。">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="http://img.blog.csdn.net/20171017141826420?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20171017142111738?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20171017151136081?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20171020171901292?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20171020171911233?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2017-10-20T16:06:29.204Z">
+<meta property="og:updated_time" content="2017-10-20T16:06:29.205Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CS20SI Operations">
-<meta name="twitter:description" content="CS 20SI: Tensorflow for Deep Learning Research
-Fun with TensorBoard
-graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./graphs。">
+<meta name="twitter:description" content="CS 20SI: Tensorflow for Deep Learning Research Fun with TensorBoard graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./graphs。">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20171017141826420?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 
 
 
 
 
+  
+  
+  <link rel="canonical" href="https://joyfyan.github.io/2017/10/21/CS20SI-1/">
 
-  <link rel="canonical" href="https://joyfyan.github.io/2017/10/21/CS20SI-1/"/>
 
 
-
-<script type="text/javascript" id="page.configurations">
+<script id="page.configurations">
   CONFIG.page = {
     sidebar: "",
   };
@@ -186,7 +139,7 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
 
 
 
-  <script type="text/javascript">
+  <script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -199,30 +152,31 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
 
 
 
+
+
+
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
@@ -240,7 +194,7 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -254,6 +208,7 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
       
         <p class="site-subtitle">Blog of Yan Joy</p>
       
+    
     
   </div>
 
@@ -277,40 +232,85 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
         
           
           <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
   </li>
 
       
@@ -320,7 +320,7 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
         </li>
       
     </ul>
@@ -340,9 +340,7 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="Searching..." spellcheck="false"
-             type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -410,6 +408,7 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
         
         
           <h1 class="post-title" itemprop="name headline">CS20SI Operations
+
               
             
           </h1>
@@ -445,7 +444,7 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -466,20 +465,21 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
 
           
             
+            
           
 
           
           
-             <span id="/2017/10/21/CS20SI-1/" class="leancloud_visitors" data-flag-title="CS20SI Operations">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
+            <span id="/2017/10/21/CS20SI-1/" class="leancloud_visitors" data-flag-title="CS20SI Operations">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -501,35 +501,35 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
       
 
       
-        <p><a href="http://web.stanford.edu/class/cs20si/syllabus.html" target="_blank" rel="external">CS 20SI: Tensorflow for Deep Learning Research</a></p>
+        <p><a href="http://web.stanford.edu/class/cs20si/syllabus.html" target="_blank" rel="noopener">CS 20SI: Tensorflow for Deep Learning Research</a></p>
 <h2 id="Fun-with-TensorBoard"><a href="#Fun-with-TensorBoard" class="headerlink" title="Fun with TensorBoard"></a>Fun with TensorBoard</h2><hr>
 <p>graph 的可视化，语句为<code>tf.summary.FileWriter</code>，将sess的图输出到<code>./graphs</code>。</p>
 <a id="more"></a>
 <p>首先在默认图中建立常数与操作，并在session中运行。</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">import tensorflow <span class="keyword">as</span> <span class="keyword">tf</span></div><div class="line"><span class="keyword">a</span> = <span class="keyword">tf</span>.constant(<span class="number">2</span>)</div><div class="line"><span class="keyword">b</span> = <span class="keyword">tf</span>.constant(<span class="number">3</span>)</div><div class="line"><span class="keyword">x</span> = <span class="keyword">tf</span>.<span class="built_in">add</span>(<span class="keyword">a</span>, <span class="keyword">b</span>)</div><div class="line">with <span class="keyword">tf</span>.Session() <span class="keyword">as</span> ses<span class="variable">s:</span></div><div class="line">	writer = <span class="keyword">tf</span>.summary.FileWriter(<span class="string">'./graphs'</span>, sess.graph)</div><div class="line">	<span class="keyword">print</span> sess.run(<span class="keyword">x</span>)</div><div class="line"># <span class="keyword">close</span> the writer when you’re done using it</div><div class="line">writer.<span class="keyword">close</span>()</div></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow <span class="keyword">as</span> <span class="keyword">tf</span></span><br><span class="line"><span class="keyword">a</span> = <span class="keyword">tf</span>.constant(<span class="number">2</span>)</span><br><span class="line"><span class="keyword">b</span> = <span class="keyword">tf</span>.constant(<span class="number">3</span>)</span><br><span class="line"><span class="keyword">x</span> = <span class="keyword">tf</span>.<span class="built_in">add</span>(<span class="keyword">a</span>, <span class="keyword">b</span>)</span><br><span class="line">with <span class="keyword">tf</span>.Session() <span class="keyword">as</span> ses<span class="variable">s:</span></span><br><span class="line">	writer = <span class="keyword">tf</span>.summary.FileWriter(<span class="string">'./graphs'</span>, sess.graph)</span><br><span class="line">	<span class="keyword">print</span> sess.run(<span class="keyword">x</span>)</span><br><span class="line"># <span class="keyword">close</span> the writer when you’re done using it</span><br><span class="line">writer.<span class="keyword">close</span>()</span><br></pre></td></tr></table></figure>
 <p>接下来执行这一段代码，再调取<code>Tensorboard</code>命令显示。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ python [yourprogram.py]</div><div class="line">$ tensorboard --logdir=&quot;./graphs&quot;</div></pre></td></tr></table></figure>
-<p>默认的端口为6006，打开浏览器访问<a href="http://localhost:6006/" target="_blank" rel="external">http://localhost:6006/</a> ，点击上面的GRAPHS栏，得到了三个节点。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> python [yourprogram.py]</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> tensorboard --logdir=<span class="string">"./graphs"</span></span></span><br></pre></td></tr></table></figure>
+<p>默认的端口为6006，打开浏览器访问<a href="http://localhost:6006/" target="_blank" rel="noopener">http://localhost:6006/</a> ，点击上面的GRAPHS栏，得到了三个节点。</p>
 <p><img src="http://img.blog.csdn.net/20171017141826420?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="pic1"></p>
 <p>由于没有指定名称，Tensorflow会自己命名为不同的名称。当然还是自己命名方便：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a = tf.constant([<span class="number">2</span>, <span class="number">2</span>], name=<span class="string">"a"</span>)</div><div class="line">b = tf.constant([<span class="number">3</span>, <span class="number">6</span>], name=<span class="string">"b"</span>)</div><div class="line">x = tf.add(a, b, name=<span class="string">"add"</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = tf.constant([<span class="number">2</span>, <span class="number">2</span>], name=<span class="string">"a"</span>)</span><br><span class="line">b = tf.constant([<span class="number">3</span>, <span class="number">6</span>], name=<span class="string">"b"</span>)</span><br><span class="line">x = tf.add(a, b, name=<span class="string">"add"</span>)</span><br></pre></td></tr></table></figure>
 <p><img src="http://img.blog.csdn.net/20171017142111738?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="pic2"></p>
-<p>图只包括了操作及其依赖项，并不显示其具体值，只有当运行session时才会返回输出：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tf.Session.run(fetches, feed_dict=<span class="keyword">None</span>, options=<span class="keyword">None</span>, run_metadata=<span class="keyword">None</span>)</div></pre></td></tr></table></figure></p>
+<p>图只包括了操作及其依赖项，并不显示其具体值，只有当运行session时才会返回输出：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.Session.run(fetches, feed_dict=<span class="literal">None</span>, options=<span class="literal">None</span>, run_metadata=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure></p>
 <p><strong>注意</strong>：当多次运行代码时，会产生多个Tensorboard的输出，TF只会显示最新的graph，因此不需要时可以删掉之前的graph。</p>
 <h2 id="Constant-types"><a href="#Constant-types" class="headerlink" title="Constant types"></a>Constant types</h2><hr>
-<h3 id="建立标量或者张量"><a href="#建立标量或者张量" class="headerlink" title="建立标量或者张量"></a>建立标量或者张量</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">tf​.​constant​(​value​,​ dtype​=​<span class="keyword">None</span>​,​ shape​=​<span class="keyword">None</span>​,​ name​=​<span class="string">'Const'</span>​,​ verify_shape​=​<span class="keyword">False</span>)</div><div class="line"><span class="comment"># constant of 1d tensor (vector)</span></div><div class="line">a = tf.constant([<span class="number">2</span>, <span class="number">2</span>], name=<span class="string">"vector"</span>)</div><div class="line"><span class="comment"># constant of 2x2 tensor (matrix)</span></div><div class="line">b = tf.constant([[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">3</span>]], name=<span class="string">"b"</span>)</div></pre></td></tr></table></figure>
+<h3 id="建立标量或者张量"><a href="#建立标量或者张量" class="headerlink" title="建立标量或者张量"></a>建立标量或者张量</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tf​.​constant​(​value​,​ dtype​=​<span class="literal">None</span>​,​ shape​=​<span class="literal">None</span>​,​ name​=​<span class="string">'Const'</span>​,​ verify_shape​=​<span class="literal">False</span>)</span><br><span class="line"><span class="comment"># constant of 1d tensor (vector)</span></span><br><span class="line">a = tf.constant([<span class="number">2</span>, <span class="number">2</span>], name=<span class="string">"vector"</span>)</span><br><span class="line"><span class="comment"># constant of 2x2 tensor (matrix)</span></span><br><span class="line">b = tf.constant([[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">3</span>]], name=<span class="string">"b"</span>)</span><br></pre></td></tr></table></figure>
 <h3 id="创建指定初值的张量"><a href="#创建指定初值的张量" class="headerlink" title="创建指定初值的张量"></a>创建指定初值的张量</h3><p><code>tf.fill</code> 可以将tensor填充为同一个值。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">tf​.​zeros​(​shape​,​ dtype​=​tf​.​float32​,​ name​=​None)</div><div class="line"># create a tensor of shape and all elements are zeros</div><div class="line">tf.zeros([2, 3], tf.int32) ==&gt; [[0, 0, 0], [0, 0, 0]]</div><div class="line"></div><div class="line">tf​.​zeros_like​(​input_tensor​,​ dtype​=​None​,​ name​=​None​,​ optimize​=​True)</div><div class="line"># create a tensor of shape and type (unless type is specified) as the input_tensor</div><div class="line">but all elements are zeros.</div><div class="line"># input_tensor is [0, 1], [2, 3], [4, 5]]</div><div class="line">tf.zeros_like(input_tensor) ==&gt; [[0, 0], [0, 0], [0, 0]]</div><div class="line"></div><div class="line">tf​.​ones​(​shape​,​ dtype​=​tf​.​float32​,​ name​=​None)</div><div class="line"># create a tensor of shape and all elements are ones</div><div class="line">tf.ones([2, 3], tf.int32) ==&gt; [[1, 1, 1], [1, 1, 1]]</div><div class="line"></div><div class="line">tf​.​ones_like​(​input_tensor​,​ dtype​=​None​,​ name​=​None​,​ optimize​=​True)</div><div class="line"># create a tensor of shape and type (unless type is specified) as the input_tensor</div><div class="line">but all elements are ones.</div><div class="line"># input_tensor is [0, 1], [2, 3], [4, 5]]</div><div class="line">tf.ones_like(input_tensor) ==&gt; [[1, 1], [1, 1], [1, 1]]</div><div class="line"></div><div class="line">tf​.​fill​(​dims​,​ value​,​ name​=​None​)</div><div class="line"># create a tensor filled with a scalar value.</div><div class="line">tf.ones([2, 3], 8) ==&gt; [[8, 8, 8], [8, 8, 8]]</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">tf​.​zeros​(​shape​,​ dtype​=​tf​.​float32​,​ name​=​<span class="literal">None</span>)</span><br><span class="line"><span class="comment"># create a tensor of shape and all elements are zeros</span></span><br><span class="line">tf.zeros([2, 3], tf.int32) ==&gt; [[0, 0, 0], [0, 0, 0]]</span><br><span class="line"></span><br><span class="line">tf​.​zeros_like​(​input_tensor​,​ dtype​=​<span class="literal">None</span>​,​ name​=​<span class="literal">None</span>​,​ optimize​=​<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># create a tensor of shape and type (unless type is specified) as the input_tensor</span></span><br><span class="line">but all elements are zeros.</span><br><span class="line"><span class="comment"># input_tensor is [0, 1], [2, 3], [4, 5]]</span></span><br><span class="line">tf.zeros_like(input_tensor) ==&gt; [[0, 0], [0, 0], [0, 0]]</span><br><span class="line"></span><br><span class="line">tf​.​ones​(​shape​,​ dtype​=​tf​.​float32​,​ name​=​<span class="literal">None</span>)</span><br><span class="line"><span class="comment"># create a tensor of shape and all elements are ones</span></span><br><span class="line">tf.ones([2, 3], tf.int32) ==&gt; [[1, 1, 1], [1, 1, 1]]</span><br><span class="line"></span><br><span class="line">tf​.​ones_like​(​input_tensor​,​ dtype​=​<span class="literal">None</span>​,​ name​=​<span class="literal">None</span>​,​ optimize​=​<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># create a tensor of shape and type (unless type is specified) as the input_tensor</span></span><br><span class="line">but all elements are ones.</span><br><span class="line"><span class="comment"># input_tensor is [0, 1], [2, 3], [4, 5]]</span></span><br><span class="line">tf.ones_like(input_tensor) ==&gt; [[1, 1], [1, 1], [1, 1]]</span><br><span class="line"></span><br><span class="line">tf​.​fill​(​dims​,​ value​,​ name​=​<span class="literal">None</span>​)</span><br><span class="line"><span class="comment"># create a tensor filled with a scalar value.</span></span><br><span class="line">tf.ones([2, 3], 8) ==&gt; [[8, 8, 8], [8, 8, 8]]</span><br></pre></td></tr></table></figure>
 <h3 id="常量序列"><a href="#常量序列" class="headerlink" title="常量序列"></a>常量序列</h3><hr>
 <p><code>tf​.​linspace</code>，线性划分。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">tf​.​linspace​(​start​,​ stop​,​ num​,​ name​=​None)</div><div class="line"># create a sequence of num evenly-spaced values are generated beginning at start. If</div><div class="line">num &gt; 1, the values in the sequence increase by stop - start / num - 1, so that the</div><div class="line">last one is exactly stop.</div><div class="line"># start, stop, num must be scalars</div><div class="line"># comparable to but slightly different from numpy.linspace</div><div class="line"># numpy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None)</div><div class="line">tf.linspace(10.0, 13.0, 4, name="linspace") ==&gt; [10.0 11.0 12.0 13.0]</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tf​.​linspace​(​start​,​ stop​,​ num​,​ name​=​<span class="literal">None</span>)</span><br><span class="line"><span class="comment"># create a sequence of num evenly-spaced values are generated beginning at start. If</span></span><br><span class="line">num &gt; <span class="number">1</span>, the values <span class="keyword">in</span> the sequence increase by stop - start / num - <span class="number">1</span>, so that the</span><br><span class="line">last one <span class="keyword">is</span> exactly stop.</span><br><span class="line"><span class="comment"># start, stop, num must be scalars</span></span><br><span class="line"><span class="comment"># comparable to but slightly different from numpy.linspace</span></span><br><span class="line"><span class="comment"># numpy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None)</span></span><br><span class="line">tf.linspace(10.0, 13.0, 4, name="linspace") ==&gt; [10.0 11.0 12.0 13.0]</span><br></pre></td></tr></table></figure>
 <p><code>tf.range</code>递增（减）数列</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">tf​.​range​(​start​,​ limit​=​None​,​ delta​=​1​,​ dtype​=​None​,​ name​=​'range')</div><div class="line"># create a sequence of numbers that begins at start and extends by increments of</div><div class="line">delta up to but not including limit</div><div class="line"># slight different from range in Python</div><div class="line"># 'start' is 3, 'limit' is 18, 'delta' is 3</div><div class="line">tf.range(start, limit, delta) ==&gt; [3, 6, 9, 12, 15]</div><div class="line"># 'start' is 3, 'limit' is 1, 'delta' is -0.5</div><div class="line">tf.range(start, limit, delta) ==&gt; [3, 2.5, 2, 1.5]</div><div class="line"># 'limit' is 5</div><div class="line">tf.range(limit) ==&gt; [0, 1, 2, 3, 4]</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">tf​.​range​(​start​,​ limit​=​<span class="literal">None</span>​,​ delta​=​<span class="number">1</span>​,​ dtype​=​<span class="literal">None</span>​,​ name​=​<span class="string">'range'</span>)</span><br><span class="line"><span class="comment"># create a sequence of numbers that begins at start and extends by increments of</span></span><br><span class="line">delta up to but <span class="keyword">not</span> including limit</span><br><span class="line"><span class="comment"># slight different from range in Python</span></span><br><span class="line"><span class="comment"># 'start' is 3, 'limit' is 18, 'delta' is 3</span></span><br><span class="line">tf.range(start, limit, delta) ==&gt; [3, 6, 9, 12, 15]</span><br><span class="line"><span class="comment"># 'start' is 3, 'limit' is 1, 'delta' is -0.5</span></span><br><span class="line">tf.range(start, limit, delta) ==&gt; [3, 2.5, 2, 1.5]</span><br><span class="line"><span class="comment"># 'limit' is 5</span></span><br><span class="line">tf.range(limit) ==&gt; [0, 1, 2, 3, 4]</span><br></pre></td></tr></table></figure>
 <p>不像Numpy，TF中的序列不能迭代。</p>
 <p>当然也可以产生某种分布的随机常数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">tf.random_normal(shape, mean=<span class="number">0.0</span>, stddev=<span class="number">1.0</span>, dtype=tf.float32, seed=<span class="keyword">None</span>, name=<span class="keyword">None</span>)</div><div class="line">tf.truncated_normal(shape, mean=<span class="number">0.0</span>, stddev=<span class="number">1.0</span>, dtype=tf.float32, seed=<span class="keyword">None</span>,</div><div class="line">name=<span class="keyword">None</span>)</div><div class="line">tf.random_uniform(shape, minval=<span class="number">0</span>, maxval=<span class="keyword">None</span>, dtype=tf.float32, seed=<span class="keyword">None</span>,</div><div class="line">name=<span class="keyword">None</span>)</div><div class="line">tf.random_shuffle(value, seed=<span class="keyword">None</span>, name=<span class="keyword">None</span>)</div><div class="line">tf.random_crop(value, size, seed=<span class="keyword">None</span>, name=<span class="keyword">None</span>)</div><div class="line">tf.multinomial(logits, num_samples, seed=<span class="keyword">None</span>, name=<span class="keyword">None</span>)</div><div class="line">tf.random_gamma(shape, alpha, beta=<span class="keyword">None</span>, dtype=tf.float32, seed=<span class="keyword">None</span>, name=<span class="keyword">None</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tf.random_normal(shape, mean=<span class="number">0.0</span>, stddev=<span class="number">1.0</span>, dtype=tf.float32, seed=<span class="literal">None</span>, name=<span class="literal">None</span>)</span><br><span class="line">tf.truncated_normal(shape, mean=<span class="number">0.0</span>, stddev=<span class="number">1.0</span>, dtype=tf.float32, seed=<span class="literal">None</span>,</span><br><span class="line">name=<span class="literal">None</span>)</span><br><span class="line">tf.random_uniform(shape, minval=<span class="number">0</span>, maxval=<span class="literal">None</span>, dtype=tf.float32, seed=<span class="literal">None</span>,</span><br><span class="line">name=<span class="literal">None</span>)</span><br><span class="line">tf.random_shuffle(value, seed=<span class="literal">None</span>, name=<span class="literal">None</span>)</span><br><span class="line">tf.random_crop(value, size, seed=<span class="literal">None</span>, name=<span class="literal">None</span>)</span><br><span class="line">tf.multinomial(logits, num_samples, seed=<span class="literal">None</span>, name=<span class="literal">None</span>)</span><br><span class="line">tf.random_gamma(shape, alpha, beta=<span class="literal">None</span>, dtype=tf.float32, seed=<span class="literal">None</span>, name=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
 <h2 id="数学操作"><a href="#数学操作" class="headerlink" title="数学操作"></a>数学操作</h2><hr>
-<p>TF官网的<a href="https://www.tensorflow.org/api_docs/python/math_ops/arithmetic_operators" target="_blank" rel="external">数学操作文档</a>。<br>具体的类别表格：</p>
+<p>TF官网的<a href="https://www.tensorflow.org/api_docs/python/math_ops/arithmetic_operators" target="_blank" rel="noopener">数学操作文档</a>。<br>具体的类别表格：</p>
 <p><img src="http://img.blog.csdn.net/20171017151136081?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="pic3"></p>
 <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><hr>
 <p>TF可以使用Python原生类型、TF原生类型、Numpy数据类型。TF的数据类型基于Numpy，事实上<code>np.int32 == tf.int32</code>返回的是<code>True</code>。</p>
@@ -544,34 +544,34 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
 </ul>
 <p>第二点基本上意味着常数存储在图定义中。 当常数占用了大量内存的时候，每次加载图形都会很慢。 要查看图形的定义和图形定义中存储的内容，只需打印出图形的protobuf。</p>
 <h3 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h3><p>注意：变量会创建一个<code>tf.Variable</code>类的实例。<code>tf.constant</code> 是一个操作，因此是小写，<code>tf.Variable</code>是类因此是大写。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#create variable a with scalar value </span></div><div class="line">a = tf . Variable ( <span class="number">2</span> , name = <span class="string">"scalar"</span> )</div><div class="line"><span class="comment">#create variable b as a vector </span></div><div class="line">b = tf . Variable ([ <span class="number">2</span> , <span class="number">3</span> ], name = <span class="string">"vector"</span> )</div><div class="line"><span class="comment">#create variable c as a 2x2 matrix </span></div><div class="line">c = tf . Variable ([[ <span class="number">0</span> , <span class="number">1</span> ], [ <span class="number">2</span> , <span class="number">3</span> ]], name = <span class="string">"matrix"</span> )</div><div class="line"><span class="comment"># create variable W as 784 x 10 tensor, filled with zeros </span></div><div class="line">W = tf . Variable ( tf . zeros ([ <span class="number">784</span> , <span class="number">10</span> ]))</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#create variable a with scalar value </span></span><br><span class="line">a = tf . Variable ( <span class="number">2</span> , name = <span class="string">"scalar"</span> )</span><br><span class="line"><span class="comment">#create variable b as a vector </span></span><br><span class="line">b = tf . Variable ([ <span class="number">2</span> , <span class="number">3</span> ], name = <span class="string">"vector"</span> )</span><br><span class="line"><span class="comment">#create variable c as a 2x2 matrix </span></span><br><span class="line">c = tf . Variable ([[ <span class="number">0</span> , <span class="number">1</span> ], [ <span class="number">2</span> , <span class="number">3</span> ]], name = <span class="string">"matrix"</span> )</span><br><span class="line"><span class="comment"># create variable W as 784 x 10 tensor, filled with zeros </span></span><br><span class="line">W = tf . Variable ( tf . zeros ([ <span class="number">784</span> , <span class="number">10</span> ]))</span><br></pre></td></tr></table></figure>
 <p>变量有如下的操作：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">x = tf.Variable(...)</div><div class="line">x.initializer <span class="comment"># init </span></div><div class="line">x.value() <span class="comment"># read op </span></div><div class="line">x.assign(...) <span class="comment"># write op </span></div><div class="line">x.assign_add(...) </div><div class="line"><span class="comment"># and more</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = tf.Variable(...)</span><br><span class="line">x.initializer <span class="comment"># init </span></span><br><span class="line">x.value() <span class="comment"># read op </span></span><br><span class="line">x.assign(...) <span class="comment"># write op </span></span><br><span class="line">x.assign_add(...) </span><br><span class="line"><span class="comment"># and more</span></span><br></pre></td></tr></table></figure>
 <p><strong>你需要在使用变量之前先初始化它们。</strong>否则会报错。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">init = tf . global_variables_initializer ()</div><div class="line"><span class="keyword">with</span> tf . Session () <span class="keyword">as</span> sess: </div><div class="line">	tf . run ( init)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">init = tf . global_variables_initializer ()</span><br><span class="line"><span class="keyword">with</span> tf . Session () <span class="keyword">as</span> sess: </span><br><span class="line">	tf . run ( init)</span><br></pre></td></tr></table></figure>
 <p>使用<code>tf.variables_initializer()</code>可以设置变量的初始化的值，如：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">init_ab = tf . variables_initializer ([ a , b ], name = <span class="string">"init_ab"</span>) <span class="keyword">with</span> tf . Session () <span class="keyword">as</span> sess: </div><div class="line">	tf . run ( init_ab)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">init_ab = tf . variables_initializer ([ a , b ], name = <span class="string">"init_ab"</span>) <span class="keyword">with</span> tf . Session () <span class="keyword">as</span> sess: </span><br><span class="line">	tf . run ( init_ab)</span><br></pre></td></tr></table></figure>
 <p>这样<code>init_ab</code>仅会包含a，b两类值。</p>
 <h3 id="估计变量值"><a href="#估计变量值" class="headerlink" title="估计变量值"></a>估计变量值</h3><p>对于一个初始化的变量，打印只能得到一个对象，如果需要得到它的值，则需要使用<code>eval()</code>。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># W is a random 700 x 100 variable object </span></div><div class="line">W = tf . Variable ( tf . truncated_normal ([ <span class="number">700</span> , <span class="number">10</span> ])) </div><div class="line"><span class="keyword">with</span> tf . Session () <span class="keyword">as</span> sess: </div><div class="line">	sess . run ( W . initializer) </div><div class="line">	<span class="keyword">print</span> W . eval ()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># W is a random 700 x 100 variable object </span></span><br><span class="line">W = tf . Variable ( tf . truncated_normal ([ <span class="number">700</span> , <span class="number">10</span> ])) </span><br><span class="line"><span class="keyword">with</span> tf . Session () <span class="keyword">as</span> sess: </span><br><span class="line">	sess . run ( W . initializer) </span><br><span class="line">	<span class="keyword">print</span> W . eval ()</span><br></pre></td></tr></table></figure>
 <h3 id="对变量赋值"><a href="#对变量赋值" class="headerlink" title="对变量赋值"></a>对变量赋值</h3><p>使用<code>tf.Variable.assign()</code>：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">W = tf . Variable ( <span class="number">10</span> ) </div><div class="line">W . assign ( <span class="number">100</span> ) </div><div class="line"><span class="keyword">with</span> tf . Session () <span class="keyword">as</span> sess: </div><div class="line">	sess . run ( W . initializer) </div><div class="line">	<span class="keyword">print</span> W . eval () <span class="comment"># &gt;&gt; 10</span></div></pre></td></tr></table></figure>
-<p>当然只声明不允许时不会改变值的，在打印前运行：<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sess . <span class="keyword">run</span><span class="bash"> ( assign_op)</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">W = tf . Variable ( <span class="number">10</span> ) </span><br><span class="line">W . assign ( <span class="number">100</span> ) </span><br><span class="line"><span class="keyword">with</span> tf . Session () <span class="keyword">as</span> sess: </span><br><span class="line">	sess . run ( W . initializer) </span><br><span class="line">	<span class="keyword">print</span> W . eval () <span class="comment"># &gt;&gt; 10</span></span><br></pre></td></tr></table></figure>
+<p>当然只声明不允许时不会改变值的，在打印前运行：<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sess . <span class="keyword">run</span><span class="bash"> ( assign_op)</span></span><br></pre></td></tr></table></figure></p>
 <p>就会得到正确的值。<br>另外这句话可以直接代替<code>sess . run ( W . initializer)</code>，这是因为在赋值时自动初始化。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># create a variable whose original value is 2 </span></div><div class="line">a = tf . Variable ( <span class="number">2</span> , name = <span class="string">"scalar"</span> )</div><div class="line"><span class="comment"># assign a * 2 to a and call that op </span></div><div class="line">a_times_two a_times_two = a . assign ( a * <span class="number">2</span>)</div><div class="line">init = tf . global_variables_initializer ()</div><div class="line"><span class="keyword">with</span> tf . Session () <span class="keyword">as</span> sess: </div><div class="line">	sess . run ( init)</div><div class="line">	<span class="comment"># have to initialize a, because a_times_two op depends on the value of a </span></div><div class="line">	sess . run ( a_times_two ) <span class="comment"># &gt;&gt; 8 </span></div><div class="line">	sess . run ( a_times_two ) <span class="comment"># &gt;&gt; 16</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># create a variable whose original value is 2 </span></span><br><span class="line">a = tf . Variable ( <span class="number">2</span> , name = <span class="string">"scalar"</span> )</span><br><span class="line"><span class="comment"># assign a * 2 to a and call that op </span></span><br><span class="line">a_times_two a_times_two = a . assign ( a * <span class="number">2</span>)</span><br><span class="line">init = tf . global_variables_initializer ()</span><br><span class="line"><span class="keyword">with</span> tf . Session () <span class="keyword">as</span> sess: </span><br><span class="line">	sess . run ( init)</span><br><span class="line">	<span class="comment"># have to initialize a, because a_times_two op depends on the value of a </span></span><br><span class="line">	sess . run ( a_times_two ) <span class="comment"># &gt;&gt; 8 </span></span><br><span class="line">	sess . run ( a_times_two ) <span class="comment"># &gt;&gt; 16</span></span><br></pre></td></tr></table></figure>
 <p>由于每次赋值后，a的值都会改变，因此得到的结果都是不一样的。</p>
 <p>对于简单的递增和递减变量，TensorFlow包括<code>tf.Variable.assign_add（）</code>和<code>tf.Variable.assign_sub（）</code>方法。不同于assign，首先这些不会自动初始化，其次其输入仅依赖于初始值：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">W = tf.Variable(<span class="number">10</span>)</div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess: </div><div class="line">	sess.run(W.initializer) </div><div class="line">	<span class="keyword">print</span> sess.run(W.assign_add(<span class="number">10</span>)) <span class="comment"># &gt;&gt; 20  </span></div><div class="line">	<span class="keyword">print</span> sess.run(W.assign_sub(<span class="number">2</span>)) <span class="comment"># &gt;&gt; 18</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">W = tf.Variable(<span class="number">10</span>)</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess: </span><br><span class="line">	sess.run(W.initializer) </span><br><span class="line">	<span class="keyword">print</span> sess.run(W.assign_add(<span class="number">10</span>)) <span class="comment"># &gt;&gt; 20  </span></span><br><span class="line">	<span class="keyword">print</span> sess.run(W.assign_sub(<span class="number">2</span>)) <span class="comment"># &gt;&gt; 18</span></span><br></pre></td></tr></table></figure>
 <p>因为每个sessions会分别保存值，每个session都有他们自己目前的变量。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">W = tf.Variable(<span class="number">10</span>)</div><div class="line">sess1 = tf.Session() </div><div class="line">sess2 = tf.Session()</div><div class="line">sess1.run(W.initializer) </div><div class="line">sess2.run(W.initializer)</div><div class="line"><span class="keyword">print</span> sess1.run(W.assign_add(<span class="number">10</span>)) <span class="comment"># &gt;&gt; 20 </span></div><div class="line"><span class="keyword">print</span> sess2.run(W.assign_sub(<span class="number">2</span>)) <span class="comment"># &gt;&gt; 8</span></div><div class="line"><span class="keyword">print</span> sess1.run(W.assign_add(<span class="number">100</span>)) <span class="comment"># &gt;&gt; 120 </span></div><div class="line"><span class="keyword">print</span> sess2.run(W.assign_sub(<span class="number">50</span>)) <span class="comment"># &gt;&gt; -42</span></div><div class="line">sess1.close() </div><div class="line">sess2.close()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">W = tf.Variable(<span class="number">10</span>)</span><br><span class="line">sess1 = tf.Session() </span><br><span class="line">sess2 = tf.Session()</span><br><span class="line">sess1.run(W.initializer) </span><br><span class="line">sess2.run(W.initializer)</span><br><span class="line"><span class="keyword">print</span> sess1.run(W.assign_add(<span class="number">10</span>)) <span class="comment"># &gt;&gt; 20 </span></span><br><span class="line"><span class="keyword">print</span> sess2.run(W.assign_sub(<span class="number">2</span>)) <span class="comment"># &gt;&gt; 8</span></span><br><span class="line"><span class="keyword">print</span> sess1.run(W.assign_add(<span class="number">100</span>)) <span class="comment"># &gt;&gt; 120 </span></span><br><span class="line"><span class="keyword">print</span> sess2.run(W.assign_sub(<span class="number">50</span>)) <span class="comment"># &gt;&gt; -42</span></span><br><span class="line">sess1.close() </span><br><span class="line">sess2.close()</span><br></pre></td></tr></table></figure>
 <p>当然也可以基于其他变量定义变量：<br>假设你想要定义<code>U=w*2</code>:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># W is a random 700 x 100 tensor W = tf . Variable ( tf .truncated_normal ([ 700 , 10 ])) </span></div><div class="line">U = tf . Variable ( W * <span class="number">2</span>)</div><div class="line">U = tf . Variable ( W . intialized_value () * <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># W is a random 700 x 100 tensor W = tf . Variable ( tf .truncated_normal ([ 700 , 10 ])) </span></span><br><span class="line">U = tf . Variable ( W * <span class="number">2</span>)</span><br><span class="line">U = tf . Variable ( W . intialized_value () * <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 <h2 id="交互会话"><a href="#交互会话" class="headerlink" title="交互会话"></a>交互会话</h2><hr>
 <p>你有时会看到<code>InteractiveSession</code>而不是<code>Session</code>。 唯一的区别是InteractiveSession使自己成为默认会话，因此您可以调用run（）或eval（）而不显式调用会话。 这在交互式shell和IPython笔记本中很方便，因为它避免了传递一个显式的Session对象来运行ops。 但是，当您有多个会话运行时，这是复杂的。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">sess = tf . InteractiveSession () </div><div class="line">a = tf . constant ( <span class="number">5.0</span>) </div><div class="line">b = tf . constant ( <span class="number">6.0</span>) </div><div class="line">c = a * b</div><div class="line"><span class="comment"># We can just use 'c.eval()' without passing 'sess' </span></div><div class="line"><span class="keyword">print</span> ( c . eval ()) </div><div class="line">sess . close ()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sess = tf . InteractiveSession () </span><br><span class="line">a = tf . constant ( <span class="number">5.0</span>) </span><br><span class="line">b = tf . constant ( <span class="number">6.0</span>) </span><br><span class="line">c = a * b</span><br><span class="line"><span class="comment"># We can just use 'c.eval()' without passing 'sess' </span></span><br><span class="line"><span class="keyword">print</span> ( c . eval ()) </span><br><span class="line">sess . close ()</span><br></pre></td></tr></table></figure>
 <h2 id="控制依赖"><a href="#控制依赖" class="headerlink" title="控制依赖"></a>控制依赖</h2><hr>
 <p>有时候，我们将有两个独立的操作，但是想要指定首先要运行哪个操作，然后使用<code>tf.Graph.control_dependencies（control_inputs）</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># your graph g have 5 ops: a, b, c, d, e </span></div><div class="line"><span class="keyword">with</span> g . control_dependencies ([ a , b , c ]):</div><div class="line"><span class="comment"># `d` and `e` will only run after `a`, `b`, and `c` have executed. </span></div><div class="line">	d = ... </div><div class="line">	e = …</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># your graph g have 5 ops: a, b, c, d, e </span></span><br><span class="line"><span class="keyword">with</span> g . control_dependencies ([ a , b , c ]):</span><br><span class="line"><span class="comment"># `d` and `e` will only run after `a`, `b`, and `c` have executed. </span></span><br><span class="line">	d = ... </span><br><span class="line">	e = …</span><br></pre></td></tr></table></figure>
 <h2 id="Placeholders-与-feed-dict"><a href="#Placeholders-与-feed-dict" class="headerlink" title="Placeholders 与 feed_dict"></a>Placeholders 与 feed_dict</h2><hr>
 <p>Tensorflow程序通常有两个阶段：</p>
 <ol>
@@ -579,20 +579,20 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
 <li>使用会话执行图中的操作</li>
 </ol>
 <p>因此，我们可以先在图中定义一些在计算前不需要知道的数值。比如我们定义一个函数$f(x,y)=x*2+y$，<code>x,y</code>就是占位符Placeholder。定义方法为：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tf . placeholder ( dtype , shape = <span class="keyword">None</span> , name = <span class="keyword">None</span>)</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># create a placeholder of type float 32-bit, shape is a vector of 3 elements </span></div><div class="line">a = tf . placeholder ( tf . float32 , shape =[ <span class="number">3</span> ])</div><div class="line"><span class="comment"># create a constant of type float 32-bit, shape is a vector of 3 elements </span></div><div class="line">b = tf . constant ([ <span class="number">5</span> , <span class="number">5</span> , <span class="number">5</span> ], tf . float32)</div><div class="line"><span class="comment"># use the placeholder as you would a constant or a variable </span></div><div class="line">c = a + b <span class="comment"># Short for tf.add(a, b)</span></div><div class="line"><span class="comment"># If we try to fetch c , we will run into error.</span></div><div class="line"><span class="keyword">with</span> tf . Session () <span class="keyword">as</span> sess: </div><div class="line">	<span class="keyword">print</span> ( sess . run ( c ))</div><div class="line">&gt;&gt; NameError</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf . placeholder ( dtype , shape = <span class="literal">None</span> , name = <span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># create a placeholder of type float 32-bit, shape is a vector of 3 elements </span></span><br><span class="line">a = tf . placeholder ( tf . float32 , shape =[ <span class="number">3</span> ])</span><br><span class="line"><span class="comment"># create a constant of type float 32-bit, shape is a vector of 3 elements </span></span><br><span class="line">b = tf . constant ([ <span class="number">5</span> , <span class="number">5</span> , <span class="number">5</span> ], tf . float32)</span><br><span class="line"><span class="comment"># use the placeholder as you would a constant or a variable </span></span><br><span class="line">c = a + b <span class="comment"># Short for tf.add(a, b)</span></span><br><span class="line"><span class="comment"># If we try to fetch c , we will run into error.</span></span><br><span class="line"><span class="keyword">with</span> tf . Session () <span class="keyword">as</span> sess: </span><br><span class="line">	<span class="keyword">print</span> ( sess . run ( c ))</span><br><span class="line">&gt;&gt; NameError</span><br></pre></td></tr></table></figure>
 <p>对于placeholder，在运行时需要使用字典指定其值：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> tf . Session () <span class="keyword">as</span> sess:</div><div class="line">	<span class="comment"># feed [1, 2, 3] to placeholder a via the dict &#123;a: [1, 2, 3]&#125; </span></div><div class="line">	<span class="comment"># fetch value of c  </span></div><div class="line">	<span class="keyword">print</span> ( sess . run ( c , &#123; a : [ <span class="number">1</span> , <span class="number">2</span> , <span class="number">3</span> ]&#125;))</div><div class="line">&gt;&gt; [ <span class="number">6.</span> <span class="number">7.</span> <span class="number">8.</span>]</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> tf . Session () <span class="keyword">as</span> sess:</span><br><span class="line">	<span class="comment"># feed [1, 2, 3] to placeholder a via the dict &#123;a: [1, 2, 3]&#125; </span></span><br><span class="line">	<span class="comment"># fetch value of c  </span></span><br><span class="line">	<span class="keyword">print</span> ( sess . run ( c , &#123; a : [ <span class="number">1</span> , <span class="number">2</span> , <span class="number">3</span> ]&#125;))</span><br><span class="line">&gt;&gt; [ <span class="number">6.</span> <span class="number">7.</span> <span class="number">8.</span>]</span><br></pre></td></tr></table></figure>
 <h2 id="The-trap-of-lazy-loading"><a href="#The-trap-of-lazy-loading" class="headerlink" title="The trap of lazy loading"></a>The trap of lazy loading</h2><hr>
-<p>作者还发现了一个有趣的”bug”：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">x</span> = <span class="keyword">tf</span>.Variable(<span class="number">10</span>, name=<span class="string">'x'</span>) </div><div class="line"><span class="keyword">y</span> = <span class="keyword">tf</span>.Variable(<span class="number">20</span>, name=<span class="string">'y'</span>) </div><div class="line"><span class="keyword">z</span> = <span class="keyword">tf</span>.<span class="built_in">add</span>(<span class="keyword">x</span>, <span class="keyword">y</span>)</div><div class="line">with <span class="keyword">tf</span>.Session() <span class="keyword">as</span> ses<span class="variable">s:</span></div><div class="line">	sess.run(<span class="keyword">tf</span>.global_variables_initializer()) </div><div class="line">	<span class="keyword">for</span> _ in <span class="built_in">range</span>(<span class="number">10</span>):  </div><div class="line">		sess.run(<span class="keyword">z</span>)</div><div class="line">		writer.<span class="keyword">close</span>()</div></pre></td></tr></table></figure></p>
+<p>作者还发现了一个有趣的”bug”：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = tf.Variable(10, <span class="attribute">name</span>=<span class="string">'x'</span>) </span><br><span class="line">y = tf.Variable(20, <span class="attribute">name</span>=<span class="string">'y'</span>) </span><br><span class="line">z = tf.<span class="builtin-name">add</span>(x, y)</span><br><span class="line">with tf.Session() as sess:</span><br><span class="line">	sess.<span class="builtin-name">run</span>(tf.global_variables_initializer()) </span><br><span class="line">	<span class="keyword">for</span> _ <span class="keyword">in</span> range(10):  </span><br><span class="line">		sess.<span class="builtin-name">run</span>(z)</span><br><span class="line">		writer.close()</span><br></pre></td></tr></table></figure></p>
 <p>当使用<code>lazy loading</code>时：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">x = tf.Variable(<span class="number">10</span>, name=<span class="string">'x'</span>) </div><div class="line">y = tf.Variable(<span class="number">20</span>, name=<span class="string">'y'</span>)</div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess: </div><div class="line">	sess.run(tf.global_variables_initializer()) </div><div class="line">	<span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">10</span>):  </div><div class="line">		sess.run(tf.add(x, y)) <span class="comment"># create the op add only when you need to compute it</span></div><div class="line">		writer.close()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = tf.Variable(<span class="number">10</span>, name=<span class="string">'x'</span>) </span><br><span class="line">y = tf.Variable(<span class="number">20</span>, name=<span class="string">'y'</span>)</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess: </span><br><span class="line">	sess.run(tf.global_variables_initializer()) </span><br><span class="line">	<span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">10</span>):  </span><br><span class="line">		sess.run(tf.add(x, y)) <span class="comment"># create the op add only when you need to compute it</span></span><br><span class="line">		writer.close()</span><br></pre></td></tr></table></figure>
 <p>在Tensorboard中，他们的图有很大的不同：</p>
 <p><img src="http://img.blog.csdn.net/20171020171901292?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="add"></p>
 <p><img src="http://img.blog.csdn.net/20171020171911233?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWWFuX0pveQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="lazy"></p>
-<p>下面的图竟然没有add节点！让我们打印一下图的定义：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> tf.get_default_graph().as_graph_def()</div></pre></td></tr></table></figure></p>
-<p>正常定义为：<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class">node </span>&#123;</div><div class="line"><span class="symbol">	name:</span> <span class="string">"Add"</span> </div><div class="line"><span class="symbol">	op:</span> <span class="string">"Add"</span></div><div class="line"><span class="symbol">	input:</span> <span class="string">"x/read"</span> </div><div class="line"><span class="symbol">	input:</span> <span class="string">"y/read"</span>  </div><div class="line">	<span class="class">attr </span>&#123;</div><div class="line"><span class="symbol">		key:</span> <span class="string">"T"</span> </div><div class="line">		<span class="class">value </span>&#123;</div><div class="line"><span class="symbol">			type:</span> DT_INT32 </div><div class="line">		&#125; </div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>另一方面，lazy loading有是个”add”节点的复制：<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">node</span> <span class="title">&#123;</span></div><div class="line">	name: <span class="string">"Add"</span> </div><div class="line">	<span class="keyword">op</span>: <span class="string">"Add"</span>  </div><div class="line">	...</div><div class="line">&#125;</div><div class="line"><span class="keyword">node</span> <span class="title">&#123;</span></div><div class="line">	name: <span class="string">"Add_9"</span> </div><div class="line">	<span class="keyword">op</span>: <span class="string">"Add"</span>  </div><div class="line">	...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>下面的图竟然没有add节点！让我们打印一下图的定义：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> tf.get_default_graph().as_graph_def()</span><br></pre></td></tr></table></figure></p>
+<p>正常定义为：<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">node </span>&#123;</span><br><span class="line"><span class="symbol">	name:</span> <span class="string">"Add"</span> </span><br><span class="line"><span class="symbol">	op:</span> <span class="string">"Add"</span></span><br><span class="line"><span class="symbol">	input:</span> <span class="string">"x/read"</span> </span><br><span class="line"><span class="symbol">	input:</span> <span class="string">"y/read"</span>  </span><br><span class="line">	<span class="class">attr </span>&#123;</span><br><span class="line"><span class="symbol">		key:</span> <span class="string">"T"</span> </span><br><span class="line">		<span class="class">value </span>&#123;</span><br><span class="line"><span class="symbol">			type:</span> DT_INT32 </span><br><span class="line">		&#125; </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>另一方面，lazy loading有是个”add”节点的复制：<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">node</span> <span class="title">&#123;</span></span><br><span class="line"><span class="title">	name</span>: <span class="string">"Add"</span> </span><br><span class="line">	<span class="keyword">op</span>: <span class="string">"Add"</span>  </span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">node</span> <span class="title">&#123;</span></span><br><span class="line"><span class="title">	name</span>: <span class="string">"Add_9"</span> </span><br><span class="line">	<span class="keyword">op</span>: <span class="string">"Add"</span>  </span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>例子中的循环可能难以见到，但可能需要计算相同的损失函数或在一定数量的训练样本之后进行一些预测。 采用lazy loading，就会在计算了数千次时，在图形中添加了数千个不必要的节点。 使图形定义变得臃肿，加载速度更慢。</p>
 
       
@@ -607,7 +607,34 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
     
 
     
+      
+    
+    
 
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yan Joy</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    
+    <a href="https://joyfyan.github.io/2017/10/21/CS20SI-1/" title="CS20SI Operations">https://joyfyan.github.io/2017/10/21/CS20SI-1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -683,7 +710,6 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -699,16 +725,14 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
         </ul>
       
 
-      <section class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
-                alt="Yan Joy" />
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Yan Joy">
             
               <p class="site-author-name" itemprop="name">Yan Joy</p>
-              <p class="site-description motion-element" itemprop="description">Default~</p>
+              <div class="site-description motion-element" itemprop="description">Default~</div>
           </div>
 
           
@@ -718,7 +742,7 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">99</span>
+                    <span class="site-state-item-count">104</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -728,7 +752,11 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -763,7 +791,11 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -882,7 +914,11 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
                     
                       
                     
-                    <span class="site-state-item-count">58</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">60</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -893,22 +929,35 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
           
 
           
+
+          
             <div class="links-of-author motion-element">
               
                 <span class="links-of-author-item">
-                  <a href="http://weibo.com/yanjoy" target="_blank" title="Weibo"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
                   
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="http://weibo.com/yanjoy" title="Weibo &rarr; http://weibo.com/yanjoy" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="http://blog.csdn.net/yan_joy" target="_blank" title="CSDN"><i class="fa fa-fw fa-linux"></i>CSDN</a>
                   
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="http://blog.csdn.net/yan_joy" title="CSDN &rarr; http://blog.csdn.net/yan_joy" rel="noopener" target="_blank"><i class="fa fa-fw fa-linux"></i>CSDN</a>
                 </span>
               
             </div>
           
 
-          
           
 
           
@@ -916,20 +965,20 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
             <div class="links-of-blogroll motion-element links-of-blogroll-block">
               <div class="links-of-blogroll-title">
                 <i class="fa  fa-fw fa-link"></i>
-                FRIENDS
+                Links
               </div>
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://www.xieqiang.site/" title="Johnny" target="_blank">Johnny</a>
+                    <a href="http://www.xieqiang.site/" title="http://www.xieqiang.site/" rel="noopener" target="_blank">Johnny</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://judasdie.github.io/" title="ZP Zhang" target="_blank">ZP Zhang</a>
+                    <a href="https://judasdie.github.io/" title="https://judasdie.github.io/" rel="noopener" target="_blank">ZP Zhang</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://pages.coding.me/" title="Hosted by Coding Pages" target="_blank">Hosted by Coding Pages</a>
+                    <a href="https://pages.coding.me/" title="https://pages.coding.me/" rel="noopener" target="_blank">Hosted by Coding Pages</a>
                   </li>
                 
               </ul>
@@ -942,15 +991,16 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
           
 
         </div>
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
@@ -958,7 +1008,7 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
@@ -966,6 +1016,7 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
 
     </div>
   </aside>
+  
 
 
         
@@ -986,9 +1037,7 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
 </div>
 
 
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.2.2</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 
@@ -996,7 +1045,7 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
 
 
 
-  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.3.0</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.0</div>
 
 
 
@@ -1022,14 +1071,13 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
     
 
     
-	
+
     
 
     
       <div>
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<div class="addthis_inline_share_toolbox">
-  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b692d42870e12d9" async = "async" ></script>
+        <div class="addthis_inline_share_toolbox">
+  <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b692d42870e12d9" async="async"></script>
 </div>
 
       </div>
@@ -1038,7 +1086,7 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -1070,27 +1118,21 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
 
 
 
@@ -1098,54 +1140,54 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
   
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
 
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
 
 
 
   
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
 
 
 
   
 
 
-
-  
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  
-
-
-
-
-
-
-
-
+  <script src="/js/next-boot.js?v=7.1.0"></script>
 
 
   
 
-  <script type="text/javascript">
+  
+
+  
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2017/10/21/CS20SI-1/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+  <script>
     // Popup Window;
     var isfetched = false;
     var isXml = true;
@@ -1231,7 +1273,7 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
                 
                 var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
                 var indexOfTitle = [];
                 var indexOfContent = [];
                 // only match articles with not empty titles
@@ -1400,9 +1442,9 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
               })
             };
             if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
             } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
             } else {
               resultItems.sort(function (resultLeft, resultRight) {
                 if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
@@ -1470,120 +1512,71 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
 
 
   
-
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz", "owWjRRJ2oBD7Dekc8l1RRctK");</script>
   <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
+    
     function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
+      var $visitors = $('.leancloud_visitors');
       var url = $visitors.attr('id').trim();
       var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
 
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
           if (results.length > 0) {
             var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
             
-            counter.save(null, {
-              success: function(counter) {
-                
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
           } else {
             
-              var newcounter = new Counter();
-              /* Set ACL */
-              var acl = new AV.ACL();
-              acl.setPublicReadAccess(true);
-              acl.setPublicWriteAccess(true);
-              newcounter.setACL(acl);
-              /* End Set ACL */
-              newcounter.set("title", title);
-              newcounter.set("url", url);
-              newcounter.set("time", 1);
-              newcounter.save(null, {
-                success: function(newcounter) {
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
                   var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                },
-                error: function(newcounter, error) {
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
                   console.log('Failed to create');
-                }
-              });
+                });
             
           }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
     }
+    
 
     $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz',
+                'X-LC-Key': 'owWjRRJ2oBD7Dekc8l1RRctK',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
     });
   </script>
 
 
-
-  
 
   
 
@@ -1596,31 +1589,56 @@ graph 的可视化，语句为tf.summary.FileWriter，将sess的图输出到./gr
   
     
       <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      TeX: {equationNumbers: { autoNumber: "AMS" }}
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
     });
+  });
 </script>
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
 </script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     
   
 
 
   
+
+  
+
+  
+
+  
+
+  
+
   
 
   

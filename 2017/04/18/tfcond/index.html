@@ -14,11 +14,11 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="en">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -32,8 +32,6 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -46,6 +44,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -53,72 +66,15 @@
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=6.3.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -140,33 +96,30 @@
 
 
 
-  <meta name="description" content="问题引入
-在搜索tf.cond的使用方法时，找到了这样的一个问题：
-运行下面的一段tensorflow代码：12345678910pred = tf.constant(True)x = tf.Variable([1])assign_x_2 = tf.assign(x, [2])def update_x_2():  with tf.control_dependencies([assign_x_2])">
+  <meta name="description" content="问题引入 在搜索tf.cond的使用方法时，找到了这样的一个问题： 运行下面的一段tensorflow代码：12345678910pred = tf.constant(True)x = tf.Variable([1])assign_x_2 = tf.assign(x, [2])def update_x_2():  with tf.control_dependencies([assign_x_2])">
+<meta name="keywords" content="tensorflow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="tf.cond 与 tf.control_dependencies 的控制问题">
 <meta property="og:url" content="https://joyfyan.github.io/2017/04/18/tfcond/index.html">
 <meta property="og:site_name" content="小一一的小站">
-<meta property="og:description" content="问题引入
-在搜索tf.cond的使用方法时，找到了这样的一个问题：
-运行下面的一段tensorflow代码：12345678910pred = tf.constant(True)x = tf.Variable([1])assign_x_2 = tf.assign(x, [2])def update_x_2():  with tf.control_dependencies([assign_x_2])">
+<meta property="og:description" content="问题引入 在搜索tf.cond的使用方法时，找到了这样的一个问题： 运行下面的一段tensorflow代码：12345678910pred = tf.constant(True)x = tf.Variable([1])assign_x_2 = tf.assign(x, [2])def update_x_2():  with tf.control_dependencies([assign_x_2])">
+<meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2017-04-22T06:07:56.674Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tf.cond 与 tf.control_dependencies 的控制问题">
-<meta name="twitter:description" content="问题引入
-在搜索tf.cond的使用方法时，找到了这样的一个问题：
-运行下面的一段tensorflow代码：12345678910pred = tf.constant(True)x = tf.Variable([1])assign_x_2 = tf.assign(x, [2])def update_x_2():  with tf.control_dependencies([assign_x_2])">
+<meta name="twitter:description" content="问题引入 在搜索tf.cond的使用方法时，找到了这样的一个问题： 运行下面的一段tensorflow代码：12345678910pred = tf.constant(True)x = tf.Variable([1])assign_x_2 = tf.assign(x, [2])def update_x_2():  with tf.control_dependencies([assign_x_2])">
 
 
 
 
 
+  
+  
+  <link rel="canonical" href="https://joyfyan.github.io/2017/04/18/tfcond/">
 
-  <link rel="canonical" href="https://joyfyan.github.io/2017/04/18/tfcond/"/>
 
 
-
-<script type="text/javascript" id="page.configurations">
+<script id="page.configurations">
   CONFIG.page = {
     sidebar: "",
   };
@@ -180,7 +133,7 @@
 
 
 
-  <script type="text/javascript">
+  <script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -193,30 +146,31 @@
 
 
 
+
+
+
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
@@ -234,7 +188,7 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -248,6 +202,7 @@
       
         <p class="site-subtitle">Blog of Yan Joy</p>
       
+    
     
   </div>
 
@@ -271,40 +226,85 @@
         
           
           <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
   </li>
 
       
@@ -314,7 +314,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
         </li>
       
     </ul>
@@ -334,9 +334,7 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="Searching..." spellcheck="false"
-             type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -404,6 +402,7 @@
         
         
           <h1 class="post-title" itemprop="name headline">tf.cond 与 tf.control_dependencies 的控制问题
+
               
             
           </h1>
@@ -451,7 +450,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -472,20 +471,21 @@
 
           
             
+            
           
 
           
           
-             <span id="/2017/04/18/tfcond/" class="leancloud_visitors" data-flag-title="tf.cond 与 tf.control_dependencies 的控制问题">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
+            <span id="/2017/04/18/tfcond/" class="leancloud_visitors" data-flag-title="tf.cond 与 tf.control_dependencies 的控制问题">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -509,29 +509,29 @@
       
         <h1 id="问题引入"><a href="#问题引入" class="headerlink" title="问题引入"></a>问题引入</h1><hr>
 <p>在搜索<code>tf.cond</code>的使用方法时，找到了这样的一个问题：</p>
-<p>运行下面的一段tensorflow代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">pred = tf.constant(<span class="keyword">True</span>)</div><div class="line">x = tf.Variable([<span class="number">1</span>])</div><div class="line">assign_x_2 = tf.assign(x, [<span class="number">2</span>])</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">update_x_2</span><span class="params">()</span>:</span></div><div class="line">  <span class="keyword">with</span> tf.control_dependencies([assign_x_2]):</div><div class="line">    <span class="keyword">return</span> tf.identity(x)</div><div class="line">y = tf.cond(pred, update_x_2, <span class="keyword">lambda</span>: tf.identity(x))</div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> session:</div><div class="line">  session.run(tf.initialize_all_variables())</div><div class="line">  print(y.eval())</div></pre></td></tr></table></figure></p>
+<p>运行下面的一段tensorflow代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pred = tf.constant(<span class="literal">True</span>)</span><br><span class="line">x = tf.Variable([<span class="number">1</span>])</span><br><span class="line">assign_x_2 = tf.assign(x, [<span class="number">2</span>])</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">update_x_2</span><span class="params">()</span>:</span></span><br><span class="line">  <span class="keyword">with</span> tf.control_dependencies([assign_x_2]):</span><br><span class="line">    <span class="keyword">return</span> tf.identity(x)</span><br><span class="line">y = tf.cond(pred, update_x_2, <span class="keyword">lambda</span>: tf.identity(x))</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> session:</span><br><span class="line">  session.run(tf.initialize_all_variables())</span><br><span class="line">  print(y.eval())</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <p>从代码上看，<code>tf.cond</code>经过判断<code>pred</code>的值对<code>x</code>进行更新。但实际上无论在pred = Ture 还是 False，输出的结果都是2，都是<code>pred = tf.constant(True)</code>的情况。</p>
 <blockquote>
-<p><a href="http://stackoverflow.com/questions/37063952/confused-by-the-behavior-of-tf-cond" target="_blank" rel="external">Confused by the behavior of <code>tf.cond</code></a></p>
+<p><a href="http://stackoverflow.com/questions/37063952/confused-by-the-behavior-of-tf-cond" target="_blank" rel="noopener">Confused by the behavior of <code>tf.cond</code></a></p>
 </blockquote>
 <p>这是怎么回事呢？</p>
 <h1 id="顺序执行"><a href="#顺序执行" class="headerlink" title="顺序执行"></a>顺序执行</h1><hr>
-<p>先不进行解释，有人在回复中给出了一个可以正确运行的代码，看一下有什么区别：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">pred = tf.placeholder(tf.bool, shape=[])</div><div class="line">x = tf.Variable([<span class="number">1</span>])</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">update_x_2</span><span class="params">()</span>:</span></div><div class="line">  <span class="keyword">with</span> tf.control_dependencies([tf.assign(x, [<span class="number">2</span>])]):</div><div class="line">    <span class="keyword">return</span> tf.identity(x)</div><div class="line">y = tf.cond(pred, update_x_2, <span class="keyword">lambda</span>: tf.identity(x))</div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> session:</div><div class="line">  session.run(tf.initialize_all_variables())</div><div class="line">  print(y.eval(feed_dict=&#123;pred: <span class="keyword">False</span>&#125;))  <span class="comment"># ==&gt; [1]</span></div><div class="line">  print(y.eval(feed_dict=&#123;pred: <span class="keyword">True</span>&#125;))   <span class="comment"># ==&gt; [2]</span></div></pre></td></tr></table></figure></p>
+<p>先不进行解释，有人在回复中给出了一个可以正确运行的代码，看一下有什么区别：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pred = tf.placeholder(tf.bool, shape=[])</span><br><span class="line">x = tf.Variable([<span class="number">1</span>])</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">update_x_2</span><span class="params">()</span>:</span></span><br><span class="line">  <span class="keyword">with</span> tf.control_dependencies([tf.assign(x, [<span class="number">2</span>])]):</span><br><span class="line">    <span class="keyword">return</span> tf.identity(x)</span><br><span class="line">y = tf.cond(pred, update_x_2, <span class="keyword">lambda</span>: tf.identity(x))</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> session:</span><br><span class="line">  session.run(tf.initialize_all_variables())</span><br><span class="line">  print(y.eval(feed_dict=&#123;pred: <span class="literal">False</span>&#125;))  <span class="comment"># ==&gt; [1]</span></span><br><span class="line">  print(y.eval(feed_dict=&#123;pred: <span class="literal">True</span>&#125;))   <span class="comment"># ==&gt; [2]</span></span><br></pre></td></tr></table></figure></p>
 <p>区别也不大，只是把<code>assign_x_2 = tf.assign(x, [2])</code>这句整体移动到了<code>tf.control_dependencies([tf.assign(x, [2])])</code>的内部。<br>给出的解释是：</p>
 <blockquote>
 <p>如果要让<code>tf.cond()</code>在其中一个分支中执行命令（如分配），你必须在你要传递给的函数创建执行副命令的操作。<br> If you want to perform a side effect (like an assignment) in one of the branches, you must create the op that performs the side effect inside the function that you pass to .<br> 因为在TensorFlow图中的执行是依次向前流过图形的，所以在任一分支中引用的所有操作必须在条件进行求值之前执行。这意味着true和false分支都接受对<code>tf.assign()</code> op 的控制依赖。<br> Because execution in a TensorFlow graph flows forward through the graph, all operations that you refer to in either branch must execute before the conditional is evaluated. This means that both the true and the false branches receive a control dependency on the <code>tf.assign()</code> op.</p>
 </blockquote>
 <p>翻译的可能不够准确，大意就是<code>assign_x_2 = tf.assign(x, [2])</code>这句话在<code>tf.cond</code>已经执行过了，因此无论执行<code>update_x_2</code>（让x=2）或<code>lambda: tf.identity(x)</code>（保持x不变），得到的结果都是<code>x=2</code>。<br>这么来看其实是一个很简单的问题，定义时不仅定义了模型，也隐含着定义了执行顺序。</p>
 <h1 id="tf-control-dependencies"><a href="#tf-control-dependencies" class="headerlink" title="tf.control_dependencies()"></a>tf.control_dependencies()</h1><hr>
-<p>这个函数加不加看起来没有什么区别，比如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf                                                                                                                                </div><div class="line">pred = tf.placeholder(tf.bool, shape=[])</div><div class="line">x = tf.Variable([<span class="number">1</span>])</div><div class="line"><span class="comment"># x_2 = tf.assign(x, [2])</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">update_x_2</span><span class="params">()</span>:</span></div><div class="line">     <span class="comment"># with tf.control_dependencies([x_2]): #[tf.assign(x, [2])]):</span></div><div class="line">     <span class="keyword">return</span> tf.assign(x, [<span class="number">2</span>])</div><div class="line">y = tf.cond(pred, update_x_2, <span class="keyword">lambda</span>: tf.identity(x))</div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> session:</div><div class="line">     session.run(tf.global_variables_initializer())</div><div class="line">     print(y.eval(feed_dict=&#123;pred: <span class="keyword">False</span>&#125;))  <span class="comment"># ==&gt; [1]</span></div><div class="line">     print(y.eval(feed_dict=&#123;pred: <span class="keyword">True</span>&#125;))   <span class="comment"># ==&gt; [2]</span></div></pre></td></tr></table></figure></p>
+<p>这个函数加不加看起来没有什么区别，比如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf                                                                                                                                </span><br><span class="line">pred = tf.placeholder(tf.bool, shape=[])</span><br><span class="line">x = tf.Variable([<span class="number">1</span>])</span><br><span class="line"><span class="comment"># x_2 = tf.assign(x, [2])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">update_x_2</span><span class="params">()</span>:</span></span><br><span class="line">     <span class="comment"># with tf.control_dependencies([x_2]): #[tf.assign(x, [2])]):</span></span><br><span class="line">     <span class="keyword">return</span> tf.assign(x, [<span class="number">2</span>])</span><br><span class="line">y = tf.cond(pred, update_x_2, <span class="keyword">lambda</span>: tf.identity(x))</span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> session:</span><br><span class="line">     session.run(tf.global_variables_initializer())</span><br><span class="line">     print(y.eval(feed_dict=&#123;pred: <span class="literal">False</span>&#125;))  <span class="comment"># ==&gt; [1]</span></span><br><span class="line">     print(y.eval(feed_dict=&#123;pred: <span class="literal">True</span>&#125;))   <span class="comment"># ==&gt; [2]</span></span><br></pre></td></tr></table></figure></p>
 <p>去掉之后运行结果和正确的相同。具体作用还是看一下官网吧……<br>直接搜<code>tf.control_dependencies</code>得到的信息并不多：</p>
 <blockquote>
-<p>Wrapper for Graph.control_dependencies() using the default graph.<br>See <a href="https://www.tensorflow.org/api_docs/python/tf/Graph#control_dependencies" target="_blank" rel="external"><code>tf.Graph.control_dependencies</code></a> for more details.</p>
+<p>Wrapper for Graph.control_dependencies() using the default graph.<br>See <a href="https://www.tensorflow.org/api_docs/python/tf/Graph#control_dependencies" target="_blank" rel="noopener"><code>tf.Graph.control_dependencies</code></a> for more details.</p>
 </blockquote>
 <p>在<code>tf.Graph.control_dependencies</code>这里确实讲得很详细，其作用简单来说就是<strong>控制计算顺序</strong>。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> g.control_dependencies([a, b, c]):</div><div class="line">  <span class="comment"># `d` and `e` will only run after `a`, `b`, and `c` have executed.</span></div><div class="line">  d = ...</div><div class="line">  e = ...</div></pre></td></tr></table></figure>
-<p>有了这句话，<code>with</code>中的语句就会在<code>control_dependencies()</code>中的操作执行之后运行，并且也支持嵌套操作。在给出的错误例子中，很像开头提出的问题：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># WRONG</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_func</span><span class="params">(pred, tensor)</span>:</span></div><div class="line">  t = tf.matmul(tensor, tensor)</div><div class="line">  <span class="keyword">with</span> tf.control_dependencies([pred]):</div><div class="line">    <span class="comment"># The matmul op is created outside the context, so no control</span></div><div class="line">    <span class="comment"># dependency will be added.</span></div><div class="line">    <span class="keyword">return</span> t</div><div class="line"></div><div class="line"><span class="comment"># RIGHT</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_func</span><span class="params">(pred, tensor)</span>:</span></div><div class="line">  <span class="keyword">with</span> tf.control_dependencies([pred]):</div><div class="line">    <span class="comment"># The matmul op is created in the context, so a control dependency</span></div><div class="line">    <span class="comment"># will be added.</span></div><div class="line">    <span class="keyword">return</span> tf.matmul(tensor, tensor)</div></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> g.control_dependencies([a, b, c]):</span><br><span class="line">  <span class="comment"># `d` and `e` will only run after `a`, `b`, and `c` have executed.</span></span><br><span class="line">  d = ...</span><br><span class="line">  e = ...</span><br></pre></td></tr></table></figure>
+<p>有了这句话，<code>with</code>中的语句就会在<code>control_dependencies()</code>中的操作执行之后运行，并且也支持嵌套操作。在给出的错误例子中，很像开头提出的问题：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># WRONG</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_func</span><span class="params">(pred, tensor)</span>:</span></span><br><span class="line">  t = tf.matmul(tensor, tensor)</span><br><span class="line">  <span class="keyword">with</span> tf.control_dependencies([pred]):</span><br><span class="line">    <span class="comment"># The matmul op is created outside the context, so no control</span></span><br><span class="line">    <span class="comment"># dependency will be added.</span></span><br><span class="line">    <span class="keyword">return</span> t</span><br><span class="line"></span><br><span class="line"><span class="comment"># RIGHT</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_func</span><span class="params">(pred, tensor)</span>:</span></span><br><span class="line">  <span class="keyword">with</span> tf.control_dependencies([pred]):</span><br><span class="line">    <span class="comment"># The matmul op is created in the context, so a control dependency</span></span><br><span class="line">    <span class="comment"># will be added.</span></span><br><span class="line">    <span class="keyword">return</span> tf.matmul(tensor, tensor)</span><br></pre></td></tr></table></figure></p>
 <p>上面<code>t</code>操作在<code>tf.control_dependencies</code>之前已经被执行了，因此就无法控制<code>t</code>的先后顺序。如果我们把<code>my_func</code>看作是<code>tf.cond</code>中的分支操作函数，那么很可能在<code>pred</code>更新之前就已经进行了操作，因此可能造成一些错误。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><hr>
 <p>这么一看，好像我自己写的没有注意这么多细节，但目前从结果上看好像还都没什么问题，或许需要重新改写一下。</p>
@@ -548,7 +548,34 @@
     
 
     
+      
+    
+    
 
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yan Joy</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    
+    <a href="https://joyfyan.github.io/2017/04/18/tfcond/" title="tf.cond 与 tf.control_dependencies 的控制问题">https://joyfyan.github.io/2017/04/18/tfcond/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -624,7 +651,6 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -640,16 +666,14 @@
         </ul>
       
 
-      <section class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
-                alt="Yan Joy" />
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Yan Joy">
             
               <p class="site-author-name" itemprop="name">Yan Joy</p>
-              <p class="site-description motion-element" itemprop="description">Default~</p>
+              <div class="site-description motion-element" itemprop="description">Default~</div>
           </div>
 
           
@@ -659,7 +683,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">99</span>
+                    <span class="site-state-item-count">104</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -669,7 +693,11 @@
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -704,7 +732,11 @@
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -823,7 +855,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">58</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">60</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -834,22 +870,35 @@
           
 
           
+
+          
             <div class="links-of-author motion-element">
               
                 <span class="links-of-author-item">
-                  <a href="http://weibo.com/yanjoy" target="_blank" title="Weibo"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
                   
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="http://weibo.com/yanjoy" title="Weibo &rarr; http://weibo.com/yanjoy" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="http://blog.csdn.net/yan_joy" target="_blank" title="CSDN"><i class="fa fa-fw fa-linux"></i>CSDN</a>
                   
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="http://blog.csdn.net/yan_joy" title="CSDN &rarr; http://blog.csdn.net/yan_joy" rel="noopener" target="_blank"><i class="fa fa-fw fa-linux"></i>CSDN</a>
                 </span>
               
             </div>
           
 
-          
           
 
           
@@ -857,20 +906,20 @@
             <div class="links-of-blogroll motion-element links-of-blogroll-block">
               <div class="links-of-blogroll-title">
                 <i class="fa  fa-fw fa-link"></i>
-                FRIENDS
+                Links
               </div>
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://www.xieqiang.site/" title="Johnny" target="_blank">Johnny</a>
+                    <a href="http://www.xieqiang.site/" title="http://www.xieqiang.site/" rel="noopener" target="_blank">Johnny</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://judasdie.github.io/" title="ZP Zhang" target="_blank">ZP Zhang</a>
+                    <a href="https://judasdie.github.io/" title="https://judasdie.github.io/" rel="noopener" target="_blank">ZP Zhang</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://pages.coding.me/" title="Hosted by Coding Pages" target="_blank">Hosted by Coding Pages</a>
+                    <a href="https://pages.coding.me/" title="https://pages.coding.me/" rel="noopener" target="_blank">Hosted by Coding Pages</a>
                   </li>
                 
               </ul>
@@ -883,15 +932,16 @@
           
 
         </div>
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
@@ -899,7 +949,7 @@
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
@@ -907,6 +957,7 @@
 
     </div>
   </aside>
+  
 
 
         
@@ -927,9 +978,7 @@
 </div>
 
 
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.2.2</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 
@@ -937,7 +986,7 @@
 
 
 
-  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.3.0</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.0</div>
 
 
 
@@ -963,14 +1012,13 @@
     
 
     
-	
+
     
 
     
       <div>
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<div class="addthis_inline_share_toolbox">
-  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b692d42870e12d9" async = "async" ></script>
+        <div class="addthis_inline_share_toolbox">
+  <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b692d42870e12d9" async="async"></script>
 </div>
 
       </div>
@@ -979,7 +1027,7 @@
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -1011,27 +1059,21 @@
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
 
 
 
@@ -1039,54 +1081,54 @@
   
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
 
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
 
 
 
   
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
 
 
 
   
 
 
-
-  
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  
-
-
-
-
-
-
-
-
+  <script src="/js/next-boot.js?v=7.1.0"></script>
 
 
   
 
-  <script type="text/javascript">
+  
+
+  
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2017/04/18/tfcond/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+  <script>
     // Popup Window;
     var isfetched = false;
     var isXml = true;
@@ -1172,7 +1214,7 @@
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
                 
                 var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
                 var indexOfTitle = [];
                 var indexOfContent = [];
                 // only match articles with not empty titles
@@ -1341,9 +1383,9 @@
               })
             };
             if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
             } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
             } else {
               resultItems.sort(function (resultLeft, resultRight) {
                 if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
@@ -1411,120 +1453,71 @@
 
 
   
-
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz", "owWjRRJ2oBD7Dekc8l1RRctK");</script>
   <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
+    
     function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
+      var $visitors = $('.leancloud_visitors');
       var url = $visitors.attr('id').trim();
       var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
 
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
           if (results.length > 0) {
             var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
             
-            counter.save(null, {
-              success: function(counter) {
-                
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
           } else {
             
-              var newcounter = new Counter();
-              /* Set ACL */
-              var acl = new AV.ACL();
-              acl.setPublicReadAccess(true);
-              acl.setPublicWriteAccess(true);
-              newcounter.setACL(acl);
-              /* End Set ACL */
-              newcounter.set("title", title);
-              newcounter.set("url", url);
-              newcounter.set("time", 1);
-              newcounter.save(null, {
-                success: function(newcounter) {
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
                   var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                },
-                error: function(newcounter, error) {
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
                   console.log('Failed to create');
-                }
-              });
+                });
             
           }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
     }
+    
 
     $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'CETsF97cGhnDDoeuypbWtlvs-gzGzoHsz',
+                'X-LC-Key': 'owWjRRJ2oBD7Dekc8l1RRctK',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
     });
   </script>
 
 
-
-  
 
   
 
@@ -1537,31 +1530,56 @@
   
     
       <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      TeX: {equationNumbers: { autoNumber: "AMS" }}
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
     });
+  });
 </script>
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
 </script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     
   
 
 
   
+
+  
+
+  
+
+  
+
+  
+
   
 
   
